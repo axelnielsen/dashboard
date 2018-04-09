@@ -24,7 +24,9 @@ class SeriesController < ApplicationController
   # POST /series
   # POST /series.json
   def create
-    @series = Series.new(series_params)
+   @champinship = Championship.find(params[:championship_id])
+    @serie = @champinship.series.create(series_params)
+    
 
     respond_to do |format|
       if @series.save
@@ -69,6 +71,6 @@ class SeriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def series_params
-      params.require(:series).permit(:idDisciplineChampionship, :name)
+      params.require(:series).permit(:idDisciplineChampionship, :name, :championship_id)
     end
 end

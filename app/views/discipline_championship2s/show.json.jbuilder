@@ -1,0 +1,1 @@
+json.partial! "discipline_championship2s/discipline_championship2", discipline_championship2: @discipline_championship2

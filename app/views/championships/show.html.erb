@@ -1,29 +1,114 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @championship.name %>
-</p>
+    <!-- Main content -->
+    <section class="content container-fluid">
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>1</h3>
 
-<p>
-  <strong>Initdate:</strong>
-  <%= @championship.initdate %>
-</p>
+              <p>Series</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-check-square-o"></i>
+            </div>
+            <%= link_to 'Ver Más', detalles_url, :class=>"small-box-footer fa fa-arrow-circle-right" %>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-<p>
-  <strong>Findate:</strong>
-  <%= @championship.findate %>
-</p>
+              <p>Resultados</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-trophy"></i>
+            </div>
+            <a href="#" class="small-box-footer">Ver más<i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>10</h3>
 
-<p>
-  <strong>Idregion:</strong>
-  <%= @championship.idRegion %>
-</p>
+              <p>Atletas</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-users"></i>
+            </div>
+            <a href="#" class="small-box-footer">Ver más <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>10</h3>
 
-<p>
-  <strong>Address:</strong>
-  <%= @championship.address %>
-</p>
+              <p>Estadísticas</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </div>
+            <a href="#" class="small-box-footer">Ver más <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div><p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_championship_path(@championship) %> |
-<%= link_to 'Back', championships_path %>
+
+
+<div class="row">
+<div class="col-md-12">
+    <div class="callout callout-success">
+                <h4><%= @championship.name %></h4>
+
+              </div>
+
+</div>
+  <div class="col-md-6">
+          <!-- Widget: user widget style 1 -->
+       <%= image_tag("orlando.jpg", :alt => "rss feed", :style => "width:100%" ) %>
+        
+
+          <!-- /.widget-user -->
+
+        </div>
+         <div class="col-md-6">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Ubicación</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+             <p> <medium class="label pull-left bg-green">Dirección</medium><%= @championship.address %></p>
+             <p><medium class="label pull-left bg-green">Fecha Inicio</medium><%= @championship.initdate %></p>
+             <p><medium class="label pull-left bg-green">Fecha Término</medium><%= @championship.findate %></p>
+<p>Descargar las bases  <i class="fa fa-file-word-o" aria-hidden="true"></i></p>
+            </div>
+           </div>
+            </div>
+            <!-- /.box-body -->
+
+
+
+          </div>
+          <%= link_to 'Edit', edit_championship_path(@championship) %> |
+<%= link_to 'Back', championships_path %> 
+         </div>
+
+</div>
+
+
+

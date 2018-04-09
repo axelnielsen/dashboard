@@ -4,7 +4,10 @@ class DisciplinesController < ApplicationController
   # GET /disciplines
   # GET /disciplines.json
   def index
-    @disciplines = Discipline.all
+     respond_to do |format|
+      format.html
+      format.json { render json: DisciplinesDatatable.new(view_context) }
+    end
   end
 
   # GET /disciplines/1

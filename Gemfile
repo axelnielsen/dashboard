@@ -74,3 +74,4 @@ gem 'axlsx', '= 2.0.1'
 gem 'axlsx_rails'
 gem 'roo'
 gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'mysql2'

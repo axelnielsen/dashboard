@@ -69,6 +69,6 @@ class ChampionshipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def championship_params
-      params.require(:championship).permit(:name, :initdate, :findate, :idRegion, :address)
+      params.require(:championship).permit(:name, :initdate, :findate, :idRegion, :address,bank_subsidiaries_attributes: [:championship_id, :name])
     end
 end

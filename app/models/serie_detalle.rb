@@ -1,0 +1,2 @@
+class SerieDetalle < ApplicationRecord
+end

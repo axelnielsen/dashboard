@@ -1,0 +1,2 @@
+module DisciplineChampionship2sHelper
+end

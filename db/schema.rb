@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409012932) do
+ActiveRecord::Schema.define(version: 20180409091148) do
 
-  create_table "athletes", force: :cascade do |t|
+  create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "names"
     t.string "surnames"
     t.string "sex"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20180409012932) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "athleteseries", force: :cascade do |t|
+  create_table "athleteseries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "idSerie"
     t.integer "idAthlete"
     t.integer "idStatus"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20180409012932) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "championships", force: :cascade do |t|
+  create_table "championships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.datetime "initdate"
     t.datetime "findate"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20180409012932) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "clients", force: :cascade do |t|
+  create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "lastname"
     t.string "account"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20180409012932) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "clubs", force: :cascade do |t|
+  create_table "clubs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.integer "idRegion"
     t.string "address"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20180409012932) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "coaches", force: :cascade do |t|
+  create_table "coaches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "names"
     t.string "surnames"
     t.string "sex"
@@ -79,47 +79,68 @@ ActiveRecord::Schema.define(version: 20180409012932) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "countries", force: :cascade do |t|
+  create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "discipline_championships", force: :cascade do |t|
+  create_table "detalles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "lugar"
+    t.integer "marca"
+    t.integer "pista"
+    t.string "atleta"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "pais"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "serie"
+  end
+
+  create_table "discipline_championship2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.string "sex"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "discipline_championships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "idChampionship"
     t.integer "idDiscipline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "discipline_details", force: :cascade do |t|
+  create_table "discipline_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
-    t.decimal "value"
+    t.decimal "value", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "disciplines", force: :cascade do |t|
+  create_table "disciplines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "referee_levels", force: :cascade do |t|
+  create_table "referee_levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "referees", force: :cascade do |t|
+  create_table "referees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "names"
     t.string "surnames"
     t.string "sex"
@@ -132,37 +153,31 @@ ActiveRecord::Schema.define(version: 20180409012932) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "regions", force: :cascade do |t|
+  create_table "regions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "series", force: :cascade do |t|
+  create_table "serie_detalles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "lugar"
+    t.integer "marca"
+    t.integer "pista"
+    t.string "atleta"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "pais"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "idDisciplineChampionship"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "nombres"
-    t.string "apellidos"
-    t.string "rut"
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.integer "championship_id"
   end
 
 end

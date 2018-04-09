@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Serie Detalles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lugar</th>
+      <th>Marca</th>
+      <th>Pista</th>
+      <th>Atleta</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>Pais</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @serie_detalles.each do |serie_detalle| %>
+      <tr>
+        <td><%= serie_detalle.lugar %></td>
+        <td><%= serie_detalle.marca %></td>
+        <td><%= serie_detalle.pista %></td>
+        <td><%= serie_detalle.atleta %></td>
+        <td><%= serie_detalle.an %></td>
+        <td><%= serie_detalle.club %></td>
+        <td><%= serie_detalle.region %></td>
+        <td><%= serie_detalle.pais %></td>
+        <td><%= link_to 'Show', serie_detalle %></td>
+        <td><%= link_to 'Edit', edit_serie_detalle_path(serie_detalle) %></td>
+        <td><%= link_to 'Destroy', serie_detalle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Serie Detalle', new_serie_detalle_path %>

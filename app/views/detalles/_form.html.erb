@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@detalle) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :lugar %>
+    <%= f.input :marca %>
+    <%= f.input :pista %>
+    <%= f.input :atleta %>
+    <%= f.input :an %>
+    <%= f.input :club %>
+    <%= f.input :region %>
+    <%= f.input :pais %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

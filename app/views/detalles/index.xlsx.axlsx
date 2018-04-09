@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Series") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(serie lugar marca pista atleta an club region)
+  
+  # each user is a row on your spreadsheet
+  @detalles.each do |user|
+    sheet.add_row [detalle.serie detalle.lugar detalle.marca detalle.pista detalle.atleta detalle.an detalle.club region]
+  end
+end

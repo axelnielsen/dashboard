@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Disciplinas</h1>
+<%= content_tag :table, role: :datatable, data: { url: discipline_championship2s_path(format: :json)} do %>
+  <thead>
+    <tr>
+      <th>Disciplina</th>
+      <th>F/M</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  </tbody>
+<% end %>
+
+<br>
+
+<%= link_to 'Nueva disciplina', new_discipline_championship2_path %>
