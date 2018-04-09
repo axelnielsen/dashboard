@@ -19,4 +19,13 @@
 <% end %>
 
 <br>
+
+
+<h3>Importar</h3>
+
+<%=form_tag import_athletes_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+
+ <% end %>
 <%= link_to 'New Athlete', new_athlete_path %>

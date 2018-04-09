@@ -16,6 +16,14 @@ class AthletesController < ApplicationController
   def show
   end
 
+def import
+Athlete.import(params[:file])
+redirect_to athletes_url, notice: "Importado correctamente"
+end
+
+
+
+
   # GET /athletes/new
   def new
     @athlete = Athlete.new

@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Athletes") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(names surnames sex birthdate rut, idClub)
+  
+  # each athlete is a row on your spreadsheet
+  @athletes.each do |athlete|
+    sheet.add_row [athlete.names, athlete.surnames, athlete.sex, athlete.birthdate, athlete.rut , athlete.idClub]
+  end
+end
