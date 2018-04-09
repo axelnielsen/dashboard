@@ -53,6 +53,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+#Genéricos estilo
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'font-awesome-sass'
@@ -61,7 +62,15 @@ gem 'bootstrap'
 gem 'jquery-ui-rails'
 gem 'simple_form'
 
-
+#Datatables
 gem 'rails-assets-jquery', source: 'https://rails-assets.org'
 gem 'rails-assets-datatables', source: 'https://rails-assets.org'
 gem 'kaminari'
+
+
+#Import Export data
+gem 'rubyzip', '= 1.0.0'
+gem 'axlsx', '= 2.0.1'
+gem 'axlsx_rails'
+gem 'roo'
+gem 'sdoc', '~> 0.4.0',          group: :doc

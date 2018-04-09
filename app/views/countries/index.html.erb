@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Countries</h1>
+<%= content_tag :table, role: :datatable, data: { url: countries_path(format: :json)} do %>
+  <thead>
+    <tr>
+      <th>flag</th>
+      <th>name</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  </tbody>
+<% end %>
+
+<br>
+
+<%= link_to 'New Country', new_country_path %>

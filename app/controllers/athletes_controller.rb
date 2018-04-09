@@ -4,7 +4,11 @@ class AthletesController < ApplicationController
   # GET /athletes
   # GET /athletes.json
   def index
-    @athletes = Athlete.all
+   respond_to do |format|
+     format.html
+      format.json { render json: AthletesDatatable.new(view_context) }
+      format.xlsx
+    end
   end
 
   # GET /athletes/1
