@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Discipline Championships</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Idchampionship</th>
+      <th>Iddiscipline</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @discipline_championships.each do |discipline_championship| %>
+      <tr>
+        <td><%= discipline_championship.idChampionship %></td>
+        <td><%= discipline_championship.idDiscipline %></td>
+        <td><%= link_to 'Show', discipline_championship %></td>
+        <td><%= link_to 'Edit', edit_discipline_championship_path(discipline_championship) %></td>
+        <td><%= link_to 'Destroy', discipline_championship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Discipline Championship', new_discipline_championship_path %>

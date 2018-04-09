@@ -1,0 +1,13 @@
+
+<%= simple_form_for(@discipline_championship) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :idChampionship %>
+    <%= f.input :idDiscipline %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

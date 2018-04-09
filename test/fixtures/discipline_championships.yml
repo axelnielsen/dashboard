@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idChampionship: 1
+  idDiscipline: 1
+
+two:
+  idChampionship: 1
+  idDiscipline: 1

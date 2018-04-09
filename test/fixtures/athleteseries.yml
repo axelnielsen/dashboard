@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idSerie: 1
+  idAthlete: 1
+  idStatus: 1
+
+two:
+  idSerie: 1
+  idAthlete: 1
+  idStatus: 1

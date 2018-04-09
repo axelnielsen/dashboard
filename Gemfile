@@ -60,3 +60,8 @@ gem "font-awesome-rails"
 gem 'bootstrap'
 gem 'jquery-ui-rails'
 gem 'simple_form'
+
+
+gem 'rails-assets-jquery', source: 'https://rails-assets.org'
+gem 'rails-assets-datatables', source: 'https://rails-assets.org'
+gem 'kaminari'

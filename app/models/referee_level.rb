@@ -1,0 +1,2 @@
+class RefereeLevel < ApplicationRecord
+end

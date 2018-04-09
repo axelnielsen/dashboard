@@ -1,0 +1,16 @@
+
+<%= simple_form_for(@championship) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :initdate %>
+    <%= f.input :findate %>
+    <%= f.input :idRegion %>
+    <%= f.input :address %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

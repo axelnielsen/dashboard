@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Referees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Names</th>
+      <th>Surnames</th>
+      <th>Sex</th>
+      <th>Birthdate</th>
+      <th>Rut</th>
+      <th>Cellphone</th>
+      <th>Mail</th>
+      <th>Idlevel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @referees.each do |referee| %>
+      <tr>
+        <td><%= referee.names %></td>
+        <td><%= referee.surnames %></td>
+        <td><%= referee.sex %></td>
+        <td><%= referee.birthdate %></td>
+        <td><%= referee.rut %></td>
+        <td><%= referee.cellPhone %></td>
+        <td><%= referee.mail %></td>
+        <td><%= referee.idLevel %></td>
+        <td><%= link_to 'Show', referee %></td>
+        <td><%= link_to 'Edit', edit_referee_path(referee) %></td>
+        <td><%= link_to 'Destroy', referee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Referee', new_referee_path %>

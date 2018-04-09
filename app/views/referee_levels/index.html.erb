@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Referee Levels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @referee_levels.each do |referee_level| %>
+      <tr>
+        <td><%= referee_level.name %></td>
+        <td><%= link_to 'Show', referee_level %></td>
+        <td><%= link_to 'Edit', edit_referee_level_path(referee_level) %></td>
+        <td><%= link_to 'Destroy', referee_level, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Referee Level', new_referee_level_path %>

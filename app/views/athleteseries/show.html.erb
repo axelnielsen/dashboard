@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Idserie:</strong>
+  <%= @athleteseries.idSerie %>
+</p>
+
+<p>
+  <strong>Idathlete:</strong>
+  <%= @athleteseries.idAthlete %>
+</p>
+
+<p>
+  <strong>Idstatus:</strong>
+  <%= @athleteseries.idStatus %>
+</p>
+
+<%= link_to 'Edit', edit_athleteseries_path(@athleteseries) %> |
+<%= link_to 'Back', athleteseries_index_path %>

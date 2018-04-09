@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@referee) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :names %>
+    <%= f.input :surnames %>
+    <%= f.input :sex %>
+    <%= f.input :birthdate %>
+    <%= f.input :rut %>
+    <%= f.input :cellPhone %>
+    <%= f.input :mail %>
+    <%= f.input :idLevel %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
