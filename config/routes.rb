@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :serie_detalles
   resources :discipline_championship2s
   resources :countries
-  resources :users
   resources :series
   resources :regions
   resources :referees

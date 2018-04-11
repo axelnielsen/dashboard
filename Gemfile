@@ -75,3 +75,8 @@ gem 'axlsx_rails'
 gem 'roo'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'mysql2'
+
+#control de usuarios
+
+gem 'devise'
+
