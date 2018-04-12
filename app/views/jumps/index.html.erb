@@ -1,0 +1,47 @@
+
+ <p id="notice"><%= notice %></p>
+<%= content_tag :table, role: :datatable, data: { url: jumps_path(format: :json)} do %>
+  <thead>
+    <tr>
+     
+      <th>N°<th>
+      <th>Nombre</th>
+      <th>A.N.</th>
+      <th>Club</th>
+      <th>País</th>
+      <th>Country</th>
+      <th>1°</th>
+      <th>v.v.</th>
+      <th>2°</th>
+      <th>v.v.</th>
+      <th>3°</th>
+      <th>v.v.</th>
+      <th>Op</th>
+      <th>4°</th>
+      <th>v.v.</th>
+      <th>5°</th>
+      <th>v.v.</th>
+      <th>6°</th>
+      <th>v.v.</th>
+      <th>Marca</th>
+      <th>Lugar</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  </tbody>
+<% end %>
+
+<br>
+
+
+
+<h3>Importar</h3>
+
+<%=form_tag import_jumps_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+
+ <% end %>
+<%= link_to 'New Jump', new_jump_path %>

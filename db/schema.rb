@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411044745) do
+ActiveRecord::Schema.define(version: 20180412112856) do
 
   create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "names"
@@ -58,11 +58,7 @@ ActiveRecord::Schema.define(version: 20180411044745) do
 
   create_table "clubs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
-    t.integer "idRegion"
-    t.string "address"
-    t.string "mail"
-    t.string "cellphone"
-    t.string "photo"
+    t.integer "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -127,6 +123,32 @@ ActiveRecord::Schema.define(version: 20180411044745) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "number"
+    t.string "name"
+    t.string "an"
+    t.string "club"
+    t.string "reg"
+    t.string "country"
+    t.string "first"
+    t.string "vvFirst"
+    t.string "seconnd"
+    t.string "vvSecond"
+    t.string "third"
+    t.string "vvThird"
+    t.string "op"
+    t.string "fourth"
+    t.string "vvFourth"
+    t.string "fift"
+    t.string "vvFifth"
+    t.string "sixth"
+    t.string "vvSixth"
+    t.string "achievement"
+    t.integer "place"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.text "description"
@@ -149,6 +171,13 @@ ActiveRecord::Schema.define(version: 20180411044745) do
     t.string "cellPhone"
     t.string "mail"
     t.integer "idLevel"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "regional_asociations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.integer "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -178,6 +207,32 @@ ActiveRecord::Schema.define(version: 20180411044745) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "championship_id"
+  end
+
+  create_table "sports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "throwings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "number"
+    t.string "name"
+    t.string "an"
+    t.string "club"
+    t.string "reg"
+    t.string "country"
+    t.string "first"
+    t.string "seconnd"
+    t.string "third"
+    t.string "op"
+    t.string "fourth"
+    t.string "fift"
+    t.string "sixth"
+    t.string "achievement"
+    t.integer "place"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

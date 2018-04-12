@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  name: MyString
+  an: MyString
+  club: MyString
+  reg: MyString
+  country: MyString
+  first: MyString
+  seconnd: MyString
+  third: MyString
+  op: MyString
+  fourth: MyString
+  fift: MyString
+  sixth: MyString
+  achievement: MyString
+  place: 1
+
+two:
+  number: 1
+  name: MyString
+  an: MyString
+  club: MyString
+  reg: MyString
+  country: MyString
+  first: MyString
+  seconnd: MyString
+  third: MyString
+  op: MyString
+  fourth: MyString
+  fift: MyString
+  sixth: MyString
+  achievement: MyString
+  place: 1

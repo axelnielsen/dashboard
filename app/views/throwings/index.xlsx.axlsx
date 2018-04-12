@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Lanzamiento") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(number name an club  country first  seconnd  third  op fourth  fift  sixth  achievement place )
+  
+  # each throwing is a row on your spreadsheet
+  @throwing.each do |throwing|
+    sheet.add_row [throwing.number ,throwing.name ,throwing.an ,throwing.club , ,throwing.country ,throwing.first ,throwing.seconnd ,throwing.third ,throwing.op ,throwing.fourth  ,throwing.fift ,throwing.sixth ,throwing.achievement ,throwing.place ]
+  end
+end

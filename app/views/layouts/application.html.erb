@@ -10,20 +10,52 @@
 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+ul#menu li {
+    display:inline;
+}
+</style>
   </head>
 
-  <body class="sidebar-mini skin-green">
+  <body class="sidebar-mini skin-blue">
   	<div class="wrapper" style="height: auto;">
   		<header class="main-header">
-  			<a href="index2.html" class="logo">
+  			<a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>APP</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Admin</b>APP</span>
     </a>
 
-    <nav class="navbar navbar-static-top">
-    
+   <nav class="navbar navbar-static-top">
+       <div class=" navbar-left" >
+       </div>
+       <div class=" navbar-left" >
+       </div>
+       <div class=" navbar-left" >
+       </div>
+       <div class=" navbar-left" >
+       </div>
+        <div class=" navbar-left" >
+       </div>
+      <div class="navbar-custom-menu" id="menu">
+        <ul class="nav navbar-nav">
+ <% if user_signed_in? %>
+ <li><%= link_to current_user.email, edit_user_registration_path %></li>
+</ul>
+<ul class="nav navbar-nav">
+<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+<% else %>
+</ul>
+ <ul class="nav navbar-nav">
+ <li><%= link_to "Sign Up", new_user_registration_path %></li>
+</ul>
+<ul class="nav navbar-nav">
+ <li><%= link_to "Login", new_user_session_path %></li>
+ </ul>
+<% end %>
+
+</div>
     </nav>
 
   		</header>

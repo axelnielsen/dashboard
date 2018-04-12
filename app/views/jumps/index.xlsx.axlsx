@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Salto") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(number name an club country first vvFirst seconnd vvSecond third vvThird op fourth vvFourth fift vvFifth sixth vvSixth achievement place )
+  
+  # each jump is a row on your spreadsheet
+  @jump.each do |jump|
+    sheet.add_row [jump.number ,jump.name ,jump.an ,jump.club ,jump.country ,jump.first ,jump.vvFirst ,jump.seconnd ,jump.vvSecond ,jump.third ,jump.vvThird ,jump.op ,jump.fourth ,jump.vvFourth ,jump.fift ,jump.vvFifth ,jump.sixth ,jump.vvSixth ,jump.achievement ,jump.place ]
+  end
+end

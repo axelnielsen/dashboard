@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+
+  
+  resources :throwings do
+  collection { post :import}
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  end
+  resources :jumps do
+  collection { post :import}
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  end
+  resources :sports
+  get 'results/index'
+
   devise_for :users
   resources :serie_detalles
   resources :discipline_championship2s
@@ -26,5 +39,6 @@ end
   collection { post :import}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+root to: 'results#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
