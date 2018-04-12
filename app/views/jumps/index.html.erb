@@ -29,12 +29,20 @@
     </tr>
   </thead>
 
-  <tbody>
+ <tbody onmouseover="bestInPlace();">
   </tbody>
 <% end %>
 
 <br>
-
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+ </script>
 
 
 <h3>Importar</h3>

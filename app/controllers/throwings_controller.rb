@@ -12,7 +12,7 @@ class ThrowingsController < ApplicationController
   end
 def import
 Throwing.import(params[:file])
-redirect_to Jump_url, notice: "Importado correctamente"
+redirect_to throwings_url, notice: "Importado correctamente"
 end
   # GET /throwings/1
   # GET /throwings/1.json

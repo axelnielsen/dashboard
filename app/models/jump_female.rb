@@ -1,13 +1,13 @@
-class Jump < ApplicationRecord
+class JumpFemale < ApplicationRecord
 			def self.import(file)
 		spreadsheet = open_spreadsheet(file)
 		header = spreadsheet.row(7)
 		(2..spreadsheet.last_row).each do |i|
 			row = Hash[[header, spreadsheet.row(i)].transpose]
-			jump= find_by_id(row["id"]) || new
+			jumpfemale= find_by_id(row["id"]) || new
 			#user.attributes = row.to_hash.slice(*accepts_nested_attributes_for)
-			jump.attributes = row.to_hash.slice(*row.to_hash.keys)
-			jump.save!
+			jumpfemale.attributes = row.to_hash.slice(*row.to_hash.keys)
+			jumpfemale.save!
 
 	
 	end

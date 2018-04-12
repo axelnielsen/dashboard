@@ -13,7 +13,7 @@ end
 
 def import
 Jump.import(params[:file])
-redirect_to Jump_url, notice: "Importado correctamente"
+redirect_to jumps_url, notice: "Importado correctamente"
 end
   # GET /jumps/1
   # GET /jumps/1.json

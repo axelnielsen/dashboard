@@ -23,7 +23,8 @@
 //= require jquery
 //= require jquery-ui
 //= require datatables
-
+//= require jquery.purr
+//= require best_in_place
 $(document).on('turbolinks:load', function(){
   $("table[role='datatable']").each(function(){
     $(this).DataTable({
@@ -33,3 +34,6 @@ $(document).on('turbolinks:load', function(){
     });
   });  
 })
+ $(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});

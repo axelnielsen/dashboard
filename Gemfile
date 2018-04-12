@@ -85,3 +85,7 @@ group :development do
   gem "binding_of_caller"
 end
 
+#editar in-line
+
+gem 'best_in_place'
+

@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
 
   
+  resources :jump_females
   resources :throwings do
   collection { post :import}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   end
   resources :jumps do
   collection { post :import}
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   end
+  resources :jump_females do
+  collection { post :import}
+
+  end
+
+
+
   resources :sports
   get 'results/index'
 
