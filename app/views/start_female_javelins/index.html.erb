@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Start Female Javelins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Place</th>
+      <th>Achievement</th>
+      <th>Rail</th>
+      <th>Number</th>
+      <th>Athlete</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>Femalejavelinhead</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @start_female_javelins.each do |start_female_javelin| %>
+      <tr>
+        <td><%= start_female_javelin.place %></td>
+        <td><%= start_female_javelin.achievement %></td>
+        <td><%= start_female_javelin.rail %></td>
+        <td><%= start_female_javelin.number %></td>
+        <td><%= start_female_javelin.athlete %></td>
+        <td><%= start_female_javelin.an %></td>
+        <td><%= start_female_javelin.club %></td>
+        <td><%= start_female_javelin.region %></td>
+        <td><%= start_female_javelin.country %></td>
+        <td><%= start_female_javelin.femaleJavelinHead_id %></td>
+        <td><%= link_to 'Show', start_female_javelin %></td>
+        <td><%= link_to 'Edit', edit_start_female_javelin_path(start_female_javelin) %></td>
+        <td><%= link_to 'Destroy', start_female_javelin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Start Female Javelin', new_start_female_javelin_path %>

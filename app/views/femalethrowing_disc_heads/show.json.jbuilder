@@ -1,0 +1,1 @@
+json.partial! "femalethrowing_disc_heads/femalethrowing_disc_head", femalethrowing_disc_head: @femalethrowing_disc_head

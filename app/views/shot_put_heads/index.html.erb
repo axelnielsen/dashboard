@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shot Put Heads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Championship</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shot_put_heads.each do |shot_put_head| %>
+      <tr>
+        <td><%= shot_put_head.championship_id %></td>
+        <td><%= shot_put_head.fecha %></td>
+        <td><%= shot_put_head.hora %></td>
+        <td><%= link_to 'Show', shot_put_head %></td>
+        <td><%= link_to 'Edit', edit_shot_put_head_path(shot_put_head) %></td>
+        <td><%= link_to 'Destroy', shot_put_head, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shot Put Head', new_shot_put_head_path %>

@@ -1,0 +1,2 @@
+class ShotPutHead < ApplicationRecord
+end

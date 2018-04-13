@@ -1,0 +1,2 @@
+class StartMaleThrowingDisc < ApplicationRecord
+end

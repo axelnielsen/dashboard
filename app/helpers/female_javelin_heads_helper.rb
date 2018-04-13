@@ -1,0 +1,2 @@
+module FemaleJavelinHeadsHelper
+end

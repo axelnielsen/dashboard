@@ -1,0 +1,2 @@
+module FemalethrowingDiscHeadsHelper
+end

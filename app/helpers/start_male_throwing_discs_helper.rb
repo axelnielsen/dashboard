@@ -1,0 +1,2 @@
+module StartMaleThrowingDiscsHelper
+end

@@ -1,0 +1,2 @@
+class FemaleJavelinHead < ApplicationRecord
+end

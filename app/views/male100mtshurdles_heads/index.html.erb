@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Male100mtshurdles Heads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Championship</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @male100mtshurdles_heads.each do |male100mtshurdles_head| %>
+      <tr>
+        <td><%= male100mtshurdles_head.championship_id %></td>
+        <td><%= male100mtshurdles_head.fecha %></td>
+        <td><%= male100mtshurdles_head.hora %></td>
+        <td><%= link_to 'Show', male100mtshurdles_head %></td>
+        <td><%= link_to 'Edit', edit_male100mtshurdles_head_path(male100mtshurdles_head) %></td>
+        <td><%= link_to 'Destroy', male100mtshurdles_head, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Male100mtshurdles Head', new_male100mtshurdles_head_path %>

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Start Female Shot Puts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Place</th>
+      <th>Achievement</th>
+      <th>Rail</th>
+      <th>Number</th>
+      <th>Athlete</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>Femaleshotputhead</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @start_female_shot_puts.each do |start_female_shot_put| %>
+      <tr>
+        <td><%= start_female_shot_put.place %></td>
+        <td><%= start_female_shot_put.achievement %></td>
+        <td><%= start_female_shot_put.rail %></td>
+        <td><%= start_female_shot_put.number %></td>
+        <td><%= start_female_shot_put.athlete %></td>
+        <td><%= start_female_shot_put.an %></td>
+        <td><%= start_female_shot_put.club %></td>
+        <td><%= start_female_shot_put.region %></td>
+        <td><%= start_female_shot_put.country %></td>
+        <td><%= start_female_shot_put.femaleShotPutHead_id %></td>
+        <td><%= link_to 'Show', start_female_shot_put %></td>
+        <td><%= link_to 'Edit', edit_start_female_shot_put_path(start_female_shot_put) %></td>
+        <td><%= link_to 'Destroy', start_female_shot_put, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Start Female Shot Put', new_start_female_shot_put_path %>

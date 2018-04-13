@@ -1,0 +1,2 @@
+class FemalethrowingDiscHead < ApplicationRecord
+end

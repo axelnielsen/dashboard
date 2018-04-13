@@ -1,6 +1,41 @@
 Rails.application.routes.draw do
 
   
+  resources :start_female_javelins
+  resources :start_male_javelins
+  resources :start_male_throwing_discs
+  resources :start_male_shot_puts
+  resources :start_female_shot_puts
+  resources :start_female_jumps
+  resources :start_female1500mts
+  resources :start_male1500mts
+  resources :start_male100mthudrles
+  resources :start_female100mthudrles
+  resources :start_female400mts
+  resources :start_male400mts
+  resources :start_male200mts
+  resources :start_female200mts
+  resources :start_male100mts
+  resources :start_female100mts
+  resources :male_javelin_heads
+  resources :female_javelin_heads
+  resources :female_shot_put_heads
+  resources :male_shot_put_heads
+  resources :shot_put_heads
+  resources :malethrowing_disc_heads
+  resources :femalethrowing_disc_heads
+  resources :malejump_heads
+  resources :femalejump_heads
+  resources :female1500mts_heads
+  resources :male1500mts_heads
+  resources :female100mtshurdles_heads
+  resources :male100mtshurdles_heads
+  resources :male400mts_heads
+  resources :female400mts_heads
+  resources :female200mts_heads
+  resources :male200mts_heads
+  resources :male100mts_heads
+  resources :female100mts_heads
   resources :jump_females
   resources :throwings do
   collection { post :import}

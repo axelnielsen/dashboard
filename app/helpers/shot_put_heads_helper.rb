@@ -1,0 +1,2 @@
+module ShotPutHeadsHelper
+end

@@ -1,0 +1,2 @@
+module Male100mtshurdlesHeadsHelper
+end

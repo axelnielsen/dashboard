@@ -1,0 +1,2 @@
+class StartMaleJavelin < ApplicationRecord
+end

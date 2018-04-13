@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Start Male100mthudrles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Place</th>
+      <th>Achievement</th>
+      <th>Rail</th>
+      <th>Number</th>
+      <th>Athlete</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>Male100mthudreshead</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @start_male100mthudrles.each do |start_male100mthudrle| %>
+      <tr>
+        <td><%= start_male100mthudrle.place %></td>
+        <td><%= start_male100mthudrle.achievement %></td>
+        <td><%= start_male100mthudrle.rail %></td>
+        <td><%= start_male100mthudrle.number %></td>
+        <td><%= start_male100mthudrle.athlete %></td>
+        <td><%= start_male100mthudrle.an %></td>
+        <td><%= start_male100mthudrle.club %></td>
+        <td><%= start_male100mthudrle.region %></td>
+        <td><%= start_male100mthudrle.country %></td>
+        <td><%= start_male100mthudrle.male100mthudresHead_id %></td>
+        <td><%= link_to 'Show', start_male100mthudrle %></td>
+        <td><%= link_to 'Edit', edit_start_male100mthudrle_path(start_male100mthudrle) %></td>
+        <td><%= link_to 'Destroy', start_male100mthudrle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Start Male100mthudrle', new_start_male100mthudrle_path %>

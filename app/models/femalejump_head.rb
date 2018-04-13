@@ -1,0 +1,2 @@
+class FemalejumpHead < ApplicationRecord
+end

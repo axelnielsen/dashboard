@@ -1,0 +1,1 @@
+json.partial! "start_male_throwing_discs/start_male_throwing_disc", start_male_throwing_disc: @start_male_throwing_disc

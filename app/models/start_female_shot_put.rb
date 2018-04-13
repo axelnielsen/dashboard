@@ -1,0 +1,2 @@
+class StartFemaleShotPut < ApplicationRecord
+end

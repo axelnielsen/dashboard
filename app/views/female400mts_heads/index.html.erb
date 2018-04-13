@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Female400mts Heads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Championship</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @female400mts_heads.each do |female400mts_head| %>
+      <tr>
+        <td><%= female400mts_head.championship_id %></td>
+        <td><%= female400mts_head.fecha %></td>
+        <td><%= female400mts_head.hora %></td>
+        <td><%= link_to 'Show', female400mts_head %></td>
+        <td><%= link_to 'Edit', edit_female400mts_head_path(female400mts_head) %></td>
+        <td><%= link_to 'Destroy', female400mts_head, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Female400mts Head', new_female400mts_head_path %>

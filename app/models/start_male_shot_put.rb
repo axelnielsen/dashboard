@@ -1,0 +1,2 @@
+class StartMaleShotPut < ApplicationRecord
+end
