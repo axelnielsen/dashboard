@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
   
+  resources :male_long_jumps
+  resources :male_high_jumps
+  resources :male_triple_jumps
+  resources :female_discus_throws
+  resources :male_hammer_throws
+  resources :male_pole_jumps
+  resources :male5000mts
+  resources :male400mthudrles
   resources :male100mthudrles
   resources :male200mts
   resources :male1500mts
@@ -165,13 +173,6 @@ Rails.application.routes.draw do
   collection { post :import}
   end
 
-
-
-
-
-
-
-
    resources :male100mthudrles do
   collection { post :import}
   end
@@ -205,7 +206,16 @@ Rails.application.routes.draw do
    resources :female100mthudrles do
   collection { post :import}
   end
- 
+ resources :male5000mts do
+  collection { post :import}
+  end
+   resources :male400mthudrles do
+  collection { post :import}
+  end
+
+ resources :male_pole_jumps do
+  collection { post :import}
+  end
   resources :sports
   get 'results/index'
 

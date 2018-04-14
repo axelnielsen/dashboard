@@ -1,0 +1,2 @@
+class MaleTripleJump < ApplicationRecord
+end

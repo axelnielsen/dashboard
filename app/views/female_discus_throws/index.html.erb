@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Female Discus Throws</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Name</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>First</th>
+      <th>Second</th>
+      <th>Third</th>
+      <th>Fourth</th>
+      <th>Fifth</th>
+      <th>Sixth</th>
+      <th>Achievement</th>
+      <th>Place</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @female_discus_throws.each do |female_discus_throw| %>
+      <tr>
+        <td><%= female_discus_throw.number %></td>
+        <td><%= female_discus_throw.name %></td>
+        <td><%= female_discus_throw.an %></td>
+        <td><%= female_discus_throw.club %></td>
+        <td><%= female_discus_throw.region %></td>
+        <td><%= female_discus_throw.first %></td>
+        <td><%= female_discus_throw.second %></td>
+        <td><%= female_discus_throw.third %></td>
+        <td><%= female_discus_throw.fourth %></td>
+        <td><%= female_discus_throw.fifth %></td>
+        <td><%= female_discus_throw.sixth %></td>
+        <td><%= female_discus_throw.achievement %></td>
+        <td><%= female_discus_throw.place %></td>
+        <td><%= link_to 'Show', female_discus_throw %></td>
+        <td><%= link_to 'Edit', edit_female_discus_throw_path(female_discus_throw) %></td>
+        <td><%= link_to 'Destroy', female_discus_throw, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Female Discus Throw', new_female_discus_throw_path %>

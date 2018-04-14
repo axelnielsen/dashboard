@@ -1,0 +1,2 @@
+class MaleHammerThrow < ApplicationRecord
+end

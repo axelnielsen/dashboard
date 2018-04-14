@@ -1,0 +1,2 @@
+module MaleHighJumpsHelper
+end

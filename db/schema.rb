@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180414053323) do
+ActiveRecord::Schema.define(version: 20180414084207) do
 
   create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "names"
@@ -414,6 +414,21 @@ ActiveRecord::Schema.define(version: 20180414053323) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "male400mthudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "male400mthudrleHead_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "male400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "place"
     t.string "achievement"
@@ -437,10 +452,40 @@ ActiveRecord::Schema.define(version: 20180414053323) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "male5000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "male5000mtsHead_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "male_javelin_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "male_pole_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "malepolejumpsHead_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

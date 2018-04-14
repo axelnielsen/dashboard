@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Male1500mts</h1>
+<div class="col-md-12">
+<div class="callout callout-info">
+        <h4><strong>1.500 mt planos - Varones - Final 1</strong></h4>
+     &#09;<h5>14 abr.2018; 11:30 horas</h5>
+     </div>
+</div>
+
 
 <%= content_tag :table, role: :datatable, data: { url: male1500mts_path(format: :json)} do %>
   <thead>
@@ -32,3 +38,16 @@ function bestInPlace()
 {
  jQuery(".best_in_place").best_in_place();
 };
+
+ </script>
+  
+  <br><br><br><br><br>
+<div class="col-md-12">
+    <div class="callout callout-success">
+      <h4><strong>IMPORTAR</strong></h4>
+     </div>
+   <%=form_tag import_male1500mts_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+ <% end %>
+</div>  

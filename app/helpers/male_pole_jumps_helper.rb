@@ -1,0 +1,2 @@
+module MalePoleJumpsHelper
+end

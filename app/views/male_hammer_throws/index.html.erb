@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Male Hammer Throws</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Name</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>First</th>
+      <th>Second</th>
+      <th>Third</th>
+      <th>Fourth</th>
+      <th>Fifth</th>
+      <th>Sixth</th>
+      <th>Achievement</th>
+      <th>Place</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @male_hammer_throws.each do |male_hammer_throw| %>
+      <tr>
+        <td><%= male_hammer_throw.number %></td>
+        <td><%= male_hammer_throw.name %></td>
+        <td><%= male_hammer_throw.an %></td>
+        <td><%= male_hammer_throw.club %></td>
+        <td><%= male_hammer_throw.region %></td>
+        <td><%= male_hammer_throw.first %></td>
+        <td><%= male_hammer_throw.second %></td>
+        <td><%= male_hammer_throw.third %></td>
+        <td><%= male_hammer_throw.fourth %></td>
+        <td><%= male_hammer_throw.fifth %></td>
+        <td><%= male_hammer_throw.sixth %></td>
+        <td><%= male_hammer_throw.achievement %></td>
+        <td><%= male_hammer_throw.place %></td>
+        <td><%= link_to 'Show', male_hammer_throw %></td>
+        <td><%= link_to 'Edit', edit_male_hammer_throw_path(male_hammer_throw) %></td>
+        <td><%= link_to 'Destroy', male_hammer_throw, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Male Hammer Throw', new_male_hammer_throw_path %>

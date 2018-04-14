@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<div class="col-md-12">
+<div class="callout callout-info">
+        <h4><strong>5000 mt planos - Varones </strong></h4>
+     &#09;<h5>14 abr.2018; 12:35 horas</h5>
+     </div>
+</div>
+
+<%= content_tag :table, role: :datatable, data: { url: male5000mts_path(format: :json)} do %>
+  <thead>
+    <tr>
+      <th>Place</th>
+      <th>Achievement</th>
+      <th>Rail</th>
+      <th>Number</th>
+      <th>Athlete</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>Male5000mtshead</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+ <tbody onmouseover="bestInPlace();">
+  </tbody>
+<% end %>
+
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+
+</script>
+   <br><br><br><br><br>
+<div class="col-md-12">
+    <div class="callout callout-success">
+      <h4><strong>IMPORTAR</strong></h4>
+     </div>
+   <%=form_tag import_male5000mts_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+ <% end %>
+</div>  

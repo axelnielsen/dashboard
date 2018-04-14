@@ -1,0 +1,2 @@
+class FemaleDiscusThrow < ApplicationRecord
+end

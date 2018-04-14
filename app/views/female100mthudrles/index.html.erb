@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1></h1>
+<div class="col-md-12">
+    <div class="callout callout-danger">
+      <h4><strong>100 mt vallas - Damas</strong></h4>
+     &#09;<h5>14 abr.2018; 10:00 horas</h5>
+     </div>
+</div>
+
 
 <%= content_tag :table, role: :datatable, data: { url: female100mthudrles_path(format: :json)} do %>
   <thead>
@@ -35,5 +41,14 @@ function bestInPlace()
 };
  </script>
  
- 
+  <br><br><br><br><br>
+<div class="col-md-12">
+    <div class="callout callout-success">
+      <h4><strong>IMPORTAR</strong></h4>
+     </div>
+   <%=form_tag import_female100mthudrles_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+ <% end %>
+</div>
  
