@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Male100mthudrles</h1>
+
+<%= content_tag :table, role: :datatable, data: { url: male100mthudrles_path(format: :json)} do %>
+  <thead>
+  
+    <tr>
+      <th>Place</th>
+      <th>Achievement</th>
+      <th>Rail</th>
+      <th>Number</th>
+      <th>Athlete</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>Male100mthudrlehead</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+ <tbody onmouseover="bestInPlace();">
+  </tbody>
+<% end %>
+
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+ </script>
+ 
+ 
+ 

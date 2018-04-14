@@ -43,7 +43,7 @@ class StartMale100mthudrlesDatatable < ApplicationDatatable
     # will_paginate
     # start_male100mthudrles = Startmale100mthudrle.page(page).per_page(per_page)
     start_male100mthudrles = StartMale100mthudrle.order("#{sort_column} #{sort_direction}")
-    start_male100mthudrles = StartMale100mthudrle.page(page).per(per_page)
+    start_male100mthudrles = start_male100mthudrles.page(page).per(per_page)
     start_male100mthudrles = start_male100mthudrles.where(search_string.join(' or '), search: "%#{params[:search][:value]}%")
   end
 

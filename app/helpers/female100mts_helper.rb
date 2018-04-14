@@ -1,0 +1,2 @@
+module Female100mtsHelper
+end

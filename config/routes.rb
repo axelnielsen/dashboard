@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
 
   
+  resources :male100mthudrles
+  resources :male200mts
+  resources :male1500mts
+  resources :male100mts
+  resources :male400mts
+  resources :female100mthudrles
+  resources :female200mts
+  resources :female1500mts
+  resources :female100mts
+  resources :female400mts
   resources :start_female_javelins
   resources :start_male_javelins
   resources :start_male_throwing_discs
@@ -152,6 +162,47 @@ Rails.application.routes.draw do
   end
 
   resources :female100mts_heads do
+  collection { post :import}
+  end
+
+
+
+
+
+
+
+
+   resources :male100mthudrles do
+  collection { post :import}
+  end
+
+   resources :male200mts do
+  collection { post :import}
+  end
+
+   resources :male1500mts do
+  collection { post :import}
+  end
+   resources :male100mts do
+  collection { post :import}
+  end
+   resources :male400mts do
+  collection { post :import}
+  end
+  
+   resources :female200mts do
+  collection { post :import}
+  end
+   resources :female1500mts do
+  collection { post :import}
+  end
+   resources :female100mts do
+  collection { post :import}
+  end
+   resources :female400mts do
+  collection { post :import}
+  end
+   resources :female100mthudrles do
   collection { post :import}
   end
  
