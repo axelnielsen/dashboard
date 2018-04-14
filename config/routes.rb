@@ -216,6 +216,27 @@ Rails.application.routes.draw do
  resources :male_pole_jumps do
   collection { post :import}
   end
+
+
+
+ resources :male_long_jumps do
+  collection { post :import}
+  end
+ resources :male_high_jumps do
+  collection { post :import}
+  end
+ resources :male_triple_jumps do
+  collection { post :import}
+  end
+ resources :female_discus_throws do
+  collection { post :import}
+  end
+ resources :male_hammer_throws do
+  collection { post :import}
+  end
+
+ 
+  
   resources :sports
   get 'results/index'
 

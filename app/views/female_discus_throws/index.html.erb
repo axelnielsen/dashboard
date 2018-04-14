@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Female Discus Throws</h1>
+<div class="col-md-12">
+<div class="callout callout-danger">
+        <h4><strong>Lanzamiento Disco - Damas - Final</strong></h4>
+     &#09;<h5>14 abr.2018; 11:30 horas</h5>
+     </div>
+</div>
 
-<table>
+<%= content_tag :table, role: :datatable, data: { url: female_discus_throws_path(format: :json)} do %>
   <thead>
     <tr>
       <th>Number</th>
@@ -22,30 +27,29 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @female_discus_throws.each do |female_discus_throw| %>
-      <tr>
-        <td><%= female_discus_throw.number %></td>
-        <td><%= female_discus_throw.name %></td>
-        <td><%= female_discus_throw.an %></td>
-        <td><%= female_discus_throw.club %></td>
-        <td><%= female_discus_throw.region %></td>
-        <td><%= female_discus_throw.first %></td>
-        <td><%= female_discus_throw.second %></td>
-        <td><%= female_discus_throw.third %></td>
-        <td><%= female_discus_throw.fourth %></td>
-        <td><%= female_discus_throw.fifth %></td>
-        <td><%= female_discus_throw.sixth %></td>
-        <td><%= female_discus_throw.achievement %></td>
-        <td><%= female_discus_throw.place %></td>
-        <td><%= link_to 'Show', female_discus_throw %></td>
-        <td><%= link_to 'Edit', edit_female_discus_throw_path(female_discus_throw) %></td>
-        <td><%= link_to 'Destroy', female_discus_throw, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+ 
+ <tbody onmouseover="bestInPlace();">
   </tbody>
-</table>
+<% end %>
 
-<br>
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
 
-<%= link_to 'New Female Discus Throw', new_female_discus_throw_path %>
+</script>
+   <br><br><br><br><br>
+<div class="col-md-12">
+    <div class="callout callout-success">
+      <h4><strong>IMPORTAR</strong></h4>
+     </div>
+   <%=form_tag import_female_discus_throws_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+ <% end %>
+</div>  

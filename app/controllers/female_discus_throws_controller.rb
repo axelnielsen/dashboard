@@ -3,10 +3,18 @@ class FemaleDiscusThrowsController < ApplicationController
 
   # GET /female_discus_throws
   # GET /female_discus_throws.json
-  def index
-    @female_discus_throws = FemaleDiscusThrow.all
-  end
+   def index
+     respond_to do |format|
+     format.html
+      format.json { render json: FemaleDiscusThrowsDatatable.new(view_context) }
+      format.xlsx
+    end
+end
 
+def import
+FemaleDiscusThrow.import(params[:file])
+redirect_to female_discus_throws_url, notice: "Importado correctamente"
+end
   # GET /female_discus_throws/1
   # GET /female_discus_throws/1.json
   def show

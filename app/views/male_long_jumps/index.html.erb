@@ -1,8 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Male Long Jumps</h1>
 
-<table>
+<div class="col-md-12">
+<div class="callout callout-info">
+        <h4><strong>Salto Largo - Varones - Final </strong></h4>
+     &#09;<h5>14 abr.2018; 13:00 horas</h5>
+     </div>
+</div>
+
+<%= content_tag :table, role: :datatable, data: { url: male_long_jumps_path(format: :json)} do %>
   <thead>
     <tr>
       <th>Number</th>
@@ -29,39 +35,28 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
-  <tbody>
-    <% @male_long_jumps.each do |male_long_jump| %>
-      <tr>
-        <td><%= male_long_jump.number %></td>
-        <td><%= male_long_jump.name %></td>
-        <td><%= male_long_jump.an %></td>
-        <td><%= male_long_jump.club %></td>
-        <td><%= male_long_jump.reg %></td>
-        <td><%= male_long_jump.country %></td>
-        <td><%= male_long_jump.first %></td>
-        <td><%= male_long_jump.vvFirst %></td>
-        <td><%= male_long_jump.seconnd %></td>
-        <td><%= male_long_jump.vvSecond %></td>
-        <td><%= male_long_jump.third %></td>
-        <td><%= male_long_jump.vvThird %></td>
-        <td><%= male_long_jump.op %></td>
-        <td><%= male_long_jump.fourth %></td>
-        <td><%= male_long_jump.vvFourth %></td>
-        <td><%= male_long_jump.fift %></td>
-        <td><%= male_long_jump.vvFifth %></td>
-        <td><%= male_long_jump.sixth %></td>
-        <td><%= male_long_jump.vvSixth %></td>
-        <td><%= male_long_jump.achievement %></td>
-        <td><%= male_long_jump.place %></td>
-        <td><%= link_to 'Show', male_long_jump %></td>
-        <td><%= link_to 'Edit', edit_male_long_jump_path(male_long_jump) %></td>
-        <td><%= link_to 'Destroy', male_long_jump, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+ <tbody>
   </tbody>
-</table>
+<% end %>
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
 
-<br>
-
-<%= link_to 'New Male Long Jump', new_male_long_jump_path %>
+</script>
+   <br><br><br><br><br>
+<div class="col-md-12">
+    <div class="callout callout-success">
+      <h4><strong>IMPORTAR</strong></h4>
+     </div>
+     
+   <%=form_tag import_male_long_jumps_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+ <% end %>
+</div> 

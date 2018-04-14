@@ -1,8 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Male Hammer Throws</h1>
 
-<table>
+<div class="col-md-12">
+<div class="callout callout-info">
+        <h4><strong>Lanzamiento Martillo - Varones - Final</strong></h4>
+     &#09;<h5>14 abr.2018; 10:30 horas</h5>
+     </div>
+</div>
+
+<%= content_tag :table, role: :datatable, data: { url: male_hammer_throws_path(format: :json)} do %>
   <thead>
     <tr>
       <th>Number</th>
@@ -22,30 +28,29 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @male_hammer_throws.each do |male_hammer_throw| %>
-      <tr>
-        <td><%= male_hammer_throw.number %></td>
-        <td><%= male_hammer_throw.name %></td>
-        <td><%= male_hammer_throw.an %></td>
-        <td><%= male_hammer_throw.club %></td>
-        <td><%= male_hammer_throw.region %></td>
-        <td><%= male_hammer_throw.first %></td>
-        <td><%= male_hammer_throw.second %></td>
-        <td><%= male_hammer_throw.third %></td>
-        <td><%= male_hammer_throw.fourth %></td>
-        <td><%= male_hammer_throw.fifth %></td>
-        <td><%= male_hammer_throw.sixth %></td>
-        <td><%= male_hammer_throw.achievement %></td>
-        <td><%= male_hammer_throw.place %></td>
-        <td><%= link_to 'Show', male_hammer_throw %></td>
-        <td><%= link_to 'Edit', edit_male_hammer_throw_path(male_hammer_throw) %></td>
-        <td><%= link_to 'Destroy', male_hammer_throw, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+ 
+ <tbody onmouseover="bestInPlace();">
   </tbody>
-</table>
+<% end %>
 
-<br>
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
 
-<%= link_to 'New Male Hammer Throw', new_male_hammer_throw_path %>
+</script>
+   <br><br><br><br><br>
+<div class="col-md-12">
+    <div class="callout callout-success">
+      <h4><strong>IMPORTAR</strong></h4>
+     </div>
+   <%=form_tag import_male_hammer_throws_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+ <% end %>
+</div>  

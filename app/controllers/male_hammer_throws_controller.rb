@@ -3,10 +3,18 @@ class MaleHammerThrowsController < ApplicationController
 
   # GET /male_hammer_throws
   # GET /male_hammer_throws.json
-  def index
-    @male_hammer_throws = MaleHammerThrow.all
-  end
+   def index
+     respond_to do |format|
+     format.html
+      format.json { render json: MaleHammerThrowsDatatable.new(view_context) }
+      format.xlsx
+    end
+end
 
+def import
+MaleHammerThrow.import(params[:file])
+redirect_to male_hammer_throws_url, notice: "Importado correctamente"
+end
   # GET /male_hammer_throws/1
   # GET /male_hammer_throws/1.json
   def show

@@ -3,10 +3,18 @@ class MaleHighJumpsController < ApplicationController
 
   # GET /male_high_jumps
   # GET /male_high_jumps.json
-  def index
-    @male_high_jumps = MaleHighJump.all
-  end
+      def index
+     respond_to do |format|
+     format.html
+      format.json { render json: MaleHighJumpsDatatable.new(view_context) }
+      format.xlsx
+    end
+end
 
+def import
+MaleHighJump.import(params[:file])
+redirect_to male_high_jumps_url, notice: "Importado correctamente"
+end
   # GET /male_high_jumps/1
   # GET /male_high_jumps/1.json
   def show
