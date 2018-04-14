@@ -4,8 +4,17 @@ class Female100mtshurdlesHeadsController < ApplicationController
   # GET /female100mtshurdles_heads
   # GET /female100mtshurdles_heads.json
   def index
-    @female100mtshurdles_heads = Female100mtshurdlesHead.all
-  end
+     respond_to do |format|
+     format.html
+      format.json { render json: Female100mtshurdlesHeadsDatatable.new(view_context) }
+      format.xlsx
+    end
+end
+
+def import
+Female100mtshurdlesHead.import(params[:file])
+redirect_to female100mtshurdles_heads_url, notice: "Importado correctamente"
+end
 
   # GET /female100mtshurdles_heads/1
   # GET /female100mtshurdles_heads/1.json

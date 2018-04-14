@@ -48,11 +48,113 @@ Rails.application.routes.draw do
   end
   resources :jump_females do
   collection { post :import}
-
   end
 
+  resources :start_female_javelins do
+  collection { post :import}
+  end
 
+  resources :start_male_javelins do
+  collection { post :import}
+  end
+   resources :start_male_throwing_discs do
+  collection { post :import}
+  end
+   resources :start_male_shot_puts do
+  collection { post :import}
+  end
+   resources :start_female_jumps do
+  collection { post :import}
+  end
+   resources :start_female1500mts do
+  collection { post :import}
+  end
+   resources :start_male1500mts do
+  collection { post :import}
+  end
+   resources :start_male100mthudrles do
+  collection { post :import}
+  end
+   resources :start_female100mthudrles do
+  collection { post :import}
+  end
+   resources :start_female400mts do
+  collection { post :import}
+  end
+   resources :start_male400mts do
+  collection { post :import}
+  end
+   resources :start_male200mts do
+  collection { post :import}
+  end
+   resources :start_female200mts do
+  collection { post :import}
+  end
+   resources :start_male100mts do
+  collection { post :import}
+  end
+   resources :start_female100mts do
+  collection { post :import}
+  end
+   resources :male_javelin_heads do
+  collection { post :import}
+  end
+   resources :female_javelin_heads do
+  collection { post :import}
+  end
+   resources :female_shot_put_heads do
+  collection { post :import}
+  end
+   resources :male_shot_put_heads do
+  collection { post :import}
+  end
+   resources :shot_put_heads do
+  collection { post :import}
+  end
+   resources :malethrowing_disc_heads do
+  collection { post :import}
+  end
+   resources :femalethrowing_disc_heads do
+  collection { post :import}
+  end
+   resources :malejump_heads do
+  collection { post :import}
+  end
+   resources :femalejump_heads do
+  collection { post :import}
+  end
+   resources :female1500mts_heads do
+  collection { post :import}
+  end
+   resources :male1500mts_heads do
+  collection { post :import}
+  end
+   resources :female100mtshurdles_heads do
+  collection { post :import}
+  end
+   resources :male100mtshurdles_heads do
+  collection { post :import}
+  end
+  resources :male400mts_heads do
+  collection { post :import}
+  end
+  resources :female400mts_heads do
+  collection { post :import}
+  end
+  resources :female200mts_heads do
+  collection { post :import}
+  end
+  resources :male200mts_heads do
+  collection { post :import}
+  end
+  resources :male100mts_heads do
+  collection { post :import}
+  end
 
+  resources :female100mts_heads do
+  collection { post :import}
+  end
+ 
   resources :sports
   get 'results/index'
 

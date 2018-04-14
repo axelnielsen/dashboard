@@ -2,7 +2,7 @@
 
 <h1>Female400mts Heads</h1>
 
-<table>
+<%= content_tag :table, role: :datatable, data: { url: female400mts_heads_path(format: :json)} do %>
   <thead>
     <tr>
       <th>Championship</th>
@@ -12,20 +12,26 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @female400mts_heads.each do |female400mts_head| %>
-      <tr>
-        <td><%= female400mts_head.championship_id %></td>
-        <td><%= female400mts_head.fecha %></td>
-        <td><%= female400mts_head.hora %></td>
-        <td><%= link_to 'Show', female400mts_head %></td>
-        <td><%= link_to 'Edit', edit_female400mts_head_path(female400mts_head) %></td>
-        <td><%= link_to 'Destroy', female400mts_head, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+ <tbody onmouseover="bestInPlace();">
   </tbody>
-</table>
+<% end %>
 
-<br>
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+ </script>
+ <br><br><br>
+<h3>Importar</h3>
 
+<%=form_tag import_female400mts_heads_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+
+ <% end %>
 <%= link_to 'New Female400mts Head', new_female400mts_head_path %>

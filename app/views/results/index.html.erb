@@ -29,6 +29,7 @@
 		    		<th>PRUEBA</th>
 		    		<th>CATEGORÍA</th>
 		    		<th>RESULTADOS</th>
+		    		<th>STARTLIST</th>
 		    	</tr>
 		    </thead>
 		    <tbody>
@@ -37,150 +38,169 @@
 		    		<td data-label="PRUEBA">BALA DAMAS</td>
 					<td data-label="CATEGORÍA">NACIONAL</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_shot_puts_path, class: "btn btn-primary" %>
+     </td>
 		    	</tr>
 		    	<tr>
 		    		<td data-label="HORA">10:00</td>
 		    		<td data-label="PRUEBA">SALTO CON GARROCHA VARONES</td>
 					<td data-label="CATEGORÍA">NACIONAL</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td>crear</td>
 		    	</tr>	    	
 		    	<tr>
 		    		<td data-label="HORA">10:00</td>
 		    		<td data-label="PRUEBA">100M VALLAS DAMAS</td>
 					<td data-label="CATEGORÍA">NACIONAL</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female100mthudrles_path, class: "btn btn-primary" %></td>
 		    	</tr>
 		    	<tr>
 		    		<td data-label="HORA">10:20</td>
 		    		<td data-label="PRUEBA">110M VALLAS VARONES</td>
 					<td data-label="CATEGORÍA">NACIONAL</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST"><%= link_to "Ver", start_male100mthudrles_path, class: "btn btn-primary" %></td>
 		    	</tr>
 		    	<tr>
 		    		<td data-label="HORA">10:30</td>
 		    		<td data-label="PRUEBA">MARTILLO VARONES</td>
 					<td data-label="CATEGORÍA">GRAND PRIX</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST">crear</td>
 		    	</tr>	    	
 		    	<tr>
 		    		<td data-label="HORA">10:30</td>
 		    		<td data-label="PRUEBA">SALTO TRIPLE VARONES</td>
 					<td data-label="CATEGORÍA">NACIONAL</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST">crear</td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">10:30</td>
 		    		<td data-label="PRUEBA">100M PLANOS VARONES</td>
 					<td data-label="CATEGORÍA">NACIONAL</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST"><%= link_to "Ver", start_male100mts_path, class: "btn btn-primary" %></td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">10:45</td>
 		    		<td data-label="PRUEBA">8X50M PLANOS DAMAS</td>
 					<td data-label="CATEGORÍA">NACIONAL</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST">sin data</td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">11:00</td>
 		    		<td data-label="PRUEBA">8X50M PLANOS VARONES</td>
 					<td data-label="CATEGORÍA">NACIONAL</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST">sin data</td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">11:00</td>
 		    		<td data-label="PRUEBA">SALTO ALTO VARONES</td>
 					<td data-label="CATEGORÍA">GRAND PRIX</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST">crear</td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">11:15</td>
 		    		<td data-label="PRUEBA">100M PLANOS DAMAS</td>
 					<td data-label="CATEGORÍA">GRAND PRIX</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST"><%= link_to "Ver", start_female100mts_path, class: "btn btn-primary" %></td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">11:30</td>
 		    		<td data-label="PRUEBA">DISCO DAMAS</td>
 					<td data-label="CATEGORÍA">GRAND PRIX</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST">crear</td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">11:30</td>
 		    		<td data-label="PRUEBA">1500M PLANOS VARONES</td>
 					<td data-label="CATEGORÍA">GRAND PRIX</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST"><%= link_to "Ver", start_male1500mts_path, class: "btn btn-primary" %></td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">11:45</td>
 		    		<td data-label="PRUEBA">1500M PLANOS DAMAS</td>
 					<td data-label="CATEGORÍA">GRAND PRIX</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST"><%= link_to "Ver", start_female1500mts_path, class: "btn btn-primary" %></td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">12:00</td>
 		    		<td data-label="PRUEBA">BALA VARONES</td>
 					<td data-label="CATEGORÍA">NACIONAL</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST"><%= link_to "Ver", start_male_shot_puts_path, class: "btn btn-primary" %></td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">12:00</td>
 		    		<td data-label="PRUEBA">SALTO LARGO DAMAS</td>
 					<td data-label="CATEGORÍA">GRAND PRIX</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST"><%= link_to "Ver", start_female_jumps_path, class: "btn btn-primary" %></td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">12:10</td>
 		    		<td data-label="PRUEBA">400M VALLAS VARONES</td>
 					<td data-label="CATEGORÍA">GRAND PRIX</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST">crear</td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">12:30</td>
 		    		<td data-label="PRUEBA">400M PLANOS DAMAS</td>
 					<td data-label="CATEGORÍA">GRAND PRIX</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST"><%= link_to "Ver", start_female400mts_path, class: "btn btn-primary" %></td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">12:30</td>
 		    		<td data-label="PRUEBA">JABALINA DAMAS</td>
 					<td data-label="CATEGORÍA">GRAND PRIX</td>
 					<td data-label="RESULTADOS">VER</td>
-		    	</tr>
-				<tr>
-		    		<td data-label="HORA">12:30</td>
-		    		<td data-label="PRUEBA">JABALINA DAMAS</td>
-					<td data-label="CATEGORÍA">GRAND PRIX</td>
-					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST"><%= link_to "Ver", start_female_javelins_path, class: "btn btn-primary" %></td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">12:40</td>
 		    		<td data-label="PRUEBA">5000M VARONES</td>
 					<td data-label="CATEGORÍA">NACIONAL</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST">crear</td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">13:00</td>
 		    		<td data-label="PRUEBA">SALTO LARGO VARONES</td>
 					<td data-label="CATEGORÍA">GRAND PRIX</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST">crear</td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">13:00</td>
 		    		<td data-label="PRUEBA">200M SENIOR DAMAS</td>
 					<td data-label="CATEGORÍA">NACIONAL</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST"><%= link_to "Ver", start_female200mts_path, class: "btn btn-primary" %></td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">13:10</td>
 		    		<td data-label="PRUEBA">200M SENIOR VARONES</td>
 					<td data-label="CATEGORÍA">NACIONAL</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST"><%= link_to "Ver", start_male200mts_path, class: "btn btn-primary" %></td>
 		    	</tr>
 				<tr>
 		    		<td data-label="HORA">13:25</td>
 		    		<td data-label="PRUEBA">4X100M VARONES</td>
 					<td data-label="CATEGORÍA">NACIONAL</td>
 					<td data-label="RESULTADOS">VER</td>
+					<td data-label="STARTLIST">crear</td>
 		    	</tr>
 		    </tbody>
 	    </table>

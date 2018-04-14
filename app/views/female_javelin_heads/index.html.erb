@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Female Javelin Heads</h1>
-
-<table>
+<%=content_tag :table, role: :datatable, data: {url: female_javelin_heads_path(format: :json)} do %>
   <thead>
     <tr>
       <th>Championship</th>
@@ -12,20 +11,25 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @female_javelin_heads.each do |female_javelin_head| %>
-      <tr>
-        <td><%= female_javelin_head.championship_id %></td>
-        <td><%= female_javelin_head.fecha %></td>
-        <td><%= female_javelin_head.hora %></td>
-        <td><%= link_to 'Show', female_javelin_head %></td>
-        <td><%= link_to 'Edit', edit_female_javelin_head_path(female_javelin_head) %></td>
-        <td><%= link_to 'Destroy', female_javelin_head, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+ <tbody onmouseover="bestInPlace();">
   </tbody>
-</table>
+<% end %>
 
-<br>
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+ </script>
+ <br><br><br>
+<h3>Importar</h3>
 
+<%=form_tag import_female_javelin_heads_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+<% end %>
 <%= link_to 'New Female Javelin Head', new_female_javelin_head_path %>

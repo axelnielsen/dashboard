@@ -2,7 +2,7 @@
 
 <h1>Start Female100mthudrles</h1>
 
-<table>
+<%= content_tag :table, role: :datatable, data: { url: start_female100mthudrles_path(format: :json)} do %>
   <thead>
     <tr>
       <th>Place</th>
@@ -19,27 +19,27 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @start_female100mthudrles.each do |start_female100mthudrle| %>
-      <tr>
-        <td><%= start_female100mthudrle.place %></td>
-        <td><%= start_female100mthudrle.achievement %></td>
-        <td><%= start_female100mthudrle.rail %></td>
-        <td><%= start_female100mthudrle.number %></td>
-        <td><%= start_female100mthudrle.athlete %></td>
-        <td><%= start_female100mthudrle.an %></td>
-        <td><%= start_female100mthudrle.club %></td>
-        <td><%= start_female100mthudrle.region %></td>
-        <td><%= start_female100mthudrle.country %></td>
-        <td><%= start_female100mthudrle.female100mthudresHead_id %></td>
-        <td><%= link_to 'Show', start_female100mthudrle %></td>
-        <td><%= link_to 'Edit', edit_start_female100mthudrle_path(start_female100mthudrle) %></td>
-        <td><%= link_to 'Destroy', start_female100mthudrle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  
+ <tbody onmouseover="bestInPlace();">
   </tbody>
-</table>
+<% end %>
 
-<br>
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+ </script>
+ <br><br><br>
+<h3>Importar</h3>
 
+<%=form_tag import_female100mthudrles_heads_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+
+ <% end %>
 <%= link_to 'New Start Female100mthudrle', new_start_female100mthudrle_path %>

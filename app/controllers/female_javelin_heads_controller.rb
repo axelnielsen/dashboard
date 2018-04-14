@@ -4,8 +4,17 @@ class FemaleJavelinHeadsController < ApplicationController
   # GET /female_javelin_heads
   # GET /female_javelin_heads.json
   def index
-    @female_javelin_heads = FemaleJavelinHead.all
-  end
+     respond_to do |format|
+     format.html
+      format.json { render json: FemaleJavelinHeadsDatatable.new(view_context) }
+      format.xlsx
+    end
+end
+
+def import
+FemalejavelinHead.import(params[:file])
+redirect_to female_javelin_heads_url, notice: "Importado correctamente"
+end
 
   # GET /female_javelin_heads/1
   # GET /female_javelin_heads/1.json
