@@ -35,13 +35,4 @@ function bestInPlace()
  jQuery(".best_in_place").best_in_place();
 };
  </script>
- <br><br><br>
-<h3>Importar</h3>
-
-<%=form_tag import_start_female1500mts_path, multipart: true do%>
-<%=file_field_tag :file%>
-<%=submit_tag "Importar"%>
-
- <% end %>
  
-<%= link_to 'New Start Female1500mt', new_start_female1500mt_path %>
