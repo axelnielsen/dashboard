@@ -2,7 +2,7 @@
 
 <h1>Start Male Throwing Discs</h1>
 
-<table>
+<%= content_tag :table, role: :datatable, data: { url: start_male_throwing_discs_path(format: :json)} do %>
   <thead>
     <tr>
       <th>Place</th>
@@ -19,27 +19,18 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @start_male_throwing_discs.each do |start_male_throwing_disc| %>
-      <tr>
-        <td><%= start_male_throwing_disc.place %></td>
-        <td><%= start_male_throwing_disc.achievement %></td>
-        <td><%= start_male_throwing_disc.rail %></td>
-        <td><%= start_male_throwing_disc.number %></td>
-        <td><%= start_male_throwing_disc.athlete %></td>
-        <td><%= start_male_throwing_disc.an %></td>
-        <td><%= start_male_throwing_disc.club %></td>
-        <td><%= start_male_throwing_disc.region %></td>
-        <td><%= start_male_throwing_disc.country %></td>
-        <td><%= start_male_throwing_disc.maleThrowingDiscHead_id %></td>
-        <td><%= link_to 'Show', start_male_throwing_disc %></td>
-        <td><%= link_to 'Edit', edit_start_male_throwing_disc_path(start_male_throwing_disc) %></td>
-        <td><%= link_to 'Destroy', start_male_throwing_disc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody onmouseover="bestInPlace();">
   </tbody>
-</table>
+<% end %>
 
-<br>
-
-<%= link_to 'New Start Male Throwing Disc', new_start_male_throwing_disc_path %>
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+ </script>
+ 

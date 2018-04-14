@@ -4,9 +4,17 @@ class StartFemaleJavelinsController < ApplicationController
   # GET /start_female_javelins
   # GET /start_female_javelins.json
   def index
-    @start_female_javelins = StartFemaleJavelin.all
-  end
+     respond_to do |format|
+     format.html
+      format.json { render json: StartFemaleJavelinsDatatable.new(view_context) }
+      format.xlsx
+    end
+end
 
+def import
+StartFemaleJavelin.import(params[:file])
+redirect_to start_female_javelins_url, notice: "Importado correctamente"
+end
   # GET /start_female_javelins/1
   # GET /start_female_javelins/1.json
   def show

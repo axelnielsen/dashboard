@@ -2,7 +2,7 @@
 
 <h1>Start Female400mts</h1>
 
-<table>
+<%= content_tag :table, role: :datatable, data: { url: start_female400mts_path(format: :json)} do %>
   <thead>
     <tr>
       <th>Place</th>
@@ -19,27 +19,19 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @start_female400mts.each do |start_female400mt| %>
-      <tr>
-        <td><%= start_female400mt.place %></td>
-        <td><%= start_female400mt.achievement %></td>
-        <td><%= start_female400mt.rail %></td>
-        <td><%= start_female400mt.number %></td>
-        <td><%= start_female400mt.athlete %></td>
-        <td><%= start_female400mt.an %></td>
-        <td><%= start_female400mt.club %></td>
-        <td><%= start_female400mt.region %></td>
-        <td><%= start_female400mt.country %></td>
-        <td><%= start_female400mt.female400mtsHead_id %></td>
-        <td><%= link_to 'Show', start_female400mt %></td>
-        <td><%= link_to 'Edit', edit_start_female400mt_path(start_female400mt) %></td>
-        <td><%= link_to 'Destroy', start_female400mt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  
+ <tbody onmouseover="bestInPlace();">
   </tbody>
-</table>
+<% end %>
 
-<br>
-
-<%= link_to 'New Start Female400mt', new_start_female400mt_path %>
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+ </script>
+ 

@@ -3,9 +3,18 @@ class StartMaleThrowingDiscsController < ApplicationController
 
   # GET /start_male_throwing_discs
   # GET /start_male_throwing_discs.json
-  def index
-    @start_male_throwing_discs = StartMaleThrowingDisc.all
-  end
+ def index
+     respond_to do |format|
+     format.html
+      format.json { render json: StartMaleThrowingDiscsDatatable.new(view_context) }
+      format.xlsx
+    end
+end
+
+def import
+StartMaleThrowingDisc.import(params[:file])
+redirect_to start_male_throwing_discs_url, notice: "Importado correctamente"
+end
 
   # GET /start_male_throwing_discs/1
   # GET /start_male_throwing_discs/1.json

@@ -4,9 +4,17 @@ class StartFemaleJumpsController < ApplicationController
   # GET /start_female_jumps
   # GET /start_female_jumps.json
   def index
-    @start_female_jumps = StartFemaleJump.all
-  end
+     respond_to do |format|
+     format.html
+      format.json { render json: StartFemaleJumpsDatatable.new(view_context) }
+      format.xlsx
+    end
+end
 
+def import
+StartFemaleJump.import(params[:file])
+redirect_to start_female_jumps_url, notice: "Importado correctamente"
+end
   # GET /start_female_jumps/1
   # GET /start_female_jumps/1.json
   def show

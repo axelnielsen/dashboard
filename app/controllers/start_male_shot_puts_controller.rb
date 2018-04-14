@@ -3,9 +3,18 @@ class StartMaleShotPutsController < ApplicationController
 
   # GET /start_male_shot_puts
   # GET /start_male_shot_puts.json
-  def index
-    @start_male_shot_puts = StartMaleShotPut.all
-  end
+ def index
+     respond_to do |format|
+     format.html
+      format.json { render json: StartMaleShotPutsDatatable.new(view_context) }
+      format.xlsx
+    end
+end
+
+def import
+StartMaleShotPut.import(params[:file])
+redirect_to start_male_shot_puts_url, notice: "Importado correctamente"
+end
 
   # GET /start_male_shot_puts/1
   # GET /start_male_shot_puts/1.json
