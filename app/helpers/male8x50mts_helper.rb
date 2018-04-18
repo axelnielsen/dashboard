@@ -1,0 +1,2 @@
+module Male8x50mtsHelper
+end

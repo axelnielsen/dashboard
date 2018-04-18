@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
 
   
+  resources :male4x100mts
+  resources :female4x100mts
+  resources :malesenior200mts
+  resources :femalesenior200mts
+  resources :male8x50mts
+  resources :female8x50mts
+  
+  resources :male_javelines
+  resources :female_javelines
+  resources :male_shot_puts
+  resources :female_shot_puts
+  resources :female_high_jumps
   resources :male_long_jumps
   resources :male_high_jumps
   resources :male_triple_jumps
@@ -235,6 +247,49 @@ Rails.application.routes.draw do
   collection { post :import}
   end
 
+  resources :male_javelines do
+  collection { post :import}
+  end
+
+  resources :female_javelines do
+  collection { post :import}
+  end
+
+  resources :male_shot_puts do
+  collection { post :import}
+  end
+
+  resources :female_shot_puts do
+  collection { post :import}
+  end
+
+  resources :female_high_jumps do
+  collection { post :import}
+  end
+ 
+ 
+  resources :female8x50mts do
+  collection { post :import}
+  end
+
+  resources :male4x100mts do
+  collection { post :import}
+  end
+  resources :female4x100mts do
+  collection { post :import}
+  end
+  resources :malesenior200mts do
+  collection { post :import}
+  end
+  resources :femalesenior200mts do
+  collection { post :import}
+  end
+  resources :male8x50mts do
+  collection { post :import}
+  end
+  resources :female8x50mts do
+  collection { post :import}
+  end
  
   
   resources :sports

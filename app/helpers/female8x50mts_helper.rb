@@ -1,0 +1,2 @@
+module Female8x50mtsHelper
+end

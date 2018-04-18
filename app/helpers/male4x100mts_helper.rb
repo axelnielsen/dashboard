@@ -1,0 +1,2 @@
+module Male4x100mtsHelper
+end

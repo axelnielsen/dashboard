@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<div class="col-md-12">
+    <div class="callout callout-info">
+      <h4><strong>4x100 mt planos - Varones </strong></h4>
+     &#09;<h5>Fecha Hora</h5>
+     </div>
+</div>
+
+<%= content_tag :table, role: :datatable, data: { url: male4x100mts_path(format: :json)} do %>
+  <thead>
+    <tr>
+      <th>Lugar</th>
+      <th>Marca</th>
+      <th>Riel</th>
+      <th>N°</th>
+      <th>Atleta</th>
+      <th>A.N.</th>
+      <th>Club</th>
+      <th>Región</th>
+      <th>País</th>
+    </tr>
+  </thead>
+
+
+ <tbody onmouseover="bestInPlace();">
+  </tbody>
+<% end %>
+
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+ </script>
+     <br><br><br><br><br>
+<div class="col-md-12">
+    <div class="callout callout-success">
+      <h4><strong>IMPORTAR</strong></h4>
+     </div>
+   <%=form_tag import_male4x100mts_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+ <% end %>
+</div>
+ 
+ 

@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<div class="col-md-12">
+    <div class="callout callout-info">
+      <h4><strong>Javalina - Varones - Final </strong></h4>
+     &#09;<h5>Insertar_Fecha</h5>
+     </div>
+</div>
+
+<%= content_tag :table, role: :datatable, data: { url: male_javelines_path(format: :json)} do %>
+  <thead>
+    <tr>
+      <th>Número</th>
+      <th>Nombre</th>
+      <th>A.N</th>
+      <th>Club</th>
+      <th>Región</th>
+      <th>Primero</th>
+      <th>Segundo</th>
+      <th>Tercero</th>
+      <th>Cuarto</th>
+      <th>Quinto</th>
+      <th>Sexto</th>
+      <th>Marca</th>
+      <th>Lugar</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+   
+ <tbody onmouseover="bestInPlace();">
+  </tbody>
+<% end %>
+
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+ </script>
+    <br><br><br><br><br>
+<div class="col-md-12">
+    <div class="callout callout-success">
+      <h4><strong>IMPORTAR</strong></h4>
+     </div>
+   <%=form_tag import_male_javelines_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+ <% end %>
+</div>
+ 
