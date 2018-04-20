@@ -1,27 +1,25 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Start Male100mts</h1>
+<div class="col-md-12">
+    <div class="callout callout-info">
+      <h4><strong>100mts Planos- Varones </strong></h4>
+     &#09;<h5>Fecha Hora</h5>
+     </div>
+</div>
 
 <%= content_tag :table, role: :datatable, data: { url: start_male100mts_path(format: :json)} do %>
   <thead>
     <tr>
-      <th>Place</th>
-      <th>Achievement</th>
-      <th>Rail</th>
-      <th>Number</th>
-      <th>Athlete</th>
-      <th>An</th>
+      <th>Marca</th>
+      <th>Riel</th>
+      <th>Número</th>
+      <th>Atleta</th>
+      <th>A.N.</th>
       <th>Club</th>
-      <th>Region</th>
-      <th>Country</th>
-      <th>Male100mtshead</th>
-      <th colspan="3"></th>
+      <th>Región</th>
+      <th>País</th>
     </tr>
   </thead>
-
-
-  
- <tbody onmouseover="bestInPlace();">
+  <tbody onmouseover="bestInPlace();">
   </tbody>
 <% end %>
 

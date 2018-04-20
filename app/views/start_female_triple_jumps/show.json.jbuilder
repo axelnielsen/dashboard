@@ -1,0 +1,1 @@
+json.partial! "start_female_triple_jumps/start_female_triple_jump", start_female_triple_jump: @start_female_triple_jump

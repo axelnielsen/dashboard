@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  place: 1
+  achievement: MyString
+  rail: 1
+  number: 1
+  athlete: MyString
+  an: MyString
+  club: MyString
+  region: MyString
+  country: MyString
+  female400mtshudrleStart_id: 1
+
+two:
+  place: 1
+  achievement: MyString
+  rail: 1
+  number: 1
+  athlete: MyString
+  an: MyString
+  club: MyString
+  region: MyString
+  country: MyString
+  female400mtshudrleStart_id: 1

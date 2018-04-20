@@ -1,0 +1,1 @@
+json.partial! "start_female_hammer_throws/start_female_hammer_throw", start_female_hammer_throw: @start_female_hammer_throw

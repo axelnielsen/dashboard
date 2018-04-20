@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418011747) do
+ActiveRecord::Schema.define(version: 20180420013304) do
 
   create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "names"
@@ -965,6 +965,111 @@ ActiveRecord::Schema.define(version: 20180418011747) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "start_female400mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "female400mtshudrleStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_female4x100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "female4x100mtStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_female5000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "female5000mtStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_female8x50mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "female8x50mtStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_female_discus_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "femalediscusthrowStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_female_hammer_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "femalehammerthrowStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_female_high_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "femalehighjumpStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "start_female_javelins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "place"
     t.string "achievement"
@@ -995,6 +1100,51 @@ ActiveRecord::Schema.define(version: 20180418011747) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "start_female_long_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "femalelongjumpStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_female_pole_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "femalepolejumpStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_female_senior200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "femalesenior200mtStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "start_female_shot_puts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "place"
     t.string "achievement"
@@ -1006,6 +1156,21 @@ ActiveRecord::Schema.define(version: 20180418011747) do
     t.string "region"
     t.string "country"
     t.integer "femaleShotPutHead_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_female_triple_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "femaletriplejumpStart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -1085,6 +1250,111 @@ ActiveRecord::Schema.define(version: 20180418011747) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "start_male400mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "male400mtshudrleStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_male4x100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "male4x100mtStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_male5000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "male5000mtStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_male8x50mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "male8x50mtStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_male_400mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "male400mtshudrleStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_male_hammer_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "malehammerthrowStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_male_high_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "malehighjumpStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "start_male_javelins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "place"
     t.string "achievement"
@@ -1096,6 +1366,51 @@ ActiveRecord::Schema.define(version: 20180418011747) do
     t.string "region"
     t.string "country"
     t.integer "maleJavelinHead_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_male_long_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "malelongjumpStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_male_pole_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "malepolejumpStart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_male_senior200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "malesenior200mtStart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -1126,6 +1441,21 @@ ActiveRecord::Schema.define(version: 20180418011747) do
     t.string "region"
     t.string "country"
     t.integer "maleThrowingDiscHead_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "start_male_triple_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "place"
+    t.string "achievement"
+    t.integer "rail"
+    t.integer "number"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "country"
+    t.integer "maletriplejumpStart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,2 @@
+module StartMaleTripleJumpsHelper
+end

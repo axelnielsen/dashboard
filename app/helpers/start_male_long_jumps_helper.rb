@@ -1,0 +1,2 @@
+module StartMaleLongJumpsHelper
+end

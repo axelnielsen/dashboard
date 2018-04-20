@@ -1,0 +1,2 @@
+module StartFemaleHammerThrowsHelper
+end

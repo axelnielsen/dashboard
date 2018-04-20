@@ -1,6 +1,27 @@
 Rails.application.routes.draw do
 
   
+  resources :start_female_discus_throws
+  resources :start_female_senior200mts
+  resources :start_female_triple_jumps
+  resources :start_female_pole_jumps
+  resources :start_female_long_jumps
+  resources :start_female_high_jumps
+  resources :start_female_hammer_throws
+  resources :start_female8x50mts
+  resources :start_female5000mts
+  resources :start_female4x100mts
+  resources :start_female400mtshudrles
+  resources :start_male_senior200mts
+  resources :start_male_triple_jumps
+  resources :start_male_pole_jumps
+  resources :start_male_long_jumps
+  resources :start_male_high_jumps
+  resources :start_male_hammer_throws
+  resources :start_male8x50mts
+  resources :start_male5000mts
+  resources :start_male4x100mts
+  resources :start_male400mtshudrles
   resources :male4x100mts
   resources :female4x100mts
   resources :malesenior200mts
