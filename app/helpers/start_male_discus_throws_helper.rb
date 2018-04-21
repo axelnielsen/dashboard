@@ -1,0 +1,2 @@
+module StartMaleDiscusThrowsHelper
+end

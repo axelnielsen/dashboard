@@ -1,0 +1,1 @@
+json.partial! "start_male3000mtsobstacles/start_male3000mtsobstacle", start_male3000mtsobstacle: @start_male3000mtsobstacle

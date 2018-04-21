@@ -1,0 +1,2 @@
+module Male3000mtsobstaclesHelper
+end

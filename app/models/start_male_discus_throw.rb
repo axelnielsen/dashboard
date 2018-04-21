@@ -1,0 +1,2 @@
+class StartMaleDiscusThrow < ApplicationRecord
+end

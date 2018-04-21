@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Female3000mtsobstacles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Place</th>
+      <th>Achievement</th>
+      <th>Rail</th>
+      <th>Number</th>
+      <th>Athlete</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>Female3000mtsobstaclehead</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @female3000mtsobstacles.each do |female3000mtsobstacle| %>
+      <tr>
+        <td><%= female3000mtsobstacle.place %></td>
+        <td><%= female3000mtsobstacle.achievement %></td>
+        <td><%= female3000mtsobstacle.rail %></td>
+        <td><%= female3000mtsobstacle.number %></td>
+        <td><%= female3000mtsobstacle.athlete %></td>
+        <td><%= female3000mtsobstacle.an %></td>
+        <td><%= female3000mtsobstacle.club %></td>
+        <td><%= female3000mtsobstacle.region %></td>
+        <td><%= female3000mtsobstacle.country %></td>
+        <td><%= female3000mtsobstacle.female3000mtsobstacleHead_id %></td>
+        <td><%= link_to 'Show', female3000mtsobstacle %></td>
+        <td><%= link_to 'Edit', edit_female3000mtsobstacle_path(female3000mtsobstacle) %></td>
+        <td><%= link_to 'Destroy', female3000mtsobstacle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Female3000mtsobstacle', new_female3000mtsobstacle_path %>

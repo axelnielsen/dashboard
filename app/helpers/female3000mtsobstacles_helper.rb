@@ -1,0 +1,2 @@
+module Female3000mtsobstaclesHelper
+end

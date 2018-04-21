@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Female110mtshudrles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Place</th>
+      <th>Achievement</th>
+      <th>Rail</th>
+      <th>Number</th>
+      <th>Athlete</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>Country</th>
+      <th>Female110mtshudrlehead</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @female110mtshudrles.each do |female110mtshudrle| %>
+      <tr>
+        <td><%= female110mtshudrle.place %></td>
+        <td><%= female110mtshudrle.achievement %></td>
+        <td><%= female110mtshudrle.rail %></td>
+        <td><%= female110mtshudrle.number %></td>
+        <td><%= female110mtshudrle.athlete %></td>
+        <td><%= female110mtshudrle.an %></td>
+        <td><%= female110mtshudrle.club %></td>
+        <td><%= female110mtshudrle.region %></td>
+        <td><%= female110mtshudrle.country %></td>
+        <td><%= female110mtshudrle.female110mtshudrleHead_id %></td>
+        <td><%= link_to 'Show', female110mtshudrle %></td>
+        <td><%= link_to 'Edit', edit_female110mtshudrle_path(female110mtshudrle) %></td>
+        <td><%= link_to 'Destroy', female110mtshudrle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Female110mtshudrle', new_female110mtshudrle_path %>

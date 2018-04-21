@@ -1,6 +1,35 @@
 Rails.application.routes.draw do
 
   
+  resources :female4x400mts
+  resources :female3000mts
+  resources :female800mts
+  resources :female10000mts
+  resources :female3000mtsobstacles
+  resources :female110mtshudrles
+  resources :female20000mts
+  resources :male4x400mts
+  resources :male3000mts
+  resources :male800mts
+  resources :male10000mts
+  resources :male3000mtsobstacles
+  resources :male110mtshudrles
+  resources :male20000mts
+  resources :start_female4x400mts
+  resources :start_female3000mts
+  resources :start_female800mts
+  resources :start_female10000mts
+  resources :start_female3000mtsobstacles
+  resources :start_female110mtshudrles
+  resources :start_female20000mts
+  resources :start_male4x400mts
+  resources :start_male3000mts
+  resources :start_male800mts
+  resources :start_male_discus_throws
+  resources :start_male10000mts
+  resources :start_male3000mtsobstacles
+  resources :start_male110mtshudrles
+  resources :start_male20000mts
   resources :start_female_discus_throws
   resources :start_female_senior200mts
   resources :start_female_triple_jumps

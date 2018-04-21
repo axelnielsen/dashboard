@@ -1,0 +1,2 @@
+module StartMale110mtshudrlesHelper
+end

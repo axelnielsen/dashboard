@@ -1,8 +1,8 @@
-<br/>
+﻿<br/>
 <div class="row">
 <div class="col-md-12">
     <div class="callout callout-warning">
-                <h4>GRAND PRIX SUDAMERICANO DE ATLETISMO  “ORLANDO GUAITA 2018” </h4>
+                <h4>CAMPEONATO NACIONAL DE ATLETISMO ADULTO 2018 </h4>
 
               </div>
 
@@ -17,7 +17,7 @@
 <div class="box">
             <div class="box-header">
               <h3 class="box-title">Horarios</h3>
-
+              <h4 class="box-title">PRIMERA ETAPA SABADO 21 DE ABRIL (MAÑANA)</h4>
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
@@ -28,179 +28,339 @@
 					<th>HORA</th>
 		    		<th>PRUEBA</th>
 		    		<th>CATEGORÍA</th>
+					<th>FINAL</th>
 		    		<th>RESULTADOS</th>
 		    		<th>STARTLIST</th>
 		    	</tr>
 		    </thead>
 		    <tbody>
 		    	<tr>
-		    		<td data-label="HORA">10:00</td>
-		    		<td data-label="PRUEBA">BALA DAMAS</td>
-					<td data-label="CATEGORÍA">NACIONAL</td>
+		    		<td data-label="HORA">8:30</td>
+		    		<td data-label="PRUEBA">20.000 METROS PLANOS MARCHA (MANUAL)</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">DAMAS/VARONES</td>
 					<td data-label="RESULTADOS">VER</td>
-					<td><%= link_to "Ver", start_female_shot_puts_path, class: "btn btn-primary" %>
-     </td>
+					<td>SIN</td>
 		    	</tr>
 		    	<tr>
-		    		<td data-label="HORA">10:00</td>
-		    		<td data-label="PRUEBA">SALTO CON GARROCHA VARONES</td>
-					<td data-label="CATEGORÍA">NACIONAL</td>
+		    		<td data-label="HORA">9:05</td>
+		    		<td data-label="PRUEBA">100 METROS VALLAS (0,84)</td>
+					<td data-label="FINAL">HEPTATLÓN</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
 					<td data-label="RESULTADOS">VER</td>
-					<td>crear</td>
+					<td><%= link_to "Ver", start_female_100mtshudrles_path, class: "btn btn-primary" %></td>
 		    	</tr>	    	
 		    	<tr>
-		    		<td data-label="HORA">10:00</td>
-		    		<td data-label="PRUEBA">100M VALLAS DAMAS</td>
-					<td data-label="CATEGORÍA">NACIONAL</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td><%= link_to "Ver", start_female100mthudrles_path, class: "btn btn-primary" %></td>
+		    		<td data-label="HORA">9:10</td>
+		    		<td data-label="PRUEBA">100 METROS PLANOS</td>
+				    <td data-label="FINAL">DECATLÓN</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male100mts_path, class: "btn btn-primary" %></td>
 		    	</tr>
-		    	<tr>
-		    		<td data-label="HORA">10:20</td>
-		    		<td data-label="PRUEBA">110M VALLAS VARONES</td>
-					<td data-label="CATEGORÍA">NACIONAL</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST"><%= link_to "Ver", start_male100mthudrles_path, class: "btn btn-primary" %></td>
+			    <tr>
+		    		<td data-label="HORA">9:40</td>
+		    		<td data-label="PRUEBA">SALTO ALTO</td>
+				    <td data-label="FINAL">HEPTATLÓN</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_high_jumps_path, class: "btn btn-primary" %></td>
 		    	</tr>
-		    	<tr>
+			    <tr>
+		    		<td data-label="HORA">9:50</td>
+		    		<td data-label="PRUEBA">SALTO LARGO</td>
+				    <td data-label="FINAL">DECATLÓN</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_long_jumps_path, class: "btn btn-primary" %></td>
+		    	</tr>		    
+			<tr>
 		    		<td data-label="HORA">10:30</td>
-		    		<td data-label="PRUEBA">MARTILLO VARONES</td>
-					<td data-label="CATEGORÍA">GRAND PRIX</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST">crear</td>
-		    	</tr>	    	
-		    	<tr>
+		    		<td data-label="PRUEBA">5.000 METROS PLANOS</td>
+				    <td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male5000mts_path, class: "btn btn-primary" %></td>
+		    	</tr>	
+			<tr>
 		    		<td data-label="HORA">10:30</td>
-		    		<td data-label="PRUEBA">SALTO TRIPLE VARONES</td>
-					<td data-label="CATEGORÍA">NACIONAL</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST">crear</td>
-		    	</tr>
-				<tr>
+		    		<td data-label="PRUEBA">LANZAMIENTO BALA</td>
+				    <td data-label="FINAL">DECATLÓN</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_shot_puts_path, class: "btn btn-primary" %></td>
+		    	</tr>	
+			<tr>
 		    		<td data-label="HORA">10:30</td>
-		    		<td data-label="PRUEBA">100M PLANOS VARONES</td>
-					<td data-label="CATEGORÍA">NACIONAL</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST"><%= link_to "Ver", start_male100mts_path, class: "btn btn-primary" %></td>
-		    	</tr>
-				<tr>
-		    		<td data-label="HORA">10:45</td>
-		    		<td data-label="PRUEBA">8X50M PLANOS DAMAS</td>
-					<td data-label="CATEGORÍA">NACIONAL</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST">sin data</td>
-		    	</tr>
-				<tr>
-		    		<td data-label="HORA">11:00</td>
-		    		<td data-label="PRUEBA">8X50M PLANOS VARONES</td>
-					<td data-label="CATEGORÍA">NACIONAL</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST">sin data</td>
-		    	</tr>
-				<tr>
-		    		<td data-label="HORA">11:00</td>
-		    		<td data-label="PRUEBA">SALTO ALTO VARONES</td>
-					<td data-label="CATEGORÍA">GRAND PRIX</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST">crear</td>
-		    	</tr>
-				<tr>
+		    		<td data-label="PRUEBA">LANZAMIENTO MARTILLO</td>
+				    <td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_hammer_throws_path, class: "btn btn-primary" %></td>
+		    	</tr>	
+			<tr>
 		    		<td data-label="HORA">11:15</td>
-		    		<td data-label="PRUEBA">100M PLANOS DAMAS</td>
-					<td data-label="CATEGORÍA">GRAND PRIX</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST"><%= link_to "Ver", start_female100mts_path, class: "btn btn-primary" %></td>
-		    	</tr>
+		    		<td data-label="PRUEBA">5.000 METROS PLANOS</td>
+				    <td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female5000mts_path, class: "btn btn-primary" %></td>
+		    	</tr>	
+			<tr>
+		    		<td data-label="HORA">11:10</td>
+		    		<td data-label="PRUEBA">LANZAMIENTO BALA</td>
+				    <td data-label="FINAL">HEPTATLÓN</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_shot_puts_path, class: "btn btn-primary" %></td>
+		    	</tr>	
+			<tr>
+		    		<td data-label="HORA">11:10</td>
+		    		<td data-label="PRUEBA">SALTO ALTO</td>
+				    <td data-label="FINAL">DECATLÓN</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_high_jumps_path, class: "btn btn-primary" %></td>
+		    	</tr>	
 				<tr>
-		    		<td data-label="HORA">11:30</td>
-		    		<td data-label="PRUEBA">DISCO DAMAS</td>
-					<td data-label="CATEGORÍA">GRAND PRIX</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST">crear</td>
-		    	</tr>
-				<tr>
-		    		<td data-label="HORA">11:30</td>
-		    		<td data-label="PRUEBA">1500M PLANOS VARONES</td>
-					<td data-label="CATEGORÍA">GRAND PRIX</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST"><%= link_to "Ver", start_male1500mts_path, class: "btn btn-primary" %></td>
-		    	</tr>
-				<tr>
+		    		<td data-label="HORA">11:25</td>
+		    		<td data-label="PRUEBA">SALTO CON GARROCHA</td>
+				    <td data-label="FINAL">FINAL (COLISEO)</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_pole_jumps_path, class: "btn btn-primary" %></td>
+		    	</tr>	
+
+			     <tr>
 		    		<td data-label="HORA">11:45</td>
-		    		<td data-label="PRUEBA">1500M PLANOS DAMAS</td>
-					<td data-label="CATEGORÍA">GRAND PRIX</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST"><%= link_to "Ver", start_female1500mts_path, class: "btn btn-primary" %></td>
+		    		<td data-label="PRUEBA">100 METROS PLANOS</td>
+				    <td data-label="FINAL">SERIES</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female100mts_path, class: "btn btn-primary" %></td>
 		    	</tr>
-				<tr>
+				     <tr>
+		    		<td data-label="HORA">12:15</td>
+		    		<td data-label="PRUEBA">100 METROS PLANOS</td>
+				    <td data-label="FINAL">SERIES</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male100mts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+			    
+				     <tr>
 		    		<td data-label="HORA">12:00</td>
-		    		<td data-label="PRUEBA">BALA VARONES</td>
-					<td data-label="CATEGORÍA">NACIONAL</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST"><%= link_to "Ver", start_male_shot_puts_path, class: "btn btn-primary" %></td>
+		    		<td data-label="PRUEBA">LANZAMIENTO MARTILLO</td>
+				    <td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_hammer_throws_path, class: "btn btn-primary" %></td>
 		    	</tr>
-				<tr>
-		    		<td data-label="HORA">12:00</td>
-		    		<td data-label="PRUEBA">SALTO LARGO DAMAS</td>
-					<td data-label="CATEGORÍA">GRAND PRIX</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST"><%= link_to "Ver", start_female_jumps_path, class: "btn btn-primary" %></td>
+				     <tr>
+		    		<td data-label="HORA">12:45</td>
+		    		<td data-label="PRUEBA">200 METROS PLANOS</td>
+				    <td data-label="FINAL">HEPTATLÓN</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female200mts_path, class: "btn btn-primary" %></td>
 		    	</tr>
-				<tr>
-		    		<td data-label="HORA">12:10</td>
-		    		<td data-label="PRUEBA">400M VALLAS VARONES</td>
-					<td data-label="CATEGORÍA">GRAND PRIX</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST">crear</td>
+			     <tr>
+		    		<td data-label="HORA">12:55</td>
+		    		<td data-label="PRUEBA">400 METROS PLANOS</td>
+				    <td data-label="FINAL">DECATLÓN</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+     				<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female400mts_path, class: "btn btn-primary" %></td>
 		    	</tr>
-				<tr>
-		    		<td data-label="HORA">12:30</td>
-		    		<td data-label="PRUEBA">400M PLANOS DAMAS</td>
-					<td data-label="CATEGORÍA">GRAND PRIX</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST"><%= link_to "Ver", start_female400mts_path, class: "btn btn-primary" %></td>
-		    	</tr>
-				<tr>
-		    		<td data-label="HORA">12:30</td>
-		    		<td data-label="PRUEBA">JABALINA DAMAS</td>
-					<td data-label="CATEGORÍA">GRAND PRIX</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST"><%= link_to "Ver", start_female_javelins_path, class: "btn btn-primary" %></td>
-		    	</tr>
-				<tr>
-		    		<td data-label="HORA">12:40</td>
-		    		<td data-label="PRUEBA">5000M VARONES</td>
-					<td data-label="CATEGORÍA">NACIONAL</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST">crear</td>
-		    	</tr>
-				<tr>
+			     <tr>
 		    		<td data-label="HORA">13:00</td>
-		    		<td data-label="PRUEBA">SALTO LARGO VARONES</td>
-					<td data-label="CATEGORÍA">GRAND PRIX</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST">crear</td>
+		    		<td data-label="PRUEBA">TERMINO DE ETAPA</td>
+				    <td data-label="FINAL"></td>
+					<td data-label="CATEGORÍA"></td>
+     				<td data-label="RESULTADOS"></td>
+					<td></td>
 		    	</tr>
-				<tr>
-		    		<td data-label="HORA">13:00</td>
-		    		<td data-label="PRUEBA">200M SENIOR DAMAS</td>
-					<td data-label="CATEGORÍA">NACIONAL</td>
-					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST"><%= link_to "Ver", start_female200mts_path, class: "btn btn-primary" %></td>
+		 
+		    </tbody>
+	    </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+		  
+<div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Horarios</h3>
+              <h4 class="box-title">SEGUNDA ETAPA SABADO 21 DE ABRIL (TARDE)</h4>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+             
+	    <table class="table">
+	    	<thead>
+		    	<tr>
+					<th>HORA</th>
+		    		<th>PRUEBA</th>
+		    		<th>CATEGORÍA</th>
+					<th>FINAL</th>
+		    		<th>RESULTADOS</th>
+		    		<th>STARTLIST</th>
 		    	</tr>
-				<tr>
-		    		<td data-label="HORA">13:10</td>
-		    		<td data-label="PRUEBA">200M SENIOR VARONES</td>
-					<td data-label="CATEGORÍA">NACIONAL</td>
+		    </thead>
+		    <tbody>
+		    	<tr>
+		    		<td data-label="HORA">14:00</td>
+		    		<td data-label="PRUEBA">100 METROS VALLAS</td>
+					<td data-label="FINAL">SERIES</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
 					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST"><%= link_to "Ver", start_male200mts_path, class: "btn btn-primary" %></td>
+					<td><%= link_to "Ver", start_female_100mtshudrles_path, class: "btn btn-primary" %></td>
 		    	</tr>
-				<tr>
-		    		<td data-label="HORA">13:25</td>
-		    		<td data-label="PRUEBA">4X100M VARONES</td>
-					<td data-label="CATEGORÍA">NACIONAL</td>
+		     	<tr> 
+		    		<td data-label="HORA">14:00</td>
+		    		<td data-label="PRUEBA">SALTO CON GARROCHA</td>
+					<td data-label="FINAL">FINAL (COLISEO)</td>
+					<td data-label="CATEGORÍA">VARONES</td>
 					<td data-label="RESULTADOS">VER</td>
-					<td data-label="STARTLIST">crear</td>
+					<td><%= link_to "Ver", start_female_shot_puts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+					<tr> 
+		    		<td data-label="HORA">14:00</td>
+		    		<td data-label="PRUEBA">SALTO LARGO</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_long_jumps_path, class: "btn btn-primary" %></td>
+		    	</tr>
+						<tr> 
+		    		<td data-label="HORA">14:00</td>
+		    		<td data-label="PRUEBA">LANZAMIENTO DISCO</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_discus_trows_path, class: "btn btn-primary" %></td>
+		    	</tr>
+							<tr> 
+		    		<td data-label="HORA">14:20</td>
+		    		<td data-label="PRUEBA">110 METROS VALLAS</td>
+					<td data-label="FINAL">SERIES</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+							<tr> 
+		    		<td data-label="HORA">14:40</td>
+		    		<td data-label="PRUEBA">400 METROS PLANOS</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female400mts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+							<tr> 
+		    		<td data-label="HORA">15:10</td>
+		    		<td data-label="PRUEBA">400 METROS PLANOS</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male400mts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+							<tr> 
+		    		<td data-label="HORA">15:30</td>
+		    		<td data-label="PRUEBA">LANZAMIENTO DISCO</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_discus_trows_path, class: "btn btn-primary" %></td>
+		    	</tr>
+								<tr> 
+		    		<td data-label="HORA">15:40</td>
+		    		<td data-label="PRUEBA">3.000 METROS OBSTÁCULOS</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+								<tr> 
+		    		<td data-label="HORA">15:45</td>
+		    		<td data-label="PRUEBA">SALTO LARGO</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_long_jumps_path, class: "btn btn-primary" %></td>
+		    	</tr>
+								<tr> 
+		    		<td data-label="HORA">16:00</td>
+		    		<td data-label="PRUEBA">3.000 METROS OBSTÁCULOS</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+				
+									<tr> 
+		    		<td data-label="HORA">16:10</td>
+		    		<td data-label="PRUEBA">100 METROS PLANOS</td>
+					<td data-label="FINAL">FINAL (COLISEO)</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_100mts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+				 <tr> 
+		    		<td data-label="HORA">16:15</td>
+		    		<td data-label="PRUEBA">100 METROS PLANOS</td>
+					<td data-label="FINAL">FINAL (COLISEO)</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_100mts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+				
+					 <tr> 
+		    		<td data-label="HORA">16:25</td>
+		    		<td data-label="PRUEBA">1.500 METROS PLANOS</td>
+					<td data-label="FINAL">SERIES C/TIEMPO (COLEGIO)</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_1500mts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+				 <tr> 
+		    		<td data-label="HORA">16:40</td>
+		    		<td data-label="PRUEBA">1.500 METROS PLANOS</td>
+					<td data-label="FINAL">SERIES C/TIEMPO (COLEGIO)</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_1500mts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+				
+				 <tr> 
+		    		<td data-label="HORA">17:00</td>
+		    		<td data-label="PRUEBA">100 METROS VALLAS</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_100mthudrles_path, class: "btn btn-primary" %></td>
+		    	</tr>
+				 <tr> 
+		    		<td data-label="HORA">17:10</td>
+		    		<td data-label="PRUEBA">110 METROS VALLAS</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+				 <tr> 
+		    		<td data-label="HORA">17:40</td>
+		    		<td data-label="PRUEBA">RELEVO 4X100 METROS</td>
+					<td data-label="FINAL">FINAL (COLISEO)</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female4x100mts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+				 <tr> 
+		    		<td data-label="HORA">17:50</td>
+		    		<td data-label="PRUEBA">RELEVO 4X100 METROS</td>
+					<td data-label="FINAL">FINAL (COLISEO)</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male4x100mts_path, class: "btn btn-primary" %></td>
 		    	</tr>
 		    </tbody>
 	    </table>
@@ -208,6 +368,322 @@
             <!-- /.box-body -->
           </div>
 
-
+<div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Horarios</h3>
+              <h4 class="box-title">TERCERA ETAPA DOMINGO 22 DE ABRIL (MAÑANA)</h4>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+             
+	    <table class="table">
+	    	<thead>
+		    	<tr>
+					<th>HORA</th>
+		    		<th>PRUEBA</th>
+		    		<th>CATEGORÍA</th>
+					<th>FINAL</th>
+		    		<th>RESULTADOS</th>
+		    		<th>STARTLIST</th>
+		    	</tr>
+		    </thead>
+		    <tbody>
+		    	<tr>
+		    		<td data-label="HORA">9:00</td>
+		    		<td data-label="PRUEBA">110 METROS VALLAS (1,067)</td>
+					<td data-label="FINAL">DECATLÓN</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+					<tr>
+		    		<td data-label="HORA">9:10</td>
+		    		<td data-label="PRUEBA">10.000 METROS PLANOS</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">DAMAS/VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+						<tr>
+		    		<td data-label="HORA">9:50</td>
+		    		<td data-label="PRUEBA">LANZAMIENTO DISCO</td>
+					<td data-label="FINAL">DECATLÓN</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+							<tr>
+		    		<td data-label="HORA">10:00</td>
+		    		<td data-label="PRUEBA">SALTO TRIPLE</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_triple_jumps_path, class: "btn btn-primary" %></td>
+		    	</tr>
+									<tr>
+		    		<td data-label="HORA">10:00</td>
+		    		<td data-label="PRUEBA">200 METROS PLANOS</td>
+					<td data-label="FINAL">SERIES</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female200mts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+									<tr>
+		    		<td data-label="HORA">10:30</td>
+		    		<td data-label="PRUEBA">200 METROS PLANOS</td>
+					<td data-label="FINAL">SERIES</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male200mts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+										<tr>
+		    		<td data-label="HORA">10:20</td>
+		    		<td data-label="PRUEBA">SALTO CON GARROCHA</td>
+					<td data-label="FINAL">DECATLÓN</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_pole_jumps_path, class: "btn btn-primary" %></td>
+		    	</tr>
+										<tr>
+		    		<td data-label="HORA">10:30</td>
+		    		<td data-label="PRUEBA">LANZAMIENTO BALA</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_shot_puts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+											<tr>
+		    		<td data-label="HORA">11:10</td>
+		    		<td data-label="PRUEBA">400 METROS VALLAS</td>
+					<td data-label="FINAL">SERIES C/TIEMPO</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female400mtshudrles_path, class: "btn btn-primary" %></td>
+		    	</tr>
+											<tr>
+		    		<td data-label="HORA">11:10</td>
+		    		<td data-label="PRUEBA">SALTO LARGO</td>
+					<td data-label="FINAL">HEPTATLÓN</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_long_jumps_path, class: "btn btn-primary" %></td>
+		    	</tr>
+											<tr>
+		    		<td data-label="HORA">11:30</td>
+		    		<td data-label="PRUEBA">400 METROS VALLAS</td>
+					<td data-label="FINAL">SERIES C/TIEMPO</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male400mtshudrles_path, class: "btn btn-primary" %></td>
+		    	</tr>
+											<tr>
+		    		<td data-label="HORA">11:45</td>
+		    		<td data-label="PRUEBA">SALTO TRIPLE</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_triple_jumps_path, class: "btn btn-primary" %></td>
+		    	</tr>
+											<tr>
+		    		<td data-label="HORA">11:50</td>
+		    		<td data-label="PRUEBA">LANZAMIENTO JAVALINA</td>
+					<td data-label="FINAL">HEPTATLÓN</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_javelins_path, class: "btn btn-primary" %></td>
+		    	</tr>
+											<tr>
+		    		<td data-label="HORA">11:50</td>
+		    		<td data-label="PRUEBA">200 METROS PLANOS</td>
+					<td data-label="FINAL">FINAL (COLISEO)</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female200mts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+											<tr>
+		    		<td data-label="HORA">12:00</td>
+		    		<td data-label="PRUEBA">200 METROS PLANOS</td>
+					<td data-label="FINAL">FINAL (COLISEO)</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male200mts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+											<tr>
+		    		<td data-label="HORA">12:00</td>
+		    		<td data-label="PRUEBA">LANZAMIENTO BALA</td>
+					<td data-label="FINAL">FINAL </td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_shot_puts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+											<tr>
+		    		<td data-label="HORA">12:30</td>
+		    		<td data-label="PRUEBA">LANZAMIENTO JAVALINA</td>
+					<td data-label="FINAL">DECATLÓN</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_javelins_path, class: "btn btn-primary" %></td>
+		    	</tr>
+											<tr>
+		    		<td data-label="HORA">12:30</td>
+		    		<td data-label="PRUEBA">800 METROS PLANOS</td>
+					<td data-label="FINAL">HEPTATLÓN</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+											<tr>
+		    		<td data-label="HORA">13:15</td>
+		    		<td data-label="PRUEBA">1500 METROS PLANOS</td>
+					<td data-label="FINAL">DECATLÓN</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male1500mts_path, class: "btn btn-primary" %></td>
+		    	</tr>
+											<tr>
+		    		<td data-label="HORA">13:20</td>
+		    		<td data-label="PRUEBA">TERMINO DE ETAPA</td>
+					<td data-label="FINAL"></td>
+					<td data-label="CATEGORÍA"></td>
+					<td data-label="RESULTADOS"></td>
+					<td></td>
+		    	</tr>
+						
+				
+				
+				
+				
+				
+		 
+		    </tbody>
+	    </table>
+            </div>
+            <!-- /.box-body -->
+          </div>		  
+		  
+<div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Horarios</h3>
+              <h4 class="box-title">CUARTA ETAPA DOMINGO 22 DE ABRIL (TARDE)</h4>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+             
+	    <table class="table">
+	    	<thead>
+		    	<tr>
+					<th>HORA</th>
+		    		<th>PRUEBA</th>
+		    		<th>CATEGORÍA</th>
+					<th>FINAL</th>
+		    		<th>RESULTADOS</th>
+		    		<th>STARTLIST</th>
+		    	</tr>
+		    </thead>
+		    <tbody>
+		    	<tr>
+		    		<td data-label="HORA">14:30</td>
+		    		<td data-label="PRUEBA">LANZAMIENTO JAVALINA</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_lavelins_path, class: "btn btn-primary" %></td>
+		    	</tr>
+				 	<tr>
+		    		<td data-label="HORA">15:00</td>
+		    		<td data-label="PRUEBA">SALTO ALTO</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_high_jumps_path, class: "btn btn-primary" %></td>
+		    	</tr>
+					 	<tr>
+		    		<td data-label="HORA">15:00</td>
+		    		<td data-label="PRUEBA">800 METROS PLANOS</td>
+					<td data-label="FINAL">SERIES C/TIEMPO</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+						 	<tr>
+		    		<td data-label="HORA">15:30</td>
+		    		<td data-label="PRUEBA">800 METROS PLANOS</td>
+					<td data-label="FINAL">SERIES C/TIEMPO</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+		 
+						 	<tr>
+		    		<td data-label="HORA">16:00</td>
+		    		<td data-label="PRUEBA">SALTO ALTO</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_male_high_jumps_path, class: "btn btn-primary" %></td>
+		    	</tr>
+							 	<tr>
+		    		<td data-label="HORA">16:00</td>
+		    		<td data-label="PRUEBA">LANZAMIENTO JAVALINA</td>
+					<td data-label="FINAL">FINAL</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td><%= link_to "Ver", start_female_javelins_path, class: "btn btn-primary" %></td>
+		    	</tr>
+				
+							 	<tr>
+		    		<td data-label="HORA">16:00</td>
+		    		<td data-label="PRUEBA">3000 METROS PLANOS</td>
+					<td data-label="FINAL">SERIES C/TIEMPO</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+								 	<tr>
+		    		<td data-label="HORA">16:30</td>
+		    		<td data-label="PRUEBA">3000 METROS PLANOS</td>
+					<td data-label="FINAL">SERIES C/TIEMPO</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+									 	<tr>
+		    		<td data-label="HORA">18:25</td>
+		    		<td data-label="PRUEBA">RELEVO 4X400 METROS</td>
+					<td data-label="FINAL">FINAL (COLISEO)</td>
+					<td data-label="CATEGORÍA">DAMAS</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+		 						 	<tr>
+		    		<td data-label="HORA">18:35</td>
+		    		<td data-label="PRUEBA">RELEVO 4X400 METROS</td>
+					<td data-label="FINAL">FINAL (COLISEO)</td>
+					<td data-label="CATEGORÍA">VARONES</td>
+					<td data-label="RESULTADOS">VER</td>
+					<td>SIN</td>
+		    	</tr>
+		    </tbody>
+	    </table>
+            </div>
+            <!-- /.box-body -->
+          </div>		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
 	</div>
 </div>

@@ -1,0 +1,2 @@
+module StartMale3000mtsHelper
+end

@@ -1,0 +1,2 @@
+module Male10000mtsHelper
+end
