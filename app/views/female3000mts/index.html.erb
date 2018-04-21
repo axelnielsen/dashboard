@@ -1,45 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Female3000mts</h1>
+<div class="col-md-12">
+    <div class="callout callout-danger">
+      <h4><strong>3.000 Metros Planos- Damas </strong></h4>
+     &#09;<h5>fecha hora</h5>
+     </div>
+</div>
 
-<table>
+<%= content_tag :table, role: :datatable, data: { url: female3000mts_path(format: :json)} do %>
   <thead>
     <tr>
-      <th>Place</th>
-      <th>Achievement</th>
-      <th>Rail</th>
-      <th>Number</th>
-      <th>Athlete</th>
-      <th>An</th>
+         <th>Lugar</th>
+      <th>Marca</th>
+      <th>Riel</th>
+      <th>Número</th>
+      <th>Atleta</th>
+      <th>A.N.</th>
       <th>Club</th>
-      <th>Region</th>
-      <th>Country</th>
-      <th>Female3000mthead</th>
-      <th colspan="3"></th>
+      <th>Región</th>
+      <th>País</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @female3000mts.each do |female3000mt| %>
-      <tr>
-        <td><%= female3000mt.place %></td>
-        <td><%= female3000mt.achievement %></td>
-        <td><%= female3000mt.rail %></td>
-        <td><%= female3000mt.number %></td>
-        <td><%= female3000mt.athlete %></td>
-        <td><%= female3000mt.an %></td>
-        <td><%= female3000mt.club %></td>
-        <td><%= female3000mt.region %></td>
-        <td><%= female3000mt.country %></td>
-        <td><%= female3000mt.female3000mtHead_id %></td>
-        <td><%= link_to 'Show', female3000mt %></td>
-        <td><%= link_to 'Edit', edit_female3000mt_path(female3000mt) %></td>
-        <td><%= link_to 'Destroy', female3000mt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  
+ <tbody onmouseover="bestInPlace();">
   </tbody>
-</table>
+<% end %>
 
-<br>
-
-<%= link_to 'New Female3000mt', new_female3000mt_path %>
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+ </script>
+ 
+ <br><br><br><br><br>
+<div class="col-md-12">
+    <div class="callout callout-success">
+      <h4><strong>IMPORTAR</strong></h4>
+     </div>
+   <%=form_tag import_female3000mts_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+ <% end %>
+</div>

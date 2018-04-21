@@ -3,9 +3,18 @@ class Male3000mtsobstaclesController < ApplicationController
 
   # GET /male3000mtsobstacles
   # GET /male3000mtsobstacles.json
-  def index
-    @male3000mtsobstacles = Male3000mtsobstacle.all
-  end
+    def index
+     respond_to do |format|
+     format.html
+      format.json { render json: Male3000mtsobstaclesDatatable.new(view_context) }
+      format.xlsx
+    end
+end
+
+def import
+Male3000mtsobstacle.import(params[:file])
+redirect_to male3000mtsobstacles_url, notice: "Importado correctamente"
+end
 
   # GET /male3000mtsobstacles/1
   # GET /male3000mtsobstacles/1.json

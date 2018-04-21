@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   
+  resources :male_discus_throws
   resources :female4x400mts
   resources :female3000mts
   resources :female800mts
@@ -342,6 +343,106 @@ Rails.application.routes.draw do
   end
  
   
+
+  resources :female4x400mts do
+  collection { post :import}
+  end
+  resources :female3000mts do
+  collection { post :import}
+  end
+  resources :female800mts do
+  collection { post :import}
+  end
+  resources :female10000mts do
+  collection { post :import}
+  end
+  resources :female3000mtsobstacles do
+  collection { post :import}
+  end
+  resources :female110mtshudrles do
+  collection { post :import}
+  end
+  resources :female20000mts do
+  collection { post :import}
+  end
+  resources :male4x400mts do
+  collection { post :import}
+  end
+  resources :male3000mts do
+  collection { post :import}
+  end
+  resources :male800mts do
+  collection { post :import}
+  end
+  resources :male10000mts do
+  collection { post :import}
+  end
+  resources :male3000mtsobstacles do
+  collection { post :import}
+  end
+  resources :male110mtshudrles do
+  collection { post :import}
+  end
+  resources :male20000mts do
+  collection { post :import}
+  end
+  resources :start_female4x400mts do
+  collection { post :import}
+  end
+  resources :start_female3000mts do
+  collection { post :import}
+  end
+  resources :start_female800mts do
+  collection { post :import}
+  end
+  resources :start_female10000mts do
+  collection { post :import}
+  end
+  resources :start_female3000mtsobstacles do
+  collection { post :import}
+  end
+  resources :start_female110mtshudrles do
+  collection { post :import}
+  end
+  resources :start_female20000mts do
+  collection { post :import}
+  end  
+  resources :start_male4x400mts do
+  collection { post :import}
+  end
+  resources :start_male3000mts do
+  collection { post :import}
+  end
+  resources :start_male800mts do
+  collection { post :import}
+  end
+  resources :start_male_discus_throws do
+  collection { post :import}
+  end
+  resources :start_male10000mts do
+  collection { post :import}
+  end
+  resources :start_male3000mtsobstacles do
+  collection { post :import}
+  end
+  resources :start_male110mtshudrles do
+  collection { post :import}
+  end
+  resources :start_male20000mts do
+  collection { post :import}
+  end
+
+
+resources :male_discus_throws do
+  collection { post :import}
+  end
+
+
+
+
+
+
+
   resources :sports
   get 'results/index'
 

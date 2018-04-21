@@ -3,9 +3,18 @@ class Female3000mtsController < ApplicationController
 
   # GET /female3000mts
   # GET /female3000mts.json
-  def index
-    @female3000mts = Female3000mt.all
-  end
+      def index
+     respond_to do |format|
+     format.html
+      format.json { render json: Female3000mtsDatatable.new(view_context) }
+      format.xlsx
+    end
+end
+
+def import
+Female3000mt.import(params[:file])
+redirect_to female3000mts_url, notice: "Importado correctamente"
+end
 
   # GET /female3000mts/1
   # GET /female3000mts/1.json

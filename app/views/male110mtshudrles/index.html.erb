@@ -1,45 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Male110mtshudrles</h1>
+<div class="col-md-12">
+<div class="callout callout-info">
+        <h4><strong>110 Metros Vallas - Varones</strong></h4>
+     &#09;<h5>14 abr.2018; 11:30 horas</h5>
+     </div>
+</div>
 
-<table>
+
+<%= content_tag :table, role: :datatable, data: { url: male110mtshudrles_path(format: :json)} do %>
   <thead>
     <tr>
-      <th>Place</th>
-      <th>Achievement</th>
-      <th>Rail</th>
-      <th>Number</th>
-      <th>Athlete</th>
-      <th>An</th>
+      <th>Lugar</th>
+      <th>Marca</th>
+      <th>Riel</th>
+      <th>Número</th>
+      <th>Atleta</th>
+      <th>A.N.</th>
       <th>Club</th>
-      <th>Region</th>
-      <th>Country</th>
-      <th>Male110mtshudrlehead</th>
-      <th colspan="3"></th>
+      <th>Región</th>
+      <th>País</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @male110mtshudrles.each do |male110mtshudrle| %>
-      <tr>
-        <td><%= male110mtshudrle.place %></td>
-        <td><%= male110mtshudrle.achievement %></td>
-        <td><%= male110mtshudrle.rail %></td>
-        <td><%= male110mtshudrle.number %></td>
-        <td><%= male110mtshudrle.athlete %></td>
-        <td><%= male110mtshudrle.an %></td>
-        <td><%= male110mtshudrle.club %></td>
-        <td><%= male110mtshudrle.region %></td>
-        <td><%= male110mtshudrle.country %></td>
-        <td><%= male110mtshudrle.male110mtshudrleHead_id %></td>
-        <td><%= link_to 'Show', male110mtshudrle %></td>
-        <td><%= link_to 'Edit', edit_male110mtshudrle_path(male110mtshudrle) %></td>
-        <td><%= link_to 'Destroy', male110mtshudrle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+ <tbody onmouseover="bestInPlace();">
   </tbody>
-</table>
+<% end %>
 
-<br>
+ 
+<script type="application/javascript">
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
 
-<%= link_to 'New Male110mtshudrle', new_male110mtshudrle_path %>
+ </script>
+  
+  <br><br><br><br><br>
+<div class="col-md-12">
+    <div class="callout callout-success">
+      <h4><strong>IMPORTAR</strong></h4>
+     </div>
+   <%=form_tag import_male110mtshudrles_path, multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+ <% end %>
+</div>  

@@ -3,9 +3,19 @@ class Male4x400mtsController < ApplicationController
 
   # GET /male4x400mts
   # GET /male4x400mts.json
-  def index
-    @male4x400mts = Male4x400mt.all
-  end
+      def index
+     respond_to do |format|
+     format.html
+      format.json { render json: Male4x400mtsDatatable.new(view_context) }
+      format.xlsx
+    end
+end
+
+def import
+Male4x400mt.import(params[:file])
+redirect_to male4x400mts_url, notice: "Importado correctamente"
+end
+
 
   # GET /male4x400mts/1
   # GET /male4x400mts/1.json

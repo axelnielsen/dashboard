@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421012509) do
+ActiveRecord::Schema.define(version: 20180421030317) do
 
   create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "names"
@@ -828,6 +828,24 @@ ActiveRecord::Schema.define(version: 20180421012509) do
     t.string "region"
     t.string "country"
     t.integer "male8x50mts_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "male_discus_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "number"
+    t.string "name"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "first"
+    t.string "second"
+    t.string "third"
+    t.string "fourth"
+    t.string "fifth"
+    t.string "sixth"
+    t.string "achievement"
+    t.integer "place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
