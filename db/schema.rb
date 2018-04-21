@@ -1748,21 +1748,6 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male_400mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer "place"
-    t.string "achievement"
-    t.integer "rail"
-    t.integer "number"
-    t.string "athlete"
-    t.string "an"
-    t.string "club"
-    t.string "region"
-    t.string "country"
-    t.integer "male400mtshudrleStart_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "start_male_discus_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "place"
     t.string "achievement"

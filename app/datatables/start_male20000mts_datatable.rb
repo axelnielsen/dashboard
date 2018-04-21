@@ -6,10 +6,9 @@ class StartMale20000mtsDatatable < ApplicationDatatable
    
     start_male20000mts.map do |start_male20000mt|
       [ 
-        best_in_place(start_male20000mt, :place),
+        
         best_in_place(start_male20000mt, :achievement),
-        best_in_place(start_male20000mt, :rail),
-        best_in_place(start_male20000mt, :number),
+
         best_in_place(start_male20000mt, :athlete),
         best_in_place(start_male20000mt, :an),
         best_in_place(start_male20000mt, :club),

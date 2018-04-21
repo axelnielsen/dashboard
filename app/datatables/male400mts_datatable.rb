@@ -6,12 +6,13 @@ class Male400mtsDatatable < ApplicationDatatable
    
     male400mts.map do |male400mt|
       [ 
+            best_in_place(male400mt, :an),
         best_in_place(male400mt, :place),
         best_in_place(male400mt, :achievement),
         best_in_place(male400mt, :rail),
         best_in_place(male400mt, :number),
         best_in_place(male400mt, :athlete),
-        best_in_place(male400mt, :an),
+    
         best_in_place(male400mt, :club),
         best_in_place(male400mt, :region),
         best_in_place(male400mt, :country),

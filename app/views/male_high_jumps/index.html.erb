@@ -5,6 +5,55 @@
       <h4><strong>Salto Alto - Varones </strong></h4>
      &#09;<h5>fecha-hora</h5>
      </div>
+
+
+
+
+
+
+
+
+
+   <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+       <div class="row">
+          <div class="col-xs-12">
+       
+             
+              <!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+    <%= simple_form_for(@male_high_jump) do |f| %>
+    <%= f.error_notification %>
+                  <tr>
+                    <th><%= f.input :name,  placeholder: "Atleta"%></th>
+                    <th><%= f.input :club,  placeholder: "Club"%></th>
+                    <th><%= f.input :first,  placeholder: "primero"%></th>
+                    <th> <%= f.input :vvFirst , placeholder: "vv"%></th>
+                    <th><%= f.input :seconnd , placeholder: "segundo"%></th>
+                    <th> <%= f.input :vvSecond, placeholder: "vv" %></th>
+                    <th><%= f.input :third , placeholder: "tercero"%></th>
+                    <th><%= f.input :vvThird , placeholder: "vv"%></th>
+                    <th><%= f.input :op , placeholder: "OP"%></th>
+                  </tr><tr>
+                    <th> <%= f.input :fourth, placeholder: "cuarto"%></th>
+                      <th> <%= f.input :vvFourth, placeholder: "vv"%></th>
+                        <th> <%= f.input :fift, placeholder: "quinto"%></th>
+                          <th> <%= f.input :vvFifth, placeholder: "vv"%></th>
+                            <th> <%= f.input :sixth, placeholder: "sexto"%></th>
+                              <th> <%= f.input :vvSixth, placeholder: "vv"%></th>
+                                <th> <%= f.input :achievement, placeholder: "Marca"%></th>
+                                  <th> <%= f.input :place, placeholder: "Lugar"%></th>
+                    <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
+                  </tr>
+                  <%end%>
+                         </table>
+              </div>
+              <!-- /.box-body -->
+           
+            <!-- /.box -->
+          </div>
+        </div>
+  <%end%>
 </div>
 
 <%= content_tag :table, role: :datatable, data: { url: male_high_jumps_path(format: :json)} do %>
@@ -31,7 +80,7 @@
       <th>V.V</th>
       <th>Marca</th>
       <th>Lugar</th>
-      
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -40,6 +89,9 @@
   </tbody>
 <% end %>
 
+ 
+
+ <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
  
 <script type="application/javascript">
 $(document).ready(function() {
@@ -60,5 +112,6 @@ function bestInPlace()
 <%=submit_tag "Importar"%>
  <% end %>
 </div>
+ <%end%>
  
  

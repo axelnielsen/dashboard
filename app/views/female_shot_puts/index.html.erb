@@ -18,13 +18,15 @@
     <%= f.error_notification %>
                   <tr>
                     <th><%= f.input :place,  placeholder: "Lugar",label: false%></th>
-                    <th> <%= f.input :achievement , placeholder: "Marca",label: false%></th>
-                    <th><%= f.input :rail , placeholder: "Pista",label: false%></th>
-                    <th> <%= f.input :number, placeholder: "Número" ,label: false%></th>
-                    <th><%= f.input :athlete , placeholder: "Atleta",label: false%></th>
-                    <th><%= f.input :an , placeholder: "A.N.",label: false%></th>
-                    <th><%= f.input :club , placeholder: "Club",label: false%></th>
-                    <th> <%= f.input :region, placeholder: "Región",label: false%></th>
+                    <th> <%= f.input :name , placeholder: "nombre",label: false%></th>
+                    <th><%= f.input :first , placeholder: "primero",label: false%></th>
+                    <th> <%= f.input :second, placeholder: "segundo" ,label: false%></th>
+                    <th><%= f.input :third , placeholder: "tercero",label: false%></th>
+                    <th><%= f.input :fourth , placeholder: "cuarto",label: false%></th>
+                    <th><%= f.input :fifth , placeholder: "quinto",label: false%></th>
+                    <th> <%= f.input :sixth, placeholder: "sexto",label: false%></th>
+                     <th> <%= f.input :achievement, placeholder: "Marca",label: false%></th>
+                     
                     <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
                   </tr>
                   <%end%>

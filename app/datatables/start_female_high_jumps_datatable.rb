@@ -6,10 +6,10 @@ class StartFemaleHighJumpsDatatable < ApplicationDatatable
    
     start_female_high_jumps.map do |start_female_high_jump|
       [ 
-        best_in_place(start_female_high_jump, :place),
+        
         best_in_place(start_female_high_jump, :achievement),
         best_in_place(start_female_high_jump, :rail),
-        best_in_place(start_female_high_jump, :number),
+      
         best_in_place(start_female_high_jump, :athlete),
         best_in_place(start_female_high_jump, :an),
         best_in_place(start_female_high_jump, :club),

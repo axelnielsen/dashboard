@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="col-md-12">
     <div class="callout callout-info">
-      <h4><strong>20.000mts Planos- Varones </strong></h4>
+      <h4><strong>20.000mts Planos Marcha- Varones </strong></h4>
      &#09;<h5>Fecha Hora</h5>
      </div>
 
@@ -16,10 +16,9 @@
     <%= simple_form_for(@start_male20000mt) do |f| %>
     <%= f.error_notification %>
                   <tr>
-                    <th><%= f.input :place,  placeholder: "Lugar",label: false%></th>
-                    <th> <%= f.input :achievement , placeholder: "Marca",label: false%></th>
-                    <th><%= f.input :rail , placeholder: "Pista",label: false%></th>
-                    <th> <%= f.input :number, placeholder: "Número" ,label: false%></th>
+                  
+                    <th> <%= f.input :achievement , placeholder: "Serie",label: false%></th>
+             
                     <th><%= f.input :athlete , placeholder: "Atleta",label: false%></th>
                     <th><%= f.input :an , placeholder: "A.N.",label: false%></th>
                     <th><%= f.input :club , placeholder: "Club",label: false%></th>
@@ -41,14 +40,13 @@
 <%= content_tag :table, role: :datatable, data: { url: start_male20000mts_path(format: :json)} do %>
    <thead>
     <tr>
-      <th>Marca</th>
-      <th>Riel</th>
-      <th>Número</th>
+      <th>Serie</th>
+      
       <th>Atleta</th>
       <th>A.N.</th>
       <th>Club</th>
       <th>Región</th>
-      <th>País</th>
+      <th>Mejor Marca</th>
     </tr>
   </thead>
   <tbody onmouseover="bestInPlace();">

@@ -6,10 +6,7 @@ class StartMaleHammerThrowsDatatable < ApplicationDatatable
    
     start_male_hammer_throws.map do |start_male_hammer_throw|
       [ 
-        best_in_place(start_male_hammer_throw, :place),
-        best_in_place(start_male_hammer_throw, :achievement),
-        best_in_place(start_male_hammer_throw, :rail),
-        best_in_place(start_male_hammer_throw, :number),
+          
         best_in_place(start_male_hammer_throw, :athlete),
         best_in_place(start_male_hammer_throw, :an),
         best_in_place(start_male_hammer_throw, :club),

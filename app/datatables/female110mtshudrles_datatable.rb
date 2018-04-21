@@ -14,8 +14,7 @@ class Female110mtshudrlesDatatable < ApplicationDatatable
         best_in_place(female110mtshudrle, :an),
         best_in_place(female110mtshudrle, :club),
         best_in_place(female110mtshudrle, :region),
-        best_in_place(female110mtshudrle, :country),
-        best_in_place(female110mtshudrle, :female110mtshudrleHead_id),
+,
    ]
      end
   end

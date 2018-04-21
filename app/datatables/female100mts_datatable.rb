@@ -6,15 +6,17 @@ class Female100mtsDatatable < ApplicationDatatable
    
     female100mts.map do |female100mt|
       [ 
+         best_in_place(female100mt, :an),
         best_in_place(female100mt, :place),
+         best_in_place(female100mt, :athlete),
         best_in_place(female100mt, :achievement),
         best_in_place(female100mt, :rail),
-        best_in_place(female100mt, :number),
-        best_in_place(female100mt, :athlete),
-        best_in_place(female100mt, :an),
+       
+       
+       
         best_in_place(female100mt, :club),
         best_in_place(female100mt, :region),
-        best_in_place(female100mt, :country),
+   
         best_in_place(female100mt, :female100mtsHead_id),
    ]
      end

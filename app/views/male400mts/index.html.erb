@@ -3,7 +3,7 @@
 <div class="col-md-12">
 <div class="callout callout-info">
         <h4><strong>400 mt planos - Varones </strong></h4>
-     &#09;<h5>14 abr.2018; 12:35 horas</h5>
+     &#09;<h5></h5>
      </div>
 
    <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
@@ -17,12 +17,13 @@
     <%= simple_form_for(@male400mt) do |f| %>
     <%= f.error_notification %>
                   <tr>
+                            <th><%= f.input :an , placeholder: "Serie",label: false%></th>
                     <th><%= f.input :place,  placeholder: "Lugar",label: false%></th>
                     <th> <%= f.input :achievement , placeholder: "Marca",label: false%></th>
                     <th><%= f.input :rail , placeholder: "Pista",label: false%></th>
                     <th> <%= f.input :number, placeholder: "Número" ,label: false%></th>
                     <th><%= f.input :athlete , placeholder: "Atleta",label: false%></th>
-                    <th><%= f.input :an , placeholder: "A.N.",label: false%></th>
+            
                     <th><%= f.input :club , placeholder: "Club",label: false%></th>
                     <th> <%= f.input :region, placeholder: "Región",label: false%></th>
                     <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
@@ -41,12 +42,13 @@
 <%= content_tag :table, role: :datatable, data: { url: male400mts_path(format: :json)} do %>
   <thead>
     <tr>
+       <th>Serie</th>
            <th>Lugar</th>
       <th>Marca</th>
       <th>Riel</th>
       <th>Número</th>
       <th>Atleta</th>
-      <th>A.N.</th>
+     
       <th>Club</th>
       <th>Región</th>
       <th>País</th>
