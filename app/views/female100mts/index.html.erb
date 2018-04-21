@@ -5,12 +5,53 @@
       <h4><strong>100 mt planos - Damas </strong></h4>
      &#09;<h5>14 abr.2018; 11:15 horas</h5>
      </div>
+
+
+
+
+
+
+
+
+   <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+       <div class="row">
+          <div class="col-xs-12">
+       
+             
+              <!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+    <%= simple_form_for(@female100mt) do |f| %>
+    <%= f.error_notification %>
+                  <tr>
+                    <th><%= f.input :place,  placeholder: "Lugar",label: false%></th>
+                    <th> <%= f.input :achievement , placeholder: "Marca",label: false%></th>
+                    <th><%= f.input :rail , placeholder: "Pista",label: false%></th>
+                    <th> <%= f.input :number, placeholder: "Número" ,label: false%></th>
+                    <th><%= f.input :athlete , placeholder: "Atleta",label: false%></th>
+                    <th><%= f.input :an , placeholder: "A.N.",label: false%></th>
+                    <th><%= f.input :club , placeholder: "Club",label: false%></th>
+                    <th> <%= f.input :region, placeholder: "Región",label: false%></th>
+                    <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
+                  </tr>
+                  <%end%>
+                         </table>
+              </div>
+              <!-- /.box-body -->
+           
+            <!-- /.box -->
+          </div>
+        </div>
+  <%end%>
 </div>
 
+
+
 <%= content_tag :table, role: :datatable, data: { url: female100mts_path(format: :json)} do %>
-  <thead>
+
+ <thead>
     <tr>
-       <th>Lugar</th>
+         <th>Lugar</th>
       <th>Marca</th>
       <th>Riel</th>
       <th>Número</th>
@@ -22,11 +63,20 @@
     </tr>
   </thead>
 
+
   
  <tbody onmouseover="bestInPlace();">
   </tbody>
 <% end %>
 
+
+
+
+
+
+
+
+ <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
  
 <script type="application/javascript">
 $(document).ready(function() {
@@ -38,6 +88,7 @@ function bestInPlace()
 };
  </script>
    <br><br><br><br><br>
+    <div class="row">
 <div class="col-md-12">
     <div class="callout callout-success">
       <h4><strong>IMPORTAR</strong></h4>
@@ -47,4 +98,5 @@ function bestInPlace()
 <%=submit_tag "Importar"%>
  <% end %>
 </div>
- 
+ </div>   
+ <%end%>

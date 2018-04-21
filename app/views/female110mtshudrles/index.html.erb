@@ -5,8 +5,38 @@
       <h4><strong>110 Metros Vallas - Damas </strong></h4>
      &#09;<h5>fecha hora</h5>
      </div>
-</div>
 
+   <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+       <div class="row">
+          <div class="col-xs-12">
+       
+             
+              <!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+    <%= simple_form_for(@female110mtshudrle) do |f| %>
+    <%= f.error_notification %>
+                  <tr>
+                    <th><%= f.input :place,  placeholder: "Lugar",label: false%></th>
+                    <th> <%= f.input :achievement , placeholder: "Marca",label: false%></th>
+                    <th><%= f.input :rail , placeholder: "Pista",label: false%></th>
+                    <th> <%= f.input :number, placeholder: "Número" ,label: false%></th>
+                    <th><%= f.input :athlete , placeholder: "Atleta",label: false%></th>
+                    <th><%= f.input :an , placeholder: "A.N.",label: false%></th>
+                    <th><%= f.input :club , placeholder: "Club",label: false%></th>
+                    <th> <%= f.input :region, placeholder: "Región",label: false%></th>
+                    <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
+                  </tr>
+                  <%end%>
+                         </table>
+              </div>
+              <!-- /.box-body -->
+           
+            <!-- /.box -->
+          </div>
+        </div>
+  <%end%>
+</div>
 <%= content_tag :table, role: :datatable, data: { url: female110mtshudrles_path(format: :json)} do %>
   <thead>
     <tr>
@@ -27,6 +57,7 @@
   </tbody>
 <% end %>
 
+ <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
  
 <script type="application/javascript">
 $(document).ready(function() {
@@ -48,3 +79,5 @@ function bestInPlace()
 <%=submit_tag "Importar"%>
  <% end %>
 </div>
+</div>   
+ <%end%>

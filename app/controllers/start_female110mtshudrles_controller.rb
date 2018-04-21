@@ -5,6 +5,7 @@ class StartFemale110mtshudrlesController < ApplicationController
   # GET /start_female110mtshudrles.json
  def index
      respond_to do |format|
+       @start_female110mtshudrle = StartFemale110mtshudrle.new
      format.html
       format.json { render json: StartFemale110mtshudrlesDatatable.new(view_context) }
       format.xlsx
@@ -32,7 +33,7 @@ end
 
     respond_to do |format|
       if @start_female110mtshudrle.save
-        format.html { redirect_to @start_female110mtshudrle, notice: 'Start female110mtshudrle was successfully created.' }
+        format.html { redirect_to action:index, notice: 'Start female110mtshudrle was successfully created.' }
         format.json { render :show, status: :created, location: @start_female110mtshudrle }
       else
         format.html { render :new }

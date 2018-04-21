@@ -5,8 +5,8 @@
         <h4><strong>Lanzamiento Disco - Damas - Final</strong></h4>
      &#09;<h5>14 abr.2018; 11:30 horas</h5>
      </div>
+ 
 </div>
-
 <%= content_tag :table, role: :datatable, data: { url: female_discus_throws_path(format: :json)} do %>
   <thead>
     <tr>
@@ -31,7 +31,6 @@
  <tbody onmouseover="bestInPlace();">
   </tbody>
 <% end %>
-<%= link_to 'New Discipline Detail', new_female_discus_throw_path %>
  
 <script type="application/javascript">
 $(document).ready(function() {
@@ -53,3 +52,4 @@ function bestInPlace()
 <%=submit_tag "Importar"%>
  <% end %>
 </div>  
+ 

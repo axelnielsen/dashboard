@@ -5,6 +5,7 @@ class StartMaleThrowingDiscsController < ApplicationController
   # GET /start_male_throwing_discs.json
  def index
      respond_to do |format|
+       @start_male_throwing_disc = StartMaleThrowingDisc.new
      format.html
       format.json { render json: StartMaleThrowingDiscsDatatable.new(view_context) }
       format.xlsx
@@ -37,7 +38,7 @@ end
 
     respond_to do |format|
       if @start_male_throwing_disc.save
-        format.html { redirect_to @start_male_throwing_disc, notice: 'Start male throwing disc was successfully created.' }
+        format.html { redirect_to action:index, notice: 'Start male throwing disc was successfully created.' }
         format.json { render :show, status: :created, location: @start_male_throwing_disc }
       else
         format.html { render :new }
