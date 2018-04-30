@@ -11,33 +11,7 @@
           <div class="col-xs-12">
        
              
-              <!-- /.box-header -->
-              <div class="box-body table-responsive no-padding">
-                <table class="table table-hover">
-    <%= simple_form_for(@female_javeline) do |f| %>
-    <%= f.error_notification %>
-                  <tr>
-                    <th><%= f.input :place,  placeholder: "Lugar",label: false%></th>
-                    <th> <%= f.input :achievement , placeholder: "Marca",label: false%></th>
-                    <th><%= f.input :rail , placeholder: "Pista",label: false%></th>
-                    <th> <%= f.input :number, placeholder: "Número" ,label: false%></th>
-                    <th><%= f.input :athlete , placeholder: "Atleta",label: false%></th>
-                    <th><%= f.input :an , placeholder: "A.N.",label: false%></th>
-                    <th><%= f.input :club , placeholder: "Club",label: false%></th>
-                    <th> <%= f.input :region, placeholder: "Región",label: false%></th>
-                    <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
-                  </tr>
-                  <%end%>
-                         </table>
-              </div>
-              <!-- /.box-body -->
-           
-            <!-- /.box -->
-          </div>
-        </div>
-  <%end%>
-</div>
-
+         
 <%= content_tag :table, role: :datatable, data: { url: female_javelines_path(format: :json)} do %>
   <thead>
     <tr>

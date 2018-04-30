@@ -13,7 +13,7 @@ class Female100mtsController < ApplicationController
 end
 
 def import
-StartFemale100mt.import(params[:file])
+Female100mt.import(params[:file])
 redirect_to female100mts_url, notice: "Importado correctamente"
 end
   # GET /female100mts/1

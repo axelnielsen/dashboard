@@ -5,7 +5,7 @@ class Male100mtsDatatable < ApplicationDatatable
    def data
    
     male100mts.map do |male100mt|
-      [  best_in_place(male100mt, :an),
+      [ best_in_place(male100mt, :an),
         best_in_place(male100mt, :place),
         best_in_place(male100mt, :achievement),
         best_in_place(male100mt, :rail),
@@ -46,7 +46,7 @@ class Male100mtsDatatable < ApplicationDatatable
   end
 
   def columns
-    %w( place achievement rail number athlete an club region country male100mtsHead_id)
+ %w( an place achievement rail  athlete  club region country male100mtsHead_id)
   end
 
 end

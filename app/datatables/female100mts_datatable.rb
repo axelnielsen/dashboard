@@ -6,14 +6,12 @@ class Female100mtsDatatable < ApplicationDatatable
    
     female100mts.map do |female100mt|
       [ 
-         best_in_place(female100mt, :an),
+     best_in_place(female100mt, :an),
         best_in_place(female100mt, :place),
-         best_in_place(female100mt, :athlete),
         best_in_place(female100mt, :achievement),
         best_in_place(female100mt, :rail),
-       
-       
-       
+        best_in_place(female100mt, :athlete),
+  
         best_in_place(female100mt, :club),
         best_in_place(female100mt, :region),
    
@@ -50,7 +48,7 @@ class Female100mtsDatatable < ApplicationDatatable
   end
 
   def columns
-    %w( place achievement rail number athlete an club region country female100mtsHead_id)
-  end
+ %w(  an place achievement rail  athlete  club region country female100mtsHead_id)
+ end
 
 end

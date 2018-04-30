@@ -38,7 +38,7 @@ end
 
     respond_to do |format|
       if @male3000mt.save
-        format.html { redirect_to @action:index, notice: 'Male3000mt was successfully created.' }
+        format.html { redirect_to action:index, notice: 'Male3000mt was successfully created.' }
         format.json { render :show, status: :created, location: @male3000mt }
       else
         format.html { render :new }

@@ -56,13 +56,6 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "clubs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "name"
-    t.integer "region_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "coaches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "names"
     t.string "surnames"
@@ -1066,13 +1059,6 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.string "cellPhone"
     t.string "mail"
     t.integer "idLevel"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "regional_asociations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "name"
-    t.integer "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

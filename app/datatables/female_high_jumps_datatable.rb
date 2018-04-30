@@ -7,10 +7,24 @@ class FemaleHighJumpsDatatable < ApplicationDatatable
     female_high_jumps.map do |female_high_jump|
       [ 
         
-        best_in_place(female_high_jump, :championship_id),
-        best_in_place(female_high_jump, :fecha),
-        best_in_place(female_high_jump, :hora)
-       ]
+ best_in_place(female_high_jump, :number),
+        best_in_place(female_high_jump, :name),
+        best_in_place(female_high_jump, :club),
+        best_in_place(female_high_jump, :country),
+        best_in_place(female_high_jump, :first),
+        best_in_place(female_high_jump, :vvFirst),
+        best_in_place(female_high_jump, :seconnd),
+        best_in_place(female_high_jump, :third),
+        best_in_place(female_high_jump, :vvThird),
+        best_in_place(female_high_jump, :op),
+        best_in_place(female_high_jump, :fourth),
+        best_in_place(female_high_jump, :vvFourth),
+        best_in_place(female_high_jump, :fift),
+        best_in_place(female_high_jump, :vvFifth),
+        best_in_place(female_high_jump, :sixth),
+         best_in_place(female_high_jump, :vvSixth),
+          best_in_place(female_high_jump, :achievement),
+           best_in_place(female_high_jump, :place)       ]
      end
   end
  

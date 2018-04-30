@@ -3,7 +3,7 @@
 <div class="col-md-12">
 <div class="callout callout-info">
         <h4><strong>100 mt planos - Varones </strong></h4>
-     &#09;<h5></h5>
+     &#09;<h5>Viento -0.3</h5>
      </div>
 
    <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
@@ -43,7 +43,7 @@
 <%= content_tag :table, role: :datatable, data: { url: male100mts_path(format: :json)} do %>
   <thead>
     <tr>
-         <th>Serie</th>
+  <th>Serie</th>
       <th>Lugar</th>
       <th>Marca</th>
       <th>Pista</th>

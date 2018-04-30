@@ -14,7 +14,7 @@ end
 
 def import
 Male100mt.import(params[:file])
-redirect_to start_male100mts_url, notice: "Importado correctamente"
+redirect_to male100mts_url, notice: "Importado correctamente"
 end
 
   # GET /male100mts/1
