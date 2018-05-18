@@ -6,7 +6,7 @@ class SeriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get series_index_url
+    get series_url
     assert_response :success
   end
 
@@ -16,11 +16,11 @@ class SeriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create series" do
-    assert_difference('Series.count') do
-      post series_index_url, params: { series: { idDisciplineChampionship: @series.idDisciplineChampionship, name: @series.name } }
+    assert_difference('Serie.count') do
+      post series_url, params: { series: { serie: @series.serie } }
     end
 
-    assert_redirected_to series_url(Series.last)
+    assert_redirected_to series_url(Serie.last)
   end
 
   test "should show series" do
@@ -34,15 +34,15 @@ class SeriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update series" do
-    patch series_url(@series), params: { series: { idDisciplineChampionship: @series.idDisciplineChampionship, name: @series.name } }
+    patch series_url(@series), params: { series: { serie: @series.serie } }
     assert_redirected_to series_url(@series)
   end
 
   test "should destroy series" do
-    assert_difference('Series.count', -1) do
+    assert_difference('Serie.count', -1) do
       delete series_url(@series)
     end
 
-    assert_redirected_to series_index_url
+    assert_redirected_to series_url
   end
 end

@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421030317) do
+ActiveRecord::Schema.define(version: 20180516222026) do
 
-  create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "names"
     t.string "surnames"
     t.string "sex"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "athleteseries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "athleteseries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "idSerie"
     t.integer "idAthlete"
     t.integer "idStatus"
@@ -38,7 +38,13 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "championships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "championships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "initdate"
     t.datetime "findate"
@@ -48,7 +54,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "lastname"
     t.string "account"
@@ -56,7 +62,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "coaches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "coaches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "names"
     t.string "surnames"
     t.string "sex"
@@ -68,14 +74,28 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "competitions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.time "hour"
+    t.bigint "sport_id"
+    t.bigint "category_id"
+    t.bigint "sex_id"
+    t.bigint "stage_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_competitions_on_category_id"
+    t.index ["sex_id"], name: "index_competitions_on_sex_id"
+    t.index ["sport_id"], name: "index_competitions_on_sport_id"
+    t.index ["stage_id"], name: "index_competitions_on_stage_id"
+  end
+
+  create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "detalles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "detalles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "lugar"
     t.integer "marca"
     t.integer "pista"
@@ -89,34 +109,34 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.string "serie"
   end
 
-  create_table "discipline_championship2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "discipline_championship2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "sex"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "discipline_championships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "discipline_championships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "idChampionship"
     t.integer "idDiscipline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "discipline_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "discipline_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.decimal "value", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "disciplines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "disciplines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "female10000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female10000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -131,7 +151,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female100mthudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female100mthudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -146,7 +166,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -161,7 +181,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female100mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female100mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -169,7 +189,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female100mtshurdles_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female100mtshurdles_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -177,7 +197,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female110mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female110mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -192,7 +212,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female1500mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female1500mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -207,7 +227,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female1500mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female1500mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -215,7 +235,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female20000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female20000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -230,7 +250,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -245,7 +265,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female200mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female200mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -253,7 +273,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female3000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female3000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -268,7 +288,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female3000mtsobstacles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female3000mtsobstacles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -283,7 +303,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -298,7 +318,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female400mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female400mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -306,7 +326,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female4x100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female4x100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -321,7 +341,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female4x400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female4x400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -336,7 +356,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female800mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female800mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -351,7 +371,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female8x50mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female8x50mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -366,7 +386,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female_discus_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female_discus_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -384,7 +404,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female_high_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female_high_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -410,7 +430,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female_javelin_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female_javelin_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -418,7 +438,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female_javelines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female_javelines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -436,7 +456,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female_shot_put_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female_shot_put_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -444,7 +464,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "female_shot_puts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "female_shot_puts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -462,7 +482,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "femalejump_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "femalejump_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -470,7 +490,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "femalesenior200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "femalesenior200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -485,7 +505,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "femalethrowing_disc_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "femalethrowing_disc_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -493,7 +513,13 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "jump_females", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "genders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "gender"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jump_females", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -519,7 +545,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -545,7 +571,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male10000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male10000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -560,7 +586,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male100mthudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male100mthudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -575,7 +601,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -590,7 +616,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male100mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male100mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -598,7 +624,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male100mtshurdles_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male100mtshurdles_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -606,7 +632,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male110mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male110mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -621,7 +647,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male1500mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male1500mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -636,7 +662,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male1500mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male1500mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -644,7 +670,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male20000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male20000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -659,7 +685,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -674,7 +700,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male200mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male200mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -682,7 +708,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male3000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male3000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -697,7 +723,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male3000mtsobstacles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male3000mtsobstacles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -712,7 +738,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male400mthudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male400mthudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -727,7 +753,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -742,7 +768,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male400mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male400mts_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -750,7 +776,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male4x100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male4x100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -765,7 +791,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male4x400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male4x400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -780,7 +806,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male5000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male5000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -795,7 +821,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male800mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male800mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -810,7 +836,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male8x50mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male8x50mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -825,7 +851,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male_discus_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male_discus_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -843,7 +869,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male_hammer_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male_hammer_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -861,7 +887,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male_high_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male_high_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -887,7 +913,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male_javelin_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male_javelin_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -895,7 +921,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male_javelines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male_javelines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -913,7 +939,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male_long_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male_long_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -939,7 +965,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male_pole_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male_pole_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -954,7 +980,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male_shot_put_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male_shot_put_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -962,7 +988,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male_shot_puts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male_shot_puts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -980,7 +1006,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "male_triple_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "male_triple_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -1006,7 +1032,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "malejump_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "malejump_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -1014,7 +1040,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "malesenior200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "malesenior200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1029,7 +1055,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "malethrowing_disc_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "malethrowing_disc_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -1037,20 +1063,20 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "referee_levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "referee_levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "referees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "referees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "names"
     t.string "surnames"
     t.string "sex"
@@ -1063,13 +1089,13 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "regions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "regions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "serie_detalles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "serie_detalles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "lugar"
     t.integer "marca"
     t.integer "pista"
@@ -1082,15 +1108,25 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer "idDisciplineChampionship"
+  create_table "serie_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "championship_id"
   end
 
-  create_table "shot_put_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "series", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "serie"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sexes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "sex"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shot_put_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "championship_id"
     t.date "fecha"
     t.time "hora"
@@ -1098,13 +1134,22 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "sports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female10000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "stages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date "fecha"
+    t.string "name"
+    t.bigint "championship_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["championship_id"], name: "index_stages_on_championship_id"
+  end
+
+  create_table "start_female10000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1119,7 +1164,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female100mthudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female100mthudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1134,7 +1179,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1149,7 +1194,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female110mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female110mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1164,7 +1209,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female1500mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female1500mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1179,7 +1224,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female20000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female20000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1194,7 +1239,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1209,7 +1254,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female3000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female3000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1224,7 +1269,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female3000mtsobstacles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female3000mtsobstacles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1239,7 +1284,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1254,7 +1299,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female400mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female400mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1269,7 +1314,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female4x100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female4x100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1284,7 +1329,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female4x400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female4x400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1299,7 +1344,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female5000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female5000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1314,7 +1359,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female800mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female800mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1329,7 +1374,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female8x50mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female8x50mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1344,7 +1389,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female_discus_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female_discus_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1359,7 +1404,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female_hammer_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female_hammer_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1374,7 +1419,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female_high_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female_high_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1389,7 +1434,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female_javelins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female_javelins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1404,7 +1449,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1419,7 +1464,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female_long_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female_long_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1434,7 +1479,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female_pole_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female_pole_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1449,7 +1494,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female_senior200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female_senior200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1464,7 +1509,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female_shot_puts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female_shot_puts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1479,7 +1524,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_female_triple_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_female_triple_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1494,7 +1539,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male10000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male10000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1509,7 +1554,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male100mthudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male100mthudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1524,7 +1569,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1539,7 +1584,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male110mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male110mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1554,7 +1599,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male1500mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male1500mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1569,7 +1614,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male20000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male20000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1584,7 +1629,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1599,7 +1644,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male3000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male3000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1614,7 +1659,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male3000mtsobstacles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male3000mtsobstacles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1629,7 +1674,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1644,7 +1689,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male400mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male400mtshudrles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1659,7 +1704,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male4x100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male4x100mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1674,7 +1719,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male4x400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male4x400mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1689,7 +1734,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male5000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male5000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1704,7 +1749,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male800mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male800mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1719,7 +1764,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male8x50mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male8x50mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1734,7 +1779,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male_discus_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male_discus_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1749,7 +1794,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male_hammer_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male_hammer_throws", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1764,7 +1809,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male_high_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male_high_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1779,7 +1824,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male_javelins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male_javelins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1794,7 +1839,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male_long_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male_long_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1809,7 +1854,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male_pole_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male_pole_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1824,7 +1869,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male_senior200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male_senior200mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1839,7 +1884,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male_shot_puts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male_shot_puts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1854,7 +1899,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male_throwing_discs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male_throwing_discs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1869,7 +1914,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "start_male_triple_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "start_male_triple_jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
     t.integer "rail"
@@ -1884,7 +1929,7 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "throwings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "throwings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
     t.string "an"
@@ -1904,7 +1949,33 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "track_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date "fecha"
+    t.time "hora"
+    t.string "gender"
+    t.integer "trackSerieId"
+    t.integer "sportId"
+    t.integer "categoryId"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "type"
+  end
+
+  create_table "tracks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "trackHeadId"
+    t.integer "place"
+    t.string "achievement"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "rail"
+    t.time "bestAchievement"
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -1921,4 +1992,9 @@ ActiveRecord::Schema.define(version: 20180421030317) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "competitions", "categories"
+  add_foreign_key "competitions", "sexes"
+  add_foreign_key "competitions", "sports"
+  add_foreign_key "competitions", "stages"
+  add_foreign_key "stages", "championships"
 end

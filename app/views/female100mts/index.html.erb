@@ -48,7 +48,7 @@
 
 
 
-<%= content_tag :table, role: :datatable, data: { url: female100mts_path(format: :json)} do %>
+<%= content_tag :table, role: :datatable ,:class => "table-striped table-bordered display compact",  data: { url: female100mts_path(format: :json)} do %>
 
  <thead>
     <tr>
@@ -80,6 +80,7 @@
  <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
  
 <script type="application/javascript">
+
 $(document).ready(function() {
 jQuery(".best_in_place").best_in_place();
 });

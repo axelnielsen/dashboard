@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @track_head.fecha %>
+</p>
+
+<p>
+  <strong>Hora:</strong>
+  <%= @track_head.hora %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @track_head.gender %>
+</p>
+
+<p>
+  <strong>Trackserieid:</strong>
+  <%= @track_head.trackSerieId %>
+</p>
+
+<p>
+  <strong>Sportid:</strong>
+  <%= @track_head.sportId %>
+</p>
+
+<p>
+  <strong>Categoryid:</strong>
+  <%= @track_head.categoryId %>
+</p>
+
+<%= link_to 'Edit', edit_track_head_path(@track_head) %> |
+<%= link_to 'Back', track_heads_path %>

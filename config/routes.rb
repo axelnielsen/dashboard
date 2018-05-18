@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
   
+  resources :sexes
+  resources :genders
+  resources :competitions
+  resources :categories
+  resources :stages
+  resources :track_heads
+  resources :tracks
+  resources :serie_types
   resources :male_discus_throws
   resources :female4x400mts
   resources :female3000mts

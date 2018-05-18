@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trackHeadId: 1
+  place: 1
+  achievement: MyString
+  athlete: MyString
+  an: MyString
+  club: MyString
+  region: MyString
+
+two:
+  trackHeadId: 1
+  place: 1
+  achievement: MyString
+  athlete: MyString
+  an: MyString
+  club: MyString
+  region: MyString

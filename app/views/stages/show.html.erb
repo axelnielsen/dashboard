@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @stage.fecha %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @stage.name %>
+</p>
+
+<p>
+  <strong>Championship:</strong>
+  <%= @stage.championship %>
+</p>
+<% if @stage.competitions.any? %>
+<% @stage.competitions.each do |competition| %>
+          <tr>
+            <td data-label="HORA"><%=competition.hour%></td>
+            <td data-label="PRUEBA"><%=competition.sport%></td>
+          <td data-label="FINAL"><%=competition.category%></td>
+          <td data-label="CATEGORÍA"><%=competition.sex%></td>
+          <td><%= link_to "RESULTADOS", male20000mts_path, class: "btn btn-warning" %></td>
+          <td><%= link_to "STARTLIST", start_male20000mts_path, class: "btn btn-primary" %></td>
+          </tr>
+
+<% end%>
+<% end%>
+<%= link_to 'Edit', edit_stage_path(@stage) %> |
+<%= link_to 'Back', stages_path %>

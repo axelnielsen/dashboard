@@ -4,7 +4,7 @@ class SeriesController < ApplicationController
   # GET /series
   # GET /series.json
   def index
-    @series = Series.all
+    @series = Serie.all
   end
 
   # GET /series/1
@@ -14,7 +14,7 @@ class SeriesController < ApplicationController
 
   # GET /series/new
   def new
-    @series = Series.new
+    @series = Serie.new
   end
 
   # GET /series/1/edit
@@ -24,13 +24,11 @@ class SeriesController < ApplicationController
   # POST /series
   # POST /series.json
   def create
-   @champinship = Championship.find(params[:championship_id])
-    @serie = @champinship.series.create(series_params)
-    
+    @series = Serie.new(series_params)
 
     respond_to do |format|
       if @series.save
-        format.html { redirect_to @series, notice: 'Series was successfully created.' }
+        format.html { redirect_to @series, notice: 'Serie was successfully created.' }
         format.json { render :show, status: :created, location: @series }
       else
         format.html { render :new }
@@ -44,7 +42,7 @@ class SeriesController < ApplicationController
   def update
     respond_to do |format|
       if @series.update(series_params)
-        format.html { redirect_to @series, notice: 'Series was successfully updated.' }
+        format.html { redirect_to @series, notice: 'Serie was successfully updated.' }
         format.json { render :show, status: :ok, location: @series }
       else
         format.html { render :edit }
@@ -58,7 +56,7 @@ class SeriesController < ApplicationController
   def destroy
     @series.destroy
     respond_to do |format|
-      format.html { redirect_to series_index_url, notice: 'Series was successfully destroyed.' }
+      format.html { redirect_to series_url, notice: 'Serie was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,11 +64,11 @@ class SeriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_series
-      @series = Series.find(params[:id])
+      @series = Serie.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def series_params
-      params.require(:series).permit(:idDisciplineChampionship, :name, :championship_id)
+      params.require(:series).permit(:serie)
     end
 end

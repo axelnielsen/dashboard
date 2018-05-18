@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hour: 2018-05-16 18:14:53
+  sport: one
+  category: one
+  sex: one
+  stage: one
+
+two:
+  hour: 2018-05-16 18:14:53
+  sport: two
+  category: two
+  sex: two
+  stage: two

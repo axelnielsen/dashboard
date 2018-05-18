@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Serie Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @serie_types.each do |serie_type| %>
+      <tr>
+        <td><%= serie_type.name %></td>
+        <td><%= link_to 'Show', serie_type %></td>
+        <td><%= link_to 'Edit', edit_serie_type_path(serie_type) %></td>
+        <td><%= link_to 'Destroy', serie_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Serie Type', new_serie_type_path %>
