@@ -36,11 +36,11 @@
         <tbody>
           <% @championship.competitions.where(:stage => stage.id).each do |competition| %>
                     <tr>
-            <td data-label="HORA"> <%=competition.hour%></td>
+            <td data-label="HORA"> <%=competition.hour.strftime('%H:%M')%></td>
             <td data-label="PRUEBA"> <%=competition.sport.name%></td>
           <td data-label="FINAL"> <%=competition.category.name%></td>
           <td data-label="CATEGORÍA"> <%=competition.sex.sex%></td>
-          <td data-label="RESULTADOS"><%= link_to "RESULTADOS", male4x400mts_path, class: "btn btn-warning" %></td>
+          <td data-label="RESULTADOS"><%= link_to "RESULTADOS", track_head2s_path(:competition_id=>competition.id), class: "btn btn-warning" %></td>
           <td><%= link_to "STARTLIST", start_male4x400mts_path, class: "btn btn-primary" %></td>
           </tr>
   

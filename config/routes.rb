@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   
+  resources :track2s
+  resources :track_head2s
   resources :sexes
   resources :genders
   resources :competitions

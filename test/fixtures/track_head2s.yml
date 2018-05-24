@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha: 2018-05-18
+  hora: 2018-05-18 19:10:24
+  sex: one
+  competition: one
+  sport: one
+  category: one
+
+two:
+  fecha: 2018-05-18
+  hora: 2018-05-18 19:10:24
+  sex: two
+  competition: two
+  sport: two
+  category: two

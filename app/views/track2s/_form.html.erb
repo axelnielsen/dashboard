@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@track2) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :track_head2 %>
+    <%= f.input :place %>
+    <%= f.input :achievement %>
+    <%= f.input :athlete %>
+    <%= f.input :an %>
+    <%= f.input :club %>
+    <%= f.input :region %>
+    <%= f.input :pais %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

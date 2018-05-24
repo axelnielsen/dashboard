@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Track Head2s</h1>
+ <% @track_head2s.each do |track_head2| %>
+<table>
+  <thead>
+    <tr>
+      <th>Lugar</th>
+      <th>Marca</th>
+      <th>Pista</th>
+      <th>Atleta</th>
+      <th>Club</th>
+      <th>Región</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+   
+  
+  
+    <%  track_head2.track2s.where(:track_head2_id => track_head2.id).each do |track2| %>
+   <%= track2.athlete %>
+      <tr>
+        <td><%= track2.place %></td>
+        <td><%= track2.achievement %></td>
+        <td><%= track2.rail %></td>
+        <td><%= track2.athlete %></td>
+        <td><%= track2.club %></td>
+        <td><%= track2.region %></td>
+        <td><%= link_to 'Show', track_head2 %></td>
+        <td><%= link_to 'Edit', edit_track_head2_path(track_head2) %></td>
+        <td><%= link_to 'Destroy', track_head2, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    
+  </tbody>
+</table>
+<%end%>
+
+<br>
+
+<%= link_to 'New Track Head2', new_track_head2_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516222026) do
+ActiveRecord::Schema.define(version: 20180524014126) do
 
   create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "names"
@@ -1949,6 +1949,37 @@ ActiveRecord::Schema.define(version: 20180516222026) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "track2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "track_head2_id"
+    t.integer "place"
+    t.string "achievement"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "pais"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "rail"
+    t.index ["track_head2_id"], name: "index_track2s_on_track_head2_id"
+  end
+
+  create_table "track_head2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date "fecha"
+    t.time "hora"
+    t.bigint "sex_id"
+    t.bigint "competition_id"
+    t.bigint "sport_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "wind"
+    t.index ["category_id"], name: "index_track_head2s_on_category_id"
+    t.index ["competition_id"], name: "index_track_head2s_on_competition_id"
+    t.index ["sex_id"], name: "index_track_head2s_on_sex_id"
+    t.index ["sport_id"], name: "index_track_head2s_on_sport_id"
+  end
+
   create_table "track_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.date "fecha"
     t.time "hora"
@@ -1997,4 +2028,9 @@ ActiveRecord::Schema.define(version: 20180516222026) do
   add_foreign_key "competitions", "sports"
   add_foreign_key "competitions", "stages"
   add_foreign_key "stages", "championships"
+  add_foreign_key "track2s", "track_head2s"
+  add_foreign_key "track_head2s", "categories"
+  add_foreign_key "track_head2s", "competitions"
+  add_foreign_key "track_head2s", "sexes"
+  add_foreign_key "track_head2s", "sports"
 end

@@ -4,7 +4,12 @@ class TrackHeadsController < ApplicationController
   # GET /track_heads
   # GET /track_heads.json
   def index
-    @track_heads = TrackHead.all
+   
+     if params[:sport_id]
+      @track_heads = TrackHead.where(sportId: params[:sport_id]).entries
+    else
+       @track_heads = TrackHead.all
+    end
   end
 
   # GET /track_heads/1

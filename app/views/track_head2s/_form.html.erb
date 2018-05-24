@@ -1,0 +1,17 @@
+
+<%= simple_form_for(@track_head2) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :fecha %>
+    <%= f.input :hora %>
+    <%= f.association :sex %>
+    <%= f.association :competition %>
+    <%= f.association :sport %>
+    <%= f.association :category %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

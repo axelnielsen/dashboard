@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Track2s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Track head2</th>
+      <th>Place</th>
+      <th>Achievement</th>
+      <th>Athlete</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>Pais</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @track2s.each do |track2| %>
+      <tr>
+        <td><%= track2.track_head2 %></td>
+        <td><%= track2.place %></td>
+        <td><%= track2.achievement %></td>
+        <td><%= track2.athlete %></td>
+        <td><%= track2.an %></td>
+        <td><%= track2.club %></td>
+        <td><%= track2.region %></td>
+        <td><%= track2.pais %></td>
+        <td><%= link_to 'Show', track2 %></td>
+        <td><%= link_to 'Edit', edit_track2_path(track2) %></td>
+        <td><%= link_to 'Destroy', track2, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Track2', new_track2_path %>
