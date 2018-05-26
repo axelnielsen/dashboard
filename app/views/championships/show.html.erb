@@ -41,7 +41,7 @@
           <td data-label="FINAL"> <%=competition.category.name%></td>
           <td data-label="CATEGORÍA"> <%=competition.sex.sex%></td>
           <td data-label="RESULTADOS"><%= link_to "RESULTADOS", track_head2s_path(:competition_id=>competition.id), class: "btn btn-warning" %></td>
-          <td><%= link_to "STARTLIST", start_male4x400mts_path, class: "btn btn-primary" %></td>
+          <td><%= link_to "STARTLIST", start_heads_path(:competition_id=>competition.id), class: "btn btn-primary" %></td>
           </tr>
   
    <%end%>

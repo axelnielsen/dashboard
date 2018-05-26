@@ -4,7 +4,7 @@ class Track2sController < ApplicationController
   # GET /track2s
   # GET /track2s.json
   def index
-    @track2s = Track2.all
+       @track2s = Track2.all
   end
 
   # GET /track2s/1
@@ -17,6 +17,11 @@ class Track2sController < ApplicationController
     @track2 = Track2.new
   end
 
+def import
+     Track2.import(params[:file], params[:id])
+    redirect_back(fallback_location: root_path, notice: 'Importado correctamente' )
+end
+
   # GET /track2s/1/edit
   def edit
   end
@@ -28,7 +33,7 @@ class Track2sController < ApplicationController
 
     respond_to do |format|
       if @track2.save
-        format.html { redirect_to @track2, notice: 'Track2 was successfully created.' }
+        format.html { redirect_back(fallback_location: root_path, notice: 'Track2 was successfully created.' )}
         format.json { render :show, status: :created, location: @track2 }
       else
         format.html { render :new }
@@ -56,7 +61,7 @@ class Track2sController < ApplicationController
   def destroy
     @track2.destroy
     respond_to do |format|
-      format.html { redirect_to track2s_url, notice: 'Track2 was successfully destroyed.' }
+      format.html {redirect_back(fallback_location: root_path, notice: 'Eliminado exitosamente' )}
       format.json { head :no_content }
     end
   end
@@ -69,6 +74,6 @@ class Track2sController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def track2_params
-      params.require(:track2).permit(:track_head2_id, :place, :achievement, :athlete, :an, :club, :region, :pais)
+      params.require(:track2).permit(:track_head2_id, :place, :achievement, :athlete, :an, :club, :region, :pais, :rail)
     end
 end

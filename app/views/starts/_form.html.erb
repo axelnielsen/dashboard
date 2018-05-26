@@ -1,16 +1,15 @@
 
-<%= simple_form_for(@track_head2) do |f| %>
+<%= simple_form_for(@start) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :fecha %>
     <%= f.input :hora %>
-    <%= f.input :serie %>
-     <%= f.input :wind %>
-    <%= f.association :sex,  label_method: :sex %>
-    <%= f.association :competition ,label_method: :stage_id%>
+    <%= f.association :sex %>
+    <%= f.association :competition %>
     <%= f.association :sport %>
     <%= f.association :category %>
+    <%= f.input :serie %>
   </div>
 
   <div class="form-actions">

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @start.fecha %>
+</p>
+
+<p>
+  <strong>Hora:</strong>
+  <%= @start.hora %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @start.sex %>
+</p>
+
+<p>
+  <strong>Competition:</strong>
+  <%= @start.competition %>
+</p>
+
+<p>
+  <strong>Sport:</strong>
+  <%= @start.sport %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @start.category %>
+</p>
+
+<p>
+  <strong>Serie:</strong>
+  <%= @start.serie %>
+</p>
+
+<%= link_to 'Edit', edit_start_path(@start) %> |
+<%= link_to 'Back', starts_path %>

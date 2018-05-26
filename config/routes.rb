@@ -1,8 +1,22 @@
 Rails.application.routes.draw do
 
   
-  resources :track2s
-  resources :track_head2s
+  resources :start2s
+ 
+  resources :start_heads do
+    resources :start2s 
+  end
+  resources :starts
+  resources :track2s do
+  collection { post :import}
+  end
+
+
+  resources :track_head2s do
+    resources :track2s 
+  end
+
+
   resources :sexes
   resources :genders
   resources :competitions
@@ -483,6 +497,6 @@ end
   collection { post :import}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-root to: 'results#index'
+root :to => "championships#show", :id => '1'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

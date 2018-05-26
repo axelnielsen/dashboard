@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_head: one
+  athlete: MyString
+  rail: MyString
+  an: MyString
+  club: MyString
+  region: MyString
+  bestAchievement: MyString
+
+two:
+  start_head: two
+  athlete: MyString
+  rail: MyString
+  an: MyString
+  club: MyString
+  region: MyString
+  bestAchievement: MyString

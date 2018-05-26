@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Start2s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start head</th>
+      <th>Athlete</th>
+      <th>Rail</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>Bestachievement</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @start2s.each do |start2| %>
+      <tr>
+        <td><%= start2.start_head %></td>
+        <td><%= start2.athlete %></td>
+        <td><%= start2.rail %></td>
+        <td><%= start2.an %></td>
+        <td><%= start2.club %></td>
+        <td><%= start2.region %></td>
+        <td><%= start2.bestAchievement %></td>
+        <td><%= link_to 'Show', start2 %></td>
+        <td><%= link_to 'Edit', edit_start2_path(start2) %></td>
+        <td><%= link_to 'Destroy', start2, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Start2', new_start2_path %>

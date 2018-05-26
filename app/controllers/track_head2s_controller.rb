@@ -32,7 +32,7 @@ class TrackHead2sController < ApplicationController
 
     respond_to do |format|
       if @track_head2.save
-        format.html { redirect_to @track_head2, notice: 'Track head2 was successfully created.' }
+        format.html { redirect_back(fallback_location: root_path, notice: 'Eliminado exitosamente' )}
         format.json { render :show, status: :created, location: @track_head2 }
       else
         format.html { render :new }
@@ -73,6 +73,6 @@ class TrackHead2sController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def track_head2_params
-      params.require(:track_head2).permit(:fecha, :hora, :sex_id, :competition_id, :sport_id, :category_id)
+      params.require(:track_head2).permit(:fecha, :hora, :sex_id, :competition_id, :sport_id, :category_id, :serie, :wind)
     end
 end

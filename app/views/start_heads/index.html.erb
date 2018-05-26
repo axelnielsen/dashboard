@@ -7,25 +7,20 @@ sex_id=""
 sport_id=""
 category_id=""
 %>
-<% @track_head2s.each do |track_head2| %>
+<% @start_heads.each do |start_head| %>
 <%
 
-competition_id=track_head2.competition_id
-sex_id=track_head2.sex_id
-sport_id=track_head2.sport_id
-category_id=track_head2.category_id
+competition_id=start_head.competition_id
+sex_id=start_head.sex_id
+sport_id=start_head.sport_id
+category_id=start_head.category_id
 
 %>
   <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header table-info">
-              <h3 class="box-title">Serie <%=track_head2.serie%> Viento:
-              <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(track_head2, :wind) %>
-              <%else%>
-              <%=track_head2.wind%>
-                <%end%>
-
+              <h3 class="box-title">Serie <%=start_head.serie%> 
               </h3>
 
               <div class="box-tools">
@@ -44,17 +39,17 @@ category_id=track_head2.category_id
               <!-- /.box-header -->
               <div class="box-body table-responsive no-padding">
                 <table class="table table-hover">
-    <%= simple_form_for :track2, :url => track2s_path, :method => :post  do |f| %>
+    <%= simple_form_for :start2, :url => start2s_path, :method => :post  do |f| %>
     <%= f.error_notification %>
                   <tr>
-                    <th><%= f.input :track_head2_id, :as => :hidden, :input_html => { :value => track_head2.id  }%></th>
-                     <th> <%= f.input :place, placeholder: "Lugar",label: false%></th>
-                    <th><%= f.input :achievement,  placeholder: "Marca",label: false%></th>
-                    <th> <%= f.input :rail , placeholder: "Pista",label: false%></th>
-                    <th><%= f.input :athlete , placeholder: "Atleta",label: false%></th>
-                   
+                    <th><%= f.input :start_head_id, :as => :hidden, :input_html => { :value => start_head.id  }%></th>
+                     <th> <%= f.input :rail, placeholder: "Pista",label: false%></th>
+                    <th><%= f.input :athlete,  placeholder: "Atleta",label: false%></th>
+                    <th> <%= f.input :an , placeholder: "A.N.",label: false%></th>
                     <th><%= f.input :club , placeholder: "Club",label: false%></th>
+                   
                     <th><%= f.input :region , placeholder: "Región",label: false%></th>
+                    <th><%= f.input :bestAchievement , placeholder: "Mejor Marca",label: false%></th>
                     
                     <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
                   </tr>
@@ -78,31 +73,30 @@ category_id=track_head2.category_id
             <div class="box-body table-responsive no-padding table-striped">
               <table class="table table-hover">
                 <tbody><tr class="table-info">
-                  <th>LUGAR</th>
-                  <th>MARCA</th>
                   <th>PISTA</th>
                   <th>ATLETA</th>
                   <th>CLUB</th>
                   <th>REGIÓN</th>
+                  <th>MEJOR MARCA</th>
                    <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
                    <th>ELIMINAR</th>
                    <%end%>
                 </tr>
-                  <%  track_head2.track2s.where(:track_head2_id => track_head2.id).order(achievement: :asc).each do |track2| %>
+                  <%  start_head.start2s.where(:start_head_id => start_head.id).order(rail: :asc).each do |start2| %>
                
      
         <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
   <tr>
 
 
-        <td><%= best_in_place(track2, :place) %></td>
-        <td><%= best_in_place(track2, :achievement) %></td>
-        <td><%= best_in_place(track2, :rail) %></td>
-        <td><%= best_in_place(track2, :athlete) %></td>
-        <td><%= best_in_place(track2, :club) %></td>
-        <td><%= best_in_place(track2, :region) %></td>
+
+        <td><%= best_in_place(start2, :rail) %></td>
+        <td><%= best_in_place(start2, :athlete) %></td>
+        <td><%= best_in_place(start2, :club) %></td>
+        <td><%= best_in_place(start2, :region) %></td>
+        <td><%= best_in_place(start2, :bestAchievement) %></td>
          <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
-        <td><%= link_to track2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
+        <td><%= link_to start2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
         <% end %> 
         <%end%>
       </tr>
@@ -110,12 +104,12 @@ category_id=track_head2.category_id
  <%   else %>
 
 <tr>
-        <td><%= track2.place%></td>
-        <td><%= track2.achievement %></td>
-        <td><%= track2.rail %></td>
-        <td><%=track2.athlete %></td>
-        <td><%= track2.club%></td>
-        <td><%= track2.region %></td>
+
+        <td><%= start2.rail %></td>
+        <td><%=start2.athlete %></td>
+        <td><%= start2.club%></td>
+        <td><%= start2.region %></td>
+        <td><%= start2.bestachievement %></td>
       </tr>
 
 
@@ -124,15 +118,7 @@ category_id=track_head2.category_id
     <% end %>
               </tbody></table>
             </div>
- <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
-    <div class="box-header callout-success">
-      <h4><strong>IMPORTAR</strong></h4>
-     </div>
-   <%=form_tag import_track2s_path("id"=>track_head2.id), multipart: true do%>
-<%=file_field_tag :file%>
-<%=submit_tag "Importar"%>
- <% end %>
-<%end%>
+ 
 
             <!-- /.box-body -->
           </div>
@@ -163,7 +149,7 @@ category_id=track_head2.category_id
               <div class="box-body table-responsive no-padding">
                 <table class="table table-hover">
                   
-    <%= simple_form_for @track_head2s, :url => track_head2s_path, :method => :post  do |f| %>
+    <%= simple_form_for :start_head, :url => start_heads_path, :method => :post  do |f| %>
     <%= f.error_notification %>
                   <tr>
                      <th><%= f.input :competition_id, :as => :hidden, :input_html => { :value => competition_id  }%></th>
@@ -172,8 +158,7 @@ category_id=track_head2.category_id
                     <th><%= f.input :category_id, :as => :hidden, :input_html => { :value => category_id  }%></th>
                     
                      <th> <%= f.input :serie, placeholder: "Serie N°",label: false%></th>
-                    <th><%= f.input :wind,  placeholder: "Viento",label: false%></th>
-           
+                    
                     
                     <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
                   </tr>
@@ -187,6 +172,8 @@ category_id=track_head2.category_id
         </div>
   <%end%>
 
+
 </div>
+
 
 

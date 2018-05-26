@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180524014126) do
+ActiveRecord::Schema.define(version: 20180526001443) do
 
   create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "names"
@@ -1149,6 +1149,19 @@ ActiveRecord::Schema.define(version: 20180524014126) do
     t.index ["championship_id"], name: "index_stages_on_championship_id"
   end
 
+  create_table "start2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "start_head_id"
+    t.string "athlete"
+    t.string "rail"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "bestAchievement"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["start_head_id"], name: "index_start2s_on_start_head_id"
+  end
+
   create_table "start_female10000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "place"
     t.string "achievement"
@@ -1537,6 +1550,22 @@ ActiveRecord::Schema.define(version: 20180524014126) do
     t.integer "femaletriplejumpStart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "start_heads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date "fecha"
+    t.time "hora"
+    t.bigint "sex_id"
+    t.bigint "competition_id"
+    t.bigint "sport_id"
+    t.bigint "category_id"
+    t.string "serie"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_start_heads_on_category_id"
+    t.index ["competition_id"], name: "index_start_heads_on_competition_id"
+    t.index ["sex_id"], name: "index_start_heads_on_sex_id"
+    t.index ["sport_id"], name: "index_start_heads_on_sport_id"
   end
 
   create_table "start_male10000mts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -1929,6 +1958,22 @@ ActiveRecord::Schema.define(version: 20180524014126) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "starts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date "fecha"
+    t.time "hora"
+    t.bigint "sex_id"
+    t.bigint "competition_id"
+    t.bigint "sport_id"
+    t.bigint "category_id"
+    t.string "serie"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_starts_on_category_id"
+    t.index ["competition_id"], name: "index_starts_on_competition_id"
+    t.index ["sex_id"], name: "index_starts_on_sex_id"
+    t.index ["sport_id"], name: "index_starts_on_sport_id"
+  end
+
   create_table "throwings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
@@ -1974,6 +2019,7 @@ ActiveRecord::Schema.define(version: 20180524014126) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "wind"
+    t.string "serie"
     t.index ["category_id"], name: "index_track_head2s_on_category_id"
     t.index ["competition_id"], name: "index_track_head2s_on_competition_id"
     t.index ["sex_id"], name: "index_track_head2s_on_sex_id"
@@ -2028,6 +2074,15 @@ ActiveRecord::Schema.define(version: 20180524014126) do
   add_foreign_key "competitions", "sports"
   add_foreign_key "competitions", "stages"
   add_foreign_key "stages", "championships"
+  add_foreign_key "start2s", "start_heads"
+  add_foreign_key "start_heads", "categories"
+  add_foreign_key "start_heads", "competitions"
+  add_foreign_key "start_heads", "sexes"
+  add_foreign_key "start_heads", "sports"
+  add_foreign_key "starts", "categories"
+  add_foreign_key "starts", "competitions"
+  add_foreign_key "starts", "sexes"
+  add_foreign_key "starts", "sports"
   add_foreign_key "track2s", "track_head2s"
   add_foreign_key "track_head2s", "categories"
   add_foreign_key "track_head2s", "competitions"

@@ -1,0 +1,18 @@
+
+<%= simple_form_for(@start2) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :start_head %>
+    <%= f.input :athlete %>
+    <%= f.input :rail %>
+    <%= f.input :an %>
+    <%= f.input :club %>
+    <%= f.input :region %>
+    <%= f.input :bestAchievement %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
