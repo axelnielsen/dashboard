@@ -7,7 +7,7 @@ class Throw2 < ApplicationRecord
 		(2..spreadsheet.last_row).each do |i|
 			row = Hash[[header, spreadsheet.row(i)].transpose]
 			throw2= find_by_id(row["id"]) || new
-            throw2.throw2_head2_id=id
+            throw2.throw_head2_id=id
 
 			#user.attributes = row.to_hash.slice(*accepts_nested_attributes_for)
 			throw2.attributes = row.to_hash.slice(*row.to_hash.keys)
