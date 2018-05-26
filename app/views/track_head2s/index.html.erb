@@ -2,10 +2,11 @@
 <p id="notice"><%= notice %></p>
 
 <%
-competition_id=""
-sex_id=""
-sport_id=""
-category_id=""
+competition_id=params[:competition_id]
+
+sex_id=1
+sport_id=1
+category_id=1
 %>
 <% @track_head2s.each do |track_head2| %>
 <%
@@ -20,7 +21,11 @@ category_id=track_head2.category_id
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header table-info">
-              <h3 class="box-title">Serie <%=track_head2.serie%> Viento:
+              <h3 class="box-title">Serie <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(track_head2, :serie) %>
+              <%else%>
+              <%=track_head2.serie%>
+                <%end%>
+ Viento:
               <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(track_head2, :wind) %>
               <%else%>
               <%=track_head2.wind%>
@@ -29,7 +34,7 @@ category_id=track_head2.category_id
               </h3>
 
               <div class="box-tools">
-              </div>
+             </div>
             </div>
 
 
@@ -163,7 +168,7 @@ category_id=track_head2.category_id
               <div class="box-body table-responsive no-padding">
                 <table class="table table-hover">
                   
-    <%= simple_form_for @track_head2s, :url => track_head2s_path, :method => :post  do |f| %>
+    <%= simple_form_for :track_head2, :url => track_head2s_path, :method => :post  do |f| %>
     <%= f.error_notification %>
                   <tr>
                      <th><%= f.input :competition_id, :as => :hidden, :input_html => { :value => competition_id  }%></th>

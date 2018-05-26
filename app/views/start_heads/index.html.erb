@@ -2,12 +2,13 @@
 <p id="notice"><%= notice %></p>
 
 <%
-competition_id=""
-sex_id=""
-sport_id=""
-category_id=""
+competition_id=params[:competition_id]
+sex_id=1
+sport_id=1
+category_id=1
 %>
-<% @start_heads.each do |start_head| %>
+<% @start_heads.where(:competition_id => params[:competition_id]
+).each do |start_head| %>
 <%
 
 competition_id=start_head.competition_id
@@ -20,7 +21,11 @@ category_id=start_head.category_id
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header table-info">
-              <h3 class="box-title">Serie <%=start_head.serie%> 
+              <h3 class="box-title">Serie
+<% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(start_head, :serie) %>
+              <%else%>
+              <%=start_head.serie%>
+                <%end%>
               </h3>
 
               <div class="box-tools">
@@ -75,6 +80,7 @@ category_id=start_head.category_id
                 <tbody><tr class="table-info">
                   <th>PISTA</th>
                   <th>ATLETA</th>
+		  <th>A.N.</th>
                   <th>CLUB</th>
                   <th>REGIÓN</th>
                   <th>MEJOR MARCA</th>
@@ -92,6 +98,8 @@ category_id=start_head.category_id
 
         <td><%= best_in_place(start2, :rail) %></td>
         <td><%= best_in_place(start2, :athlete) %></td>
+	<td><%= best_in_place(start2, :an) %></td>
+	
         <td><%= best_in_place(start2, :club) %></td>
         <td><%= best_in_place(start2, :region) %></td>
         <td><%= best_in_place(start2, :bestAchievement) %></td>
@@ -107,9 +115,10 @@ category_id=start_head.category_id
 
         <td><%= start2.rail %></td>
         <td><%=start2.athlete %></td>
+	<td><%=start2.an %></td>
         <td><%= start2.club%></td>
         <td><%= start2.region %></td>
-        <td><%= start2.bestachievement %></td>
+        <td><%= start2.bestAchievement %></td>
       </tr>
 
 
@@ -132,6 +141,17 @@ category_id=start_head.category_id
     
 <br>
 
+<% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+<script type="application/javascript">
+
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+ </script>
 <div class="box-header table-info">
               <h3 class="box-title">Nueva Serie
              
@@ -140,7 +160,7 @@ category_id=start_head.category_id
               <div class="box-tools">
               </div>
             </div>
-  <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+
        <div class="row">
           <div class="col-xs-12">
        
@@ -171,9 +191,8 @@ category_id=start_head.category_id
           </div>
         </div>
   <%end%>
-
+<%= link_to "VOLVER", root_path(), class: "btn btn-warning" %>
 
 </div>
-
 
 
