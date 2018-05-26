@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526001443) do
+ActiveRecord::Schema.define(version: 20180526104157) do
 
   create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "names"
@@ -519,6 +519,62 @@ ActiveRecord::Schema.define(version: 20180526001443) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "hjump2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "hjump_head2_id"
+    t.string "athlete"
+    t.string "an"
+    t.string "region"
+    t.string "club"
+    t.string "achievement"
+    t.string "place"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hjump_head2_id"], name: "index_hjump2s_on_hjump_head2_id"
+  end
+
+  create_table "hjump_head2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.date "fecha"
+    t.time "hora"
+    t.bigint "sex_id"
+    t.bigint "competition_id"
+    t.bigint "sport_id"
+    t.bigint "category_id"
+    t.string "serie"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_hjump_head2s_on_category_id"
+    t.index ["competition_id"], name: "index_hjump_head2s_on_competition_id"
+    t.index ["sex_id"], name: "index_hjump_head2s_on_sex_id"
+    t.index ["sport_id"], name: "index_hjump_head2s_on_sport_id"
+  end
+
+  create_table "jump2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "jump_head2_id"
+    t.string "athlete"
+    t.string "club"
+    t.string "first"
+    t.string "vvfirst"
+    t.string "second"
+    t.string "vvsecond"
+    t.string "third"
+    t.string "vvthird"
+    t.string "op"
+    t.string "fourth"
+    t.string "vvfourth"
+    t.string "fifth"
+    t.string "vvfifth"
+    t.string "sixth"
+    t.string "vvsixth"
+    t.string "achievement"
+    t.string "place"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "an"
+    t.string "region"
+    t.string "points"
+    t.index ["jump_head2_id"], name: "index_jump2s_on_jump_head2_id"
+  end
+
   create_table "jump_females", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
@@ -543,6 +599,23 @@ ActiveRecord::Schema.define(version: 20180526001443) do
     t.integer "place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "jump_head2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "fecha_date"
+    t.time "hora"
+    t.bigint "sex_id"
+    t.bigint "competition_id"
+    t.bigint "sport_id"
+    t.bigint "category_id"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "serie"
+    t.index ["category_id"], name: "index_jump_head2s_on_category_id"
+    t.index ["competition_id"], name: "index_jump_head2s_on_competition_id"
+    t.index ["sex_id"], name: "index_jump_head2s_on_sex_id"
+    t.index ["sport_id"], name: "index_jump_head2s_on_sport_id"
   end
 
   create_table "jumps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -1974,6 +2047,43 @@ ActiveRecord::Schema.define(version: 20180526001443) do
     t.index ["sport_id"], name: "index_starts_on_sport_id"
   end
 
+  create_table "throw2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "throw_head2_id"
+    t.string "athlete"
+    t.string "an"
+    t.string "club"
+    t.string "region"
+    t.string "first"
+    t.string "second"
+    t.string "third"
+    t.string "op"
+    t.string "fourth"
+    t.string "fifth"
+    t.string "sixth"
+    t.string "achievement"
+    t.string "place"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["throw_head2_id"], name: "index_throw2s_on_throw_head2_id"
+  end
+
+  create_table "throw_head2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "fecha_date"
+    t.time "hora"
+    t.bigint "sex_id"
+    t.bigint "competition_id"
+    t.bigint "sport_id"
+    t.bigint "category_id"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "serie"
+    t.index ["category_id"], name: "index_throw_head2s_on_category_id"
+    t.index ["competition_id"], name: "index_throw_head2s_on_competition_id"
+    t.index ["sex_id"], name: "index_throw_head2s_on_sex_id"
+    t.index ["sport_id"], name: "index_throw_head2s_on_sport_id"
+  end
+
   create_table "throwings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number"
     t.string "name"
@@ -2020,6 +2130,7 @@ ActiveRecord::Schema.define(version: 20180526001443) do
     t.datetime "updated_at", null: false
     t.string "wind"
     t.string "serie"
+    t.string "type"
     t.index ["category_id"], name: "index_track_head2s_on_category_id"
     t.index ["competition_id"], name: "index_track_head2s_on_competition_id"
     t.index ["sex_id"], name: "index_track_head2s_on_sex_id"
@@ -2073,6 +2184,16 @@ ActiveRecord::Schema.define(version: 20180526001443) do
   add_foreign_key "competitions", "sexes"
   add_foreign_key "competitions", "sports"
   add_foreign_key "competitions", "stages"
+  add_foreign_key "hjump2s", "hjump_head2s"
+  add_foreign_key "hjump_head2s", "categories"
+  add_foreign_key "hjump_head2s", "competitions"
+  add_foreign_key "hjump_head2s", "sexes"
+  add_foreign_key "hjump_head2s", "sports"
+  add_foreign_key "jump2s", "jump_head2s"
+  add_foreign_key "jump_head2s", "categories"
+  add_foreign_key "jump_head2s", "competitions"
+  add_foreign_key "jump_head2s", "sexes"
+  add_foreign_key "jump_head2s", "sports"
   add_foreign_key "stages", "championships"
   add_foreign_key "start2s", "start_heads"
   add_foreign_key "start_heads", "categories"
@@ -2083,6 +2204,11 @@ ActiveRecord::Schema.define(version: 20180526001443) do
   add_foreign_key "starts", "competitions"
   add_foreign_key "starts", "sexes"
   add_foreign_key "starts", "sports"
+  add_foreign_key "throw2s", "throw_head2s"
+  add_foreign_key "throw_head2s", "categories"
+  add_foreign_key "throw_head2s", "competitions"
+  add_foreign_key "throw_head2s", "sexes"
+  add_foreign_key "throw_head2s", "sports"
   add_foreign_key "track2s", "track_head2s"
   add_foreign_key "track_head2s", "categories"
   add_foreign_key "track_head2s", "competitions"

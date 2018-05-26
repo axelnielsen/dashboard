@@ -1,0 +1,256 @@
+<div class="col-xs-12">
+<p id="notice"><%= notice %></p>
+
+<%
+competition_id=params[:competition_id]
+
+sex_id=1
+sport_id=1
+category_id=1
+%>
+<% @throw_head2s.where(:competition_id =>competition_id
+).each do |throw_head2| %>
+<%
+
+competition_id=throw_head2.competition_id
+sex_id=throw_head2.sex_id
+sport_id=throw_head2.sport_id
+category_id=throw_head2.category_id
+
+%>
+  <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header table-info">
+              <h3 class="box-title">Serie <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(throw_head2, :serie) %>
+              <%else%>
+              <%=throw_head2.serie%>
+                <%end%>
+ 
+              </h3>
+
+              <div class="box-tools">
+             </div>
+            </div>
+
+
+
+
+
+     <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+       <div class="row">
+          <div class="col-xs-12">
+       
+             
+              <!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+    <%= simple_form_for :throw2, :url => throw2s_path, :method => :post  do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :throw_head2_id, :as => :hidden, :input_html => { :value => throw_head2.id  }%>
+                  <tr>
+          
+                    <th><%= f.input :athlete,  placeholder: "Atleta",label: false%></th>
+                    <th><%= f.input :club,  placeholder: "Club",label: false%></th>
+                     <th><%= f.input :an,  placeholder: "A.N.",label: false%></th>
+                      <th><%= f.input :region,  placeholder: "Región",label: false%></th>
+                    <th><%= f.input :first,  placeholder: "primero",label: false%></th>
+              
+                    <th><%= f.input :second , placeholder: "segundo",label: false%></th>
+                 
+                    <th><%= f.input :third , placeholder: "tercero",label: false%></th>
+                    </tr><tr>
+                 
+                    <th><%= f.input :op , placeholder: "OP",label: false%></th>
+                  
+                    <th> <%= f.input :fourth, placeholder: "cuarto",label: false%></th>
+    
+                        <th> <%= f.input :fifth, placeholder: "quinto",label: false%></th>
+                         
+                            <th> <%= f.input :sixth, placeholder: "sexto",label: false%></th>
+                            
+                                <th> <%= f.input :achievement, placeholder: "Marca",label: false%></th>
+                                  <th> <%= f.input :place, placeholder: "Lugar",label: false%></th>
+                    <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
+                  </tr>
+                  <%end%>
+                         </table>
+              </div>
+              <!-- /.box-body -->
+           
+            <!-- /.box -->
+          </div>
+        </div>
+  <%end%>
+
+
+
+
+
+
+
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding table-striped">
+              <table class="table table-hover">
+                <tbody><tr class="table-info">
+                  <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+                  <th>Lugar</th>
+                   <th>Marca</th>
+                  <th>Nombre</th>
+                  <th>A.N.</th>
+                  <th>Club</th>
+                  <th>Región</th>
+                  <th>Primero</th>
+                
+                  <th>Segundo</th>
+                  
+                  <th>Tercero</th>
+                  
+                  <th>OP</th>
+                  <th>Cuarto</th>
+                    
+                  <th>Quinto</th>
+                  
+                  <th>Sexto</th>
+                 
+                
+                  <%else%>
+                  <th>Lugar</th>
+                  <th>Marca</th>
+                  <th>Nombre</th>
+                  <th>A.N.</th>
+                  <th>Club</th>
+                  <th>Región</th>
+                  
+                  <%end%>
+                  
+                   <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+                   <th>ELIMINAR</th>
+                   <%end%>
+                </tr>
+                  <%  throw_head2.throw2s.where(:throw_head2_id => throw_head2.id).order(place: :asc).each do |throw2| %>
+               
+     
+        <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+  <tr>
+<td><%= best_in_place(throw2, :place) %></td>
+  <td><%= best_in_place(throw2, :achievement) %></td>
+        <td><%= best_in_place(throw2, :athlete) %></td>
+        <td><%= best_in_place(throw2, :an) %></td>
+        <td><%= best_in_place(throw2, :club) %></td>
+         <td><%= best_in_place(throw2, :region) %></td>
+        <td><%= best_in_place(throw2, :first) %></td>
+
+        <td><%= best_in_place(throw2, :second) %></td>
+      
+             <td><%= best_in_place(throw2, :third) %></td>
+      
+        <td><%= best_in_place(throw2, :op) %></td>
+        <td><%= best_in_place(throw2, :fourth) %></td>
+       
+        <td><%= best_in_place(throw2, :fifth) %></td>
+       
+       
+        <td><%= best_in_place(throw2, :sixth) %></td>
+       
+        
+         <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+        <td><%= link_to throw2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
+        <% end %> 
+        <%end%>
+      </tr>
+
+ <%   else %>
+
+<tr>
+        <td><%= throw2.place%></td>
+        <td><%= throw2.achievement %></td>
+        <td><%=throw2.athlete %></td>
+       <td><%=throw2.an %></td>
+        <td><%= throw2.club%></td>
+        <td><%= throw2.region %></td>
+      </tr>
+
+
+
+ <%end%>
+    <% end %>
+              </tbody></table>
+            </div>
+ <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+    <div class="box-header callout-success">
+      <h4><strong>IMPORTAR</strong></h4>
+     </div>
+   <%=form_tag import_throw2s_path("id"=>throw_head2.id), multipart: true do%>
+<%=file_field_tag :file%>
+<%=submit_tag "Importar"%>
+ <% end %>
+<%end%>
+
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+
+
+    
+  <%end%>
+    
+<br>
+
+
+  <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+  <script type="application/javascript">
+
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+ </script>
+ <div class="box-header table-info">
+              <h3 class="box-title">Nueva Serie
+             
+              </h3>
+
+              <div class="box-tools">
+              </div>
+            </div>
+       <div class="row">
+          <div class="col-xs-12">
+       
+             
+              <!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                  
+    <%= simple_form_for :throw_head2, :url => throw_head2s_path, :method => :post  do |f| %>
+    <%= f.error_notification %>
+                  <tr>
+                     <th><%= f.input :competition_id, :as => :hidden, :input_html => { :value => competition_id  }%></th>
+                    <th><%= f.input :sex_id, :as => :hidden, :input_html => { :value => sex_id  }%></th>
+                    <th><%= f.input :sport_id, :as => :hidden, :input_html => { :value => sport_id  }%></th>
+                    <th><%= f.input :category_id, :as => :hidden, :input_html => { :value => category_id  }%></th>
+                    
+                     <th> <%= f.input :serie, placeholder: "Serie N°",label: false%></th>
+          
+                    
+                    <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
+                  </tr>
+                  <%end%>
+                         </table>
+              </div>
+              <!-- /.box-body -->
+           
+            <!-- /.box -->
+          </div>
+        </div>
+  <%end%>
+<%= link_to "VOLVER", root_path(), class: "btn btn-warning" %>
+
+</div>
+
+

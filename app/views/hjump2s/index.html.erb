@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Hjump2s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hjump head2</th>
+      <th>Athlete</th>
+      <th>An</th>
+      <th>Region</th>
+      <th>Club</th>
+      <th>Achievement</th>
+      <th>Place</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hjump2s.each do |hjump2| %>
+      <tr>
+        <td><%= hjump2.hjump_head2 %></td>
+        <td><%= hjump2.athlete %></td>
+        <td><%= hjump2.an %></td>
+        <td><%= hjump2.region %></td>
+        <td><%= hjump2.club %></td>
+        <td><%= hjump2.achievement %></td>
+        <td><%= hjump2.place %></td>
+        <td><%= link_to 'Show', hjump2 %></td>
+        <td><%= link_to 'Edit', edit_hjump2_path(hjump2) %></td>
+        <td><%= link_to 'Destroy', hjump2, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hjump2', new_hjump2_path %>

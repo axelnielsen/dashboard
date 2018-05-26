@@ -73,6 +73,6 @@ class TrackHead2sController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def track_head2_params
-      params.require(:track_head2).permit(:fecha, :hora, :sex_id, :competition_id, :sport_id, :category_id, :serie, :wind)
+      params.require(:track_head2).permit(:fecha, :hora, :sex_id, :competition_id, :sport_id, :category_id, :serie, :wind, :type)
     end
 end

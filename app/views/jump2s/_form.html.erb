@@ -1,0 +1,29 @@
+
+<%= simple_form_for(@jump2) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :jump_head2 %>
+    <%= f.input :athlete %>
+    <%= f.input :club %>
+    <%= f.input :first %>
+    <%= f.input :vvfirst %>
+    <%= f.input :second %>
+    <%= f.input :vvsecond %>
+    <%= f.input :third %>
+    <%= f.input :vvthird %>
+    <%= f.input :op %>
+    <%= f.input :fourth %>
+    <%= f.input :vvfourth %>
+    <%= f.input :fifth %>
+    <%= f.input :vvfifth %>
+    <%= f.input :sixth %>
+    <%= f.input :vvsixth %>
+    <%= f.input :achievement %>
+    <%= f.input :place %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

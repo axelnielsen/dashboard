@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Jump2s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Jump head2</th>
+      <th>Athlete</th>
+      <th>Club</th>
+      <th>First</th>
+      <th>Vvfirst</th>
+      <th>Second</th>
+      <th>Vvsecond</th>
+      <th>Third</th>
+      <th>Vvthird</th>
+      <th>Op</th>
+      <th>Fourth</th>
+      <th>Vvfourth</th>
+      <th>Fifth</th>
+      <th>Vvfifth</th>
+      <th>Sixth</th>
+      <th>Vvsixth</th>
+      <th>Achievement</th>
+      <th>Place</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jump2s.each do |jump2| %>
+      <tr>
+        <td><%= jump2.jump_head2 %></td>
+        <td><%= jump2.athlete %></td>
+        <td><%= jump2.club %></td>
+        <td><%= jump2.first %></td>
+        <td><%= jump2.vvfirst %></td>
+        <td><%= jump2.second %></td>
+        <td><%= jump2.vvsecond %></td>
+        <td><%= jump2.third %></td>
+        <td><%= jump2.vvthird %></td>
+        <td><%= jump2.op %></td>
+        <td><%= jump2.fourth %></td>
+        <td><%= jump2.vvfourth %></td>
+        <td><%= jump2.fifth %></td>
+        <td><%= jump2.vvfifth %></td>
+        <td><%= jump2.sixth %></td>
+        <td><%= jump2.vvsixth %></td>
+        <td><%= jump2.achievement %></td>
+        <td><%= jump2.place %></td>
+        <td><%= link_to 'Show', jump2 %></td>
+        <td><%= link_to 'Edit', edit_jump2_path(jump2) %></td>
+        <td><%= link_to 'Destroy', jump2, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Jump2', new_jump2_path %>

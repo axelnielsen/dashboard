@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hjump_head2: one
+  athlete: MyString
+  an: MyString
+  region: MyString
+  club: MyString
+  achievement: MyString
+  place: MyString
+
+two:
+  hjump_head2: two
+  athlete: MyString
+  an: MyString
+  region: MyString
+  club: MyString
+  achievement: MyString
+  place: MyString

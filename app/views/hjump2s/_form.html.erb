@@ -1,0 +1,18 @@
+
+<%= simple_form_for(@hjump2) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :hjump_head2 %>
+    <%= f.input :athlete %>
+    <%= f.input :an %>
+    <%= f.input :region %>
+    <%= f.input :club %>
+    <%= f.input :achievement %>
+    <%= f.input :place %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,6 +1,36 @@
 Rails.application.routes.draw do
 
   
+
+resources :hjump2s do
+  collection { post :import}
+  end
+
+
+resources :hjump_head2s do
+    resources :hjump2s 
+  end
+
+
+
+resources :throw2s do
+  collection { post :import}
+  end
+
+
+
+resources :throw_head2s do
+    resources :throw2s 
+  end
+
+
+ resources :jump2s do
+  collection { post :import}
+  end
+
+   resources :jump_head2s do
+    resources :jump2s 
+  end
   resources :start2s
  
   resources :start_heads do

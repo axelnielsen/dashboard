@@ -1,0 +1,2 @@
+module ThrowHead2sHelper
+end

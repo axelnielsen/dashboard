@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jump_head2: one
+  athlete: MyString
+  club: MyString
+  first: MyString
+  vvfirst: MyString
+  second: MyString
+  vvsecond: MyString
+  third: MyString
+  vvthird: MyString
+  op: MyString
+  fourth: MyString
+  vvfourth: MyString
+  fifth: MyString
+  vvfifth: MyString
+  sixth: MyString
+  vvsixth: MyString
+  achievement: MyString
+  place: MyString
+
+two:
+  jump_head2: two
+  athlete: MyString
+  club: MyString
+  first: MyString
+  vvfirst: MyString
+  second: MyString
+  vvsecond: MyString
+  third: MyString
+  vvthird: MyString
+  op: MyString
+  fourth: MyString
+  vvfourth: MyString
+  fifth: MyString
+  vvfifth: MyString
+  sixth: MyString
+  vvsixth: MyString
+  achievement: MyString
+  place: MyString

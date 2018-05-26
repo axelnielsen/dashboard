@@ -1,0 +1,25 @@
+
+<%= simple_form_for(@throw2) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :throw_head2 %>
+    <%= f.input :athlete %>
+    <%= f.input :an %>
+    <%= f.input :club %>
+    <%= f.input :region %>
+    <%= f.input :first %>
+    <%= f.input :second %>
+    <%= f.input :third %>
+    <%= f.input :op %>
+    <%= f.input :fourth %>
+    <%= f.input :fifth %>
+    <%= f.input :sixth %>
+    <%= f.input :achievement %>
+    <%= f.input :place %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

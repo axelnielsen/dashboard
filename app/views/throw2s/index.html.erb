@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Throw2s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Throw head2</th>
+      <th>Athlete</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>First</th>
+      <th>Second</th>
+      <th>Third</th>
+      <th>Op</th>
+      <th>Fourth</th>
+      <th>Fifth</th>
+      <th>Sixth</th>
+      <th>Achievement</th>
+      <th>Place</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @throw2s.each do |throw2| %>
+      <tr>
+        <td><%= throw2.throw_head2 %></td>
+        <td><%= throw2.athlete %></td>
+        <td><%= throw2.an %></td>
+        <td><%= throw2.club %></td>
+        <td><%= throw2.region %></td>
+        <td><%= throw2.first %></td>
+        <td><%= throw2.second %></td>
+        <td><%= throw2.third %></td>
+        <td><%= throw2.op %></td>
+        <td><%= throw2.fourth %></td>
+        <td><%= throw2.fifth %></td>
+        <td><%= throw2.sixth %></td>
+        <td><%= throw2.achievement %></td>
+        <td><%= throw2.place %></td>
+        <td><%= link_to 'Show', throw2 %></td>
+        <td><%= link_to 'Edit', edit_throw2_path(throw2) %></td>
+        <td><%= link_to 'Destroy', throw2, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Throw2', new_throw2_path %>

@@ -33,7 +33,7 @@ end
 
     respond_to do |format|
       if @track2.save
-        format.html { redirect_back(fallback_location: root_path, notice: 'Track2 was successfully created.' )}
+        format.html { redirect_back(fallback_location: root_path, notice: 'Creado exitosamente' )}
         format.json { render :show, status: :created, location: @track2 }
       else
         format.html { render :new }

@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  throw_head2: one
+  athlete: MyString
+  an: MyString
+  club: MyString
+  region: MyString
+  first: MyString
+  second: MyString
+  third: MyString
+  op: MyString
+  fourth: MyString
+  fifth: MyString
+  sixth: MyString
+  achievement: MyString
+  place: MyString
+
+two:
+  throw_head2: two
+  athlete: MyString
+  an: MyString
+  club: MyString
+  region: MyString
+  first: MyString
+  second: MyString
+  third: MyString
+  op: MyString
+  fourth: MyString
+  fifth: MyString
+  sixth: MyString
+  achievement: MyString
+  place: MyString
