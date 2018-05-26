@@ -60,7 +60,10 @@ class Jump2sController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+def import
+     Jump2.import(params[:file], params[:id])
+    redirect_back(fallback_location: root_path, notice: 'Importado correctamente' )
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_jump2
