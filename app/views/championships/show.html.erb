@@ -34,7 +34,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @championship.competitions.where(:stage => stage.id).each do |competition| %>
+          <% @championship.competitions.where(:stage => stage.id).order(hour: :asc).each do |competition| %>
                     <tr>
             <td data-label="HORA"> <%=competition.hour.strftime('%H:%M')%></td>
             <td data-label="PRUEBA"> <%=competition.sport.name%></td>
@@ -50,7 +50,7 @@
 
 
 
- <% elsif competition.id==4 || competition.id==10 || competition.id==18 || competition.id==40 || competition.id==43%>
+ <% elsif competition.id==4 || competition.id==10 || competition.id==18 || competition.id==40 || competition.id==43 || competition.id==54 %>
             <%=link_to "RESULTADOS", hjump_head2s_path(:competition_id=>competition.id), class: "btn btn-warning"%>
 
             <%else%>
