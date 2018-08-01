@@ -1,9 +1,15 @@
-<div class="col-xs-12">
+<script type="text/javascript">
+   if(window.location.href.substr(-2) !== "&r") {
+      window.location = window.location.href + "&r";
+    }
+</script>
+<div class="col-xs-12" >
 <p id="notice"><%= notice %></p>
 
 <%
-competition_id=params[:competition_id]
 
+competition_id=params[:competition_id]
+start=params[:start]
 sex_id=1
 sport_id=1
 category_id=1
@@ -25,23 +31,19 @@ category_id=track_head2.category_id
               <%else%>
               <%=track_head2.serie%>
                 <%end%>
- Viento:
+                <% if start=="0"%>
+              Viento:
               <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(track_head2, :wind) %>
               <%else%>
               <%=track_head2.wind%>
                 <%end%>
-
+              <%end%>
               </h3>
 
               <div class="box-tools">
              </div>
             </div>
-
-
-
-
-
-     <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+     <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
        <div class="row">
           <div class="col-xs-12">
        
@@ -71,6 +73,37 @@ category_id=track_head2.category_id
             <!-- /.box -->
           </div>
         </div>
+
+        <%elsif user_signed_in? && current_user.email=='admin@prossport.cl' && start=="1"%>
+            <div class="row">
+          <div class="col-xs-12">
+       
+             
+              <!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+    <%= simple_form_for :track2, :url => track2s_path, :method => :post  do |f| %>
+    <%= f.error_notification %>
+                 <tr>
+                    <th><%= f.input :track_head2_id, :as => :hidden, :input_html => { :value => track_head2.id  }%></th>
+                     <th> <%= f.input :rail, placeholder: "Pista",label: false%></th>
+                    <th><%= f.input :athlete,  placeholder: "Atleta",label: false%></th>
+                    <th> <%= f.input :an , placeholder: "A.N.",label: false%></th>
+                    <th><%= f.input :club , placeholder: "Club",label: false%></th>
+                   
+                    <th><%= f.input :region , placeholder: "Región",label: false%></th>
+                    <th><%= f.input :bestAchievement , placeholder: "Mejor Marca",label: false%></th>
+                    
+                    <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
+                  </tr>
+                  <%end%>
+                         </table>
+              </div>
+              <!-- /.box-body -->
+           
+            <!-- /.box -->
+          </div>
+        </div>
   <%end%>
 
 
@@ -83,6 +116,8 @@ category_id=track_head2.category_id
             <div class="box-body table-responsive no-padding table-striped">
               <table class="table table-hover">
                 <tbody><tr class="table-info">
+
+        <% if  start=="0"%>
                   <th>LUGAR</th>
                   <th>MARCA</th>
                   <th>PISTA</th>
@@ -92,11 +127,23 @@ category_id=track_head2.category_id
                    <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
                    <th>ELIMINAR</th>
                    <%end%>
+        <%elsif  start=="1"%>
+                  <th>PISTA</th>
+                  <th>ATLETA</th>
+                  <th>A.N.</th>
+                  <th>CLUB</th>
+                  <th>REGIÓN</th>
+                  <th>MEJOR MARCA</th>
+                   <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+                   <th>ELIMINAR</th>
+                   <%end%>
+                   <%end%>
                 </tr>
-                  <%  track_head2.track2s.where(:track_head2_id => track_head2.id).order(achievement: :asc).each do |track2| %>
+                  
                
      
-        <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+        <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
+        <%  track_head2.track2s.where(:track_head2_id => track_head2.id).order(achievement: :asc).each do |track2| %>
   <tr>
 
 
@@ -109,11 +156,32 @@ category_id=track_head2.category_id
          <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
         <td><%= link_to track2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
         <% end %> 
-        <%end%>
+     <% end %> 
+       <% end %> 
+      </tr>
+      <%elsif user_signed_in? && current_user.email=='admin@prossport.cl' && start=="1"%>
+ <%  track_head2.track2s.where(:track_head2_id => track_head2.id).order(rail: :asc).each do |track2| %>
+  <tr>
+
+
+
+        <td><%= best_in_place(track2, :rail) %></td>
+        <td><%= best_in_place(track2, :athlete) %></td>
+  <td><%= best_in_place(track2, :an) %></td>
+  
+        <td><%= best_in_place(track2, :club) %></td>
+        <td><%= best_in_place(track2, :region) %></td>
+        <td><%= best_in_place(track2, :bestAchievement) %></td>
+         <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+        <td><%= link_to track2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
+        <% end %> 
+         <% end %> 
+           <% end %> 
       </tr>
 
- <%   else %>
 
+ <%   elsif start=="0" %>
+<%  track_head2.track2s.where(:track_head2_id => track_head2.id).order(achievement: :asc).each do |track2| %>
 <tr>
         <td><%= track2.place%></td>
         <td><%= track2.achievement %></td>
@@ -122,10 +190,20 @@ category_id=track_head2.category_id
         <td><%= track2.club%></td>
         <td><%= track2.region %></td>
       </tr>
+  <% end %> 
+ <%   elsif start=="1" %>
+ <%  track_head2.track2s.where(:track_head2_id => track_head2.id).order(rail: :asc).each do |track2| %>
+<tr>
 
+        <td><%= track2.rail %></td>
+        <td><%=track2.athlete %></td>
+  <td><%=track2.an %></td>
+        <td><%= track2.club%></td>
+        <td><%= track2.region %></td>
+        <td><%= track2.bestAchievement %></td>
+      </tr>
+  <% end %> 
 
-
- <%end%>
     <% end %>
               </tbody></table>
             </div>

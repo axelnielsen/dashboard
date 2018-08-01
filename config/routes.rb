@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   
 
+  resources :competition_types
 resources :hjump2s do
   collection { post :import}
   end

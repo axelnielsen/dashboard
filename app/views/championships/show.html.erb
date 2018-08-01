@@ -41,27 +41,25 @@
           <td data-label="FINAL"> <%=competition.category.name%></td>
           <td data-label="CATEGORÍA"> <%=competition.sex.sex%></td>
           <td data-label="RESULTADOS">
-            <%if competition.id==9  || competition.id==19 || competition.id==27 || competition.id==39 || competition.id==44 || competition.id==46%>
-            <%=link_to "RESULTADOS", jump_head2s_path(:competition_id=>competition.id), class: "btn btn-warning"%>
+       <%if competition.competition_type_id==1 %>
+       <%=link_to "RESULTADOS", track_head2s_path(:competition_id=>competition.id, :start=>"0"), class: "btn btn-warning" %>
+      <%end%>
 
-
- <% elsif competition.id==8 || competition.id==11 || competition.id==13 || competition.id==14 || competition.id==20 || competition.id==23 || competition.id==26 || competition.id==29 || competition.id==32 || competition.id==41 || competition.id==47 || competition.id==48%>
+ <% if competition.competition_type_id==3%>
             <%=link_to "RESULTADOS", throw_head2s_path(:competition_id=>competition.id), class: "btn btn-warning"%>
-
-
-
- <% elsif competition.id==4 || competition.id==10 || competition.id==18 || competition.id==40 || competition.id==43 || competition.id==54 %>
-            <%=link_to "RESULTADOS", hjump_head2s_path(:competition_id=>competition.id), class: "btn btn-warning"%>
-
-            <%else%>
-          <%=link_to "RESULTADOS", track_head2s_path(:competition_id=>competition.id), class: "btn btn-warning"%>
-            
+            <% elsif competition.competition_type_id==2%>
+            <%=link_to "RESULTADOS", jump_head2s_path(:competition_id=>competition.id), class: "btn btn-warning"%>
+ <% elsif competition.competition_type_id==3%>
+            <%=link_to "RESULTADOS", throw_head2s_path(:competition_id=>competition.id), class: "btn btn-warning"%>
+ <% elsif competition.competition_type_id==4 %>
+            <%=link_to "RESULTADOS", hjump_head2s_path(:competition_id=>competition.id), class: "btn btn-warning"%>          
           <%end%>
           </td>
           <td><%= link_to "STARTLIST", start_heads_path(:competition_id=>competition.id), class: "btn btn-primary" %></td>
           </tr>
   
    <%end%>
+
      </tbody>
       </table>
      

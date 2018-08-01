@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526104157) do
+ActiveRecord::Schema.define(version: 20180801042323) do
 
   create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "names"
@@ -74,6 +74,12 @@ ActiveRecord::Schema.define(version: 20180526104157) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "competition_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "competitions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.time "hour"
     t.bigint "sport_id"
@@ -82,7 +88,9 @@ ActiveRecord::Schema.define(version: 20180526104157) do
     t.bigint "stage_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "competition_type_id"
     t.index ["category_id"], name: "index_competitions_on_category_id"
+    t.index ["competition_type_id"], name: "index_competitions_on_competition_type_id"
     t.index ["sex_id"], name: "index_competitions_on_sex_id"
     t.index ["sport_id"], name: "index_competitions_on_sport_id"
     t.index ["stage_id"], name: "index_competitions_on_stage_id"
@@ -2116,6 +2124,8 @@ ActiveRecord::Schema.define(version: 20180526104157) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "rail"
+    t.integer "start"
+    t.string "bestAchievement"
     t.index ["track_head2_id"], name: "index_track2s_on_track_head2_id"
   end
 
@@ -2181,6 +2191,7 @@ ActiveRecord::Schema.define(version: 20180526104157) do
   end
 
   add_foreign_key "competitions", "categories"
+  add_foreign_key "competitions", "competition_types"
   add_foreign_key "competitions", "sexes"
   add_foreign_key "competitions", "sports"
   add_foreign_key "competitions", "stages"

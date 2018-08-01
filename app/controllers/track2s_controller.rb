@@ -74,6 +74,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def track2_params
-      params.require(:track2).permit(:track_head2_id, :place, :achievement, :athlete, :an, :club, :region, :pais, :rail)
+      params.require(:track2).permit(:track_head2_id, :place, :achievement, :athlete, :an, :club, :region, :pais, :rail, :bestAchievement)
     end
 end

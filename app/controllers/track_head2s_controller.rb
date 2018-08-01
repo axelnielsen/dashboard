@@ -3,12 +3,13 @@ class TrackHead2sController < ApplicationController
 
   # GET /track_head2s
   # GET /track_head2s.json
-  def index
-     if params[:competition_id] 
-      @track_head2s = TrackHead2.where(competition_id: params[:competition_id]).entries
+  def index     
+      if params[:competition_id] 
+      @track_head2s = TrackHead2.where(competition_id: params[:competition_id]).entries 
     else
        @track_head2s = TrackHead2.all
     end
+
   end
 
   # GET /track_head2s/1
