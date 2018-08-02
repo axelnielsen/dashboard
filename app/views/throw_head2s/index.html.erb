@@ -89,8 +89,9 @@ category_id=throw_head2.category_id
              
               <!-- /.box-header -->
               <div class="box-body table-responsive no-padding">
+                 <%= simple_form_for :throw2, :url => throw2s_path, :method => :post  do |f| %>
                 <table class="table table-hover">
-    <%= simple_form_for :throw2, :url => throw2s_path, :method => :post  do |f| %>
+   
     <%= f.error_notification %>
     <%= f.input :throw_head2_id, :as => :hidden, :input_html => { :value => throw_head2.id  }%>
                   <tr>
@@ -102,8 +103,9 @@ category_id=throw_head2.category_id
                     <th><%= f.input :bestAchievement,  placeholder: "Mejor Marca",label: false%></th>
                     <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
                   </tr>
-                  <%end%>
+                
                          </table>
+                           <%end%>
               </div>
               <!-- /.box-body -->
            

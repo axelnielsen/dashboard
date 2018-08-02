@@ -1,8 +1,3 @@
-<script type="text/javascript">
-   if(window.location.href.substr(-2) !== "&r") {
-      window.location = window.location.href + "&r";
-    }
-</script>
 <div class="col-xs-12" >
 <p id="notice"><%= notice %></p>
 
@@ -50,9 +45,9 @@ category_id=track_head2.category_id
              
               <!-- /.box-header -->
               <div class="box-body table-responsive no-padding">
-                <table class="table table-hover">
-    <%= simple_form_for :track2, :url => track2s_path, :method => :post  do |f| %>
+                   <%= simple_form_for :track2, :url => track2s_path, :method => :post  do |f| %>
     <%= f.error_notification %>
+                <table class="table table-hover"> 
                   <tr>
                     <th><%= f.input :track_head2_id, :as => :hidden, :input_html => { :value => track_head2.id  }%></th>
                      <th> <%= f.input :place, placeholder: "Lugar",label: false%></th>
@@ -64,9 +59,9 @@ category_id=track_head2.category_id
                     <th><%= f.input :region , placeholder: "Región",label: false%></th>
                     
                     <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
-                  </tr>
-                  <%end%>
+                  </tr>                 
                          </table>
+                          <%end%>
               </div>
               <!-- /.box-body -->
            
@@ -81,8 +76,9 @@ category_id=track_head2.category_id
              
               <!-- /.box-header -->
               <div class="box-body table-responsive no-padding">
+                <%= simple_form_for :track2, :url => track2s_path, :method => :post  do |f| %>
                 <table class="table table-hover">
-    <%= simple_form_for :track2, :url => track2s_path, :method => :post  do |f| %>
+    
     <%= f.error_notification %>
                  <tr>
                     <th><%= f.input :track_head2_id, :as => :hidden, :input_html => { :value => track_head2.id  }%></th>
@@ -96,8 +92,9 @@ category_id=track_head2.category_id
                     
                     <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
                   </tr>
-                  <%end%>
+              
                          </table>
+                             <%end%>
               </div>
               <!-- /.box-body -->
            

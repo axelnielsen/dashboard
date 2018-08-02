@@ -3,7 +3,7 @@
 
 <%
 competition_id=params[:competition_id]
-
+start=params[:start]
 sex_id=1
 sport_id=1
 category_id=1
@@ -37,30 +37,61 @@ category_id=hjump_head2.category_id
 
 
 
-     <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+     <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
        <div class="row">
           <div class="col-xs-12">
        
              
               <!-- /.box-header -->
               <div class="box-body table-responsive no-padding">
+                    <%= simple_form_for :hjump2, :url => hjump2s_path, :method => :post  do |f| %>
                 <table class="table table-hover">
-    <%= simple_form_for :hjump2, :url => hjump2s_path, :method => :post  do |f| %>
+
     <%= f.error_notification %>
     <%= f.input :hjump_head2_id, :as => :hidden, :input_html => { :value => hjump_head2.id  }%>
                   <tr>
           
-                    <th><%= f.input :athlete,  placeholder: "Atleta"%></th>
-                    <th><%= f.input :club,  placeholder: "Club"%></th>
-                     <th><%= f.input :an,  placeholder: "A.N."%></th>
-                      <th><%= f.input :region,  placeholder: "Región"%></th>
+                    <th><%= f.input :athlete,  placeholder: "Atleta",label: false%></th>
+                    <th><%= f.input :club,  placeholder: "Club",label: false%></th>
+                     <th><%= f.input :an,  placeholder: "A.N.",label: false%></th>
+                      <th><%= f.input :region,  placeholder: "Región",label: false%></th>
 
-                                <th> <%= f.input :achievement, placeholder: "Marca"%></th>
-                                  <th> <%= f.input :place, placeholder: "Lugar"%></th>
+                                <th> <%= f.input :achievement, placeholder: "Marca",label: false%></th>
+                                  <th> <%= f.input :place, placeholder: "Lugar",label: false%></th>
                     <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
                   </tr>
-                  <%end%>
+                 
                          </table>
+                          <%end%>
+              </div>
+              <!-- /.box-body -->
+           
+            <!-- /.box -->
+          </div>
+        </div>
+       <% elsif  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="1"%>
+       <div class="row">
+          <div class="col-xs-12">
+       
+             
+              <!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                    <%= simple_form_for :hjump2, :url => hjump2s_path, :method => :post  do |f| %>
+                <table class="table table-hover">
+
+    <%= f.error_notification %>
+    <%= f.input :hjump_head2_id, :as => :hidden, :input_html => { :value => hjump_head2.id  }%>
+                  <tr>
+          
+                    <th><%= f.input :athlete,  placeholder: "Atleta",label: false%></th>
+                    <th><%= f.input :club,  placeholder: "Club",label: false%></th>
+                     <th><%= f.input :an,  placeholder: "A.N.",label: false%></th>
+                      <th><%= f.input :region,  placeholder: "Región",label: false%></th>
+                    <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
+                  </tr>
+                 
+                         </table>
+                          <%end%>
               </div>
               <!-- /.box-body -->
            
@@ -68,29 +99,20 @@ category_id=hjump_head2.category_id
           </div>
         </div>
   <%end%>
-
-
-
-
-
-
-
-            <!-- /.box-header -->
+  <!-- /.box-header -->
             <div class="box-body table-responsive no-padding table-striped">
               <table class="table table-hover">
                 <tbody><tr class="table-info">
-                  <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+                  <% if  start=="0"%>
                   <th>Lugar</th>
               <th>Marca</th>
                   <th>Nombre</th>
                   <th>A.N.</th>
                   <th>Club</th>
                   <th>Región</th>
+             
                   
-                  <%else%>
-                  <th>Lugar</th>
-
-                  <th>Marca</th>
+                <%elsif   start=="1"%>
                   <th>Nombre</th>
                   <th>A.N.</th>
                   <th>Club</th>
@@ -105,7 +127,7 @@ category_id=hjump_head2.category_id
                   <%  hjump_head2.hjump2s.where(:hjump_head2_id => hjump_head2.id).order(place: :asc).each do |hjump2| %>
                
      
-        <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+        <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
   <tr>
 <td><%= best_in_place(hjump2, :place) %></td>
         <td><%= best_in_place(hjump2, :achievement) %></td>
@@ -115,17 +137,36 @@ category_id=hjump_head2.category_id
          <td><%= best_in_place(hjump2, :region) %></td>
        
         
-         <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+         <% if  user_signed_in? && current_user.email=='admin@prossport.cl' %>
         <td><%= link_to hjump2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
         <% end %> 
         <%end%>
+
+           <% elsif  user_signed_in? && current_user.email=='admin@prossport.cl'  && start=="1"%>
+        <tr>
+        <td><%= best_in_place(hjump2, :athlete) %></td>
+        <td><%= best_in_place(hjump2, :an) %></td>
+        <td><%= best_in_place(hjump2, :club) %></td>
+        <td><%= best_in_place(hjump2, :region) %></td>       
+        <td><%= link_to hjump2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
+      
+        <%end%>
       </tr>
 
- <%   else %>
+ <%   elsif !user_signed_in? && start=="0"%>
 
 <tr>
-        <td><%= hjump2.place%></td>
-        <td><%= hjump2.achievement %></td>
+    <td><%=hjump2.place %></td>
+      <td><%=hjump2.achievement %></td>
+        <td><%=hjump2.athlete %></td>
+       <td><%=hjump2.an %></td>
+        <td><%= hjump2.club%></td>
+        <td><%= hjump2.region %></td>
+      </tr>
+ <%   elsif !user_signed_in? && start=="1"%>
+
+<tr>
+  
         <td><%=hjump2.athlete %></td>
        <td><%=hjump2.an %></td>
         <td><%= hjump2.club%></td>
@@ -133,9 +174,8 @@ category_id=hjump_head2.category_id
       </tr>
 
 
-
  <%end%>
-    <% end %>
+<%end%>   
               </tbody></table>
             </div>
  <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>

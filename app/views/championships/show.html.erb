@@ -35,12 +35,12 @@
         </thead>
         <tbody>
           <% @championship.competitions.where(:stage => stage.id).order(hour: :asc).each do |competition| %>
-                    <tr>
-            <td data-label="HORA"> <%=competition.hour.strftime('%H:%M')%></td>
-            <td data-label="PRUEBA"> <%=competition.sport.name%></td>
-          <td data-label="FINAL"> <%=competition.category.name%></td>
-          <td data-label="CATEGORÍA"> <%=competition.sex.sex%></td>
-          <td data-label="RESULTADOS">
+        <tr>
+        <td data-label="HORA"> <%=competition.hour.strftime('%H:%M')%></td>
+        <td data-label="PRUEBA"> <%=competition.sport.name%></td>
+        <td data-label="FINAL"> <%=competition.category.name%></td>
+        <td data-label="CATEGORÍA"> <%=competition.sex.sex%></td>
+        <td data-label="RESULTADOS">
        <%if competition.competition_type_id==1 %>
        <%=link_to "RESULTADOS", track_head2s_path(:competition_id=>competition.id, :start=>"0"), class: "btn btn-warning" %>
         </td>
@@ -50,12 +50,15 @@
 
  <% if competition.competition_type_id==3%>
             <%=link_to "RESULTADOS", throw_head2s_path(:competition_id=>competition.id, :start=>"0"), class: "btn btn-warning"%>
+            </td>
+          <td><%= link_to "STARTLIST", throw_head2s_path(:competition_id=>competition.id, :start=>"1"), class: "btn btn-primary" %></td>
+          </tr>
             <% elsif competition.competition_type_id==2%>
             <%=link_to "RESULTADOS", jump_head2s_path(:competition_id=>competition.id), class: "btn btn-warning"%>
  <% elsif competition.competition_type_id==3%>
             <%=link_to "RESULTADOS", throw_head2s_path(:competition_id=>competition.id), class: "btn btn-warning"%>
  <% elsif competition.competition_type_id==4 %>
-            <%=link_to "RESULTADOS", hjump_head2s_path(:competition_id=>competition.id), class: "btn btn-warning"%>          
+            <%=link_to "RESULTADOS", hjump_head2s_path(:competition_id=>competition.id, :start=>"0"), class: "btn btn-warning"%>          
           <%end%>
          
   
