@@ -134,12 +134,12 @@ category_id=hjump_head2.category_id
      
         <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
   <tr>
-<td><%= best_in_place(hjump2, :place) %></td>
-        <td><%= best_in_place(hjump2, :achievement) %></td>
+<td><%= best_in_place(hjump2, :place,  :html_attrs => { :size => '2' }) %></td>
+        <td><%= best_in_place(hjump2, :achievement,  :html_attrs => { :size => '4' }) %></td>
         <td><%= best_in_place(hjump2, :athlete) %></td>
-        <td><%= best_in_place(hjump2, :an) %></td>
+        <td><%= best_in_place(hjump2, :an,  :html_attrs => { :size => '2' }) %></td>
         <td><%= best_in_place(hjump2, :club) %></td>
-         <td><%= best_in_place(hjump2, :region) %></td>
+         <td><%= best_in_place(hjump2, :region,  :html_attrs => { :size => '2' }) %></td>
        
         
          <% if  user_signed_in? && current_user.email=='admin@prossport.cl' %>
@@ -150,9 +150,9 @@ category_id=hjump_head2.category_id
            <% elsif  user_signed_in? && current_user.email=='admin@prossport.cl'  && start=="1"%>
         <tr>
         <td><%= best_in_place(hjump2, :athlete) %></td>
-        <td><%= best_in_place(hjump2, :an) %></td>
+        <td><%= best_in_place(hjump2, :an,  :html_attrs => { :size => '4' }) %></td>
         <td><%= best_in_place(hjump2, :club) %></td>
-        <td><%= best_in_place(hjump2, :region) %></td>       
+        <td><%= best_in_place(hjump2, :region,  :html_attrs => { :size => '2' }) %></td>       
         <td><%= link_to hjump2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
       
         <%end%>

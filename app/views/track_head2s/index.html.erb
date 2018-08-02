@@ -151,11 +151,11 @@ category_id=track_head2.category_id
 
 
         <td><%= best_in_place(track2, :place) %></td>
-        <td><%= best_in_place(track2, :achievement) %></td>
-        <td><%= best_in_place(track2, :rail) %></td>
+        <td><%= best_in_place(track2, :achievement,  :html_attrs => { :size => '8' }) %></td>
+        <td><%= best_in_place(track2, :rail,  :html_attrs => { :size => '1' }) %></td>
         <td><%= best_in_place(track2, :athlete) %></td>
         <td><%= best_in_place(track2, :club) %></td>
-        <td><%= best_in_place(track2, :region) %></td>
+        <td><%= best_in_place(track2, :region,  :html_attrs => { :size => '2' }) %></td>
          <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
         <td><%= link_to track2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
         <% end %> 
@@ -168,13 +168,13 @@ category_id=track_head2.category_id
 
 
 
-        <td><%= best_in_place(track2, :rail) %></td>
+        <td><%= best_in_place(track2, :rail,  :html_attrs => { :size => '1' }) %></td>
         <td><%= best_in_place(track2, :athlete) %></td>
-  <td><%= best_in_place(track2, :an) %></td>
+  <td><%= best_in_place(track2, :an,  :html_attrs => { :size => '4' }) %></td>
   
         <td><%= best_in_place(track2, :club) %></td>
-        <td><%= best_in_place(track2, :region) %></td>
-        <td><%= best_in_place(track2, :bestAchievement) %></td>
+        <td><%= best_in_place(track2, :region,  :html_attrs => { :size => '2' }) %></td>
+        <td><%= best_in_place(track2, :bestAchievement,  :html_attrs => { :size => '4' }) %></td>
          <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
         <td><%= link_to track2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
         <% end %> 

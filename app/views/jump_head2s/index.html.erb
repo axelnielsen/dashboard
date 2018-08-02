@@ -159,23 +159,23 @@ category_id=jump_head2.category_id
   <tr>
 <td><%= best_in_place(jump2, :place) %></td>
         <td><%= best_in_place(jump2, :athlete) %></td>
-        <td><%= best_in_place(jump2, :an) %></td>
-        <td><%= best_in_place(jump2, :club) %></td>
-         <td><%= best_in_place(jump2, :region) %></td>
-        <td><%= best_in_place(jump2, :first) %></td>
-        <td><%= best_in_place(jump2, :vvfirst) %></td>
-        <td><%= best_in_place(jump2, :second) %></td>
-        <td><%= best_in_place(jump2, :vvsecond) %></td>
-             <td><%= best_in_place(jump2, :third) %></td>
-        <td><%= best_in_place(jump2, :vvthird) %></td>
-        <td><%= best_in_place(jump2, :op) %></td>
-        <td><%= best_in_place(jump2, :fourth) %></td>
-        <td><%= best_in_place(jump2, :vvfourth) %></td>
-        <td><%= best_in_place(jump2, :fifth) %></td>
-             <td><%= best_in_place(jump2, :vvfifth) %></td>
-        <td><%= best_in_place(jump2, :sixth) %></td>
-        <td><%= best_in_place(jump2, :vvsixth) %></td>
-        <td><%= best_in_place(jump2, :achievement) %></td>
+        <td><%= best_in_place(jump2, :an,  :html_attrs => { :size => '6' }) %></td>
+        <td><%= best_in_place(jump2, :club,  :html_attrs => { :size => '6' }) %></td>
+         <td><%= best_in_place(jump2, :region,  :html_attrs => { :size => '3' }) %></td>
+        <td><%= best_in_place(jump2, :first,  :html_attrs => { :size => '3' }) %></td>
+        <td><%= best_in_place(jump2, :vvfirst,  :html_attrs => { :size => '2' }) %></td>
+        <td><%= best_in_place(jump2, :second,  :html_attrs => { :size => '3' }) %></td>
+        <td><%= best_in_place(jump2, :vvsecond,  :html_attrs => { :size => '2' }) %></td>
+             <td><%= best_in_place(jump2, :third,  :html_attrs => { :size => '3' }) %></td>
+        <td><%= best_in_place(jump2, :vvthird,  :html_attrs => { :size => '2' }) %></td>
+        <td><%= best_in_place(jump2, :op,  :html_attrs => { :size => '3' }) %></td>
+        <td><%= best_in_place(jump2, :fourth,  :html_attrs => { :size => '3' }) %></td>
+        <td><%= best_in_place(jump2, :vvfourth,  :html_attrs => { :size => '2' }) %></td>
+        <td><%= best_in_place(jump2, :fifth,  :html_attrs => { :size => '3' }) %></td>
+             <td><%= best_in_place(jump2, :vvfifth,  :html_attrs => { :size => '3' }) %></td>
+        <td><%= best_in_place(jump2, :sixth,  :html_attrs => { :size => '3' }) %></td>
+        <td><%= best_in_place(jump2, :vvsixth,  :html_attrs => { :size => '2' }) %></td>
+        <td><%= best_in_place(jump2, :achievement,  :html_attrs => { :size => '3' }) %></td>
         
          <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
         <td><%= link_to jump2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
