@@ -3,7 +3,7 @@
 
 <%
 competition_id=params[:competition_id]
-
+start=params[:start]
 sex_id=1
 sport_id=1
 category_id=1
@@ -37,44 +37,67 @@ category_id=jump_head2.category_id
 
 
 
-     <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+     <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
        <div class="row">
           <div class="col-xs-12">
        
              
               <!-- /.box-header -->
               <div class="box-body table-responsive no-padding">
+                <%= simple_form_for :jump2, :url => jump2s_path, :method => :post  do |f| %>
                 <table class="table table-hover">
-    <%= simple_form_for :jump2, :url => jump2s_path, :method => :post  do |f| %>
+    
     <%= f.error_notification %>
     <%= f.input :jump_head2_id, :as => :hidden, :input_html => { :value => jump_head2.id  }%>
                   <tr>
-                     <th><%= f.input :points,  placeholder: "Puntaje"%></th>
-                    <th><%= f.input :athlete,  placeholder: "Atleta"%></th>
-                    <th><%= f.input :club,  placeholder: "Club"%></th>
-                     <th><%= f.input :an,  placeholder: "A.N."%></th>
-                      <th><%= f.input :region,  placeholder: "Región"%></th>
-                    <th><%= f.input :first,  placeholder: "primero"%></th>
-                    <th> <%= f.input :vvfirst , placeholder: "vv"%></th>
-                    <th><%= f.input :second , placeholder: "segundo"%></th>
-                    <th> <%= f.input :vvsecond, placeholder: "vv" %></th>
-                    <th><%= f.input :third , placeholder: "tercero"%></th>
+
+                    <th><%= f.input :athlete,  placeholder: "Atleta",label: false%></th>
+                    <th><%= f.input :club,  placeholder: "Club",label: false%></th>
+                     <th><%= f.input :an,  placeholder: "A.N.",label: false%></th>
+                      <th><%= f.input :region,  placeholder: "Región",label: false%></th>
+                    <th><%= f.input :first,  placeholder: "primero",label: false%></th>
+                    <th> <%= f.input :vvfirst , placeholder: "vv",label: false%></th>
+                    <th><%= f.input :second , placeholder: "segundo",label: false%></th>
+                    <th> <%= f.input :vvsecond, placeholder: "vv" ,label: false%></th>
+                    <th><%= f.input :third , placeholder: "tercero",label: false%></th>
                     </tr><tr>
-                    <th><%= f.input :vvthird , placeholder: "vv"%></th>
-                    <th><%= f.input :op , placeholder: "OP"%></th>
-                  
-                    <th> <%= f.input :fourth, placeholder: "cuarto"%></th>
-                      <th> <%= f.input :vvfourth, placeholder: "vv"%></th>
-                        <th> <%= f.input :fifth, placeholder: "quinto"%></th>
-                          <th> <%= f.input :vvfifth, placeholder: "vv"%></th>
-                            <th> <%= f.input :sixth, placeholder: "sexto"%></th>
-                              <th> <%= f.input :vvsixth, placeholder: "vv"%></th>
-                                <th> <%= f.input :achievement, placeholder: "Marca"%></th>
-                                  <th> <%= f.input :place, placeholder: "Lugar"%></th>
-                    <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
-                  </tr>
+                    <th><%= f.input :vvthird , placeholder: "vv",label: false%></th>
+                    <th><%= f.input :op , placeholder: "OP",label: false%></th>                  
+                    <th> <%= f.input :fourth, placeholder: "cuarto",label: false%></th>
+                    <th> <%= f.input :vvfourth, placeholder: "vv",label: false%></th>
+                    <th> <%= f.input :fifth, placeholder: "quinto",label: false%></th>
+                    <th> <%= f.input :vvfifth, placeholder: "vv",label: false%></th>
+                    <th> <%= f.input :sixth, placeholder: "sexto",label: false%></th>
+                    <th> <%= f.input :vvsixth, placeholder: "vv",label: false%></th>
+                    <th> <%= f.input :achievement, placeholder: "Marca",label: false%></th>
+                    <th> <%= f.input :place, placeholder: "Lugar",label: false%></th>
+                    <th> <%= f.button :submit ,'Guardar',class: "btn btn-success",label: false%></th>
+                  </tr>                  
+                  </table>
+                   <%end%>
+                  <% elsif  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="1"%>
+       <div class="row">
+          <div class="col-xs-12">
+       
+             
+              <!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                <%= simple_form_for :jump2, :url => jump2s_path, :method => :post  do |f| %>
+                <table class="table table-hover">
+    
+    <%= f.error_notification %>
+    <%= f.input :jump_head2_id, :as => :hidden, :input_html => { :value => jump_head2.id  }%>
+                  <tr>
+
+                    <th><%= f.input :athlete,  placeholder: "Atleta",label: false%></th>
+                    <th><%= f.input :club,  placeholder: "Club",label: false%></th>
+                     <th><%= f.input :an,  placeholder: "A.N.",label: false%></th>
+                      <th><%= f.input :region,  placeholder: "Región",label: false%></th>
+                   
+                    <th> <%= f.button :submit ,'Guardar',class: "btn btn-success",label: false%></th>
+                  </tr>                  
+                  </table>
                   <%end%>
-                         </table>
               </div>
               <!-- /.box-body -->
            
@@ -91,11 +114,10 @@ category_id=jump_head2.category_id
 
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding table-striped">
-              <table class="table table-hover">
+              <table class="table table-hover" >
                 <tbody><tr class="table-info">
-                  <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+                  <% if start=="0" %>
                   <th>Lugar</th>
-                  <th>Puntaje</th>
                   <th>Nombre</th>
                   <th>A.N.</th>
                   <th>Club</th>
@@ -114,10 +136,7 @@ category_id=jump_head2.category_id
                   <th>Sexto</th>
                   <th>V.V</th>
                   <th>Marca</th>
-                  <%else%>
-                  <th>Lugar</th>
-                  <th>Puntaje</th>
-                  <th>Marca</th>
+                  <%elsif start=="1"%>
                   <th>Nombre</th>
                   <th>A.N.</th>
                   <th>Club</th>
@@ -132,10 +151,9 @@ category_id=jump_head2.category_id
                   <%  jump_head2.jump2s.where(:jump_head2_id => jump_head2.id).order(place: :asc).each do |jump2| %>
                
      
-        <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+        <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
   <tr>
 <td><%= best_in_place(jump2, :place) %></td>
-        <td><%= best_in_place(jump2, :points) %></td>
         <td><%= best_in_place(jump2, :athlete) %></td>
         <td><%= best_in_place(jump2, :an) %></td>
         <td><%= best_in_place(jump2, :club) %></td>
@@ -161,20 +179,55 @@ category_id=jump_head2.category_id
         <%end%>
       </tr>
 
- <%   else %>
+   <% elsif  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="1"%>
+  <tr>
 
-<tr>
-        <td><%= jump2.place%></td>
-        <td><%= jump2.points%></td>
-        <td><%= jump2.achievement %></td>
-        <td><%=jump2.athlete %></td>
-       <td><%=jump2.an %></td>
-        <td><%= jump2.club%></td>
-        <td><%= jump2.region %></td>
+        <td><%= best_in_place(jump2, :athlete) %></td>
+        <td><%= best_in_place(jump2, :an) %></td>
+        <td><%= best_in_place(jump2, :club) %></td>
+         <td><%= best_in_place(jump2, :region) %></td>
+    
+        
+         <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+        <td><%= link_to jump2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
+        <% end %> 
+        <%end%>
       </tr>
+<% elsif  !user_signed_in? && start=="1"%>
+  <tr>
 
-
-
+        <td><%=jump2.athlete%></td>
+        <td><%= jump2.an%></td>
+        <td><%= jump2.club%></td>
+         <td><%= jump2.region%></td>
+    <% elsif  !user_signed_in? && start=="0"%>
+   <tr>
+<td><%= jump2.place %></td>
+        <td><%= jump2.athlete %></td>
+        <td><%= jump2.an %></td>
+        <td><%= jump2.club %></td>
+         <td><%= jump2.region %></td>
+        <td><%= jump2.first %></td>
+        <td><%= jump2.vvfirst %></td>
+        <td><%= jump2.second %></td>
+        <td><%= jump2.vvsecond %></td>
+             <td><%=jump2.third %></td>
+        <td><%= jump2.vvthird %></td>
+        <td><%= jump2.op %></td>
+        <td><%= jump2.fourth %></td>
+        <td><%= jump2.vvfourth %></td>
+        <td><%= jump2.fifth %></td>
+             <td><%=jump2.vvfifth %></td>
+        <td><%=jump2.sixth %></td>
+        <td><%=jump2.vvsixth %></td>
+        <td><%=jump2.achievement %></td>
+    
+        
+         <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+        <td><%= link_to jump2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
+        <% end %> 
+        <%end%>
+      </tr>
  <%end%>
     <% end %>
               </tbody></table>
