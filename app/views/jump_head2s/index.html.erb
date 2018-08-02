@@ -1,6 +1,12 @@
 <div class="col-xs-12">
 <p id="notice"><%= notice %></p>
 
+ <div class="callout callout-warning">
+                <h4><%= Competition.where(id: params[:competition_id]).first.sport.name %>
+                <%=Competition.where(id: params[:competition_id]).first.category.name %>
+                <%=Competition.where(id: params[:competition_id]).first.sex.sex%></h4>
+
+    </div>
 <%
 competition_id=params[:competition_id]
 start=params[:start]
@@ -110,11 +116,9 @@ category_id=jump_head2.category_id
 
 
 
-
-
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding table-striped">
-              <table class="table table-hover" >
+              <table class="table table-hover " >
                 <tbody><tr class="table-info">
                   <% if start=="0" %>
                   <th>Lugar</th>
@@ -148,7 +152,7 @@ category_id=jump_head2.category_id
                    <th>ELIMINAR</th>
                    <%end%>
                 </tr>
-                  <%  jump_head2.jump2s.where(:jump_head2_id => jump_head2.id).order(place: :asc).each do |jump2| %>
+                  <%  jump_head2.jump2s.where(:jump_head2_id => jump_head2.id).sort_by { |a| +(a.place.to_i) }.each do |jump2| %>
                
      
         <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
@@ -253,7 +257,33 @@ category_id=jump_head2.category_id
   <%end%>
     
 <br>
+<script>
+window.onscroll = function() {myFunction()};
 
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+</script>
+<style>
+
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+</style>
 
   <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
   <script type="application/javascript">

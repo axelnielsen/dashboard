@@ -76,4 +76,5 @@ class TrackHead2sController < ApplicationController
     def track_head2_params
       params.require(:track_head2).permit(:fecha, :hora, :sex_id, :competition_id, :sport_id, :category_id, :serie, :wind, :type)
     end
+   
 end
