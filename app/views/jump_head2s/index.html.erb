@@ -310,9 +310,10 @@ function bestInPlace()
              
               <!-- /.box-header -->
               <div class="box-body table-responsive no-padding">
+                 <%= simple_form_for :jump_head2, :url => jump_head2s_path, :method => :post  do |f| %>
                 <table class="table table-hover">
                   
-    <%= simple_form_for :jump_head2, :url => jump_head2s_path, :method => :post  do |f| %>
+   
     <%= f.error_notification %>
                   <tr>
                      <th><%= f.input :competition_id, :as => :hidden, :input_html => { :value => competition_id  }%></th>
@@ -325,8 +326,9 @@ function bestInPlace()
                     
                     <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
                   </tr>
-                  <%end%>
+                
                          </table>
+                           <%end%>
               </div>
               <!-- /.box-body -->
            
