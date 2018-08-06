@@ -129,7 +129,7 @@ category_id=hjump_head2.category_id
                    <th>ELIMINAR</th>
                    <%end%>
                 </tr>
-                  <%  hjump_head2.hjump2s.where(:hjump_head2_id => hjump_head2.id).order(place: :asc).each do |hjump2| %>
+                  <%  hjump_head2.hjump2s.where(:hjump_head2_id => hjump_head2.id).sort_by { |a| -(a.achievement.to_f) }.each do |hjump2| %>
                
      
         <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>

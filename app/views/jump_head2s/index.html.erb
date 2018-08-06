@@ -152,7 +152,7 @@ category_id=jump_head2.category_id
                    <th>ELIMINAR</th>
                    <%end%>
                 </tr>
-                  <%  jump_head2.jump2s.where(:jump_head2_id => jump_head2.id).sort_by { |a| +(a.place.to_i) }.each do |jump2| %>
+                  <%  jump_head2.jump2s.where(:jump_head2_id => jump_head2.id).sort_by { |a| -(a.achievement.to_f) }.each do |jump2| %>
                
      
         <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
