@@ -65,7 +65,6 @@ $("input.datepicker").each(function(input) {
           <th>HORA</th>
             <th>PRUEBA</th>
             <th>CATEGORÍA</th>
-          <th>FINAL</th>
             <th>RESULTADOS</th>
             <th>STARTLIST</th>
           </tr>
@@ -74,9 +73,8 @@ $("input.datepicker").each(function(input) {
           <% @championship.competitions.where(:stage => stage.id).order(hour: :asc).each do |competition| %>
         <tr>
         <td data-label="HORA"> <%=competition.hour.strftime('%H:%M')%></td>
-        <td data-label="PRUEBA"> <%=competition.sport.name%></td>
+        <td data-label="PRUEBA"> <%=competition.sport.name%> <%=competition.sex.sex%></td>
         <td data-label="FINAL"> <%=competition.category.name%></td>
-        <td data-label="CATEGORÍA"> <%=competition.sex.sex%></td>
         <td data-label="RESULTADOS">
        <%if competition.competition_type_id==1 %>
        <%=link_to "RESULTADOS", track_head2s_path(:competition_id=>competition.id, :start=>"0"), class: "btn btn-warning" %>
