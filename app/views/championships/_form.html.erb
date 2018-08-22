@@ -1,16 +1,18 @@
-
+<% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> 
 <%= simple_form_for(@championship) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :initdate %>
-    <%= f.input :findate %>
-    <%= f.input :idRegion %>
-    <%= f.input :address %>
+    <%= f.input :name , placeholder: "Nombre Campeonato",label: false%>
+    <%= f.input :initdate, placeholder: "Fecha de inicio",label: false %>
+    <%= f.input :findate, placeholder: "Fecha de término",label: false %>
+    <%= f.input :idRegion, placeholder: "Región",label: false %>
+    <%= f.input :address, placeholder: "Dirección",label: false%>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit ,'GUARDAR',class: "btn btn-success"%> | 
+<%= link_to "VOLVER", championships_path, class: "btn btn-warning" %>
   </div>
 <% end %>
+<%end%>

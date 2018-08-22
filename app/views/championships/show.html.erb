@@ -1,28 +1,65 @@
+<script type="text/javascript">
+$("input.datepicker").each(function(input) {
+  $(this).datepicker({
+    dateFormat: "yy-mm-dd",
+    altField: $(this).next()
+  })
 
+  // If you use i18n-js you can set the locale like that
+  $(this).datepicker("option", $.datepicker.regional[I18n.currentLocale()]);
+})
+</script>
     <!-- Main content -->
     <section class="content container-fluid">
     
       <p id="notice"><%= notice %></p>
-
 <div class="row">
 <div class="col-md-12">
     <div class="callout callout-warning">
                 <h4><%= @championship.name %></h4>
 
     </div>
+       <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+       <div class="row">
+          <div class="col-xs-12">
+       
+             
+              <!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                   <%= simple_form_for :stage, :url => stages_path, :method => :post  do |f| %>
+    <%= f.error_notification %>
+                <table class="table table-hover"> 
+                  <tr>
+                    <th><%= f.input :championship_id, :as => :hidden, :input_html => { :value => @championship.id  }%></th>
+                     <th> <%= f.input :fecha, placeholder: "Fecha",label: false%></th>
+                    <th><%= f.input :name,  placeholder: "Nombre",label: false%></th>
+                    
+                    
+                    <th> <%= f.button :submit ,'NUEVA ETAPA',class: "btn btn-success"%></th>
+                  </tr>                 
+                         </table>
+                          <%end%>
+              </div>
+              <!-- /.box-body -->
+           
+            <!-- /.box -->
+          </div>
+        </div>
+    <%end%>
     <div class="row">
    <% if @championship.stages.any? %>
   
     <% @championship.stages.each do |stage| %>
     <div class="col-md-12">
 <div class="box">
-            <div class="box-header">
+            <div class="box-header table-info">
               <h3 class="box-title">HORARIOS</h3>
               <h4 class="box-title"><%=stage.name %> <%=stage.fecha%></h4>
+              
             </div>
             <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <table class="table">
+            <div class="box-body table-responsive no-padding table-striped">
+              <table class="table table-hover">
         <thead>
           <tr>
           <th>HORA</th>
@@ -76,7 +113,7 @@
 <% end %>
   
 <% end %>
-
+<%= link_to "VOLVER", root_path(), class: "btn btn-warning" %><br/>
 </div>
 
 
