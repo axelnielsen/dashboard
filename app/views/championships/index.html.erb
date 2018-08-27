@@ -10,7 +10,7 @@
 
             <div class="info-box-content">
               <span class="info-box-text">CAMPEONATOS</span>
-              <span class="info-box-number">2</span>
+              <span class="info-box-number">3</span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -83,27 +83,36 @@
               <table class="table table-hover">
         <thead>
           <tr  class="table-info">
-          <th>CAMPEONATO</th>
+<th>STATUS</th>
+    <th>CAMPEONATO</th>
       <th>FECHA INICIO</th>
       <th>FECHA TÉRMINO</th>
       <th>REGIÓN</th>
-      <th>ESTADO</th>
+      
       <th colspan="3"></th>
           </tr>
         </thead>
         <tbody>
           <% if @championships.any? %>
   
-    <% @championships.each do |championship| %>
+    <% @championships.order("initdate desc").each do |championship| %>
         <tr>
+<%if championship.id==3 %><td><span class="label label-danger">TERMINADO</span></td>
+<%else%>
+<td><span class="label label-danger">TERMINADO</span></td><%end%>
+
+
           <td><%= link_to championship.name, championship %></td>
         <td><%= championship.initdate %></td>
         <td><%= championship.findate %></td>
-        <td><%=image_tag("cl.png", alt:"cl", height:"20",  width:"20")%></td>
-        <td><%= championship.address %><span class="label label-danger">TERMINADO</span></td>
-     <td><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%= link_to 'EDITAR', edit_championship_path(championship), class: "btn btn-warning"  %><%end%></td>
+ <%if championship.id==3 %>     <td><%=image_tag("pe.png", alt:"cl", height:"20",  width:"20")%></td>
+      <%else%>
+ <td><%=image_tag("cl.png", alt:"cl", height:"20",  width:"20")%></td>
 
-      
+<%end%>
+
+<td><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%= link_to 'EDITAR', edit_championship_path(championship), class: "btn btn-warning"  %><%end%></td>
+        
   </tr>
    <%end%>
 
