@@ -74,9 +74,7 @@ resources :throw_head2s do
   resources :start_female4x400mts
   resources :start_female3000mts
   resources :start_female800mts
-  resources :start_female10000mts
   resources :start_female3000mtsobstacles
-  resources :start_female110mtshudrles
   resources :start_female20000mts
   resources :start_male4x400mts
   resources :start_male3000mts
@@ -146,13 +144,11 @@ resources :throw_head2s do
   resources :start_female1500mts
   resources :start_male1500mts
   resources :start_male100mthudrles
-  resources :start_female100mthudrles
   resources :start_female400mts
   resources :start_male400mts
   resources :start_male200mts
   resources :start_female200mts
   resources :start_male100mts
-  resources :start_female100mts
   resources :male_javelin_heads
   resources :female_javelin_heads
   resources :female_shot_put_heads

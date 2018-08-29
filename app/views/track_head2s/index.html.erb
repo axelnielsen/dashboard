@@ -28,7 +28,7 @@ category_id=track_head2.category_id
         
           <div class="box">
             <div class="box-header table-info">
-              <h3 class="box-title">Serie <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(track_head2, :serie) %>
+              <h3 class="box-title"><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(track_head2, :serie, place_holder: 'N° Serie') %>
               <%else%>
               <%=track_head2.serie%>
                 <%end%>
@@ -150,10 +150,10 @@ category_id=track_head2.category_id
   <tr>
 
 
-        <td><%= best_in_place(track2, :place) %></td>
-        <td><%= best_in_place(track2, :achievement,  :html_attrs => { :size => '8' }) %></td>
-        <td><%= best_in_place(track2, :rail,  :html_attrs => { :size => '1' }) %></td>
-        <td><%= best_in_place(track2, :athlete) %></td>
+        <td><b><%= best_in_place(track2, :place) %></b></td>
+        <td><b><%= best_in_place(track2, :achievement,  :html_attrs => { :size => '8' }) %></b></td>
+        <td><b><%= best_in_place(track2, :rail,  :html_attrs => { :size => '1' }) %></b></td>
+        <td><b><%= best_in_place(track2, :athlete) %></b></td>
         <td><%= best_in_place(track2, :club) %></td>
         <td><%= best_in_place(track2, :region,  :html_attrs => { :size => '2' }) %></td>
          <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
@@ -168,8 +168,8 @@ category_id=track_head2.category_id
 
 
 
-        <td><%= best_in_place(track2, :rail,  :html_attrs => { :size => '1' }) %></td>
-        <td><%= best_in_place(track2, :athlete) %></td>
+        <td><b><%= best_in_place(track2, :rail,  :html_attrs => { :size => '1' }) %></b></td>
+        <td><b><%= best_in_place(track2, :athlete) %></b></td>
   <td><%= best_in_place(track2, :an,  :html_attrs => { :size => '4' }) %></td>
   
         <td><%= best_in_place(track2, :club) %></td>
@@ -186,10 +186,10 @@ category_id=track_head2.category_id
  <%   elsif start=="0" %>
 <%  track_head2.track2s.where(:track_head2_id => track_head2.id).order(achievement: :asc).each do |track2| %>
 <tr>
-        <td><%= track2.place%></td>
-        <td><%= track2.achievement %></td>
-        <td><%= track2.rail %></td>
-        <td><%=track2.athlete %></td>
+        <td><b><%= track2.place%></b></td>
+        <td><b><%= track2.achievement %></b></td>
+        <td><b><%= track2.rail %></b></td>
+        <td><b><%=track2.athlete %></b></td>
         <td><%= track2.club%></td>
         <td><%= track2.region %></td>
       </tr>
@@ -198,9 +198,9 @@ category_id=track_head2.category_id
  <%  track_head2.track2s.where(:track_head2_id => track_head2.id).order(rail: :asc).each do |track2| %>
 <tr>
 
-        <td><%= track2.rail %></td>
-        <td><%=track2.athlete %></td>
-  <td><%=track2.an %></td>
+        <td><b><%= track2.rail %></b></td>
+        <td><b><%=track2.athlete %></b></td>
+  <td><b><%=track2.an %></b></td>
         <td><%= track2.club%></td>
         <td><%= track2.region %></td>
         <td><%= track2.bestAchievement %></td>

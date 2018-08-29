@@ -27,7 +27,7 @@ category_id=throw_head2.category_id
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header table-info">
-              <h3 class="box-title">Serie <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(throw_head2, :serie) %>
+              <h3 class="box-title"><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(throw_head2, :serie, :serie, place_holder: 'N° Serie') %>
               <%else%>
               <%=throw_head2.serie%>
                 <%end%>
@@ -162,9 +162,9 @@ category_id=throw_head2.category_id
      
         <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
   <tr>
-<td><%= best_in_place(throw2, :place,  :html_attrs => { :size => '2' }) %></td>
-  <td><%= best_in_place(throw2, :achievement,  :html_attrs => { :size => '4' }) %></td>
-        <td><%= best_in_place(throw2, :athlete) %></td>
+<td><b><%= best_in_place(throw2, :place,  :html_attrs => { :size => '2' }) %></b></td>
+  <td><b><%= best_in_place(throw2, :achievement,  :html_attrs => { :size => '4' }) %></b></td>
+        <td><b><%= best_in_place(throw2, :athlete) %></b></td>
         <td><%= best_in_place(throw2, :an,  :html_attrs => { :size => '7' }) %></td>
         <td><%= best_in_place(throw2, :club,  :html_attrs => { :size => '16' }) %></td>
          <td><%= best_in_place(throw2, :region,  :html_attrs => { :size => '2' }) %></td>
@@ -191,8 +191,8 @@ category_id=throw_head2.category_id
 
 <%elsif user_signed_in? && current_user.email=='admin@prossport.cl' && start=="1"%>
 <tr>
-         <td><%= best_in_place(throw2, :athlete) %></td>
-       <td><%= best_in_place(throw2, :an,  :html_attrs => { :size => '8' }) %></td>
+         <td><b><%= best_in_place(throw2, :athlete) %></b></td>
+       <td><b><%= best_in_place(throw2, :an,  :html_attrs => { :size => '8' }) %></b></td>
         <td><%= best_in_place(throw2, :club) %></td>
         <td><%= best_in_place(throw2, :region,  :html_attrs => { :size => '4' }) %></td>
           <td><%= best_in_place(throw2, :bestAchievement,  :html_attrs => { :size => '4' }) %></td>
@@ -205,7 +205,7 @@ category_id=throw_head2.category_id
 
 <tr>
      
-        <td><%=throw2.athlete %></td>
+        <td><b><%=throw2.athlete %></b></td>
        <td><%=throw2.an %></td>
         <td><%= throw2.club%></td>
         <td><%= throw2.region %></td>
@@ -214,9 +214,9 @@ category_id=throw_head2.category_id
 
 <%elsif !user_signed_in? && start=="0" %>
 <tr>
- <td><%=throw2.place %></td>
-       <td><%=throw2.achievement %></td>
-        <td><%= throw2.athlete%></td>
+ <td><b><%=throw2.place %></b></td>
+       <td><b><%=throw2.achievement %></b></td>
+        <td><b><%= throw2.athlete%></b></td>
         <td><%= throw2.an %></td>
          <td><%= throw2.club %></td>
           <td><%=throw2.region %></td>

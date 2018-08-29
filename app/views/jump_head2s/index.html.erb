@@ -28,7 +28,7 @@ category_id=jump_head2.category_id
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header table-info">
-              <h3 class="box-title">Serie <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(jump_head2, :serie) %>
+              <h3 class="box-title"><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(jump_head2, :serie, place_holder: 'N° Serie') %>
               <%else%>
               <%=jump_head2.serie%>
                 <%end%>
@@ -122,6 +122,7 @@ category_id=jump_head2.category_id
                 <tbody><tr class="table-info">
                   <% if start=="0" %>
                   <th>Lugar</th>
+                  <th>Marca</th>
                   <th>Nombre</th>
                   <th>A.N.</th>
                   <th>Club</th>
@@ -139,7 +140,7 @@ category_id=jump_head2.category_id
                   <th>V.V</th>
                   <th>Sexto</th>
                   <th>V.V</th>
-                  <th>Marca</th>
+                  
                   <%elsif start=="1"%>
                   <th>Nombre</th>
                   <th>A.N.</th>
@@ -157,7 +158,8 @@ category_id=jump_head2.category_id
      
         <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
   <tr>
-<td><%= best_in_place(jump2, :place) %></td>
+<td><b><%= best_in_place(jump2, :place) %></b></td>
+<td><b><%= best_in_place(jump2, :achievement,  :html_attrs => { :size => '3' }) %></b></td>
         <td><%= best_in_place(jump2, :athlete) %></td>
         <td><%= best_in_place(jump2, :an,  :html_attrs => { :size => '6' }) %></td>
         <td><%= best_in_place(jump2, :club,  :html_attrs => { :size => '6' }) %></td>
@@ -175,7 +177,7 @@ category_id=jump_head2.category_id
              <td><%= best_in_place(jump2, :vvfifth,  :html_attrs => { :size => '3' }) %></td>
         <td><%= best_in_place(jump2, :sixth,  :html_attrs => { :size => '3' }) %></td>
         <td><%= best_in_place(jump2, :vvsixth,  :html_attrs => { :size => '2' }) %></td>
-        <td><%= best_in_place(jump2, :achievement,  :html_attrs => { :size => '3' }) %></td>
+        
         
          <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
         <td><%= link_to jump2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
@@ -186,8 +188,8 @@ category_id=jump_head2.category_id
    <% elsif  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="1"%>
   <tr>
 
-        <td><%= best_in_place(jump2, :athlete) %></td>
-        <td><%= best_in_place(jump2, :an) %></td>
+        <td><b><%= best_in_place(jump2, :athlete) %></b></td>
+        <td><b><%= best_in_place(jump2, :an) %></b></td>
         <td><%= best_in_place(jump2, :club) %></td>
          <td><%= best_in_place(jump2, :region) %></td>
     
@@ -200,14 +202,15 @@ category_id=jump_head2.category_id
 <% elsif  !user_signed_in? && start=="1"%>
   <tr>
 
-        <td><%=jump2.athlete%></td>
+        <td><b><%=jump2.athlete%></b></td>
         <td><%= jump2.an%></td>
         <td><%= jump2.club%></td>
          <td><%= jump2.region%></td>
     <% elsif  !user_signed_in? && start=="0"%>
    <tr>
-<td><%= jump2.place %></td>
-        <td><%= jump2.athlete %></td>
+        <td><b><%= jump2.place %></b></td>
+        <td><b><%=jump2.achievement %></b></td>
+        <td><b><%= jump2.athlete %></b></td>
         <td><%= jump2.an %></td>
         <td><%= jump2.club %></td>
          <td><%= jump2.region %></td>
@@ -224,7 +227,7 @@ category_id=jump_head2.category_id
              <td><%=jump2.vvfifth %></td>
         <td><%=jump2.sixth %></td>
         <td><%=jump2.vvsixth %></td>
-        <td><%=jump2.achievement %></td>
+       
     
         
          <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>

@@ -1,2 +1,0 @@
-module StartFemale10000mtsHelper
-end

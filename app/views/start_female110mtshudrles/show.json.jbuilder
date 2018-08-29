@@ -1,1 +1,0 @@
-json.partial! "start_female110mtshudrles/start_female110mtshudrle", start_female110mtshudrle: @start_female110mtshudrle

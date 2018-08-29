@@ -27,7 +27,7 @@ category_id=hjump_head2.category_id
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header table-info">
-              <h3 class="box-title">Serie <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(hjump_head2, :serie) %>
+              <h3 class="box-title"><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(hjump_head2, :serie, place_holder: 'N° Serie') %>
               <%else%>
               <%=hjump_head2.serie%>
                 <%end%>
@@ -134,9 +134,9 @@ category_id=hjump_head2.category_id
      
         <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
   <tr>
-<td><%= best_in_place(hjump2, :place,  :html_attrs => { :size => '2' }) %></td>
-        <td><%= best_in_place(hjump2, :achievement,  :html_attrs => { :size => '4' }) %></td>
-        <td><%= best_in_place(hjump2, :athlete) %></td>
+<td><b><%= best_in_place(hjump2, :place,  :html_attrs => { :size => '2' }) %></b></td>
+        <td><b><%= best_in_place(hjump2, :achievement,  :html_attrs => { :size => '4' }) %></b></td>
+        <td><b><%= best_in_place(hjump2, :athlete) %></b></td>
         <td><%= best_in_place(hjump2, :an,  :html_attrs => { :size => '2' }) %></td>
         <td><%= best_in_place(hjump2, :club) %></td>
          <td><%= best_in_place(hjump2, :region,  :html_attrs => { :size => '2' }) %></td>
@@ -149,7 +149,7 @@ category_id=hjump_head2.category_id
 
            <% elsif  user_signed_in? && current_user.email=='admin@prossport.cl'  && start=="1"%>
         <tr>
-        <td><%= best_in_place(hjump2, :athlete) %></td>
+        <td><b><%= best_in_place(hjump2, :athlete) %></b></td>
         <td><%= best_in_place(hjump2, :an,  :html_attrs => { :size => '4' }) %></td>
         <td><%= best_in_place(hjump2, :club) %></td>
         <td><%= best_in_place(hjump2, :region,  :html_attrs => { :size => '2' }) %></td>       
@@ -161,9 +161,9 @@ category_id=hjump_head2.category_id
  <%   elsif !user_signed_in? && start=="0"%>
 
 <tr>
-    <td><%=hjump2.place %></td>
-      <td><%=hjump2.achievement %></td>
-        <td><%=hjump2.athlete %></td>
+    <td><b><%=hjump2.place %></b></td>
+      <td><b><%=hjump2.achievement %></b></td>
+        <td><b><%=hjump2.athlete %></b></td>
        <td><%=hjump2.an %></td>
         <td><%= hjump2.club%></td>
         <td><%= hjump2.region %></td>
@@ -172,7 +172,7 @@ category_id=hjump_head2.category_id
 
 <tr>
   
-        <td><%=hjump2.athlete %></td>
+        <td><b><%=hjump2.athlete %></b></td>
        <td><%=hjump2.an %></td>
         <td><%= hjump2.club%></td>
         <td><%= hjump2.region %></td>

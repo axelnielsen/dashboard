@@ -1,6 +1,3 @@
-
-    <!-- Main content -->
-    <section class="content container-fluid">
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
@@ -71,14 +68,11 @@
 </div>
     </div>
     <!-- Main content -->
-    <section class="content container-fluid">
-    
+
       <p id="notice"><%= notice %></p>
 
 <div class="row">
 <div class="col-md-12">
-  <div class="box">
-            <!-- /.box-header -->
             <div class="box-body table-responsive no-padding table-striped">
               <table class="table table-hover">
         <thead>
@@ -97,12 +91,12 @@
   
     <% @championships.order("initdate desc").each do |championship| %>
         <tr>
-<%if championship.id==3 %><td><span class="label label-danger">TERMINADO</span></td>
+<%if championship.id==4 %><td><span class="label label-success">NO INICIADO</span></td>
 <%else%>
 <td><span class="label label-danger">TERMINADO</span></td><%end%>
 
 
-          <td><%= link_to championship.name, championship %></td>
+        <td><b><%= link_to championship.name, championship %></b></td>
         <td><%= championship.initdate %></td>
         <td><%= championship.findate %></td>
  <%if championship.id==3 %>     <td><%=image_tag("pe.png", alt:"cl", height:"20",  width:"20")%></td>
@@ -120,9 +114,9 @@
       </table>
      
             </div>
-            <!-- /.box-body -->
-          </div>
+
 <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> 
+<br/>
 <%= link_to "NUEVO CAMPEONATO", new_championship_path, class: "btn btn-success" %>
 <%end%>
 </div>
@@ -130,6 +124,3 @@
 <% end %>
 
 </div>
-</section>
-
-
