@@ -11,6 +11,7 @@ class Throw2 < ApplicationRecord
 
 			#user.attributes = row.to_hash.slice(*accepts_nested_attributes_for)
 			throw2.attributes = row.to_hash.slice(*row.to_hash.keys)
+			throw2.region=throw2.region.to_i
 			throw2.save!
 
 	

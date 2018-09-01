@@ -12,6 +12,7 @@ class Jump2 < ApplicationRecord
 
 			#user.attributes = row.to_hash.slice(*accepts_nested_attributes_for)
 			jump2.attributes = row.to_hash.slice(*row.to_hash.keys)
+		 	jump2.region=jump2.region.to_i
 			jump2.save!
 
 	
