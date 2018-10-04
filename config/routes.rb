@@ -489,11 +489,6 @@ resources :male_discus_throws do
   end
 
 
-
-
-
-
-
   resources :sports
   get 'results/index'
 
@@ -527,3 +522,4 @@ end
 root :to => "championships#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+

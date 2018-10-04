@@ -7,6 +7,19 @@ class HjumpHead2sController < ApplicationController
     @hjump_head2s = HjumpHead2.all
   end
 
+    def sexColorBoxHeader(sex)
+  if sex=="DAMAS"
+    return'="box-header table-danger">'.html_safe
+    else return '<%=sexColorBoxHeader(Competition.where(id: params[:competition_id]).first.sex.sex)%>'.html_safe
+    end
+end
+def sexColortr(sex)
+  if sex=="DAMAS"
+    return'="table-danger">'.html_safe
+    else return '="table-info">'.html_safe
+    end
+end
+
   # GET /hjump_head2s/1
   # GET /hjump_head2s/1.json
   def show
@@ -56,7 +69,7 @@ class HjumpHead2sController < ApplicationController
   def destroy
     @hjump_head2.destroy
     respond_to do |format|
-      format.html { redirect_to hjump_head2s_url, notice: 'Hjump head2 was successfully destroyed.' }
+      format.html {redirect_back(fallback_location: root_path, notice: 'Eliminado exitosamente' )}
       format.json { head :no_content }
     end
   end
@@ -71,4 +84,7 @@ class HjumpHead2sController < ApplicationController
     def hjump_head2_params
       params.require(:hjump_head2).permit(:fecha, :hora, :sex_id, :competition_id, :sport_id, :category_id, :serie)
     end
+
+    
+   helper_method :sexColorBoxHeader, :sexColortr
 end

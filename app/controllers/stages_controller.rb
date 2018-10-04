@@ -56,7 +56,7 @@ class StagesController < ApplicationController
   def destroy
     @stage.destroy
     respond_to do |format|
-      format.html { redirect_to stages_url, notice: 'Stage was successfully destroyed.' }
+      format.html {redirect_back(fallback_location: root_path, notice: 'Eliminado exitosamente' )}
       format.json { head :no_content }
     end
   end

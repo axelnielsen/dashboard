@@ -7,6 +7,19 @@ class ThrowHead2sController < ApplicationController
     @throw_head2s = ThrowHead2.all
   end
 
+  def sexColorBoxHeader(sex)
+  if sex=="DAMAS"
+    return'="box-header table-danger">'.html_safe
+    else return '="box-header table-info">'.html_safe
+    end
+end
+def sexColortr(sex)
+  if sex=="DAMAS"
+    return'="table-danger">'.html_safe
+    else return '="table-info">'.html_safe
+    end
+end
+
   # GET /throw_head2s/1
   # GET /throw_head2s/1.json
   def show
@@ -71,4 +84,5 @@ class ThrowHead2sController < ApplicationController
     def throw_head2_params
       params.require(:throw_head2).permit(:fecha_date, :hora, :sex_id, :competition_id, :sport_id, :category_id, :type, :serie)
     end
+       helper_method :sexColorBoxHeader, :sexColortr  
 end

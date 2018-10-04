@@ -7,6 +7,20 @@ class JumpHead2sController < ApplicationController
     @jump_head2s = JumpHead2.all
   end
 
+  def sexColorBoxHeader(sex)
+  if sex=="DAMAS"
+    return'="box-header table-danger">'.html_safe
+    else return '="box-header table-info">'.html_safe
+    end
+end
+def sexColortr(sex)
+  if sex=="DAMAS"
+    return'="table-danger">'.html_safe
+    else return '="table-info">'.html_safe
+    end
+end
+
+
   # GET /jump_head2s/1
   # GET /jump_head2s/1.json
   def show
@@ -71,4 +85,7 @@ class JumpHead2sController < ApplicationController
     def jump_head2_params
       params.require(:jump_head2).permit(:fecha_date, :hora, :sex_id, :competition_id, :sport_id, :category_id, :type, :serie)
     end
+
+
+   helper_method :sexColorBoxHeader, :sexColortr
 end

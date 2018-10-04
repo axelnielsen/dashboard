@@ -21,28 +21,34 @@ competition_id=track_head2.competition_id
 sex_id=track_head2.sex_id
 sport_id=track_head2.sport_id
 category_id=track_head2.category_id
-
 %>
+
   <div class="row">
         <div class="col-xs-12">
-        
+  
           <div class="box">
-            <div class="box-header table-info">
+            <div class <%=sexColorBoxHeader(Competition.where(id: params[:competition_id]).first.sex.sex)%>
+          
               <h3 class="box-title"><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(track_head2, :serie, place_holder: 'N° Serie') %>
+                    
               <%else%>
               <%=track_head2.serie%>
                 <%end%>
                 <% if start=="0"%>
               Viento:
               <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(track_head2, :wind) %>
+               <%= link_to track_head2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR SERIE</button>
+        <% end %> 
               <%else%>
               <%=track_head2.wind%>
                 <%end%>
               <%end%>
+         
+    
+
               </h3>
 
-              <div class="box-tools">
-             </div>
+             
             </div>
      <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
        <div class="row">
@@ -53,6 +59,7 @@ category_id=track_head2.category_id
               <div class="box-body table-responsive no-padding">
                    <%= simple_form_for :track2, :url => track2s_path, :method => :post  do |f| %>
     <%= f.error_notification %>
+
                 <table class="table table-hover"> 
                   <tr>
                     <th><%= f.input :track_head2_id, :as => :hidden, :input_html => { :value => track_head2.id  }%></th>
@@ -82,6 +89,7 @@ category_id=track_head2.category_id
              
               <!-- /.box-header -->
               <div class="box-body table-responsive no-padding">
+
                 <%= simple_form_for :track2, :url => track2s_path, :method => :post  do |f| %>
                 <table class="table table-hover">
     
@@ -96,11 +104,12 @@ category_id=track_head2.category_id
                     <th><%= f.input :region , placeholder: "Región",label: false%></th>
                     <th><%= f.input :bestAchievement , placeholder: "Mejor Marca",label: false%></th>
                     
-                    <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
+                    <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%> </th>
                   </tr>
               
                          </table>
                              <%end%>
+
               </div>
               <!-- /.box-body -->
            
@@ -118,7 +127,7 @@ category_id=track_head2.category_id
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding table-striped">
               <table class="table table-hover">
-                <tbody><tr class="table-info">
+                <tbody><tr class<%=sexColortr(Competition.where(id: params[:competition_id]).first.sex.sex)%>
 
         <% if  start=="0"%>
                   <th>LUGAR</th>
@@ -244,7 +253,7 @@ function bestInPlace()
  jQuery(".best_in_place").best_in_place();
 };
  </script>
- <div class="box-header table-info">
+ <div class<%=sexColorBoxHeader(Competition.where(id: params[:competition_id]).first.sex.sex)%>
               <h3 class="box-title">Nueva Serie
              
               </h3>

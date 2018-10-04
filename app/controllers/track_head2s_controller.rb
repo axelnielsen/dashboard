@@ -1,6 +1,7 @@
 class TrackHead2sController < ApplicationController
   before_action :set_track_head2, only: [:show, :edit, :update, :destroy]
 
+
   # GET /track_head2s
   # GET /track_head2s.json
   def index     
@@ -10,7 +11,19 @@ class TrackHead2sController < ApplicationController
        @track_head2s = TrackHead2.all
     end
 
-  end
+end
+def sexColorBoxHeader(sex)
+  if sex=="DAMAS"
+    return'="box-header table-danger">'.html_safe
+    else return '="box-header table-info">'.html_safe
+    end
+end
+def sexColortr(sex)
+  if sex=="DAMAS"
+    return'="table-danger">'.html_safe
+    else return '="table-info">'.html_safe
+    end
+end
 
   # GET /track_head2s/1
   # GET /track_head2s/1.json
@@ -61,7 +74,7 @@ class TrackHead2sController < ApplicationController
   def destroy
     @track_head2.destroy
     respond_to do |format|
-      format.html { redirect_to track_head2s_url, notice: 'Track head2 was successfully destroyed.' }
+      format.html {redirect_back(fallback_location: root_path, notice: 'Eliminado exitosamente' )}
       format.json { head :no_content }
     end
   end
@@ -76,5 +89,6 @@ class TrackHead2sController < ApplicationController
     def track_head2_params
       params.require(:track_head2).permit(:fecha, :hora, :sex_id, :competition_id, :sport_id, :category_id, :serie, :wind, :type)
     end
-   
+
+   helper_method :sexColorBoxHeader, :sexColortr
 end

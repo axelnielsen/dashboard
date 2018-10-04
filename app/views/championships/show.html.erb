@@ -54,6 +54,8 @@ $("input.datepicker").each(function(input) {
             <div class="box-header table-info">
               <h3 class="box-title">HORARIOS</h3>
               <h4 class="box-title"><%=stage.name %> <%=stage.fecha%></h4>
+                 <%= link_to stage, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR ETAPA</button>
+        <% end %> 
               
             </div>
             <!-- /.box-header -->
