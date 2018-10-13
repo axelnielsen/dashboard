@@ -1,0 +1,2 @@
+module RegistrationHead2sHelper
+end

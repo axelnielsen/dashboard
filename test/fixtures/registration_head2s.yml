@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  championship: one
+  sex: one
+  fecha: 2018-10-12
+  name: MyString
+  lastname: MyString
+  an: 2018-10-12
+  club: MyString
+  region: MyString
+  pais: MyString
+  dni: MyString
+
+two:
+  championship: two
+  sex: two
+  fecha: 2018-10-12
+  name: MyString
+  lastname: MyString
+  an: 2018-10-12
+  club: MyString
+  region: MyString
+  pais: MyString
+  dni: MyString

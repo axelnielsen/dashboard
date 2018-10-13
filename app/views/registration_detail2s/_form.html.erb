@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@registration_detail2) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :registration_head2 %>
+    <%= f.association :competition %>
+    <%= f.input :bestAchievement %>
+  </div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
+  <label class="form-check-label" for="defaultCheck2">
+    Enabled
+  </label>
+</div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

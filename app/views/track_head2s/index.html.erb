@@ -37,8 +37,7 @@ category_id=track_head2.category_id
                 <% if start=="0"%>
               Viento:
               <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(track_head2, :wind) %>
-               <%= link_to track_head2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR SERIE</button>
-        <% end %> 
+             
               <%else%>
               <%=track_head2.wind%>
                 <%end%>
@@ -47,8 +46,12 @@ category_id=track_head2.category_id
     
 
               </h3>
+           
+  <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> 
+  <%= link_to track_head2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR SERIE</button>
+        <% end %> 
+           <%end%>  
 
-             
             </div>
      <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
        <div class="row">

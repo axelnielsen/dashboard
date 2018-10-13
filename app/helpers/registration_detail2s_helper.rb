@@ -1,0 +1,2 @@
+module RegistrationDetail2sHelper
+end

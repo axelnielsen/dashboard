@@ -1,22 +1,11 @@
-<script type="text/javascript">
-$("input.datepicker").each(function(input) {
-  $(this).datepicker({
-    dateFormat: "yy-mm-dd",
-    altField: $(this).next()
-  })
-
-  // If you use i18n-js you can set the locale like that
-  $(this).datepicker("option", $.datepicker.regional[I18n.currentLocale()]);
-})
-</script>
-    <!-- Main content -->
+  <!-- Main content -->
     
 <div class="row">
 <div class="col-md-12">
     <p id="notice"><%= notice %></p>
     <div class="callout callout-warning">
                 <h4><%= @championship.name %></h4>
-
+<%=link_to "INSCRIPCIONES ABIERTAS",  :controller => "registration_head2s", :action => "new",:id => @championship.id, class: "btn btn-Success" %>
     </div>
        <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
        <div class="row">
@@ -54,7 +43,9 @@ $("input.datepicker").each(function(input) {
             <div class="box-header table-info">
               <h3 class="box-title">HORARIOS</h3>
               <h4 class="box-title"><%=stage.name %> <%=stage.fecha%></h4>
-                 <%= link_to stage, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR ETAPA</button>
+                 <%= link_to stage, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %>
+                 <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR ETAPA</button>
+        <% end %>
         <% end %> 
               
             </div>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  registration_head2: one
+  competition: one
+  bestAchievement: MyString
+
+two:
+  registration_head2: two
+  competition: two
+  bestAchievement: MyString

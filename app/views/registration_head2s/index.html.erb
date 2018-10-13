@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p>
+
+  <% 
+championship_id=params[:championship_id]
+
+
+  %>
+<h1>Registration Head2s</h1>
+<form method="post" action="registration_head2s/result">
+<%
+
+sql = "select competitions.id, sports.name, sexes.sex , categories.name from championships  join stages on championships.id=stages.championship_id  join competitions on stages.id=competitions.stage_id join sports on competitions.sport_id=sports.id join sexes on sexes.id=competitions.sex_id  join categories on categories.id=competitions.category_id where championships.id="+championship_id+" order by sports.name asc ;
+"   
+    arr = ActiveRecord::Base.connection.execute(sql)
+
+arr.each do |elemento|
+  if elemento[3] =="SERIES" or elemento[3] =="FINAL"  %>
+<input type="checkbox" name="competitions[]" value=<%=elemento[0]%> />
+ <%=elemento[0]%>  <%=elemento[1]%>  <%=elemento[2]%> <%=elemento[3]%> 
+<%
+
+sqlCount = "select count(*) as total, sports.name, sexes.sex , categories.name from championships  join stages on championships.id=stages.championship_id  join competitions on stages.id=competitions.stage_id join sports on competitions.sport_id=sports.id join sexes on sexes.id=competitions.sex_id  join categories on categories.id=competitions.category_id 
+  where championships.id="+championship_id+" 
+  and sports.name='"+elemento[1]+"'
+  and sexes.sex='"+elemento[2]+"'
+group by sports.name, sexes.sex, categories.name 
+;
+"   
+    arrCount = ActiveRecord::Base.connection.execute(sqlCount)
+arrCount.each do |count|
+  %>total=
+<%=count[0]%><%=count[1]%><%=count[2]%><%=count[3]%>
+<%
+
+%>
+  <br/>
+  <%
+  end
+end
+end
+
+%>
+<input type="submit" name="btnSubmit" value="Aceptar">
+</form>
+<table>
+  <thead>
+    <tr>
+      <th>Championship</th>
+      <th>Sex</th>
+      <th>Fecha</th>
+      <th>Name</th>
+      <th>Lastname</th>
+      <th>An</th>
+      <th>Club</th>
+      <th>Region</th>
+      <th>Pais</th>
+      <th>Dni</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @registration_head2s.each do |registration_head2| %>
+      <tr>
+        <td><%= registration_head2.championship %></td>
+        <td><%= registration_head2.sex %></td>
+        <td><%= registration_head2.fecha %></td>
+        <td><%= registration_head2.name %></td>
+        <td><%= registration_head2.lastname %></td>
+        <td><%= registration_head2.an %></td>
+        <td><%= registration_head2.club %></td>
+        <td><%= registration_head2.region %></td>
+        <td><%= registration_head2.pais %></td>
+        <td><%= registration_head2.dni %></td>
+        <td><%= link_to 'Show', registration_head2 %></td>
+        <td><%= link_to 'Edit', edit_registration_head2_path(registration_head2) %></td>
+        <td><%= link_to 'Destroy', registration_head2, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Registration Head2', new_registration_head2_path %>

@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   
 
+  resources :registration_detail2s
+  resources :registration_head2s
+  resources :registration_statuses
   resources :competition_types
 resources :hjump2s do
   collection { post :import}
@@ -490,8 +493,8 @@ resources :male_discus_throws do
 
 
   resources :sports
-  get 'results/index'
-
+  post 'results/index'
+  post 'registration_head2s/result'
   devise_for :users
   resources :serie_detalles
   resources :discipline_championship2s

@@ -1,0 +1,65 @@
+<div class="row">
+<div class="col-md-12">
+    <p id="notice"><%= notice %></p>
+    <div class="callout callout-warning">
+                <h4> 
+<%=Championship.where(:id => params[:id]).first.name%>
+    </div>
+       <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+       <div class="row">
+          <div class="col-xs-12">
+       
+             
+              <!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                   <%= simple_form_for :stage, :url => stages_path, :method => :post  do |f| %>
+    <%= f.error_notification %>
+                <table class="table table-hover"> 
+                  <tr>
+                    <th><%= f.input :championship_id, :as => :hidden, :input_html => { :value => @championship.id  }%></th>
+                     <th> <%= f.input :fecha, placeholder: "Fecha",label: false%></th>
+                    <th><%= f.input :name,  placeholder: "Nombre",label: false%></th>
+                    
+                    
+                    <th> <%= f.button :submit ,'NUEVA ETAPA',class: "btn btn-success"%></th>
+                  </tr>                 
+                         </table>
+                          <%end%>
+              </div>
+              <!-- /.box-body -->
+           
+            <!-- /.box -->
+          </div>
+        </div>
+    <%end%>
+    <div class="row">
+      <div class="col-md-2">
+      </div>
+       <div class="col-md-8">
+<%= simple_form_for(@registration_head2) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :championship, :as => :hidden, :input_html => { :value =>  params[:id]}%>
+    <%= f.association :sex , collection: Sex.all(:sex)%>
+   <%= f.input :fecha, :as => :hidden, :input_html => { :value =>  Time.now}%>
+    <%= f.input :name %>
+    <%= f.input :lastname %>
+    <%= f.date_field :an , class: 'form-control'%>
+    <%= f.input :club %>
+    <%= f.input :region %>
+    <%= f.input :pais %>
+    <%= f.input :dni %>
+  </div>
+
+
+
+ <div class="form-actions">
+    <%= f.button :submit, value: "SIGUIENTE", class: "btn btn-success" %>
+  </div>
+<% end %>
+</div>
+</div>
+ <div class="col-md-2">
+ </div>
+</div>
