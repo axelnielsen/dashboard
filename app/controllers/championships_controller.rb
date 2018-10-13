@@ -54,11 +54,20 @@ class ChampionshipsController < ApplicationController
   # DELETE /championships/1
   # DELETE /championships/1.json
   def destroy
-    @championship.destroy
-    respond_to do |format|
-      format.html { redirect_to championships_url, notice: 'Championship was successfully destroyed.' }
+
+    begin
+     @championship.destroy
+     respond_to do |format|
+      format.html { redirect_to championships_url, notice: 'Eliminado exisosamente' }
       format.json { head :no_content }
     end
+    rescue => ex
+      respond_to do |format|
+      format.html { redirect_to championships_url, notice: 'No es posible eliminar torneo con etapas. Favor eliminar en primera instancia las etapas' }
+      format.json { head :no_content }
+    end
+    end
+    
   end
 
   private

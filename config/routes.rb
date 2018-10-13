@@ -55,7 +55,9 @@ resources :throw_head2s do
   resources :genders
   resources :competitions
   resources :categories
-  resources :stages
+  resources :stages do
+    resources :competitions
+  end
   resources :track_heads
   resources :tracks
   resources :serie_types

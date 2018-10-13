@@ -19,11 +19,11 @@
                 <table class="table table-hover"> 
                   <tr>
                     <th><%= f.input :championship_id, :as => :hidden, :input_html => { :value => @championship.id  }%></th>
-                     <th> <%= f.input :fecha, placeholder: "Fecha",label: false%></th>
-                    <th><%= f.input :name,  placeholder: "Nombre",label: false%></th>
+                     <th>FECHA<%= f.date_field :Fecha , class: 'form-control'%></th>
+                    <th>NOMBRE<%= f.input :name,  placeholder: "Nombre",label: false%></th>
                     
                     
-                    <th> <%= f.button :submit ,'NUEVA ETAPA',class: "btn btn-success"%></th>
+                    <th><br/> <%= f.button :submit ,'NUEVA ETAPA',class: "btn btn-success"%></th>
                   </tr>                 
                          </table>
                           <%end%>
@@ -47,7 +47,26 @@
                  <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR ETAPA</button>
         <% end %>
         <% end %> 
-              
+                   <div class="box-body table-responsive no-padding">
+                   <%= simple_form_for :competition, :url => competitions_path, :method => :post  do |f| %>
+    <%= f.error_notification %>
+
+                <table class="table table-hover"> 
+                  <tr>
+                    <th><%= f.input :stage_id, :as => :hidden, :input_html => { :value => stage.id  }%></th>
+                    <th> <%= f.input :hour, placeholder: "HORA",label: false%></th>
+                     <th>DEPORTE<%= f.input :sport_id, :collection => Sport.all,placeholder: "DEPORTE",label: false%></th>
+                     
+                    <th>CATEGORÍA<%= f.input :category_id, :collection => Category.all.order(name: :asc), placeholder: "CATEGOTÍA",label: false%></th>
+                    <th>TIPO<%= f.input :competition_type_id, :collection => CompetitionType.all.order(name: :asc), placeholder: "TIPO",label: false%></th>
+                    <th>SEXO<%= f.input :sex_id, :collection => Sex.all.order(name: :asc), placeholder: "SEXO",label: false%></th>
+                   
+                    
+                    <th><br/> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
+                  </tr>                 
+                         </table>
+                          <%end%>
+              </div> 
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding table-striped">
@@ -65,7 +84,7 @@
           <% @championship.competitions.where(:stage => stage.id).order(hour: :asc).each do |competition| %>
         <tr>
         <td data-label="HORA"> <%=competition.hour.strftime('%H:%M')%></td>
-        <td data-label="PRUEBA"> <%=competition.sport.name%> <%=competition.sex.sex%></td>
+        <td data-label="PRUEBA"> <%=competition.sport.name%> <%=competition.sex.name%></td>
         <td data-label="FINAL"> <%=competition.category.name%></td>
         <td data-label="RESULTADOS">
        <%if competition.competition_type_id==1 %>
