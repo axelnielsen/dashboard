@@ -87,7 +87,7 @@ SELECCIONAR COMPETICIONES:</h4>
         <tbody>
 <%
 
-sql = "select competitions.id, sports.name, sexes.name , categories.name from championships  join stages on championships.id=stages.championship_id  join competitions on stages.id=competitions.stage_id join sports on competitions.sport_id=sports.id join sexes on sexes.id=competitions.sex_id  join categories on categories.id=competitions.category_id where championships.id="+ @championship_id.to_s+" and sexes.name='"+@registration_head2.sex.name+"' or sexes.name='DAMAS Y VARONES' order by sports.name asc ;
+sql = "select competitions.id, sports.name, sexes.name , categories.name from championships  join stages on championships.id=stages.championship_id  join competitions on stages.id=competitions.stage_id join sports on competitions.sport_id=sports.id join sexes on sexes.id=competitions.sex_id  join categories on categories.id=competitions.category_id where championships.id="+ @championship_id.to_s+" and (sexes.name='"+@registration_head2.sex.name+"' or sexes.name='DAMAS Y VARONES') order by sports.name asc ;
 "   
     arr = ActiveRecord::Base.connection.execute(sql)
 

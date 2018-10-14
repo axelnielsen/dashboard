@@ -6,36 +6,46 @@ txtClub=params[:txtClub]
 txtName=params[:txtName]
 txtRegion=params[:txtRegion]
 arr=params[:competitions]
-
+@lastTrackHead=0
  arr.each do |e|
-
+arrCount=nil
 %>
-<%=e%>imprimiento competition_id
-<%sql = "select count(*) from track_head2s join track2s
-	   on 	track_head2s.id=track2s.track_head2_id
-where track_head2s.competition_id="+e.inspect+" ;
+<%=e%>
+<%sql = "select count(*) from track_head2s  where track_head2s.competition_id="+e.inspect+" ;
 "   
     arrCount = ActiveRecord::Base.connection.execute(sql)
 
 arrCount.each do |t|
 %>
-
-<%=sql%>
-<%=t[0]%> =conteo t
 <%
 if t[0]==0 
-
+arrTrackHead2s=nil
+@lastTrackHead=nil
 sqlTrackHead2s = "insert into track_head2s (competition_id, serie, created_at, updated_at) values("+e+", 'INSCRITOS', '"+Time.now.strftime('%Y/%m/%d')+"', '"+Time.now.strftime('%Y/%m/%d')+"');"   
-    arrCount = ActiveRecord::Base.connection.execute(sqlTrackHead2s)
-
+    arrTrackHead2s = ActiveRecord::Base.connection.execute(sqlTrackHead2s)
+@lastTrackHead=TrackHead2.last.id.to_s
+	sqlTrackHead2s="select id from track_head2s where competition_id="+e+";"
+	arrTrackHead2s = ActiveRecord::Base.connection.execute(sqlTrackHead2s)
+	arrTrackHead2s.each do |l|
+	@lastTrackHead=l[0].to_s
+	end
+%>
+@lastTrackHead=<%=@lastTrackHead%>
+<%
+else
+	sqlTrackHead2s="select id from track_head2s where competition_id="+e+";"
+	arrTrackHead2s = ActiveRecord::Base.connection.execute(sqlTrackHead2s)
+	arrTrackHead2s.each do |l|
+	@lastTrackHead=l[0].to_s
+	end
 
 end
 
-sqlTrack2s = "insert into track2s (athlete, track_head2_id, club, region, created_at, updated_at, an) values('"+txtName+" "+txtLastName+"', "+TrackHead2.last.id.to_s+",'"+txtClub+"', '"+txtRegion+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+txtAn+"');"   
+sqlTrack2s = "insert into track2s (athlete, track_head2_id, club, region, created_at, updated_at, an) values('"+txtName+" "+txtLastName+"', "+@lastTrackHead+",'"+txtClub+"', '"+txtRegion+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+txtAn+"');"   
     arrCount = ActiveRecord::Base.connection.execute(sqlTrack2s)
 %>
-
-<%=sqlTrack2s%>
+<%=sqlTrackHead2s %><br/>
+<%=sqlTrack2s%><br/>
 <%end%>
 <%
  end
