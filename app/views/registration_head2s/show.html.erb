@@ -1,96 +1,151 @@
+
+
+
+<div class="row">
+<p id="notice"><%= notice %></p>
+ <div class="col-md-2">
+</div>
+<div class="col-md-8">
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Championship:</strong>
-  <%= @registration_head2.championship.id %>
-</p>
 
-<p>
-  <strong>Sex:</strong>
-  <%= @registration_head2.sex.name %>
-</p>
+          <!-- general form elements -->
+          <div class="box box-primary">
+         
+           <div class="callout callout-warning">
+<h4> 
+<%=Championship.where(:id => @registration_head2.championship.id).first.name%></h4>
+</div>
+           
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">NOMBRES</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder=  <%= @registration_head2.name %>   disabled>
+                <label for="exampleInputEmail1">APELLIDOS</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder=  <%= @registration_head2.lastname %>   disabled>
+                
+                  <label for="exampleInputEmail1">CATEGORÍA</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder=  <%=@registration_head2.sex.name   %>   disabled>
+                
+                 <label for="exampleInputEmail1">FECHA DE NACIMIENTO</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder=  <%=@registration_head2.an   %>   disabled>
 
-<p>
-  <strong>Fecha:</strong>
-  <%= @registration_head2.fecha %>
-</p>
+                 <label for="exampleInputEmail1">RUT</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder=  <%=@registration_head2.dni   %>   disabled>
 
-<p>
-  <strong>Name:</strong>
-  <%= @registration_head2.name %>
-</p>
+                 <label for="exampleInputEmail1">REGIÓN</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder=  <%=@registration_head2.region   %>   disabled>
+                </div>
+             
+                             </div>
 
-<p>
-  <strong>Lastname:</strong>
-  <%= @registration_head2.lastname %>
-</p>
+            </form>
 
-<p>
-  <strong>An:</strong>
-  <%= @registration_head2.an %>
-</p>
+<%@championship_id=@registration_head2.championship.id %>
 
-<p>
-  <strong>Club:</strong>
-  <%= @registration_head2.club %>
-</p>
-
-<p>
-  <strong>Region:</strong>
-  <%= @registration_head2.region %>
-</p>
-
-<p>
-  <strong>Pais:</strong>
-  <%= @registration_head2.pais %>
-</p>
-
-<p>
-  <strong>Dni:</strong>
-  <%= @registration_head2.dni %>
-</p>
 <p id="notice"><%= notice %></p>
+<form method="post" action="result" name="inscripciones">
+<input type="hidden" name="txtName" value=<%=@registration_head2.name %>>
+<input type="hidden" name="txtLastName" value=<%=@registration_head2.lastname %>>
+<input type="hidden" name="txtAn" value=<%=@registration_head2.an %>>
+<input type="hidden" name="txtClub" value=<%=@registration_head2.club %>>
+<input type="hidden" name="txtRegion" value=<%=@registration_head2.region %>>
 
-  <% 
-
-
-
-  %>
-<form method="post" action="registration_head2s/result">
+<div class="callout callout-warning">
+<h4> 
+SELECCIONAR COMPETICIONES:</h4>
+</div>
+<div class="box-body table-responsive no-padding table-striped">
+       <table class="table table-hover">
+        <thead>
+          <tr class="table-info">
+          <th>SELECCIONAR</th>
+            <th>COMPETICIÓN</th>
+            <th>CATEGORÍA</th>
+          </tr>
+        </thead>
+        <tbody>
 <%
 
-sql = "select competitions.id, sports.name, sexes.name , categories.name from championships  join stages on championships.id=stages.championship_id  join competitions on stages.id=competitions.stage_id join sports on competitions.sport_id=sports.id join sexes on sexes.id=competitions.sex_id  join categories on categories.id=competitions.category_id where championships.id="+ @registration_head2.championship.id.to_s+" order by sports.name asc ;
+sql = "select competitions.id, sports.name, sexes.name , categories.name from championships  join stages on championships.id=stages.championship_id  join competitions on stages.id=competitions.stage_id join sports on competitions.sport_id=sports.id join sexes on sexes.id=competitions.sex_id  join categories on categories.id=competitions.category_id where championships.id="+ @championship_id.to_s+" and sexes.name='"+@registration_head2.sex.name+"' order by sports.name asc ;
 "   
     arr = ActiveRecord::Base.connection.execute(sql)
 
 arr.each do |elemento|
-  if elemento[3] =="SERIES" or elemento[3] =="FINAL"  %>
-<input type="checkbox" name="competitions[]" value=<%=elemento[0]%> />
- <%=elemento[0]%>  <%=elemento[1]%>  <%=elemento[2]%> <%=elemento[3]%> 
-<%
 
-sqlCount = "select count(*) as total, sports.name, sexes.name , categories.name from championships  join stages on championships.id=stages.championship_id  join competitions on stages.id=competitions.stage_id join sports on competitions.sport_id=sports.id join sexes on sexes.id=competitions.sex_id  join categories on categories.id=competitions.category_id 
-  where championships.id="+ @registration_head2.championship.id.to_s+" 
+sqlCount = "select count(*) as total, sports.name, sexes.name from championships  join stages on championships.id=stages.championship_id  join competitions on stages.id=competitions.stage_id join sports on competitions.sport_id=sports.id join sexes on sexes.id=competitions.sex_id  join categories on categories.id=competitions.category_id 
+  where championships.id="+ @championship_id.to_s+" 
   and sports.name='"+elemento[1]+"'
   and sexes.name='"+elemento[2]+"'
-group by sports.name, sexes.name, categories.name 
+group by sports.name, sexes.name
 ;
-"   
-    arrCount = ActiveRecord::Base.connection.execute(sqlCount)
+"  
+arrCount = ActiveRecord::Base.connection.execute(sqlCount)
 arrCount.each do |count|
-  %>total=
-<%=count[0]%><%=count[1]%><%=count[2]%><%=count[3]%>
+%>
+
 <%
+if count[0]==1 %>
+<tr>
+        <td data-label="HORA"><input  class="chk" type="checkbox" name="competitions[]" value=<%=elemento[0]%>/></td>
+      
+        <td data-label="FINAL"><%=elemento[1]%></td>
+        <td data-label="RESULTADOS"><%=elemento[2]%> </td>
+        
+          </tr>
+<%
+end
+if count[0]>1 and elemento[3]!="FINAL"
+  %>
+     <tr>
+        <td data-label="HORA"><input  class="chk" type="checkbox" name="competitions[]" value=<%=elemento[0]%>/></td>
+      
+        <td data-label="FINAL"><%=elemento[1]%></td>
+        <td data-label="RESULTADOS"><%=elemento[2]%> </td>
+        
+          </tr>
 
-%>
-  <br/>
-  <%
-  end
+<%
+end
+
+
+
 end
 end
 
 %>
-<input type="submit" name="btnSubmit" value="Aceptar">
+     
+  
+       </tbody>
+      </table>
+     
+  </div>
+
+
+<br/><input type="submit" name="btnSubmit" value="CONFIRMAR", class="btn btn-success">
 </form>
-<%= link_to 'Edit', edit_registration_head2_path(@registration_head2) %> |
-<%= link_to 'Back', registration_head2s_path %>
+</div>
+<SCRIPT LANGUAGE="javascript">
+
+var limit = 2;
+$('input.chk').on('change', function(evt) {
+   if($(this).siblings(':checked').length >= limit) {
+       this.checked = false;
+   }
+});
+</SCRIPT>
+          </div>
+
+
+       
+          </div>
+          <div class="col-md-2">
+        
+          </div>
+          <!-- /.box -->
+
+        </div>
