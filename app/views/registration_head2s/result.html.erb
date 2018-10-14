@@ -11,7 +11,33 @@ arr=params[:competitions]
 arrCount=nil
 %>
 <%=e%>
-<%sql = "select count(*) from track_head2s  where track_head2s.competition_id="+e.inspect+" ;
+<%
+sqlCompType = "select competition_type_id from competitions where competitions.id="+e+";"   
+    arrCompType = ActiveRecord::Base.connection.execute(sqlCompType)
+arrCompType.each do |t|
+	@CompType=t[0]
+	%>
+
+	<%
+	if @CompType==1
+	@whereHead="track_head2s"
+	@whereDetail="track2s"
+	elsif @CompType==2
+	@whereHead="hjump_head2s"
+	@whereDetail="hjump2s"
+	elsif @CompType==3
+	@whereHead="throw_head2s"
+	@whereDetail="throw2s"
+	elsif @CompType==4
+	@whereHead="jump_head2s"
+	@whereDetail="jump2s"		
+	end
+	end
+
+
+
+%>
+<%sql = "select count(*) from "+@whereHead.to_s+"  where "+@whereHead.to_s+".competition_id="+e+" ;
 "   
     arrCount = ActiveRecord::Base.connection.execute(sql)
 
@@ -21,19 +47,16 @@ arrCount.each do |t|
 if t[0]==0 
 arrTrackHead2s=nil
 @lastTrackHead=nil
-sqlTrackHead2s = "insert into track_head2s (competition_id, serie, created_at, updated_at) values("+e+", 'INSCRITOS', '"+Time.now.strftime('%Y/%m/%d')+"', '"+Time.now.strftime('%Y/%m/%d')+"');"   
+sqlTrackHead2s = "insert into "+@whereHead+"(competition_id, serie, created_at, updated_at) values("+e+", 'INSCRITOS', '"+Time.now.strftime('%Y/%m/%d')+"', '"+Time.now.strftime('%Y/%m/%d')+"');"   
     arrTrackHead2s = ActiveRecord::Base.connection.execute(sqlTrackHead2s)
 @lastTrackHead=TrackHead2.last.id.to_s
-	sqlTrackHead2s="select id from track_head2s where competition_id="+e+";"
+	sqlTrackHead2s="select id from "+@whereHead+" where competition_id="+e+";"
 	arrTrackHead2s = ActiveRecord::Base.connection.execute(sqlTrackHead2s)
 	arrTrackHead2s.each do |l|
 	@lastTrackHead=l[0].to_s
 	end
-%>
-@lastTrackHead=<%=@lastTrackHead%>
-<%
 else
-	sqlTrackHead2s="select id from track_head2s where competition_id="+e+";"
+	sqlTrackHead2s="select id from "+@whereHead+" where competition_id="+e+";"
 	arrTrackHead2s = ActiveRecord::Base.connection.execute(sqlTrackHead2s)
 	arrTrackHead2s.each do |l|
 	@lastTrackHead=l[0].to_s
@@ -41,7 +64,7 @@ else
 
 end
 
-sqlTrack2s = "insert into track2s (athlete, track_head2_id, club, region, created_at, updated_at, an) values('"+txtName+" "+txtLastName+"', "+@lastTrackHead+",'"+txtClub+"', '"+txtRegion+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+txtAn+"');"   
+sqlTrack2s = "insert into "+@whereDetail+" (athlete, "+@whereHead.slice(0 .. -2) +"_id, club, region, created_at, updated_at, an) values('"+txtName+" "+txtLastName+"', "+@lastTrackHead+",'"+txtClub+"', '"+txtRegion+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+txtAn+"');"   
     arrCount = ActiveRecord::Base.connection.execute(sqlTrack2s)
 %>
 <%=sqlTrackHead2s %><br/>
