@@ -10,17 +10,20 @@ arr=params[:competitions]
  arr.each do |e|
 
 %>
+<%=e%>imprimiento competition_id
 <%sql = "select count(*) from track_head2s join track2s
 	   on 	track_head2s.id=track2s.track_head2_id
-where track_head2s.competition_id="+e[0]+" ;
+where track_head2s.competition_id="+e.inspect+" ;
 "   
     arrCount = ActiveRecord::Base.connection.execute(sql)
 
 arrCount.each do |t|
 %>
 
+<%=sql%>
+<%=t[0]%> =conteo t
 <%
-if t[0]==0
+if t[0]==0 
 
 sqlTrackHead2s = "insert into track_head2s (competition_id, serie, created_at, updated_at) values("+e+", 'INSCRITOS', '"+Time.now.strftime('%Y/%m/%d')+"', '"+Time.now.strftime('%Y/%m/%d')+"');"   
     arrCount = ActiveRecord::Base.connection.execute(sqlTrackHead2s)
@@ -28,10 +31,11 @@ sqlTrackHead2s = "insert into track_head2s (competition_id, serie, created_at, u
 
 end
 
-sqlTrack2s = "insert into track2s (athlete, track_head2_id, club, region, created_at, updated_at) values('"+txtName+" "+txtLastName+"', "+TrackHead2.last.id.to_s+",'"+txtClub+"', '"+txtRegion+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+Time.now.strftime('%Y/%m/%d')+"');"   
+sqlTrack2s = "insert into track2s (athlete, track_head2_id, club, region, created_at, updated_at, an) values('"+txtName+" "+txtLastName+"', "+TrackHead2.last.id.to_s+",'"+txtClub+"', '"+txtRegion+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+txtAn+"');"   
     arrCount = ActiveRecord::Base.connection.execute(sqlTrack2s)
 %>
 
+<%=sqlTrack2s%>
 <%end%>
 <%
  end

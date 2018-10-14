@@ -1,16 +1,12 @@
-<div class="row">
-<div class="col-md-12">
-    <p id="notice"><%= notice %></p>
-    <div class="callout callout-warning">
-                <h4> 
-<%=Championship.where(:id => params[:id]).first.name%></h4>
-    </div>
-       </div>
-     </div>
+
     <div class="row">
       <div class="col-md-2">
       </div>
        <div class="col-md-8">
+         <div class="callout callout-warning">
+                <h4> 
+<%=Championship.where(:id => params[:id]).first.name%></h4>
+    </div>
 <%= simple_form_for(@registration_head2) do |f| %>
   <%= f.error_notification %>
 
