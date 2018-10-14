@@ -1,6 +1,6 @@
 class RegistrationHead2sController < ApplicationController
-  before_action :set_registration_head2, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, :set_registration_head2, only: [:show,:new, :edit, :update, :destroy]
+ 
   # GET /registration_head2s
   # GET /registration_head2s.json
   def index
