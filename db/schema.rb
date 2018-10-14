@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181013145558) do
+ActiveRecord::Schema.define(version: 20181013232637) do
 
   create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "names"
@@ -1189,10 +1189,10 @@ ActiveRecord::Schema.define(version: 20181013145558) do
   create_table "registration_head2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "championship_id"
     t.bigint "sex_id"
-    t.date "fecha"
+    t.string "fecha"
     t.string "name"
     t.string "lastname"
-    t.date "an"
+    t.string "an"
     t.string "club"
     t.string "region"
     t.string "pais"

@@ -50,7 +50,7 @@
                    <div class="box-body table-responsive no-padding">
                    <%= simple_form_for :competition, :url => competitions_path, :method => :post  do |f| %>
     <%= f.error_notification %>
-
+<% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
                 <table class="table table-hover"> 
                   <tr>
                     <th><%= f.input :stage_id, :as => :hidden, :input_html => { :value => stage.id  }%></th>
@@ -65,6 +65,7 @@
                     <th><br/> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
                   </tr>                 
                          </table>
+                          <%end%>
                           <%end%>
               </div> 
             </div>

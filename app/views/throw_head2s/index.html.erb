@@ -3,7 +3,7 @@
  <div class="callout callout-warning">
                 <h4><%= Competition.where(id: params[:competition_id]).first.sport.name %>
                 <%=Competition.where(id: params[:competition_id]).first.category.name %>
-                <%=Competition.where(id: params[:competition_id]).first.sex.sex%></h4>
+                <%=Competition.where(id: params[:competition_id]).first.sex.name%></h4>
 
     </div>
 <%
@@ -26,7 +26,7 @@ category_id=throw_head2.category_id
   <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            <div class<%=sexColorBoxHeader(Competition.where(id: params[:competition_id]).first.sex.sex)%>
+            <div class<%=sexColorBoxHeader(Competition.where(id: params[:competition_id]).first.sex.name)%>
           
               <h3 class="box-title"><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(throw_head2, :serie, place_holder: 'N° Serie') %>
                  <%= link_to throw_head2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR SERIE</button>
@@ -124,7 +124,7 @@ category_id=throw_head2.category_id
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding table-striped">
               <table class="table table-hover">
-                <tbody><tr class<%=sexColortr(Competition.where(id: params[:competition_id]).first.sex.sex)%>
+                <tbody><tr class<%=sexColortr(Competition.where(id: params[:competition_id]).first.sex.name)%>
           
                   <% if  start=="0"%>
                   <th>Lugar</th>
@@ -272,7 +272,7 @@ function bestInPlace()
  jQuery(".best_in_place").best_in_place();
 };
  </script>
- <div class<%=sexColorBoxHeader(Competition.where(id: params[:competition_id]).first.sex.sex)%>
+ <div class<%=sexColorBoxHeader(Competition.where(id: params[:competition_id]).first.sex.name)%>
           
               <h3 class="box-title">Nueva Serie
              

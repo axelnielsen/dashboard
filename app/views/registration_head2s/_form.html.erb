@@ -14,17 +14,17 @@
 <%= simple_form_for(@registration_head2) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :championship, :as => :hidden, :input_html => { :value =>  params[:id]}%>
-    <%= f.association :sex%>
-   <%= f.input :fecha, :as => :hidden, :input_html => { :value =>  Time.now}%>
-    <%= f.input :name %>
-    <%= f.input :lastname %>
-    <%= f.date_field :an , class: 'form-control'%>
-    <%= f.input :club %>
-    <%= f.input :region %>
-    <%= f.input :pais %>
-    <%= f.input :dni %>
+  <div class="form-inputs" >
+    <%= f.input :championship_id, :as => :hidden, :input_html => { :value =>  params[:id]}%>  
+    <%= hidden_field_tag(:id, params[:id]) %>
+
+    NOMBRES<%= f.input :name ,label: false%>
+    APELLIDOS<%= f.input :lastname, label: false %>
+    SEXO<%= f.association :sex, label: false%>
+    FECHA DE NACMIENTO<%= f.date_field :an , class: 'form-control'%>
+    CLUB<%= f.input :club ,  label: false%>
+    REGIÓN<%= f.input :region , label: false%>
+    RUT<%= f.input :dni , label: false%>
   </div>
 
 

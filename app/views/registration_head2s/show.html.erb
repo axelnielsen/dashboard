@@ -2,12 +2,12 @@
 
 <p>
   <strong>Championship:</strong>
-  <%= @registration_head2.championship %>
+  <%= @registration_head2.championship.id %>
 </p>
 
 <p>
   <strong>Sex:</strong>
-  <%= @registration_head2.sex %>
+  <%= @registration_head2.sex.name %>
 </p>
 
 <p>
@@ -49,6 +49,48 @@
   <strong>Dni:</strong>
   <%= @registration_head2.dni %>
 </p>
+<p id="notice"><%= notice %></p>
 
+  <% 
+
+
+
+  %>
+<form method="post" action="registration_head2s/result">
+<%
+
+sql = "select competitions.id, sports.name, sexes.name , categories.name from championships  join stages on championships.id=stages.championship_id  join competitions on stages.id=competitions.stage_id join sports on competitions.sport_id=sports.id join sexes on sexes.id=competitions.sex_id  join categories on categories.id=competitions.category_id where championships.id="+ @registration_head2.championship.id.to_s+" order by sports.name asc ;
+"   
+    arr = ActiveRecord::Base.connection.execute(sql)
+
+arr.each do |elemento|
+  if elemento[3] =="SERIES" or elemento[3] =="FINAL"  %>
+<input type="checkbox" name="competitions[]" value=<%=elemento[0]%> />
+ <%=elemento[0]%>  <%=elemento[1]%>  <%=elemento[2]%> <%=elemento[3]%> 
+<%
+
+sqlCount = "select count(*) as total, sports.name, sexes.name , categories.name from championships  join stages on championships.id=stages.championship_id  join competitions on stages.id=competitions.stage_id join sports on competitions.sport_id=sports.id join sexes on sexes.id=competitions.sex_id  join categories on categories.id=competitions.category_id 
+  where championships.id="+ @registration_head2.championship.id.to_s+" 
+  and sports.name='"+elemento[1]+"'
+  and sexes.name='"+elemento[2]+"'
+group by sports.name, sexes.name, categories.name 
+;
+"   
+    arrCount = ActiveRecord::Base.connection.execute(sqlCount)
+arrCount.each do |count|
+  %>total=
+<%=count[0]%><%=count[1]%><%=count[2]%><%=count[3]%>
+<%
+
+%>
+  <br/>
+  <%
+  end
+end
+end
+
+%>
+<input type="submit" name="btnSubmit" value="Aceptar">
+</form>
 <%= link_to 'Edit', edit_registration_head2_path(@registration_head2) %> |
 <%= link_to 'Back', registration_head2s_path %>
