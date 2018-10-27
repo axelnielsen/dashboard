@@ -5,7 +5,6 @@
     <p id="notice"><%= notice %></p>
     <div class="callout callout-warning">
                 <h4><%= @championship.name %></h4>
-<%=link_to "INSCRIPCIONES ABIERTAS",  :controller => "registration_head2s", :action => "new",:id => @championship.id, class: "btn btn-Success" %>
     </div>
        <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
        <div class="row">

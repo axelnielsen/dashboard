@@ -34,7 +34,7 @@
 
     NOMBRES<%= f.input :name ,label: false%>
     APELLIDOS<%= f.input :lastname, label: false %>
-    CATEGORÍA<%= f.association :sex, label: false%>
+    SEXO<%= f.association :sex, label: false%>
     FECHA DE NACMIENTO<%= f.date_field :an , class: 'form-control'%>
     CLUB<%= f.input :club ,  label: false%>
     REGIÓN<%=f.input :region,:collection => [["I de Tarapacá ", 1], ["II de Antofagasta", 2], ["III de Atacama", 3], ["IV de Coquimbo", 4], ["V de Valparaíso", 5], ["VI del Libertador General Bernardo O’Higgins", 6], ["VII del Maule", 7], ["VIII de Concepción", 8], ["IX de la Araucanía", 9], ["X de Los Lagos", 10], ["XI de Aysén del General Carlos Ibañez del Campo", 11], ["XII de Magallanes y de la Antártica Chilena", 12], ["Metropolitana de Santiago", 13], ["XIV de Los Ríos", 14], ["XV de Arica y Parinacota", 15], ["XVI del Ñuble ", 16]], class: 'form-control', label: false%>

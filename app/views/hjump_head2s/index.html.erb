@@ -27,7 +27,7 @@ category_id=hjump_head2.category_id
         <div class="col-xs-12">
           <div class="box">
             <div class<%=sexColorBoxHeader(Competition.where(id: params[:competition_id]).first.sex.name)%>
-              <h3 class="box-title"><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(hjump_head2, :serie, place_holder: 'N° Serie') %>
+              <h3 class="box-title"><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> 
                  <%= link_to hjump_head2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR SERIE</button>
         <% end %> 
               <%else%>
@@ -138,10 +138,10 @@ category_id=hjump_head2.category_id
   <tr>
 <td><b><%= best_in_place(hjump2, :place,  :html_attrs => { :size => '2' }) %></b></td>
         <td><b><%= best_in_place(hjump2, :achievement,  :html_attrs => { :size => '4' }) %></b></td>
-        <td><b><%= best_in_place(hjump2, :athlete) %></b></td>
-        <td><%= best_in_place(hjump2, :an,  :html_attrs => { :size => '2' }) %></td>
-        <td><%= best_in_place(hjump2, :club) %></td>
-         <td><%= best_in_place(hjump2, :region,  :html_attrs => { :size => '2' }) %></td>
+        <td><b><%=hjump2.athlete %></b></td>
+        <td><%=hjump2.an %></td>
+        <td><%=hjump2.club %>
+         <td><%=hjump2.region %></td>
        
         
          <% if  user_signed_in? && current_user.email=='admin@prossport.cl' %>
@@ -151,10 +151,10 @@ category_id=hjump_head2.category_id
 
            <% elsif  user_signed_in? && current_user.email=='admin@prossport.cl'  && start=="1"%>
         <tr>
-        <td><b><%= best_in_place(hjump2, :athlete) %></b></td>
-        <td><%= best_in_place(hjump2, :an,  :html_attrs => { :size => '4' }) %></td>
-        <td><%= best_in_place(hjump2, :club) %></td>
-        <td><%= best_in_place(hjump2, :region,  :html_attrs => { :size => '2' }) %></td>       
+        <td><b><%=hjump2.athlete %></b></td>
+        <td><%=hjump2.an %></td>
+        <td><%=hjump2.club %>
+        <td><%=hjump2.region %></td>       
         <td><%= link_to hjump2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
       
         <%end%>

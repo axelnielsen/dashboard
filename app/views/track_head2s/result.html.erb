@@ -1,0 +1,87 @@
+
+<%
+nAthlete=params[:NAthlete]
+competition_id=params[:competition_id]
+countAthlete=0;
+arrRail=params[:rail]
+nRail=arrRail.length
+id=params[:id]
+countRail=0
+nSeries=nAthlete.to_f / nRail.to_f
+countSerie=0
+
+'4.1-obteniendo todos los atletas'
+sqlAtletas = "SELECT athlete, an, club, region, bestAchievement FROM track2s join track_head2s
+             ON track2s.track_head2_id=track_head2s.id
+            WHERE track2s.track_head2_id="+id+" order by rand();"
+
+arrAtletas = ActiveRecord::Base.connection.execute(sqlAtletas)
+arrAtletasArray=arrAtletas.to_a
+
+
+
+while countSerie < nSeries do
+countSerie=countSerie+1
+%>
+
+<br/>
+
+<%
+'4.2-Insertando series--------------------------------------------------------'
+sqlTrackHead2s = "insert into track_head2s (competition_id, serie, created_at, updated_at) values("+params[:competition_id].to_s+", 'SERIE "+countSerie.to_s+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+Time.now.strftime('%Y/%m/%d')+"');"   
+ arrTrackHead2s = ActiveRecord::Base.connection.execute(sqlTrackHead2s)
+
+sqlid="select id from track_head2s where competition_id="+competition_id+";"
+	arrID = ActiveRecord::Base.connection.execute(sqlid)
+ 	arrID.each do |l|
+	@lastTrackHead2=l[0].to_s
+	end
+
+arrRail.each do |e|
+
+'5-crear serie con atletas random en las pistas indicadas--------------------'
+
+countAthlete=countAthlete+1
+
+
+
+
+%>
+
+<%if countAthlete<=nAthlete.to_i %>
+
+<%
+
+sqlTrack2s = "insert into track2s(
+                rail, 
+                athlete,
+                an, 
+                club, 
+                region,
+                bestAchievement,
+                track_head2_id,                 
+                created_at, 
+                updated_at) 
+values('"+e.to_s+"'"+",
+       '"+arrAtletasArray[countAthlete - 1][0].upcase+"',
+       '"+arrAtletasArray[countAthlete - 1][1].upcase+"',
+       '"+arrAtletasArray[countAthlete - 1][2].upcase+"',
+       '"+arrAtletasArray[countAthlete - 1][3].upcase+"',
+       '"+arrAtletasArray[countAthlete - 1][4].to_s+"',
+        "+@lastTrackHead2+", 
+       '"+Time.now.strftime('%Y/%m/%d')+"',
+       '"+Time.now.strftime('%Y/%m/%d')+"');"   
+ arrTrack2s = ActiveRecord::Base.connection.execute(sqlTrack2s)
+
+%>
+
+<%end %>
+<%
+end
+
+end
+
+
+%>
+
+<META http-equiv="refresh" content="0;URL=track_head2s/?competition_id="+competition_id+"&start=1"> 

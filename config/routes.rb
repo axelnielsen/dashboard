@@ -497,6 +497,8 @@ resources :male_discus_throws do
   resources :sports
   post 'results/index'
   post 'registration_head2s/result'
+  post 'track_head2s/result'
+  post 'track_head2s/generar'
   devise_for :users
   resources :serie_detalles
   resources :discipline_championship2s

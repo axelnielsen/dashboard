@@ -28,7 +28,7 @@ category_id=jump_head2.category_id
         <div class="col-xs-12">
           <div class="box">
             <div class<%=sexColorBoxHeader(Competition.where(id: params[:competition_id]).first.sex.name)%>
-              <h3 class="box-title"><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(jump_head2, :serie, place_holder: 'N° Serie') %>
+              <h3 class="box-title"><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> 
                 <%= link_to jump_head2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR SERIE</button>
   <%end%>
               <%else%>
@@ -162,10 +162,10 @@ category_id=jump_head2.category_id
   <tr>
 <td><b><%= best_in_place(jump2, :place) %></b></td>
 <td><b><%= best_in_place(jump2, :achievement,  :html_attrs => { :size => '3' }) %></b></td>
-        <td><%= best_in_place(jump2, :athlete) %></td>
-        <td><%= best_in_place(jump2, :an,  :html_attrs => { :size => '6' }) %></td>
-        <td><%= best_in_place(jump2, :club,  :html_attrs => { :size => '6' }) %></td>
-         <td><%= best_in_place(jump2, :region,  :html_attrs => { :size => '3' }) %></td>
+        <td><%=jump2.athlete %></td>
+        <td><%=jump2.an %></td>
+        <td><%=jump2.club %></td>
+         <td><%=jump2.region %></td>
         <td><%= best_in_place(jump2, :first,  :html_attrs => { :size => '3' }) %></td>
         <td><%= best_in_place(jump2, :vvfirst,  :html_attrs => { :size => '2' }) %></td>
         <td><%= best_in_place(jump2, :second,  :html_attrs => { :size => '3' }) %></td>
@@ -190,7 +190,7 @@ category_id=jump_head2.category_id
    <% elsif  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="1"%>
   <tr>
 
-        <td><b><%= best_in_place(jump2, :athlete) %></b></td>
+        <td><b><%=jump2.athlete %></b></td>
         <td><b><%= best_in_place(jump2, :an) %></b></td>
         <td><%= best_in_place(jump2, :club) %></td>
          <td><%= best_in_place(jump2, :region) %></td>

@@ -28,7 +28,7 @@ category_id=throw_head2.category_id
           <div class="box">
             <div class<%=sexColorBoxHeader(Competition.where(id: params[:competition_id]).first.sex.name)%>
           
-              <h3 class="box-title"><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%=best_in_place(throw_head2, :serie, place_holder: 'N° Serie') %>
+              <h3 class="box-title"><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> 
                  <%= link_to throw_head2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR SERIE</button>
   <%end%>
               <%else%>
@@ -168,10 +168,10 @@ category_id=throw_head2.category_id
   <tr>
 <td><b><%= best_in_place(throw2, :place,  :html_attrs => { :size => '2' }) %></b></td>
   <td><b><%= best_in_place(throw2, :achievement,  :html_attrs => { :size => '4' }) %></b></td>
-        <td><b><%= best_in_place(throw2, :athlete) %></b></td>
-        <td><%= best_in_place(throw2, :an,  :html_attrs => { :size => '7' }) %></td>
-        <td><%= best_in_place(throw2, :club,  :html_attrs => { :size => '16' }) %></td>
-         <td><%= best_in_place(throw2, :region,  :html_attrs => { :size => '2' }) %></td>
+        <td><b><%=throw2.athlete %></b></td>
+        <td><%=throw2.an %></td>
+        <td><%=throw2.club %></td>
+         <td><%=throw2.region %></td>
         <td><%= best_in_place(throw2, :first,  :html_attrs => { :size => '4' }) %></td>
 
         <td><%= best_in_place(throw2, :second,  :html_attrs => { :size => '4' }) %></td>
@@ -195,10 +195,10 @@ category_id=throw_head2.category_id
 
 <%elsif user_signed_in? && current_user.email=='admin@prossport.cl' && start=="1"%>
 <tr>
-         <td><b><%= best_in_place(throw2, :athlete) %></b></td>
-       <td><b><%= best_in_place(throw2, :an,  :html_attrs => { :size => '8' }) %></b></td>
-        <td><%= best_in_place(throw2, :club) %></td>
-        <td><%= best_in_place(throw2, :region,  :html_attrs => { :size => '4' }) %></td>
+         <td><b><%=throw2.athlete %></b></td>
+       <td><b><%=throw2.an %></b></td>
+        <td><%=throw2.club %></td>
+        <td><%=throw2.region %></td>
           <td><%= best_in_place(throw2, :bestAchievement,  :html_attrs => { :size => '4' }) %></td>
            <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
         <td><%= link_to throw2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
