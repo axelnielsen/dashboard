@@ -161,7 +161,7 @@ category_id=throw_head2.category_id
                    <th>ELIMINAR</th>
                    <%end%>
                 </tr>
-                  <%  throw_head2.throw2s.where(:throw_head2_id => throw_head2.id).sort_by { |a| -(a.achievement.to_i) }.each do |throw2| %>
+                  <%  throw_head2.throw2s.where(:throw_head2_id => throw_head2.id).sort_by { |a| -(a.achievement.to_f) }.each do |throw2| %>
                
      
         <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
