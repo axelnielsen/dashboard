@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @club.name %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @club.region %>
+</p>
+<%= link_to "EDITAR", edit_club_path(@club), class: "btn btn-info" %> |
+<%= link_to "VOLVER", clubs_path, class: "btn btn-warning" %>
+

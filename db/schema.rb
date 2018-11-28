@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181013232637) do
+ActiveRecord::Schema.define(version: 20181128004052) do
 
   create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "names"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(version: 20181013232637) do
     t.string "height"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "sex_id"
+    t.bigint "region_id"
+    t.bigint "club_id"
+    t.index ["club_id"], name: "index_athletes_on_club_id"
+    t.index ["region_id"], name: "index_athletes_on_region_id"
+    t.index ["sex_id"], name: "index_athletes_on_sex_id"
   end
 
   create_table "athleteseries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -60,6 +66,14 @@ ActiveRecord::Schema.define(version: 20181013232637) do
     t.string "account"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "clubs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.bigint "region_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["region_id"], name: "index_clubs_on_region_id"
   end
 
   create_table "coaches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -1151,6 +1165,12 @@ ActiveRecord::Schema.define(version: 20181013232637) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "referee_levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -1189,10 +1209,10 @@ ActiveRecord::Schema.define(version: 20181013232637) do
   create_table "registration_head2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "championship_id"
     t.bigint "sex_id"
-    t.string "fecha"
+    t.date "fecha"
     t.string "name"
     t.string "lastname"
-    t.string "an"
+    t.date "an"
     t.string "club"
     t.string "region"
     t.string "pais"
@@ -2160,6 +2180,7 @@ ActiveRecord::Schema.define(version: 20181013232637) do
     t.string "rail"
     t.integer "start"
     t.string "bestAchievement"
+    t.string "rut"
     t.index ["track_head2_id"], name: "index_track2s_on_track_head2_id"
   end
 
@@ -2220,10 +2241,16 @@ ActiveRecord::Schema.define(version: 20181013232637) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "profile_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["profile_id"], name: "index_users_on_profile_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "athletes", "clubs"
+  add_foreign_key "athletes", "regions"
+  add_foreign_key "athletes", "sexes"
+  add_foreign_key "clubs", "regions"
   add_foreign_key "competitions", "categories"
   add_foreign_key "competitions", "competition_types"
   add_foreign_key "competitions", "sexes"
@@ -2263,4 +2290,5 @@ ActiveRecord::Schema.define(version: 20181013232637) do
   add_foreign_key "track_head2s", "competitions"
   add_foreign_key "track_head2s", "sexes"
   add_foreign_key "track_head2s", "sports"
+  add_foreign_key "users", "profiles"
 end

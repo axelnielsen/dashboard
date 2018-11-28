@@ -4,11 +4,7 @@ class AthletesController < ApplicationController
   # GET /athletes
   # GET /athletes.json
   def index
-   respond_to do |format|
-     format.html
-      format.json { render json: AthletesDatatable.new(view_context) }
-      format.xlsx
-    end
+      @athletes = Athlete.all
   end
 
   # GET /athletes/1
@@ -22,7 +18,37 @@ redirect_to athletes_url, notice: "Importado correctamente"
 end
 
 
+def competitionsNumber(rut)
+  @total=0
+ sqlCount = "select count(*) as total
+  from championships  join stages on championships.id=stages.championship_id  
+  join competitions on stages.id=competitions.stage_id 
+  join track_head2s on track_head2s.competition_id=competitions.id
+  join track2s on track2s.track_head2_id=track2s.id
+  join athletes on track2s.rut=athletes.rut
+  where athletes.rut='"+rut+"';"   
+  arrCount = ActiveRecord::Base.connection.execute(sqlCount)
+  arrCount.each do |count|
+  @total=count[0]
+  end
+  return @total
+end
 
+def championshipsNumber(rut)
+  @total=0
+ sqlCount = "select count(championships.id) as total
+  from championships  join stages on championships.id=stages.championship_id  
+  join competitions on stages.id=competitions.stage_id 
+  join track_head2s on track_head2s.competition_id=competitions.id
+  join track2s on track2s.track_head2_id=track2s.id
+  join athletes on track2s.rut=athletes.rut
+  where athletes.rut='"+rut+"';"   
+  arrCount = ActiveRecord::Base.connection.execute(sqlCount)
+  arrCount.each do |count|
+  @total=count[0]
+  end
+  return @total
+end
 
   # GET /athletes/new
   def new
@@ -83,4 +109,5 @@ end
     def athlete_params
       params.require(:athlete).permit(:names, :surnames, :sex, :birthdate, :birthyear, :rut, :idClub, :idRegion, :cellPhone, :mail, :idCoach, :size, :height)
     end
+    helper_method :competitionsNumber, :championshipsNumber
 end

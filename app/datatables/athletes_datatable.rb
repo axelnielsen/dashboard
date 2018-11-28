@@ -10,10 +10,7 @@ class AthletesDatatable < ApplicationDatatable
         column << athlete.surnames
         column << athlete.sex
         column << athlete.birthdate
-        column << athlete.rut
-        column << athlete.mail
-        column << athlete.size
-        column << athlete.height
+ 
 
         links = []
         links << link_to('Show', athlete)

@@ -1,4 +1,9 @@
 class Athlete < ApplicationRecord
+
+	 belongs_to :sex
+	 belongs_to :region
+	  belongs_to :club
+
 		def self.import(file)
 		spreadsheet = open_spreadsheet(file)
 		header = spreadsheet.row(1)

@@ -105,8 +105,8 @@
 
 <%end%>
 
-<td><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> <%= link_to 'EDITAR', edit_championship_path(championship), class: "btn btn-warning"  %><%= link_to championship, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %>
-                 <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR</button>
+<td><% if  user_signed_in? && getAdminPermission( current_user.email)%> <%= link_to 'EDITAR', edit_championship_path(championship), class: "btn btn-warning"  %><%= link_to championship, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %>
+                 <% if  user_signed_in? && getAdminPermission( current_user.email)%><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR</button>
         <% end %>
         <% end %> <%end%></td>
         
@@ -118,7 +118,7 @@
      
             </div>
 
-<% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> 
+<% if  user_signed_in? && getAdminPermission( current_user.email)%> 
 <br/>
 <%= link_to "NUEVO CAMPEONATO", new_championship_path, class: "btn btn-success" %>
 <%end%>

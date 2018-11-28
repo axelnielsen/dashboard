@@ -28,7 +28,7 @@ category_id=jump_head2.category_id
         <div class="col-xs-12">
           <div class="box">
             <div class<%=sexColorBoxHeader(Competition.where(id: params[:competition_id]).first.sex.name)%>
-              <h3 class="box-title"><% if  user_signed_in? && current_user.email=='admin@prossport.cl'%> 
+              <h3 class="box-title"><% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) )%> 
                 <%= link_to jump_head2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR SERIE</button>
   <%end%>
               <%else%>
@@ -45,7 +45,7 @@ category_id=jump_head2.category_id
 
 
 
-     <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
+     <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) ) && start=="0"%>
        <div class="row">
           <div class="col-xs-12">
        
@@ -83,7 +83,7 @@ category_id=jump_head2.category_id
                   </tr>                  
                   </table>
                    <%end%>
-                  <% elsif  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="1"%>
+                  <% elsif  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) ) && start=="1"%>
        <div class="row">
           <div class="col-xs-12">
        
@@ -151,14 +151,14 @@ category_id=jump_head2.category_id
                   
                   <%end%>
                   
-                   <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+                   <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) )%>
                    <th>ELIMINAR</th>
                    <%end%>
                 </tr>
                   <%  jump_head2.jump2s.where(:jump_head2_id => jump_head2.id).sort_by { |a| -(a.achievement.to_f) }.each do |jump2| %>
                
      
-        <% if  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="0"%>
+        <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) ) && start=="0"%>
   <tr>
 <td><b><%= best_in_place(jump2, :place) %></b></td>
 <td><b><%= best_in_place(jump2, :achievement,  :html_attrs => { :size => '3' }) %></b></td>
@@ -181,13 +181,13 @@ category_id=jump_head2.category_id
         <td><%= best_in_place(jump2, :vvsixth,  :html_attrs => { :size => '2' }) %></td>
         
         
-         <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+         <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) )%>
         <td><%= link_to jump2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
         <% end %> 
         <%end%>
       </tr>
 
-   <% elsif  user_signed_in? && current_user.email=='admin@prossport.cl' && start=="1"%>
+   <% elsif  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) ) && start=="1"%>
   <tr>
 
         <td><b><%=jump2.athlete %></b></td>
@@ -196,7 +196,7 @@ category_id=jump_head2.category_id
          <td><%= best_in_place(jump2, :region) %></td>
     
         
-         <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+         <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) )%>
         <td><%= link_to jump2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
         <% end %> 
         <%end%>
@@ -232,7 +232,7 @@ category_id=jump_head2.category_id
        
     
         
-         <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+         <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) )%>
         <td><%= link_to jump2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
         <% end %> 
         <%end%>
@@ -241,7 +241,7 @@ category_id=jump_head2.category_id
     <% end %>
               </tbody></table>
             </div>
- <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+ <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) )%>
     <div class="box-header callout-success">
       <h4><strong>IMPORTAR</strong></h4>
      </div>
@@ -290,7 +290,7 @@ function myFunction() {
 }
 </style>
 
-  <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
+  <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) )%>
   <script type="application/javascript">
 
 $(document).ready(function() {

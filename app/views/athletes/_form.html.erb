@@ -3,22 +3,23 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :names %>
-    <%= f.input :surnames %>
-    <%= f.input :sex %>
-    <%= f.input :birthdate %>
-    <%= f.input :birthyear %>
-    <%= f.input :rut %>
-    <%= f.input :idClub %>
-    <%= f.input :idRegion %>
-    <%= f.input :cellPhone %>
-    <%= f.input :mail %>
-    <%= f.input :idCoach %>
-    <%= f.input :size %>
-    <%= f.input :height %>
+   NOMBRES <%= f.input :names, label: false , required: true%>
+    APELLIDOS<%= f.input :surnames ,label: false, required: true%>
+    SEXO <%= f.association :sex, label: false, required: true%>
+   FECHA DE NACIMIENTO <%= f.date_field :birthdate , class: 'form-control', label: false, required: true%>
+
+    RUT<%= f.input :rut,label: false, required: true %>
+   ASOCIACIÓN REGIONAL<%= f.association :region, label: false %>
+    CLUB <%= f.association :club, label: false%>
+ 
+   NÚMERO CELULAR <%= f.input :cellPhone,label: false%>
+    EMAIL <%= f.input :mail,label: false %>
+   
+    TALLA <%= f.input :size ,label: false%>
+    ESTATURA<%= f.input :height ,label: false %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+   <%= f.button :submit ,'GUARDAR',class: "btn btn-success"%>| <%= link_to "VOLVER", :back, class: "btn btn-warning" %>
   </div>
 <% end %>

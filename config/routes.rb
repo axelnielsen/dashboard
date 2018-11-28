@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   
 
+  resources :profiles
+  resources :clubs
   resources :registration_detail2s
   resources :registration_head2s
   resources :registration_statuses
@@ -15,8 +17,7 @@ resources :hjump_head2s do
     resources :hjump2s 
   end
 
-
-
+ devise_for :users
 resources :throw2s do
   collection { post :import}
   end
@@ -499,7 +500,7 @@ resources :male_discus_throws do
   post 'registration_head2s/result'
   post 'track_head2s/result'
   post 'track_head2s/generar'
-  devise_for :users
+ 
   resources :serie_detalles
   resources :discipline_championship2s
   resources :countries
