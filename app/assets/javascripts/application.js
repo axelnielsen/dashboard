@@ -25,6 +25,8 @@
 //= require datatables
 //= require jquery.purr
 //= require best_in_place
+//= require highcharts
+//= require chartkick
 $(document).on('turbolinks:load', function(){
   $("table[role='datatable']").each(function(){
     $(this).DataTable({
