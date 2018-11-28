@@ -35,28 +35,27 @@
        </div>
         <div class=" navbar-left" >
        </div>
-       <ul class="nav navbar-nav">
+       <ul class="nav navbar-left">
 <li><%= link_to regions_path(), class: "" do %>
-         <i class="fa fa-map-marker fa-2x" style="color:white" title="ASOCIACIONES REGIONALES"></i> </a>
-         <% end %></li>
-
-</ul>
-<ul class="nav navbar-nav">
-<li> <%= link_to clubs_path(), class: "" do %>
-         <i class="fa fa-shield fa-2x" style="color:white" title="CLUBES"></i> </a>
-         <% end %></li>
-
-</ul>
-       
+         <i class="fa fa-map-marker fa-2x" style="color:white" title="ASOCIACIONES REGIONALES"></i> </a></li>
+         <% end %>
+         <%= link_to clubs_path(), class: "" do %>
+        <li> <i class="fa fa-shield fa-2x" style="color:white" title="CLUBES"></i> </a></li>
+         <% end %>      
        
   <% if user_signed_in? %>
-  <ul class="nav navbar-nav">
- <li><%= link_to current_user.email, "athletes#index" %></li>
-</ul>
-<ul class="nav navbar-nav">
-<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+
+
+<li><%= link_to "../athletes#index", class: "" do %>
+         <i class="fa fa-user-circle fa-2x" style="color:white" title=<%=current_user.email%> ></i> </a></li>
+         <% end %>
+
+<li><%= link_to destroy_user_session_path, method: :delete, class: "" do %>
+         <i class="fa fa-power-off fa-2x" style="color:white" title="SALIR"></i> </a></li>
+         <% end %>
+
 <% else %>
-</ul>
+
 
 <ul class="nav navbar-nav">
  <li><%= link_to "Login", new_user_session_path %></li>
