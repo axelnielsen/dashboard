@@ -4,6 +4,16 @@ class Athlete < ApplicationRecord
 	 belongs_to :region
 	  belongs_to :club
 
+
+def self.achievementsByDate(names, surnames)
+    query = <<-SQL
+     select stages.fecha,  track2s.achievement from track2s join athletes on track2s.athlete=concat(athletes.names, ' ', athletes.surnames) join track_head2s on track_head2s.id=track2s.track_head2_id join competitions on competitions.id=track_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where track2s.athlete=concat(names, " ", surnames)
+    SQL
+
+    self.find_by_sql(query)
+  end
+
 		def self.import(file)
 		spreadsheet = open_spreadsheet(file)
 		header = spreadsheet.row(1)

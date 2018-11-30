@@ -42,6 +42,12 @@
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
+                  <b>Fecha Nacimiento</b> <a class="pull-right"><%= @athlete.birthdate %></a>
+                </li>
+                <li class="list-group-item">
+                  <b>País</b> <a class="pull-right">CHILE</a>
+                </li>
+                <li class="list-group-item">
                   <b>N° Campeonatos</b> <a class="pull-right"><%=championshipsNumber(@athlete.rut)%></a>
                 </li>
                 <li class="list-group-item">
@@ -50,7 +56,7 @@
                   </a>
                 </li>
                 <li class="list-group-item">
-                  <b>Podios</b> <a class="pull-right">8</a>
+                  <b>Podios</b> <a class="pull-right"></a>
                 </li>
               </ul>
 
@@ -77,85 +83,42 @@
                 <tbody><tr class="table-info">
                   <th>LUGAR</th>
                   <th>MARCA</th>
-                  <th>PISTA</th>
                   <th>CAMPEONATO</th>
                   <th>DISCIPLINA</th>
                   <th>FECHA</th>
-                   <th>ELIMINAR</th>
                 </tr>
                
      
   <tr>
 
+<%
 
-        <td><span data-bip-type="input" data-bip-attribute="place" data-bip-object="track2" data-bip-original-content="1" data-bip-skip-blur="false" data-bip-url="/track2s/26" data-bip-value="1" class="best_in_place" id="best_in_place_track2_26_place">1</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="achievement" data-bip-object="track2" data-bip-original-content="13.27" data-bip-skip-blur="false" data-bip-url="/track2s/26" data-bip-value="13.27" class="best_in_place" id="best_in_place_track2_26_achievement">10.90</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="rail" data-bip-object="track2" data-bip-original-content="4" data-bip-skip-blur="false" data-bip-url="/track2s/26" data-bip-value="4" class="best_in_place" id="best_in_place_track2_26_rail">4</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="athlete" data-bip-object="track2" data-bip-original-content="Victoria Rios Castro" data-bip-skip-blur="false" data-bip-url="/track2s/26" data-bip-value="Victoria Rios Castro" class="best_in_place" id="best_in_place_track2_26_athlete">Campeonato 1</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="club" data-bip-object="track2" data-bip-original-content="A. Santiago" data-bip-skip-blur="false" data-bip-url="/track2s/26" data-bip-value="A. Santiago" class="best_in_place" id="best_in_place_track2_26_club">100 MTS PLANOS</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="region" data-bip-object="track2" data-bip-original-content="13" data-bip-skip-blur="false" data-bip-url="/track2s/26" data-bip-value="13" class="best_in_place" id="best_in_place_track2_26_region">12-04-2017</span></td>
-        <td><a data-confirm="Está seguro?" class="" rel="nofollow" data-method="delete" href="/track2s/26"><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></a></td>
-      </tr>
+  sqlCount = "select track2s.place, track2s.achievement, championships.name, sports.name, stages.fecha, championships.id, track_head2s.id, track_head2s.competition_id from track2s join athletes on track2s.athlete=concat(athletes.names, ' ', athletes.surnames) join track_head2s on track_head2s.id=track2s.track_head2_id join competitions on competitions.id=track_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where track2s.athlete='"+@athlete.names+" "+ @athlete.surnames+"';"   
+  arrCount = ActiveRecord::Base.connection.execute(sqlCount)
+  arrCount.each do |count|
+    %>
+    <tr>
+      <td>
+  <%=count[0]%>
+</td>
 
-               
-     
-  <tr>
-
-
-        <td><span data-bip-type="input" data-bip-attribute="place" data-bip-object="track2" data-bip-original-content="2" data-bip-skip-blur="false" data-bip-url="/track2s/27" data-bip-value="2" class="best_in_place" id="best_in_place_track2_27_place">2</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="achievement" data-bip-object="track2" data-bip-original-content="13.82" data-bip-skip-blur="false" data-bip-url="/track2s/27" data-bip-value="13.82" class="best_in_place" id="best_in_place_track2_27_achievement">11.03</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="rail" data-bip-object="track2" data-bip-original-content="5" data-bip-skip-blur="false" data-bip-url="/track2s/27" data-bip-value="5" class="best_in_place" id="best_in_place_track2_27_rail">3</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="athlete" data-bip-object="track2" data-bip-original-content="Renata Álvarez Parraguez" data-bip-skip-blur="false" data-bip-url="/track2s/27" data-bip-value="Renata Álvarez Parraguez" class="best_in_place" id="best_in_place_track2_27_athlete">Campeonato 2</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="club" data-bip-object="track2" data-bip-original-content="A. Francés" data-bip-skip-blur="false" data-bip-url="/track2s/27" data-bip-value="A. Francés" class="best_in_place" id="best_in_place_track2_27_club">100 MTS PLANOS</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="region" data-bip-object="track2" data-bip-original-content="13" data-bip-skip-blur="false" data-bip-url="/track2s/27" data-bip-value="13" class="best_in_place" id="best_in_place_track2_27_region">10-08-2017</span></td>
-        <td><a data-confirm="Está seguro?" class="" rel="nofollow" data-method="delete" href="/track2s/27"><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></a></td>
-      </tr>
-
-               
-     
-  <tr>
-
-
-        <td><span data-bip-type="input" data-bip-attribute="place" data-bip-object="track2" data-bip-original-content="3" data-bip-skip-blur="false" data-bip-url="/track2s/28" data-bip-value="3" class="best_in_place" id="best_in_place_track2_28_place">1</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="achievement" data-bip-object="track2" data-bip-original-content="14.54" data-bip-skip-blur="false" data-bip-url="/track2s/28" data-bip-value="14.54" class="best_in_place" id="best_in_place_track2_28_achievement">11.5</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="rail" data-bip-object="track2" data-bip-original-content="6" data-bip-skip-blur="false" data-bip-url="/track2s/28" data-bip-value="6" class="best_in_place" id="best_in_place_track2_28_rail">4</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="athlete" data-bip-object="track2" data-bip-original-content="Claudia Retamales Nuñez" data-bip-skip-blur="false" data-bip-url="/track2s/28" data-bip-value="Claudia Retamales Nuñez" class="best_in_place" id="best_in_place_track2_28_athlete">Campeonato 3</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="club" data-bip-object="track2" data-bip-original-content="OASSI" data-bip-skip-blur="false" data-bip-url="/track2s/28" data-bip-value="OASSI" class="best_in_place" id="best_in_place_track2_28_club">100 MTS PLANOS</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="region" data-bip-object="track2" data-bip-original-content="13" data-bip-skip-blur="false" data-bip-url="/track2s/28" data-bip-value="13" class="best_in_place" id="best_in_place_track2_28_region">20-11-2017</span></td>
-        <td><a data-confirm="Está seguro?" class="" rel="nofollow" data-method="delete" href="/track2s/28"><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></a></td>
-      </tr>
-
-               
-     
-  <tr>
-
-
-        <td><span data-bip-type="input" data-bip-attribute="place" data-bip-object="track2" data-bip-original-content="4" data-bip-skip-blur="false" data-bip-url="/track2s/29" data-bip-value="4" class="best_in_place" id="best_in_place_track2_29_place">4</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="achievement" data-bip-object="track2" data-bip-original-content="14.67" data-bip-skip-blur="false" data-bip-url="/track2s/29" data-bip-value="14.67" class="best_in_place" id="best_in_place_track2_29_achievement">12.03</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="rail" data-bip-object="track2" data-bip-original-content="2" data-bip-skip-blur="false" data-bip-url="/track2s/29" data-bip-value="2" class="best_in_place" id="best_in_place_track2_29_rail">5</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="athlete" data-bip-object="track2" data-bip-original-content="Catalina Andrea Leiva  Bascur" data-bip-skip-blur="false" data-bip-url="/track2s/29" data-bip-value="Catalina Andrea Leiva  Bascur" class="best_in_place" id="best_in_place_track2_29_athlete">Campeonato 4</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="club" data-bip-object="track2" data-bip-original-content="C. D. A. Coronel" data-bip-skip-blur="false" data-bip-url="/track2s/29" data-bip-value="C. D. A. Coronel" class="best_in_place" id="best_in_place_track2_29_club">100 MTS PLANOS</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="region" data-bip-object="track2" data-bip-original-content="8" data-bip-skip-blur="false" data-bip-url="/track2s/29" data-bip-value="8" class="best_in_place" id="best_in_place_track2_29_region">04-04-2018</span></td>
-        <td><a data-confirm="Está seguro?" class="" rel="nofollow" data-method="delete" href="/track2s/29"><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></a></td>
-      </tr>
-
-               
-     
-  <tr>
-
-
-        <td><span data-bip-type="input" data-bip-attribute="place" data-bip-object="track2" data-bip-original-content="5" data-bip-skip-blur="false" data-bip-url="/track2s/30" data-bip-value="5" class="best_in_place" id="best_in_place_track2_30_place">2</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="achievement" data-bip-object="track2" data-bip-original-content="14.76" data-bip-skip-blur="false" data-bip-url="/track2s/30" data-bip-value="14.76" class="best_in_place" id="best_in_place_track2_30_achievement">11.1</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="rail" data-bip-object="track2" data-bip-original-content="7" data-bip-skip-blur="false" data-bip-url="/track2s/30" data-bip-value="7" class="best_in_place" id="best_in_place_track2_30_rail">4</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="athlete" data-bip-object="track2" data-bip-original-content="Amanda Hunt Cid" data-bip-skip-blur="false" data-bip-url="/track2s/30" data-bip-value="Amanda Hunt Cid" class="best_in_place" id="best_in_place_track2_30_athlete">Campeonato 5</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="club" data-bip-object="track2" data-bip-original-content="OASSI" data-bip-skip-blur="false" data-bip-url="/track2s/30" data-bip-value="OASSI" class="best_in_place" id="best_in_place_track2_30_club">100 MTS PLANOS</span></td>
-        <td><span data-bip-type="input" data-bip-attribute="region" data-bip-object="track2" data-bip-original-content="13" data-bip-skip-blur="false" data-bip-url="/track2s/30" data-bip-value="13" class="best_in_place" id="best_in_place_track2_30_region">02-06-2018</span></td>
-        <td><a data-confirm="Está seguro?" class="" rel="nofollow" data-method="delete" href="/track2s/30"><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></a></td>
-      </tr>
-
-               
-    
-
+<td>
+  <%=count[1]%>
+</td>
+<td>
+  <%=link_to count[2], Championship.where(:id=>count[5]).first %>
+</td>
+<td>
+   <%=link_to count[3], track_head2s_path(:competition_id=>count[7], :start=> '0') %>
+</td>
+<td>
+  <%=count[4]%>
+</td>
+</tr>
+  <%
+  end
+  %>
               </tbody></table>
       </div>
     </div>
@@ -165,7 +128,27 @@
     <!-- /.content -->
   </div>
 
-<%= line_chart Track2.where(:athlete=>'JASON ROMERO SOTO').group(:track_head2_id).count %>
+
+  <%
+ 
+ sqlCount = "select stages.fecha,  track2s.achievement from track2s join athletes on track2s.athlete=concat(athletes.names, ' ', athletes.surnames) join track_head2s on track_head2s.id=track2s.track_head2_id join competitions on competitions.id=track_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where track2s.athlete='"+@athlete.names+" "+ @athlete.surnames+"' and sports.id=30;"   
+  arrCount = ActiveRecord::Base.connection.execute(sqlCount)
+  data=""
+  data2=[]
+  i=0
+  arrCount.each do |count|
+  
+    data2[i]=count[0].to_s, count[1].to_f
+   
+ 
+    i=i+1
+   end
+ 
+  %>
+
+<%= line_chart data2, xtitle: "Fechas", ytitle: "Marca" ,points: true %>
+
 <p id="notice"><%= notice %></p>
 
 <p>

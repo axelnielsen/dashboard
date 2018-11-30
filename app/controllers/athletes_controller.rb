@@ -1,6 +1,8 @@
 class AthletesController < ApplicationController
   before_action :set_athlete, only: [:show, :edit, :update, :destroy]
 
+
+ 
   # GET /athletes
   # GET /athletes.json
   def index
