@@ -1,10 +1,8 @@
-<body class="skin-blue"> 
+
 <div class="col-xs-12">
 <p id="notice"></p>
  <div class="callout callout-warning">
-                <h4>LANZAMIENTO MARTILLO
-                FINAL
-                VARONES</h4>
+                <h4>ATLETAS</h4>
 
     </div>
        <div class="row">
@@ -20,40 +18,25 @@
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding table-striped">
               <table class="table table-hover">
-                <tbody><tr class="table-info">
-          
-                  <th>ATLETA</th>
-                  <th>A.N.</th>
+                <tbody>              
+               
+<%= content_tag :table, role: :datatable, data: { url: athletes_path(format: :json)} do %>
+  <thead>
+    <tr class="table-info">
+     
+                  <th>NOMBRES</th>
+                  <th>APELLIDOS</th>
+                  <th>FEHA NACIMIENTO</th>
                   <th>CLUB</th>
                   <th>REGIÓN</th>
-                </tr>
-               
-      
-      <% @athletes.each do |a| %>
-<tr>
-         <td><b><%= link_to a.names+" "+ a.surnames, a %></b></td>
-       <td><b><%=a.birthdate%></b></td>
-        <td>CLUB</td>
-        <td>10</td>
-         <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
-        <td><%= link_to a, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
-        <% end %> 
-          <% end %> 
-      </tr>
-               
+      <th></th>
+    </tr>
+  </thead>
 
-     <%end%>
+  <tbody>
+  </tbody>
+<% end %>
 
-              </tbody></table>
-            </div>
-    <%= link_to "NUEVO ATLETA", new_athlete_path, class: "btn btn-success" %>
-            <!-- /.box-body -->
- 
-
-
-    
-    
-<br>
 
 
   <script type="application/javascript">

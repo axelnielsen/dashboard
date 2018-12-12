@@ -5,5 +5,70 @@
   <%= @region.name %>
 </p>
 
+<div class="col-xs-12">
+<p id="notice"></p>
+ <div class="callout callout-warning">
+                <h4>ATLETAS</h4>
+
+    </div>
+       <div class="row">
+          <div class="col-xs-12">
+       
+             
+              </div>
+              <!-- /.box-body -->
+           
+            <!-- /.box -->
+          </div>
+        </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding table-striped">
+              <table class="table table-hover">
+                <tbody>              
+               
+<%= content_tag :table, role: :datatable, data: { url: clubs_path(region_id: @region.id, format: :json)} do %>
+  <thead>
+    <tr class="table-info">
+     
+                  <th>CLUB</th>
+                  <th>REGIÓN</th>
+               
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  </tbody>
+<% end %>
+
+
+
+  <script type="application/javascript">
+
+$(document).ready(function() {
+jQuery(".best_in_place").best_in_place();
+});
+function bestInPlace()
+{
+ jQuery(".best_in_place").best_in_place();
+};
+ </script>              </div>
+              <!-- /.box-body -->
+           
+            <!-- /.box -->
+          </div>
+        </div>
+<a class="btn btn-warning" href="http://localhost:3000/championships/6">VOLVER</a>
+
+</div>
+
+
+
+
+    <!-- /.content -->
+
+  
+
+</body>
 <%= link_to 'Edit', edit_region_path(@region) %> |
 <%= link_to 'Back', regions_path %>

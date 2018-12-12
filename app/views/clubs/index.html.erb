@@ -2,7 +2,7 @@
 <div class="col-xs-12">
 <p id="notice"></p>
  <div class="callout callout-warning">
-                <h4>CLUBES </h4>
+                <h4>CLUBES</h4>
 
     </div>
        <div class="row">
@@ -18,45 +18,23 @@
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding table-striped">
               <table class="table table-hover">
-                <tbody><tr class="table-info">
-          
-                  <th>NOMBRE</th>
-                  <th>ASOCIACIÓN REGIONAL</th>
-                  
-                   <th>ELIMINAR</th>
-                </tr>
+                <tbody>              
                
-      
-      <% @clubs.each do |c| %>
-<tr>
-         <td><b><%= link_to c.name, c %></b></td>
-       <td><b><%=c.region.name%></b></td>
-      
-         <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%>
-        <td><%= link_to c, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
-        <% end %> 
-          <% end %> 
-      </tr>
-               
+<%= content_tag :table, role: :datatable, data: { url: clubs_path(format: :json)} do %>
+  <thead>
+    <tr class="table-info">
+     
+                  <th>CLUB</th>
+                  <th>REGIÓN</th>
+                
+      <th></th>
+    </tr>
+  </thead>
 
-     <%end%>
-
-              </tbody></table>
-            </div>
-<%= link_to "NUEVO CLUB", new_club_path, class: "btn btn-success" %>
-            <!-- /.box-body -->
- 
-<br>
-  <script type="application/javascript">
-
-$(document).ready(function() {
-jQuery(".best_in_place").best_in_place();
-});
-function bestInPlace()
-{
- jQuery(".best_in_place").best_in_place();
-};
- </script>              </div>
+  <tbody>
+  </tbody>
+<% end %>
+             </div>
               <!-- /.box-body -->
            
             <!-- /.box -->

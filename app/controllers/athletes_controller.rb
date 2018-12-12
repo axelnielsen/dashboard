@@ -5,8 +5,12 @@ class AthletesController < ApplicationController
  
   # GET /athletes
   # GET /athletes.json
-  def index
-      @athletes = Athlete.all
+ def index
+   respond_to do |format|
+     format.html
+      format.json { render json: AthletesDatatable.new(view_context) }
+      format.xlsx
+    end
   end
 
   # GET /athletes/1
@@ -22,13 +26,13 @@ end
 
 def competitionsNumber(rut)
   @total=0
- sqlCount = "select count(*) as total
-  from championships  join stages on championships.id=stages.championship_id  
-  join competitions on stages.id=competitions.stage_id 
-  join track_head2s on track_head2s.competition_id=competitions.id
-  join track2s on track2s.track_head2_id=track2s.id
-  join athletes on track2s.rut=athletes.rut
-  where athletes.rut='"+rut+"';"   
+ sqlCount = "select count(*) as total from track2s 
+join athletes on track2s.athlete=concat(athletes.names, ' ', athletes.surnames) 
+join track_head2s on track_head2s.id=track2s.track_head2_id 
+join competitions on competitions.id=track_head2s.competition_id 
+join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id 
+join sports on sports.id=competitions.sport_id 
+ where track2s.rut='"+rut+"'"   
   arrCount = ActiveRecord::Base.connection.execute(sqlCount)
   arrCount.each do |count|
   @total=count[0]
@@ -38,13 +42,14 @@ end
 
 def championshipsNumber(rut)
   @total=0
- sqlCount = "select count(championships.id) as total
-  from championships  join stages on championships.id=stages.championship_id  
-  join competitions on stages.id=competitions.stage_id 
-  join track_head2s on track_head2s.competition_id=competitions.id
-  join track2s on track2s.track_head2_id=track2s.id
-  join athletes on track2s.rut=athletes.rut
-  where athletes.rut='"+rut+"';"   
+ sqlCount ="select count(distinct(championships.id)) as total from track2s 
+join athletes on track2s.athlete=concat(athletes.names, ' ', athletes.surnames) 
+join track_head2s on track_head2s.id=track2s.track_head2_id 
+join competitions on competitions.id=track_head2s.competition_id 
+join stages on stages.id=competitions.stage_id 
+join championships on championships.id=stages.championship_id 
+join sports on sports.id=competitions.sport_id 
+ where track2s.rut='"+rut+"';"    
   arrCount = ActiveRecord::Base.connection.execute(sqlCount)
   arrCount.each do |count|
   @total=count[0]

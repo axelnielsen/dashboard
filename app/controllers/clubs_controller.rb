@@ -4,8 +4,18 @@ class ClubsController < ApplicationController
   # GET /clubs
   # GET /clubs.json
   def index
-    @clubs = Club.all
+    respond_to do |format|
+     format.html
+      format.json { render json: ClubsDatatable.new(view_context) }
+      format.xlsx
+    end
   end
+  def datatable
+    respond_to do |format|
+        format.html
+        format.json { render json: ClubsDatatable.new(view_context ,{region_id: region_id}) }
+    end
+end
 
   # GET /clubs/1
   # GET /clubs/1.json

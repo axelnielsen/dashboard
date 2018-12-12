@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181128004052) do
+ActiveRecord::Schema.define(version: 20181211193917) do
 
   create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "names"
@@ -551,6 +551,7 @@ ActiveRecord::Schema.define(version: 20181128004052) do
     t.string "place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "rut"
     t.index ["hjump_head2_id"], name: "index_hjump2s_on_hjump_head2_id"
   end
 
@@ -594,6 +595,7 @@ ActiveRecord::Schema.define(version: 20181128004052) do
     t.string "an"
     t.string "region"
     t.string "points"
+    t.string "rut"
     t.index ["jump_head2_id"], name: "index_jump2s_on_jump_head2_id"
   end
 
@@ -2126,6 +2128,7 @@ ActiveRecord::Schema.define(version: 20181128004052) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "bestAchievement"
+    t.string "rut"
     t.index ["throw_head2_id"], name: "index_throw2s_on_throw_head2_id"
   end
 

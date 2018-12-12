@@ -8,14 +8,14 @@ class AthletesDatatable < ApplicationDatatable
       [].tap do |column|
         column << athlete.names
         column << athlete.surnames
-        column << athlete.sex
         column << athlete.birthdate
- 
+        column << athlete.club.name
+        column << athlete.region.name
 
         links = []
-        links << link_to('Show', athlete)
-        links << link_to('Edit', edit_athlete_path(athlete))
-        links << link_to('Destroy', athlete, method: :delete, data: { confirm: 'Are you sure?' })
+        links << link_to('VER', athlete)
+        links << link_to('EDITAR', edit_athlete_path(athlete))
+        links << link_to('ELIMINAR', athlete, method: :delete, data: { confirm: 'Are you sure?' })
         column << links.join(' | ')
       end
     end
@@ -49,7 +49,7 @@ class AthletesDatatable < ApplicationDatatable
   end
 
   def columns
-    %w(names surnames sex birthdate rut mail size height)
+    %w(names surnames birthdate club_id region_id)
   end
 
 end

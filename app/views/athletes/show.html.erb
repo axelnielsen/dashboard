@@ -38,7 +38,8 @@
 </table>
               <h3 class="profile-username text-center"><%=@athlete.names+" "+@athlete.surnames%></h3>
 
-              <p class="text-muted text-center"><%=@athlete.idClub%></p>
+              <p class="text-muted text-center"><b><%=link_to  Club.where(:id => @athlete.club_id).first.name, club_path(@athlete.club_id) %></b></p>
+
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
@@ -55,10 +56,7 @@
                     <%=competitionsNumber(@athlete.rut)%>
                   </a>
                 </li>
-                <li class="list-group-item">
-                  <b>Podios</b> <a class="pull-right"></a>
-                </li>
-              </ul>
+               </ul>
 
             </div>
             <!-- /.box-body -->
@@ -73,9 +71,41 @@
         </div>
         <!-- /.col -->
 
+
+  <%
+ sqlCount = "select sports.name,count(sports.name) from track2s join athletes on track2s.athlete=concat(athletes.names, ' ', athletes.surnames) join track_head2s on track_head2s.id=track2s.track_head2_id join competitions on competitions.id=track_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where track2s.rut='"+@athlete.rut+"' group by sports.name
+UNION
+select sports.name,count(sports.name) from throw2s join athletes on throw2s.athlete=concat(athletes.names, ' ', athletes.surnames) join throw_head2s on throw_head2s.id=throw2s.throw_head2_id join competitions on competitions.id=throw_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where throw2s.rut='"+@athlete.rut+"' group by sports.name
+ UNION
+select  sports.name,count(sports.name) from jump2s join athletes on jump2s.athlete=concat(athletes.names, ' ', athletes.surnames) join jump_head2s on jump_head2s.id=jump2s.jump_head2_id join competitions on competitions.id=jump_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where jump2s.rut='"+@athlete.rut+"' group by sports.name
+UNION
+select  sports.name,count(sports.name) from hjump2s join athletes on hjump2s.athlete=concat(athletes.names, ' ', athletes.surnames) join hjump_head2s on hjump_head2s.id=hjump2s.hjump_head2_id join competitions on competitions.id=hjump_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where hjump2s.rut='"+@athlete.rut+"' group by sports.name
+ "     
+  arrCount = ActiveRecord::Base.connection.execute(sqlCount)
+  data=""
+  data2=[]
+  i=0
+  arrCount.each do |count|
+  
+    data2[i]=count[0].to_s, count[1].to_f
+   
+ 
+    i=i+1
+   end
+ 
+  %>
+
 <div class="col-md-4">
-            <%= pie_chart Track2.group(:region).count %>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TOTAL COMPETICIONES</b>
+ <%= pie_chart data2 %>
+
           </div>
+          
+
 
       <div class="box box-primary">
       <div class="col-md-12">
@@ -93,8 +123,18 @@
 
 <%
 
-  sqlCount = "select track2s.place, track2s.achievement, championships.name, sports.name, stages.fecha, championships.id, track_head2s.id, track_head2s.competition_id from track2s join athletes on track2s.athlete=concat(athletes.names, ' ', athletes.surnames) join track_head2s on track_head2s.id=track2s.track_head2_id join competitions on competitions.id=track_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
- where track2s.athlete='"+@athlete.names+" "+ @athlete.surnames+"';"   
+  sqlCount = "select track2s.place, track2s.achievement, championships.name, sports.name, stages.fecha, championships.id, track_head2s.id, track_head2s.competition_id, competitions.competition_type_id from track2s join athletes on track2s.athlete=concat(athletes.names, ' ', athletes.surnames) join track_head2s on track_head2s.id=track2s.track_head2_id join competitions on competitions.id=track_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where track2s.rut='"+@athlete.rut+"'
+UNION
+select throw2s.place, throw2s.achievement, championships.name, sports.name, stages.fecha, championships.id, throw_head2s.id, throw_head2s.competition_id , competitions.competition_type_id from throw2s join athletes on throw2s.athlete=concat(athletes.names, ' ', athletes.surnames) join throw_head2s on throw_head2s.id=throw2s.throw_head2_id join competitions on competitions.id=throw_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where throw2s.rut='"+@athlete.rut+"'
+ UNION
+ select jump2s.place, jump2s.achievement, championships.name, sports.name, stages.fecha, championships.id, jump_head2s.id, jump_head2s.competition_id   , competitions.competition_type_id from jump2s join athletes on jump2s.athlete=concat(athletes.names, ' ', athletes.surnames) join jump_head2s on jump_head2s.id=jump2s.jump_head2_id join competitions on competitions.id=jump_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where jump2s.rut='"+@athlete.rut+"'
+ UNION
+ select hjump2s.place, hjump2s.achievement, championships.name, sports.name, stages.fecha, championships.id, hjump_head2s.id, hjump_head2s.competition_id  , competitions.competition_type_id from hjump2s join athletes on hjump2s.athlete=concat(athletes.names, ' ', athletes.surnames) join hjump_head2s on hjump_head2s.id=hjump2s.hjump_head2_id join competitions on competitions.id=hjump_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where hjump2s.rut='"+@athlete.rut+"'
+ "   
   arrCount = ActiveRecord::Base.connection.execute(sqlCount)
   arrCount.each do |count|
     %>
@@ -110,7 +150,17 @@
   <%=link_to count[2], Championship.where(:id=>count[5]).first %>
 </td>
 <td>
+  <%if count[8]==1 then%>
    <%=link_to count[3], track_head2s_path(:competition_id=>count[7], :start=> '0') %>
+   <%
+elsif count[8]==2 then%>
+<%=link_to count[3], jump_head2s_path(:competition_id=>count[7], :start=> '0') %>
+   <%
+elsif count[8]==3 then%>
+<%=link_to count[3], throw_head2s_path(:competition_id=>count[7], :start=> '0') %>
+<%else%>
+<%=link_to count[3], hjump_head2s_path(:competition_id=>count[7], :start=> '0') %>
+  <% end%>
 </td>
 <td>
   <%=count[4]%>
@@ -130,15 +180,29 @@
 
 
   <%
+  sqlSport="select id from sports order by name asc;"
+  arrSports= ActiveRecord::Base.connection.execute(sqlSport)
  
- sqlCount = "select stages.fecha,  track2s.achievement from track2s join athletes on track2s.athlete=concat(athletes.names, ' ', athletes.surnames) join track_head2s on track_head2s.id=track2s.track_head2_id join competitions on competitions.id=track_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
- where track2s.athlete='"+@athlete.names+" "+ @athlete.surnames+"' and sports.id=30;"   
+  arrSports.each do |s|
+  
+ sqlCount = "select stages.fecha,  track2s.achievement, sports.name from track2s join athletes on track2s.athlete=concat(athletes.names, ' ', athletes.surnames) join track_head2s on track_head2s.id=track2s.track_head2_id join competitions on competitions.id=track_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where track2s.rut='"+@athlete.rut+"' and sports.id="+s[0].to_s+"
+ UNION
+select stages.fecha,  throw2s.achievement, sports.name from throw2s join athletes on throw2s.athlete=concat(athletes.names, ' ', athletes.surnames) join throw_head2s on throw_head2s.id=throw2s.throw_head2_id join competitions on competitions.id=throw_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where throw2s.rut='"+@athlete.rut+"' and sports.id="+s[0].to_s+
+ " UNION
+ select stages.fecha,  jump2s.achievement, sports.name from jump2s join athletes on jump2s.athlete=concat(athletes.names, ' ', athletes.surnames) join jump_head2s on jump_head2s.id=jump2s.jump_head2_id join competitions on competitions.id=jump_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where jump2s.rut='"+@athlete.rut+"' and sports.id="+s[0].to_s+
+ " UNION
+ select stages.fecha,  hjump2s.achievement, sports.name from hjump2s join athletes on hjump2s.athlete=concat(athletes.names, ' ', athletes.surnames) join hjump_head2s on hjump_head2s.id=hjump2s.hjump_head2_id join competitions on competitions.id=hjump_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where hjump2s.rut='"+@athlete.rut+"' and sports.id="+s[0].to_s+""
   arrCount = ActiveRecord::Base.connection.execute(sqlCount)
   data=""
+  sport=""
   data2=[]
   i=0
   arrCount.each do |count|
-  
+  sport=count[2]
     data2[i]=count[0].to_s, count[1].to_f
    
  
@@ -146,75 +210,20 @@
    end
  
   %>
+<%if i>0 %>
+ <div class="box box-primary">
+            <div class="box-body box-profile">
+<div class="callout">
+        <div class="input-group col-md-16"> <h5><b><%=sport %></b></h5>
+        </div>
+      </div>
+ 
+
 
 <%= line_chart data2, xtitle: "Fechas", ytitle: "Marca" ,points: true %>
+</div>
+</div>
+<%end%>
+<%end%>
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Names:</strong>
-  <%= @athlete.names %>
-</p>
-
-<p>
-  <strong>Surnames:</strong>
-  <%= @athlete.surnames %>
-</p>
-
-<p>
-  <strong>Sex:</strong>
-  <%= @athlete.sex %>
-</p>
-
-<p>
-  <strong>Birthdate:</strong>
-  <%= @athlete.birthdate %>
-</p>
-
-<p>
-  <strong>Birthyear:</strong>
-  <%= @athlete.birthyear %>
-</p>
-
-<p>
-  <strong>Rut:</strong>
-  <%= @athlete.rut %>
-</p>
-
-<p>
-  <strong>Idclub:</strong>
-  <%= @athlete.idClub %>
-</p>
-
-<p>
-  <strong>Idregion:</strong>
-  <%= @athlete.idRegion %>
-</p>
-
-<p>
-  <strong>Cellphone:</strong>
-  <%= @athlete.cellPhone %>
-</p>
-
-<p>
-  <strong>Mail:</strong>
-  <%= @athlete.mail %>
-</p>
-
-<p>
-  <strong>Idcoach:</strong>
-  <%= @athlete.idCoach %>
-</p>
-
-<p>
-  <strong>Size:</strong>
-  <%= @athlete.size %>
-</p>
-
-<p>
-  <strong>Height:</strong>
-  <%= @athlete.height %>
-</p>
-
-<%= link_to 'Edit', edit_athlete_path(@athlete) %> |
 <%= link_to 'Back', athletes_path %>
