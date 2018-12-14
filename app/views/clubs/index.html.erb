@@ -20,7 +20,7 @@
               <table class="table table-hover">
                 <tbody>              
                
-<%= content_tag :table, role: :datatable, data: { url: clubs_path(format: :json)} do %>
+<%= content_tag :table, role: :datatable, data: { url: clubs_path(region_id: params[:region_id], format: :json)} do %>
   <thead>
     <tr class="table-info">
      
@@ -40,7 +40,7 @@
             <!-- /.box -->
           </div>
         </div>
-<a class="btn btn-warning" href="http://localhost:3000/championships/6">VOLVER</a>
+<%= link_to "VOLVER", :back, class: "btn btn-warning" %>
 
 </div>
 

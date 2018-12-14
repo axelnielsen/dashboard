@@ -4,6 +4,7 @@ class AthletesDatatable < ApplicationDatatable
   private
 
   def data
+    #example
     athletes.map do |athlete|
       [].tap do |column|
         column << athlete.names
@@ -14,8 +15,6 @@ class AthletesDatatable < ApplicationDatatable
 
         links = []
         links << link_to('VER', athlete)
-        links << link_to('EDITAR', edit_athlete_path(athlete))
-        links << link_to('ELIMINAR', athlete, method: :delete, data: { confirm: 'Are you sure?' })
         column << links.join(' | ')
       end
     end
@@ -45,6 +44,9 @@ class AthletesDatatable < ApplicationDatatable
     # athletes = Athlete.page(page).per_page(per_page)
     athletes = Athlete.order("#{sort_column} #{sort_direction}")
     athletes = athletes.page(page).per(per_page)
+    if params[:club_id]
+    athletes = athletes.where(club_id: params[:club_id])
+    end
     athletes = athletes.where(search_string.join(' or '), search: "%#{params[:search][:value]}%")
   end
 

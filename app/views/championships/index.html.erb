@@ -1,5 +1,7 @@
       <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
+         <div class="col-md-3 col-sm-6 col-xs-12">
+             <%= link_to championships_path(), :class=> "you_class" do %>
+   <b>
           <div class="info-box">
             <span class="info-box-icon bg-aqua">
 
@@ -7,10 +9,12 @@
 
             <div class="info-box-content">
               <span class="info-box-text">CAMPEONATOS</span>
-              <span class="info-box-number">5</span>
+              <span class="info-box-number"><%=Championship.all.count%></span>
             </div>
             <!-- /.info-box-content -->
           </div>
+        </b>
+          <% end %>
           <!-- /.info-box -->
         </div>
         <!-- ./col -->
@@ -27,16 +31,18 @@
           <!-- /.info-box -->
         </div>
         <!-- ./col -->
-       <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="col-md-3 col-sm-6 col-xs-12">
+         <%= link_to athletes_path(), :class=> "you_class" do %>
           <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fa fa-users" aria-hidden="true"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">ATLETAS</span>
-              <span class="info-box-number">580</span>
+              <span class="info-box-text"><b>ATLETAS</b></span>
+              <span class="info-box-number"><%=Athlete.all.count%></span>
             </div>
             <!-- /.info-box-content -->
           </div>
+          <%end%>
           <!-- /.info-box -->
         </div>
         <!-- ./col -->
@@ -81,7 +87,7 @@
     <th>CAMPEONATO</th>
       <th>FECHA INICIO</th>
       <th>FECHA TÉRMINO</th>
-      <th>REGIÓN</th>
+      <th>PAÍS</th>
       
       <th colspan="3"></th>
           </tr>
@@ -97,8 +103,8 @@
 
 
         <td><b><%= link_to championship.name, championship %></b></td>
-        <td><%= championship.initdate %></td>
-        <td><%= championship.findate %></td>
+        <td><%= championship.initdate.strftime("%F %T") %></td>
+        <td><%= championship.findate.strftime("%F %T") %></td>
  <%if championship.id==3 %>     <td><%=image_tag("pe.png", alt:"cl", height:"20",  width:"20")%></td>
       <%else%>
  <td><%=image_tag("cl.png", alt:"cl", height:"20",  width:"20")%></td>

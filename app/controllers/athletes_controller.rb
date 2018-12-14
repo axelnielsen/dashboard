@@ -114,7 +114,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def athlete_params
-      params.require(:athlete).permit(:names, :surnames, :sex, :birthdate, :birthyear, :rut, :idClub, :idRegion, :cellPhone, :mail, :idCoach, :size, :height)
+      params.require(:athlete).permit(:names, :surnames, :sex, :birthdate, :birthyear, :rut, :idClub, :idRegion, :cellPhone, :mail, :idCoach, :size, :height, :club_id)
     end
     helper_method :competitionsNumber, :championshipsNumber
 end

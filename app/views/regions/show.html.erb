@@ -1,29 +1,174 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <%= link_to championships_path(), :class=> "you_class" do %>
+   <b>
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua">
 
-<p>
-  <strong>Name:</strong>
-  <%= @region.name %>
-</p>
+              <i class="fa fa-trophy" aria-hidden="true"></i></span>
 
-<div class="col-xs-12">
-<p id="notice"></p>
- <div class="callout callout-warning">
-                <h4>ATLETAS</h4>
-
-    </div>
-       <div class="row">
-          <div class="col-xs-12">
-       
-             
-              </div>
-              <!-- /.box-body -->
-           
-            <!-- /.box -->
+            <div class="info-box-content">
+              <span class="info-box-text">CAMPEONATOS</span>
+              <span class="info-box-number"><%=championshipsNumber(@region.number)%></span>
+            </div>
+            <!-- /.info-box-content -->
           </div>
+        </b>
+          <% end %>
+          <!-- /.info-box -->
         </div>
+        <!-- ./col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="fa fa-area-chart" aria-hidden="true"></i></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">ESTADÍSTICAS</span>
+              <span class="info-box-number">100 %</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- ./col -->
+       <div class="col-md-3 col-sm-6 col-xs-12">
+        <%= link_to clubs_path(:region_id=> @region.id) , :class=> "you_class" do %>
+   <b>
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-users" aria-hidden="true"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text"><b>ATLETAS</b></span>
+              <span class="info-box-number"><%=athletesNumber(@region.number)%></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <%end%>
+        </b>
+          <!-- /.info-box -->
+        </div>
+        <!-- ./col -->
+       <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-calendar" aria-hidden="true"></i></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">CALENDARIO</span>
+              <span class="info-box-number">5</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- ./col -->
+      </div>
+    <!-- Main content -->
+
+      <p id="notice"><%= notice %></p>
+
+<div class="row">
+<div class="col-md-12">
+<div class="callout callout-warning ">
+
+        <div class="input-group col-md-16"> <h4>PERFIL ASOCIACIÓN REGIONAL</h4>
+       <div class=" navbar-left col-md-6">
+       </div>
+      
+      
+      
+</div>
+    </div>
+
+</div>
+</div>
+
+      <div class="row">
+
+        <div class="col-md-6">
+          <!-- Profile Image -->
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+              <table>
+                <tr>
+                  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  <td>
+              <%=image_tag("club.png", alt:"cl", height:"50",  width:"50", class:"profile-user-img img-responsive img-circle")%>
+              </td>
+              <td>
+              <%=image_tag("cl.png", alt:"cl", height:"50",  width:"50", class:"profile-user-img img-responsive img-circle")%>
+              </td>
+              </tr>
+</table>
+              <h3 class="profile-username text-center"><%=@region.name%></h3>
+
+
+              <ul class="list-group list-group-unbordered">
+                
+                <li class="list-group-item">
+                  <b>País</b> <a class="pull-right">CHILE</a>
+                </li>
+                <li class="list-group-item">
+                  <b>N° Campeonatos</b> <a class="pull-right"><%=championshipsNumber(@region.number)%></a>
+                </li>
+                <li class="list-group-item">
+                  <b>N° Competencias</b> <a class="pull-right">
+                    <%=competitionsNumber(@region.number)%>
+                  </a>
+                </li>
+               </ul>
+
+            </div>
+            <!-- /.box-body -->
+
+          </div>
+          <!-- /.box -->
+
+          <!-- About Me Box -->
+       
+          <!-- /.box -->
+
+        </div>
+        <!-- /.col -->
+
+
+  <%
+ sqlCount = "select sports.name,count(sports.name) from track2s join athletes on track2s.athlete=concat(athletes.names, ' ', athletes.surnames) join track_head2s on track_head2s.id=track2s.track_head2_id join competitions on competitions.id=track_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where track2s.region='"+@region.number.to_s+"' group by sports.name
+UNION
+select sports.name,count(sports.name) from throw2s join athletes on throw2s.athlete=concat(athletes.names, ' ', athletes.surnames) join throw_head2s on throw_head2s.id=throw2s.throw_head2_id join competitions on competitions.id=throw_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where throw2s.region='"+@region.number.to_s+"' group by sports.name
+ UNION
+select  sports.name,count(sports.name) from jump2s join athletes on jump2s.athlete=concat(athletes.names, ' ', athletes.surnames) join jump_head2s on jump_head2s.id=jump2s.jump_head2_id join competitions on competitions.id=jump_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+where jump2s.region='"+@region.number.to_s+"' group by sports.name
+UNION
+select  sports.name,count(sports.name) from hjump2s join athletes on hjump2s.athlete=concat(athletes.names, ' ', athletes.surnames) join hjump_head2s on hjump_head2s.id=hjump2s.hjump_head2_id join competitions on competitions.id=hjump_head2s.competition_id join stages on stages.id=competitions.stage_id join championships on championships.id=stages.championship_id join sports on sports.id=competitions.sport_id 
+ where hjump2s.region='"+@region.number.to_s+"' group by sports.name
+ "     
+
+  arrCount = ActiveRecord::Base.connection.execute(sqlCount)
+  data=""
+  data2=[]
+  i=0
+  arrCount.each do |count|
+  
+    data2[i]=count[0].to_s, count[1].to_f
+   
+ 
+    i=i+1
+   end
+ 
+  %>
+<div class="col-md-6">
+   
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TOTAL COMPETICIONES</b>
+ <%= pie_chart data2 %>
+
+          
+</div></div>
+
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding table-striped">
-              <table class="table table-hover">
+              <table id="example" class="table table-hover">
                 <tbody>              
                
 <%= content_tag :table, role: :datatable, data: { url: clubs_path(region_id: @region.id, format: :json)} do %>
@@ -43,25 +188,15 @@
 
 
 
-  <script type="application/javascript">
-
-$(document).ready(function() {
-jQuery(".best_in_place").best_in_place();
-});
-function bestInPlace()
-{
- jQuery(".best_in_place").best_in_place();
-};
- </script>              </div>
+         </div>
               <!-- /.box-body -->
            
             <!-- /.box -->
           </div>
         </div>
-<a class="btn btn-warning" href="http://localhost:3000/championships/6">VOLVER</a>
+<%= link_to "VOLVER", :back, class: "btn btn-warning" %>
 
 </div>
-
 
 
 
@@ -70,5 +205,3 @@ function bestInPlace()
   
 
 </body>
-<%= link_to 'Edit', edit_region_path(@region) %> |
-<%= link_to 'Back', regions_path %>

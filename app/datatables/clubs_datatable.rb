@@ -6,13 +6,11 @@ class ClubsDatatable < ApplicationDatatable
     clubs.map do |club|
       [].tap do |column|
         column << club.name
-        column << club.region_id
+        column << club.region.name
    
         links = []
         links << link_to('VER', club)
-        links << link_to('EDITAR', edit_club_path(club))
-        links << link_to('ELIMINAR', club, method: :delete, data: { confirm: 'Are you sure?' })
-        column << links.join(' | ')
+       column << links.join(' | ')
       end
     end
   end
@@ -41,7 +39,9 @@ class ClubsDatatable < ApplicationDatatable
     # athletes = Athlete.page(page).per_page(per_page)
     clubs = Club.order("#{sort_column} #{sort_direction}")
     clubs = clubs.page(page).per(per_page)
-    clubs=clubs.where(region_id: params[:region_id])
+    if params[:region_id]    
+    clubs = clubs.where(region_id: params[:region_id])
+    end
     clubs = clubs.where(search_string.join(' or '), search: "%#{params[:search][:value]}%")
   end
 
