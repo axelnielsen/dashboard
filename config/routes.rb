@@ -18,6 +18,7 @@ resources :hjump_head2s do
   end
 
  devise_for :users
+ 
 resources :throw2s do
   collection { post :import}
   end

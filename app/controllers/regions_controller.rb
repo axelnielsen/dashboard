@@ -250,7 +250,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def region_params
-      params.require(:region).permit(:name, :number)
+      params.require(:region).permit(:name, :number, :id)
     end
          helper_method :competitionsNumber, :championshipsNumber, :athletesNumber
 end

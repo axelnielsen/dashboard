@@ -2,7 +2,7 @@ class Athlete < ApplicationRecord
 
 	 belongs_to :sex
 	 belongs_to :region
-	  belongs_to :club
+	 belongs_to :club
 
 
 def self.achievementsByDate(names, surnames)
