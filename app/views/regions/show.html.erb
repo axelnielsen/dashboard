@@ -194,6 +194,10 @@ select  sports.name,count(sports.name) from hjump2s join athletes on hjump2s.ath
             <!-- /.box -->
           </div>
         </div>
+         <% if  user_signed_in? && (getAdminPermission( current_user.email) or getRegionPermission( current_user.email)) && ((getAdminPermission( current_user.email) or getRegionNumber( current_user.email)))%> 
+<br/>
+<%= link_to "NUEVO CLUB", new_club_path, class: "btn btn-success" %> |
+<%end%>
 <%= link_to "VOLVER", :back, class: "btn btn-warning" %>
 
 </div>

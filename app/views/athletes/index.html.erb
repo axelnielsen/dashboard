@@ -53,6 +53,10 @@ function bestInPlace()
             <!-- /.box -->
           </div>
         </div>
+        <% if  user_signed_in? && (getAdminPermission( current_user.email) or getRegionPermission( current_user.email))%> 
+<br/>
+<%= link_to "NUEVO ATLETA", new_athlete_path, class: "btn btn-success" %> |
+<%end%>
 <%= link_to "VOLVER", :back, class: "btn btn-warning" %>
 
 </div>

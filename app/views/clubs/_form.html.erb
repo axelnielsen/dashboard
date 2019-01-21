@@ -5,8 +5,20 @@
   <div class="form-inputs">
    NOMBRE <%= f.input :name, label: false , required: true%>
    
-    ASOCIACIÓN REGIONAL <%= f.association :region, label: false, required: true%>
+   <% if  user_signed_in? && getRegionNumber( current_user.email) !=nil    && getRegionPermission(current_user.email)%> 
+ <% 
+cannot_select = {
+  onfocus: "this.defaultIndex=this.selectedIndex;",
+  onchange: "this.selectedIndex=this.defaultIndex;"
+} 
+%>
+
+   ASOCIACIÓN REGIONAL<%= f.association :region, readonly: true, input_html: {}.merge(cannot_select) , :selected => getRegionNumber( current_user.email), label: false %>
+    
+<%elsif user_signed_in? && getAdminPermission(current_user.email)%>
+   ASOCIACIÓN REGIONAL<%= f.association :region,label: false %>
   
+<%end%>
   </div>
 
   <div class="form-actions">

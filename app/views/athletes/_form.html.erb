@@ -20,7 +20,9 @@ cannot_select = {
 
    ASOCIACIÓN REGIONAL<%= f.association :region, readonly: true, input_html: {}.merge(cannot_select) , :selected => getRegionNumber( current_user.email), label: false %>
     CLUB <%= f.association :club, label: false, required: true,collection: Club.where(region_id: getRegionNumber( current_user.email))%>
-
+<%elsif user_signed_in? && getAdminPermission(current_user.email)%>
+   ASOCIACIÓN REGIONAL<%= f.association :region,label: false %>
+    CLUB <%= f.association :club, label: false, required: true,collection: Club.where(region_id: getRegionNumber( current_user.email))%>
 <%end%>
    
  
@@ -32,6 +34,12 @@ cannot_select = {
   </div>
 
   <div class="form-actions">
-   <%= f.button :submit ,'GUARDAR',class: "btn btn-success"%>| <%= link_to "VOLVER", :back, class: "btn btn-warning" %>
+   <%= f.button :submit ,'GUARDAR',class: "btn btn-success"%> | <%= link_to "VOLVER", :back, class: "btn btn-warning" %>
   </div>
+  <script type="text/javascript">
+    $("#athlete_rut").inputmask({
+  mask: "9[9.999.999]-[9|K|k]",
+});
+
+  </script>
 <% end %>
