@@ -80,6 +80,7 @@
             <th>CATEGORÍA</th>
             <th>RESULTADOS</th>
             <th>STARTLIST</th>
+	    
           </tr>
         </thead>
         <tbody>
@@ -93,13 +94,29 @@
        <%=link_to "RESULTADOS", track_head2s_path(:competition_id=>competition.id, :start=>"0"), class: "btn btn-warning" %>
         </td>
           <td><%= link_to "STARTLIST", track_head2s_path(:competition_id=>competition.id, :start=>"1"), class: "btn btn-primary" %></td>
-          </tr>
+<td>
+  <%= link_to competition, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %>
+                 <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR</button>
+        <% end %>
+        <% end %>
+
+</td>
+
+   </tr>
       <%end%>
 
  <% if competition.competition_type_id==3%>
             <%=link_to "RESULTADOS", throw_head2s_path(:competition_id=>competition.id, :start=>"0"), class: "btn btn-warning"%>
             </td>
           <td><%= link_to "STARTLIST", throw_head2s_path(:competition_id=>competition.id, :start=>"1"), class: "btn btn-primary" %></td>
+<td>
+  <%= link_to competition, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %>
+                 <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR</button>
+        <% end %>
+        <% end %>
+
+</td>
+
           </tr>
             <% elsif competition.competition_type_id==4%>
             <%=link_to "RESULTADOS", jump_head2s_path(:competition_id=>competition.id, :start=>"0"), class: "btn btn-warning"%>
@@ -107,6 +124,14 @@
  <% elsif competition.competition_type_id==2 %>
             <%=link_to "RESULTADOS", hjump_head2s_path(:competition_id=>competition.id, :start=>"0"), class: "btn btn-warning"%> 
              <td><%= link_to "STARTLIST", hjump_head2s_path(:competition_id=>competition.id, :start=>"1"), class: "btn btn-primary" %></td>
+<td>
+  <%= link_to competition, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %>
+                 <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR</button>
+        <% end %>
+        <% end %>
+
+</td>
+
           </tr>         
           <%end%>
          

@@ -56,8 +56,8 @@ class CompetitionsController < ApplicationController
   def destroy
     @competition.destroy
     respond_to do |format|
-      format.html { redirect_to competitions_url, notice: 'Competition was successfully destroyed.' }
-      format.json { head :no_content }
+     format.html {redirect_back(fallback_location: root_path, notice: 'Eliminado exitosamente' )} 
+     format.json { head :no_content }
     end
   end
 

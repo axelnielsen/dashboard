@@ -97,9 +97,7 @@
   
     <% @championships.order("initdate desc").where('initdate >="2019-01-01"').each do |championship| %>
         <tr>
-<%if championship.id>7 %><td><span class="label label-success">PRÓXIMAMENTE</span></td>
-<%elsif  championship.id==7 %>
-<td><span class="label label-danger">TERMINADO</span></td>
+<%if championship.id>=7 %><td><span class="label label-success">PRÓXIMAMENTE</span></td>
 <%else%>
 <td><span class="label label-danger">TERMINADO</span></td><%end%>
 
@@ -124,7 +122,12 @@
      </tbody>
       </table>
      
-        <br/> 
+            </div>
+
+<% if  user_signed_in? && getAdminPermission( current_user.email)%> 
+<br/>
+<%= link_to "NUEVO CAMPEONATO", new_championship_path, class: "btn btn-success" %>
+<%end%>
 </div>
 
 <% end %>

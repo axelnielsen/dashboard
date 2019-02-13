@@ -61,10 +61,10 @@
         <!-- ./col -->
       </div> <div class="callout callout-warning ">
                
-        <div class="input-group col-md-16"> <h4>CAMPEONATOS 2019</h4>
+          <div class="input-group col-md-16"> <h4>CAMPEONATOS 2019</h4>
        <div class=" navbar-left col-md-6" >
        </div>
-      
+
       <input class="form-control py-2" type="search" placeholder="Buscar ej: Cadetes" id="search" name="search">
       <span class="input-group-append">
         <button class="btn btn-outline-secondary bg-gray" type="button">
@@ -87,19 +87,19 @@
     <th>CAMPEONATO</th>
       <th>FECHA INICIO</th>
       <th>FECHA TÉRMINO</th>
-      <th>PAÍS</th>
-      
+  
+<th>PAÍS</th>
+
       <th colspan="3"></th>
           </tr>
         </thead>
         <tbody>
           <% if @championships.any? %>
-  
-    <% @championships.order("initdate desc").where('initdate >="2019-01-01"').each do |championship| %>
+
+       <% @championships.order("initdate desc").where('initdate >="2019-01-01"').each do |championship| %>
+
         <tr>
-<%if championship.id>7 %><td><span class="label label-success">PRÓXIMAMENTE</span></td>
-<%elsif  championship.id==7 %>
-<td><span class="label label-danger">TERMINADO</span></td>
+<%if championship.id>=7 %><td><span class="label label-success">PRONTO<span></td>
 <%else%>
 <td><span class="label label-danger">TERMINADO</span></td><%end%>
 
@@ -117,23 +117,20 @@
                  <% if  user_signed_in? && getAdminPermission( current_user.email)%><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR</button>
         <% end %>
         <% end %> <%end%></td>
-        
+
   </tr>
    <%end%>
 
      </tbody>
       </table>
-     
-        <br/> 
-</div>
 
-<% end %>
-<div class="callout callout-warning ">
-               
+            </div>
+
+
         <div class="input-group col-md-16"> <h4>CAMPEONATOS 2018</h4>
        <div class=" navbar-left col-md-6" >
        </div>
-      
+
       <input class="form-control py-2" type="search" placeholder="Buscar ej: Cadetes" id="search" name="search">
       <span class="input-group-append">
         <button class="btn btn-outline-secondary bg-gray" type="button">
@@ -156,17 +153,19 @@
     <th>CAMPEONATO</th>
       <th>FECHA INICIO</th>
       <th>FECHA TÉRMINO</th>
-      <th>PAÍS</th>
-      
+  
+<th>PAÍS</th>
+
       <th colspan="3"></th>
           </tr>
         </thead>
         <tbody>
           <% if @championships.any? %>
-  
- <% @championships.order("initdate desc").where('initdate <"2019-01-01"').each do |championship| %>
+
+       <% @championships.order("initdate desc").where('initdate <"2019-01-01"').each do |championship| %>
+
         <tr>
-<%if championship.id>=7 %><td><span class="label label-success">PRÓXIMAMENTE</span></td>
+<%if championship.id>=7 %><td><span class="label label-success">PRONTO<span></td>
 <%else%>
 <td><span class="label label-danger">TERMINADO</span></td><%end%>
 
@@ -184,13 +183,13 @@
                  <% if  user_signed_in? && getAdminPermission( current_user.email)%><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR</button>
         <% end %>
         <% end %> <%end%></td>
-        
+
   </tr>
    <%end%>
 
      </tbody>
       </table>
-     
+
             </div>
 
 <% if  user_signed_in? && getAdminPermission( current_user.email)%> 

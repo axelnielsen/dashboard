@@ -9,8 +9,14 @@
    FECHA DE NACIMIENTO <%= f.date_field :birthdate , class: 'form-control', label: false, required: true%>
 
     RUT<%= f.input :rut,label: false, required: true %>
+<%
+cannot_select = {
+  onfocus: "this.defaultIndex=this.selectedIndex;",
+  onchange: "this.selectedIndex=this.defaultIndex;"
+}
+%>
 
-<% if  user_signed_in? && getRegionNumber( current_user.email) !=nil    && getRegionPermission(current_user.email)%> 
+<% if  user_signed_in? && getRegionNumber( current_user.email) !=nil && getRegionPermission(current_user.email) %> 
 <% 
 cannot_select = {
   onfocus: "this.defaultIndex=this.selectedIndex;",
@@ -23,6 +29,12 @@ cannot_select = {
 <%elsif user_signed_in? && getAdminPermission(current_user.email)%>
    ASOCIACIÓN REGIONAL<%= f.association :region,label: false %>
     CLUB <%= f.association :club, label: false, required: true,collection: Club.where(region_id: getRegionNumber( current_user.email))%>
+
+<%elsif user_signed_in? && getClubPermission(current_user.email)%>
+ASOCIACIÓN REGIONAL<%= f.association :region, readonly: true, input_html: {}.merge(cannot_select) , :selected => getRegionNumber( current_user.email), label: false %>
+    CLUB <%= f.association :club, label: false, required: true,collection: Club.where(id: getClubNumber( current_user.email))%>
+
+
 <%end%>
    
  

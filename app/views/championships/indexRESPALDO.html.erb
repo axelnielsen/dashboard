@@ -61,7 +61,7 @@
         <!-- ./col -->
       </div> <div class="callout callout-warning ">
                
-        <div class="input-group col-md-16"> <h4>CAMPEONATOS 2019</h4>
+        <div class="input-group col-md-16"> <h4>CAMPEONATOS 2018</h4>
        <div class=" navbar-left col-md-6" >
        </div>
       
@@ -97,76 +97,7 @@
   
     <% @championships.order("initdate desc").where('initdate >="2019-01-01"').each do |championship| %>
         <tr>
-<%if championship.id>7 %><td><span class="label label-success">PRÓXIMAMENTE</span></td>
-<%elsif  championship.id==7 %>
-<td><span class="label label-danger">TERMINADO</span></td>
-<%else%>
-<td><span class="label label-danger">TERMINADO</span></td><%end%>
-
-
-        <td><b><%= link_to championship.name, championship %></b></td>
-        <td><%= championship.initdate.strftime("%F %T") %></td>
-        <td><%= championship.findate.strftime("%F %T") %></td>
- <%if championship.id==3 %>     <td><%=image_tag("pe.png", alt:"cl", height:"20",  width:"20")%></td>
-      <%else%>
- <td><%=image_tag("cl.png", alt:"cl", height:"20",  width:"20")%></td>
-
-<%end%>
-
-<td><% if  user_signed_in? && getAdminPermission( current_user.email)%> <%= link_to 'EDITAR', edit_championship_path(championship), class: "btn btn-warning"  %><%= link_to championship, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %>
-                 <% if  user_signed_in? && getAdminPermission( current_user.email)%><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR</button>
-        <% end %>
-        <% end %> <%end%></td>
-        
-  </tr>
-   <%end%>
-
-     </tbody>
-      </table>
-     
-        <br/> 
-</div>
-
-<% end %>
-<div class="callout callout-warning ">
-               
-        <div class="input-group col-md-16"> <h4>CAMPEONATOS 2018</h4>
-       <div class=" navbar-left col-md-6" >
-       </div>
-      
-      <input class="form-control py-2" type="search" placeholder="Buscar ej: Cadetes" id="search" name="search">
-      <span class="input-group-append">
-        <button class="btn btn-outline-secondary bg-gray" type="button">
-            <i class="fa fa-search"></i>
-        </button>
-      </span>
-</div>
-    </div>
-    <!-- Main content -->
-
-      <p id="notice"><%= notice %></p>
-
-<div class="row">
-<div class="col-md-12">
-            <div class="box-body table-responsive no-padding table-striped">
-              <table class="table table-hover">
-        <thead>
-          <tr  class="table-info">
-<th>STATUS</th>
-    <th>CAMPEONATO</th>
-      <th>FECHA INICIO</th>
-      <th>FECHA TÉRMINO</th>
-      <th>PAÍS</th>
-      
-      <th colspan="3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if @championships.any? %>
-  
- <% @championships.order("initdate desc").where('initdate <"2019-01-01"').each do |championship| %>
-        <tr>
-<%if championship.id>=7 %><td><span class="label label-success">PRÓXIMAMENTE</span></td>
+<%if championship.id>=7 %><td><span class="label label-success">PRÓXIMAMENTE<span></td>
 <%else%>
 <td><span class="label label-danger">TERMINADO</span></td><%end%>
 
@@ -202,4 +133,3 @@
 <% end %>
 
 </div>
-

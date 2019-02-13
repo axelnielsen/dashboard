@@ -58,7 +58,7 @@ class ChampionshipsController < ApplicationController
     begin
      @championship.destroy
      respond_to do |format|
-      format.html { redirect_to championships_url, notice: 'Eliminado exisosamente' }
+     format.html {redirect_back(fallback_location: root_path, notice: 'Eliminado exitosamente' )}
       format.json { head :no_content }
     end
     rescue => ex

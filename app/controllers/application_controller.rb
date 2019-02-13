@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   skip_before_action :verify_authenticity_token
 
-helper_method :getAdminPermission, :getCamaraPermission, :getRegionNumber, :getRegionPermission
+helper_method :getAdminPermission, :getCamaraPermission, :getRegionNumber, :getRegionPermission, :getClubPermission , :getClubNumber
 
 def getAdminPermission(user)
   	@profile=""
@@ -64,6 +64,24 @@ def getRegionPermission(user)
     return false
   end
 end
+
+def getClubPermission(user)
+    @profile=""
+    sqlProfile = "select name 
+  from profiles  join users on profiles.id=users.profile_id  
+  where users.email='"+user+"';"
+  arrProfile = ActiveRecord::Base.connection.execute(sqlProfile)
+  arrProfile.each do |p|
+  @profile=p[0]
+  end
+  if @profile=="CLUB"
+    return true
+  else
+    return false
+  end
+end
+
+
 def getRegionNumber(user)
     @region=""
     sqlRegion = "select region 
@@ -75,6 +93,21 @@ def getRegionNumber(user)
   return @region
 end
 end
+
+
+def getClubNumber(user)
+    @club=""
+    sqlClub = "select club 
+  from users 
+  where users.email='"+user+"';"
+  arrClub = ActiveRecord::Base.connection.execute(sqlClub)
+  arrClub.each do |p|
+  @club=p[0]
+  return @club
+end
+end
+
+
 def getClubPermission(user)
     @profile=""
     sqlProfile = "select name 
