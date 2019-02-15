@@ -2,7 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   skip_before_action :verify_authenticity_token
 
-helper_method :getAdminPermission, :getCamaraPermission, :getRegionNumber, :getRegionPermission, :getClubPermission , :getClubNumber
+helper_method :getAdminPermission, :getCamaraPermission, :getRegionNumber, :getRegionPermission, :getClubPermission , :getClubNumber,
+:getChampionshipFromTrack2s, :getChampionshipAddressFromTrack2s, :getChampionshipInitDateFromTrack2s, :getChampionshipFinDateFromTrack2s, :getCompetitionFromTrack2s
+
 
 def getAdminPermission(user)
   	@profile=""
@@ -19,6 +21,95 @@ def getAdminPermission(user)
   	return false
   end
 end
+
+def getCompetitionFromTrack2s(track_head2s_id)
+    @name=""
+    sqlName = "select sports.name 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join sports on competitions.sport_id=sports.id
+  join track_head2s on competitions.id=track_head2s.competition_id
+  where track_head2s.id='"+track_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
+def getChampionshipFromTrack2s(track_head2s_id)
+    @name=""
+    sqlName = "select championships.name 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join track_head2s on competitions.id=track_head2s.competition_id
+  where track_head2s.id='"+track_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+def getChampionshipFinDateFromTrack2s(track_head2s_id)
+    @name=""
+    sqlName = "select finDate 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join track_head2s on competitions.id=track_head2s.competition_id
+  where track_head2s.id='"+track_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+def getChampionshipDateFromTrack2s(track_head2s_id)
+    @name=""
+    sqlName = "select name 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join track_head2s on competitions.id=track_head2s.competition_id
+  where track_head2s.id='"+track_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+def getChampionshipInitDateFromTrack2s(track_head2s_id)
+    @name=""
+    sqlName = "select initDate 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join track_head2s on competitions.id=track_head2s.competition_id
+  where track_head2s.id='"+track_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+def getChampionshipAddressFromTrack2s(track_head2s_id)
+    @name=""
+    sqlName = "select address 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join track_head2s on competitions.id=track_head2s.competition_id
+  where track_head2s.id='"+track_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
+
 def getRegionPermission(user)
     @profile=""
     sqlProfile = "select name 

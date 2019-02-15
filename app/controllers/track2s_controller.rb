@@ -1,10 +1,30 @@
 class Track2sController < ApplicationController
   before_action :set_track2, only: [:show, :edit, :update, :destroy]
+  helper_method :export
 
   # GET /track2s
   # GET /track2s.json
-  def index
+
+
+
+    def index 
+    if params[:competition_id].present?
+       @track2s = Track2.joins(:track_head2).where("track_head2s.competition_id ="+params[:competition_id]).order(:achievement)
+
+    else
        @track2s = Track2.all
+    end
+         respond_to do |format|
+         format.html
+         format.xlsx
+  end
+  end
+
+  def export (track_head2_id)
+     @track2s = Track2.where(:track_head2_id =>params[:track_head2_id])
+      respond_to do |format|
+         format.xlsx
+  end
   end
 
   # GET /track2s/1

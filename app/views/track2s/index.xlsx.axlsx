@@ -1,6 +1,30 @@
 wb = xlsx_package.workbook
+img = File.expand_path("logo.png", __dir__)
+wb.add_worksheet(name: "RESULTADOS") do |sheet|
 
-wb.add_worksheet(name: "Track2s") do |sheet|
-  sheet.add_row %w(serie place achievement athlete an club region)
+sheet.add_row 
+sheet.add_image(:image_src => img, :noSelect => true, :noMove => true, ) do |image|
+    image.width = 170
+    image.height = 70
+    image.start_at 0, 0
+  end
+  sheet.add_row 
+  sheet.add_row 
+  sheet.add_row 
 
+
+
+
+
+sheet.add_row ["EVENTO",getChampionshipFromTrack2s(@track2s.first.track_head2_id) ]
+sheet.add_row  ["DIRECCIÓN",getChampionshipAddressFromTrack2s(@track2s.first.track_head2_id) ]
+sheet.add_row  ["FECHA",getChampionshipInitDateFromTrack2s(@track2s.first.track_head2_id) ]
+sheet.add_row  ["INICIO",getChampionshipInitDateFromTrack2s(@track2s.first.track_head2_id).to_time ]
+sheet.add_row  ["TÉRMINO",getChampionshipFinDateFromTrack2s(@track2s.first.track_head2_id).to_time]
+sheet.add_row 
+sheet.add_row %w(PRUEBA LUGAR MARCA V.V ATLETA NACIMIENTO  CLUB REGIÓN )
+  @track2s.each do |t|
+  @trackhead2s=TrackHead2.where(:id=>t.track_head2_id).first
+    sheet.add_row [getCompetitionFromTrack2s(t.track_head2_id), t.place, t.achievement, @trackhead2s.wind,  t.athlete, t.an, t.club, t.region]
+  end
 end
