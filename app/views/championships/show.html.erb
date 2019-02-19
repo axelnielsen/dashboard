@@ -4,7 +4,7 @@
 <div class="col-md-12">
     <p id="notice"><%= notice %></p>
     <div class="callout callout-warning">
-                <h4><%= @championship.name %> <%= link_to image_tag("excel.png" ,style: 'height:3%;width:3%;', border: 0, title: 'EXPORTAR RESULTADOS'), track2s_path(format: "xlsx", :competition_id => params[:competition_id]) %></h4>
+                <h4><%= @championship.name %></h4>
                <b><h5> <%=link_to "INSCRIPCIONES ABIERTAS", class: "alert alert-success", :controller => "registration_head2s", :action => "new",:id => @championship.id %></h5></b>
 
     </div>
