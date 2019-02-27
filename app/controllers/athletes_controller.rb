@@ -6,12 +6,18 @@ class AthletesController < ApplicationController
   # GET /athletes
   # GET /athletes.json
  def index
+ 
    respond_to do |format|
      format.html
+if session[:idRChamp]
       format.json { render json: AthletesDatatable.new(view_context) }
+else
+  format.json { render json: Athletes2Datatable.new(view_context) }
+end
       format.xlsx
     end
   end
+
 
   # GET /athletes/1
   # GET /athletes/1.json
@@ -39,6 +45,7 @@ join sports on sports.id=competitions.sport_id
   end
   return @total
 end
+
 
 def championshipsNumber(rut)
   @total=0

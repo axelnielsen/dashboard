@@ -1,18 +1,19 @@
 <%
-txtName=params[:txtName]
-txtLastName=params[:txtLastName]
-txtAn=params[:txtAn]
-txtSex=params[:txtSex]
-txtClub=params[:txtClub]
-txtName=params[:txtName]
-txtRegion=params[:txtRegion]
+txtName=session[:txtName]
+txtLastName=session[:txtLastName]
+txtAn=session[:txtAn]
+txtSex=session[:txtSex]
+txtClub=session[:txtClub]
+txtName=session[:txtName]
+txtRegion=session[:txtRegion]
 txtChampionship=params[:txtChampionship]
 arr=params[:competitions]
 @lastTrackHead=0
  arr.each do |e|
 arrCount=nil
 %>
-
+<%=txtName%>
+<%=txtLastName%>
 <%
 sqlCompType = "select competition_type_id from competitions where competitions.id="+e+";"   
     arrCompType = ActiveRecord::Base.connection.execute(sqlCompType)

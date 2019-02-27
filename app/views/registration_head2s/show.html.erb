@@ -34,7 +34,7 @@
               <strong><i class="fa fa-user margin-r-5"></i> NOMBRES</strong>
 
               <p class="text-muted">
-                   <%=@registration_head2.name.upcase %>  
+                   <%=@registration_head2.name %>  
               </p>
 
               <hr>
@@ -78,8 +78,17 @@
             <!-- /.box-body -->
           </div>
 
-
+<%=@registration_head2.name.html_safe%>
+<%=@registration_head2.lastname %> 
 <%@championship_id=@registration_head2.championship.id %>
+<%
+session[:txtName]=@registration_head2.name
+session[:txtLastName]=@registration_head2.lastname
+session[:txtSex]=@registration_head2.sex.name 
+session[:txtAn]=@registration_head2.an 
+session[:txtClub]=@registration_head2.club
+session[:txtRegion]=@registration_head2.region
+%>
 <form method="post" action="result" name="inscripciones">
 <input type="hidden" name="txtName" value=<%=@registration_head2.name.html_safe%> >
 <input type="hidden" name="txtLastName" value=<%=@registration_head2.lastname %> >

@@ -64,7 +64,12 @@ class RegistrationHead2sController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_registration_head2
+      begin
+   
       @registration_head2 = RegistrationHead2.find(params[:id])
+rescue
+ensure
+end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -18,7 +18,8 @@
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding table-striped">
               <table class="table table-hover">
-                <tbody>              
+                <tbody>    
+                <% session.delete :idRChamp %>          
 <%= content_tag :table, role: :datatable, data: { url: athletes_path(club_id: params[:club_id],format: :json)} do %>
   <thead>
     <tr class="table-info">

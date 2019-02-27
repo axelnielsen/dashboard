@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   
-
+   resources :athletes do
+    collection do
+      get :autocomplete
+    end
+  end
   resources :profiles
   resources :clubs
   resources :registration_detail2s
@@ -515,7 +519,7 @@ resources :male_discus_throws do
   resources :discipline_championships
   resources :coaches
   resources :athleteseries
-  resources :athletes
+ 
   resources :clients
     resources :detalles do
     collection { post :import}

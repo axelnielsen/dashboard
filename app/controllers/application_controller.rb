@@ -3,8 +3,82 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
 
 helper_method :getAdminPermission, :getCamaraPermission, :getRegionNumber, :getRegionPermission, :getClubPermission , :getClubNumber,
-:getChampionshipFromTrack2s, :getChampionshipAddressFromTrack2s, :getChampionshipInitDateFromTrack2s, :getChampionshipFinDateFromTrack2s, :getCompetitionFromTrack2s
+:getChampionshipFromTrack2s, :getChampionshipAddressFromTrack2s, 
+:getChampionshipInitDateFromTrack2s, :getChampionshipFinDateFromTrack2s, 
+:getCompetitionFromTrack2s, :getAthleteNamesFromId, :getAthleteSurnamesFromId, :getAthleteRutFromId,
+:getAthleteSexFromId, :getAthleteClubFromId, :getAthleteRegionFromId, :getAthleteBirthFromId
 
+
+def getAthleteNamesFromId(id)
+@names=""
+  sql="SELECT names FROM athletes WHERE id='"+id.to_s+"'"
+  arr=ActiveRecord::Base.connection.execute(sql)
+  arr.each do |a|
+@names=a[0]
+end
+return @names
+end
+
+def getAthleteBirthFromId(id)
+@names=""
+  sql="SELECT birthdate FROM athletes WHERE athletes.id='"+id.to_s+"'"
+  arr=ActiveRecord::Base.connection.execute(sql)
+  arr.each do |a|
+@names=a[0]
+end
+return @names
+end
+
+def getAthleteSexFromId(id)
+@names=""
+  sql="SELECT sex_id FROM athletes WHERE athletes.id='"+id.to_s+"'"
+  arr=ActiveRecord::Base.connection.execute(sql)
+  arr.each do |a|
+@names=a[0]
+end
+return @names
+end
+def getAthleteClubFromId(id)
+@names=""
+  sql="SELECT clubs.name FROM clubs join athletes 
+  on clubs.id=athletes.club_id
+  WHERE athletes.id='"+id.to_s+"'"
+  arr=ActiveRecord::Base.connection.execute(sql)
+  arr.each do |a|
+@names=a[0]
+end
+return @names
+end
+
+def getAthleteRegionFromId(id)
+@names=""
+  sql="SELECT regions.id FROM regions join athletes
+    on regions.id=athletes.region_id
+     WHERE athletes.id='"+id.to_s+"'"
+  arr=ActiveRecord::Base.connection.execute(sql)
+  arr.each do |a|
+@names=a[0]
+end
+return @names
+end
+def getAthleteSurnamesFromId(id)
+@names=""
+  sql="SELECT surnames FROM athletes WHERE id='"+id.to_s+"'"
+  arr=ActiveRecord::Base.connection.execute(sql)
+  arr.each do |a|
+@names=a[0]
+end
+return @names
+end
+def getAthleteRutFromId(id)
+@names=""
+  sql="SELECT rut FROM athletes WHERE id='"+id.to_s+"'"
+  arr=ActiveRecord::Base.connection.execute(sql)
+  arr.each do |a|
+@names=a[0]
+end
+return @names
+end
 
 def getAdminPermission(user)
   	@profile=""

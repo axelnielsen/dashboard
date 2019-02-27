@@ -1,20 +1,20 @@
-class AthletesDatatable < ApplicationDatatable
-  delegate  :new_registration_head2_path, :edit_athlete_path, to: :@view
+class Athletes2Datatable < ApplicationDatatable
+  delegate :edit_athlete_path, to: :@view
 
   private
 
- 
   def data
     #example
     athletes.map do |athlete|
       [].tap do |column|
         column << athlete.names
         column << athlete.surnames
-        column << athlete.rut
-        
+        column << athlete.birthdate
+        column << athlete.club.name
+        column << athlete.region.name
 
         links = []
-        links <<link_to("SELECCIONAR", new_registration_head2_path(a: athlete))
+        links << link_to('VER', athlete)
         column << links.join(' | ')
       end
     end
@@ -29,7 +29,6 @@ class AthletesDatatable < ApplicationDatatable
     # will_paginate
     # athletes.total_entries
   end
-
 
   def athletes
     @athletes ||= fetch_athletes
@@ -52,7 +51,7 @@ class AthletesDatatable < ApplicationDatatable
   end
 
   def columns
-    %w(names surnames rut birthdate club_id region_id)
+    %w(names surnames birthdate club_id region_id)
   end
 
 end

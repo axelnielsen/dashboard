@@ -1,4 +1,10 @@
+<% 
+if params[:id]!='' and params[:id].present?
+session[:idRChamp] = params[:id]
+end
+%>
 
+<%@champ=session[:idRChamp]%>
     <div class="row">
       <div class="col-md-2">
       </div>
@@ -8,7 +14,7 @@
       
          <div class="callout callout-warning">
                 <h4> 
-<%=Championship.where(:id => params[:id]).first.name%></h4>
+<%=Championship.where(:id => @champ).first.name%></h4>
     </div>
          <div class="box-header with-border">
               <h3 class="box-title">PROCESO DE INSCRIPCIÓN, ETAPA 1 DE 3</h3>
@@ -25,20 +31,54 @@
             </div>
             <!-- /.box-body -->
           </div>
-<%= simple_form_for(@registration_head2) do |f| %>
+
+
+
+
+      <div class="box-body table-responsive no-padding table-striped">
+              <table class="table table-hover">
+                <tbody>              
+<%= content_tag :table, role: :datatable, data: { url: athletes_path(club_id: params[:club_id],format: :json)} do %>
+  <thead>
+    <tr class="table-info">
+     
+                  <th>NOMBRES</th>
+                  <th>APELLIDOS</th>                  
+                  <th>RUT</th>
+                  <th></th>
+    </tr>
+  </thead>
+
+  
+<% end %>
+</tbody>
+</table>
+</div>
+
+
+
+
+<%= simple_form_for(@registration_head2)  do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs" >
-    <%= f.input :championship_id, :as => :hidden, :input_html => { :value =>  params[:id]}%>  
-    <%= hidden_field_tag(:id, params[:id]) %>
+    <%= f.input :championship_id, :as => :hidden, :input_html => { :value =>  @champ}%>  
+    <%= hidden_field_tag(:id, @champ) %>
 
-    NOMBRES<%= f.input :name ,label: false, required:  true ,  :input_html => { :onblur => "upperName()"}%>
-    APELLIDOS<%= f.input :lastname, label: false, required:  true,   :input_html => { :onblur => "upperLastName()"} %>
-    SEXO<%= f.association :sex, label: false%>
-    FECHA DE NACMIENTO<%= f.date_field :an , class: 'form-control'%>
-    CLUB<%= f.input :club ,  label: false, required:  true  ,:input_html => { :onblur => "upperClub()"}%>
-    REGIÓN<%=f.input :region,:collection => [["I de Tarapacá ", 1], ["II de Antofagasta", 2], ["III de Atacama", 3], ["IV de Coquimbo", 4], ["V de Valparaíso", 5], ["VI del Libertador General Bernardo O’Higgins", 6], ["VII del Maule", 7], ["VIII de Concepción", 8], ["IX de la Araucanía", 9], ["X de Los Lagos", 10], ["XI de Aysén del General Carlos Ibañez del Campo", 11], ["XII de Magallanes y de la Antártica Chilena", 12], ["Metropolitana de Santiago", 13], ["XIV de Los Ríos", 14], ["XV de Arica y Parinacota", 15], ["XVI del Ñuble ", 16]], class: 'form-control', label: false%>
-    RUT<%= f.input :dni , required:  true ,label: false, :input_html => { :onblur => "getData()"}%>
+    NOMBRES<%= f.input :name ,label: false, required:  true ,  :input_html => { :onblur => "upperName()", :value => getAthleteNamesFromId(params[:a])}%>
+    APELLIDOS<%= f.input :lastname, label: false, required:  true,   :input_html => { :onblur => "upperLastName()", :value => getAthleteSurnamesFromId(params[:a])} %>
+    <%@sex=getAthleteSexFromId(params[:a])%>
+    SEXO<%= f.association :sex, label: false, :selected => @sex%>
+    <%begin%>
+    <%getAthleteBirthFromId(params[:a]).day%>
+    <%="FECHA DE NACMIENTO"%>
+    <%= f.input :an , class: 'form-control',:selected => getAthleteBirthFromId(params[:a]), label: false%>
+
+    <%rescue%>
+    <%end%>
+    CLUB<%= f.input :club ,  label: false, required:  true  ,:input_html => { :onblur => "upperClub()", :value => getAthleteClubFromId(params[:a])}%>
+    REGIÓN<%=f.input :region, label: false,:input_html => { :value => getAthleteRegionFromId(params[:a])}%>
+    RUT<%= f.input :dni , required:  true ,label: false, :input_html => { :value => getAthleteRutFromId(params[:a])}%>
   </div>
 
 
@@ -79,3 +119,5 @@ function upperClub() {
 });
 
   </script>
+
+
