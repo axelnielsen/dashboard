@@ -8,7 +8,7 @@
     SEXO <%= f.association :sex, label: false, required: true%>
    FECHA DE NACIMIENTO <%= f.date_field :birthdate , class: 'form-control', label: false, required: true%>
 
-    RUT<%= f.input :rut,label: false, required: true %>
+    RUT<%= f.input :rut,label: false, required: true ,  :input_html => { :onblur => "Valida_Rut()"}%>
 <%
 cannot_select = {
   onfocus: "this.defaultIndex=this.selectedIndex;",
@@ -44,14 +44,91 @@ ASOCIACIÓN REGIONAL<%= f.association :region, readonly: true, input_html: {}.me
     TALLA <%= f.input :size ,label: false, required: true%>
     ESTATURA<%= f.input :height ,label: false , required: true,  :input_html => { :type => "number"},  :input_html => { :step => "0.01"}%>
   </div>
-
-  <div class="form-actions">
-   <%= f.button :submit ,'GUARDAR',class: "btn btn-success"%> | <%= link_to "VOLVER", :back, class: "btn btn-warning" %>
+<% if  user_signed_in? && (getAdminPermission( current_user.email) or getRegionPermission( current_user.email) or getClubPermission(current_user.email)) && (getRegionNumber( current_user.email)==@athlete.region_id or getClubNumber( current_user.email)==@athlete.club_id)%> 
+<br/>
+<div class="form-actions">
+   <%= f.button :submit ,'GUARDAR',class: "btn btn-success"%> 
   </div>
+<%end%>
+  
+<%= link_to "VOLVER", :back, class: "btn btn-warning" %>
   <script type="text/javascript">
     $("#athlete_rut").inputmask({
   mask: "9[9.999.999]-[9|K|k]",
 });
 
   </script>
+
+<script>
+function Valida_Rut(  )
+{
+  Objeto=document.getElementById("athlete_rut")
+  var tmpstr = "";
+  var intlargo = Objeto.value
+  if (intlargo.length> 0)
+  {
+    crut = Objeto.value
+    largo = crut.length;
+    if ( largo <2 )
+    {
+      alert('rut inválido')
+      Objeto.value="";
+      Objeto.focus()
+      return false;
+    }
+    for ( i=0; i <crut.length ; i++ )
+    if ( crut.charAt(i) != ' ' && crut.charAt(i) != '.' && crut.charAt(i) != '-' )
+    {
+      tmpstr = tmpstr + crut.charAt(i);
+    }
+    rut = tmpstr;
+    crut=tmpstr;
+    largo = crut.length;
+ 
+    if ( largo> 2 )
+      rut = crut.substring(0, largo - 1);
+    else
+      rut = crut.charAt(0);
+ 
+    dv = crut.charAt(largo-1);
+ 
+    if ( rut == null || dv == null )
+    return 0;
+ 
+    var dvr = '0';
+    suma = 0;
+    mul  = 2;
+ 
+    for (i= rut.length-1 ; i>= 0; i--)
+    {
+      suma = suma + rut.charAt(i) * mul;
+      if (mul == 7)
+        mul = 2;
+      else
+        mul++;
+    }
+ 
+    res = suma % 11;
+    if (res==1)
+      dvr = 'k';
+    else if (res==0)
+      dvr = '0';
+    else
+    {
+      dvi = 11-res;
+      dvr = dvi + "";
+    }
+ 
+    if ( dvr != dv.toLowerCase() )
+    {
+      alert('El Rut Ingresado es Inválido')
+      Objeto.value="";
+       document.getElementById("athlete_rut").focus()
+      return false;
+    }
+ 
+    return true;
+  }
+}
+</script>
 <% end %>
