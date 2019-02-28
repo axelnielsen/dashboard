@@ -3,7 +3,8 @@ if params[:id]!='' and params[:id].present?
 session[:idRChamp] = params[:id]
 end
 %>
-
+<%@club_id=getClubNumber(current_user.email)%>
+<%@region_id=getRegionNumber(current_user.email)%>
 <%@champ=session[:idRChamp]%>
     <div class="row">
       <div class="col-md-2">
@@ -37,8 +38,9 @@ end
 
       <div class="box-body table-responsive no-padding table-striped">
               <table class="table table-hover">
-                <tbody>              
-<%= content_tag :table, role: :datatable, data: { url: athletes_path(club_id: params[:club_id],format: :json)} do %>
+                <tbody>             
+<%if getClubPermission(current_user.email) %> 
+<%= content_tag :table, role: :datatable, data: { url: athletes_path(club_id: @club_id,format: :json)} do %>
   <thead>
     <tr class="table-info">
      
@@ -54,6 +56,42 @@ end
 </tbody>
 </table>
 </div>
+<%elsif getRegionPermission(current_user.email)%>
+<%= content_tag :table, role: :datatable, data: { url: athletes_path(region_id: @region_id,format: :json)} do %>
+  <thead>
+    <tr class="table-info">
+     
+                  <th>NOMBRES</th>
+                  <th>APELLIDOS</th>                  
+                  <th>RUT</th>
+                  <th></th>
+    </tr>
+  </thead>
+
+  
+<% end %>
+</tbody>
+</table>
+</div>
+<%elsif getAdminPermission(current_user.email)%>
+<%= content_tag :table, role: :datatable, data: { url: athletes_path(format: :json)} do %>
+  <thead>
+    <tr class="table-info">
+     
+                  <th>NOMBRES</th>
+                  <th>APELLIDOS</th>                  
+                  <th>RUT</th>
+                  <th></th>
+    </tr>
+  </thead>
+
+  
+<% end %>
+</tbody>
+</table>
+</div>
+<%end%>
+
 
 
 

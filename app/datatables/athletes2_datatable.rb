@@ -47,6 +47,9 @@ class Athletes2Datatable < ApplicationDatatable
     if params[:club_id]
     athletes = athletes.where(club_id: params[:club_id])
     end
+    if params[:region_id]
+    athletes = athletes.where(region_id: params[:region_id])
+    end
     athletes = athletes.where(search_string.join(' or '), search: "%#{params[:search][:value]}%")
   end
 
