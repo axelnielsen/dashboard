@@ -201,14 +201,14 @@ category_id=jump_head2.category_id
         <% end %> 
         <%end%>
       </tr>
-<% elsif  !user_signed_in? && start=="1"%>
+<% elsif  start=="1"%>
   <tr>
 
         <td><b><%=jump2.athlete%></b></td>
         <td><%= jump2.an%></td>
         <td><%= jump2.club%></td>
          <td><%= jump2.region%></td>
-    <% elsif  !user_signed_in? && start=="0"%>
+    <% elsif start=="0"%>
    <tr>
         <td><b><%= jump2.place %></b></td>
         <td><b><%=jump2.achievement %></b></td>

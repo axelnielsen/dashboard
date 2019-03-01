@@ -225,7 +225,8 @@ select stages.fecha,  throw2s.achievement, sports.name from throw2s join athlete
 </div>
 <%end%>
 <%end%>
- <% if  user_signed_in? && (getAdminPermission( current_user.email) or getRegionPermission( current_user.email) or getClubPermission(current_user.email)) && (getRegionNumber( current_user.email)==@athlete.region_id or getClubNumber( current_user.email)==@athlete.club_id)%> 
+<% if  user_signed_in? && (getAdminPermission( current_user.email) or getRegionPermission( current_user.email) or getClubPermission(current_user.email)) && ((getRegionPermission( current_user.email) && getRegionNumber( current_user.email)==@athlete.region_id) or (getClubPermission(current_user.email) && getClubNumber( current_user.email)==@athlete.club_id))%>
+ 
 <br/>
 <%= link_to "EDITAR ATLETA", edit_athlete_path(@athlete), class: "btn btn-success" %> |
 <%end%>

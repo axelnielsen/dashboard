@@ -205,7 +205,7 @@ category_id=throw_head2.category_id
         <% end %> 
         <%end%>
       </tr>
- <%   elsif !user_signed_in? && start=="1" %>
+ <%   elsif  start=="1" %>
 
 <tr>
      
@@ -216,7 +216,7 @@ category_id=throw_head2.category_id
          <td><%= throw2.bestAchievement %></td>
       </tr>
 
-<%elsif !user_signed_in? && start=="0" %>
+<%elsif  start=="0" %>
 <tr>
  <td><b><%=throw2.place %></b></td>
        <td><b><%=throw2.achievement %></b></td>

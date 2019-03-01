@@ -44,7 +44,7 @@ ASOCIACIÓN REGIONAL<%= f.association :region, readonly: true, input_html: {}.me
     TALLA <%= f.input :size ,label: false, required: true%>
     ESTATURA<%= f.input :height ,label: false , required: true,  :input_html => { :type => "number"},  :input_html => { :step => "0.01"}%>
   </div>
-<% if  user_signed_in? && (getAdminPermission( current_user.email) or getRegionPermission( current_user.email) or getClubPermission(current_user.email)) && (getRegionNumber( current_user.email)==@athlete.region_id or getClubNumber( current_user.email)==@athlete.club_id)%> 
+<% if  user_signed_in? && (getAdminPermission( current_user.email) or getRegionPermission( current_user.email) or getClubPermission(current_user.email)) && (((getRegionPermission( current_user.email) && getRegionNumber( current_user.email)==@athlete.region_id) or @athlete.region_id==nil) or (getClubPermission(current_user.email) && (getClubNumber( current_user.email)==@athlete.club_id or @athlete.club_id==nil)))%> 
 <br/>
 <div class="form-actions">
    <%= f.button :submit ,'GUARDAR',class: "btn btn-success"%> 

@@ -160,7 +160,7 @@ category_id=hjump_head2.category_id
         <%end%>
       </tr>
 
- <%   elsif !user_signed_in? && start=="0"%>
+ <%   elsif start=="0"%>
 
 <tr>
     <td><b><%=hjump2.place %></b></td>
@@ -170,7 +170,7 @@ category_id=hjump_head2.category_id
         <td><%= hjump2.club%></td>
         <td><%= hjump2.region %></td>
       </tr>
- <%   elsif !user_signed_in? && start=="1"%>
+ <%   elsif start=="1"%>
 
 <tr>
   
