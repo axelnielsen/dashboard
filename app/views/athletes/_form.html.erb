@@ -28,12 +28,11 @@ cannot_select = {
     CLUB <%= f.association :club, label: false, required: true,collection: Club.where(region_id: getRegionNumber( current_user.email))%>
 <%elsif user_signed_in? && getAdminPermission(current_user.email)%>
    ASOCIACIÓN REGIONAL<%= f.association :region,label: false %>
-    CLUB <%= f.association :club, label: false, required: true,collection: Club.where(region_id: getRegionNumber( current_user.email))%>
+    CLUB <%= f.association :club, label: false, required: true,collection: Club.order(:name)%>
 
 <%elsif user_signed_in? && getClubPermission(current_user.email)%>
 ASOCIACIÓN REGIONAL<%= f.association :region, readonly: true, input_html: {}.merge(cannot_select) , :selected => getRegionNumber( current_user.email), label: false %>
     CLUB <%= f.association :club, label: false, required: true,collection: Club.where(id: getClubNumber( current_user.email))%>
-
 
 <%end%>
    
@@ -50,6 +49,15 @@ ASOCIACIÓN REGIONAL<%= f.association :region, readonly: true, input_html: {}.me
    <%= f.button :submit ,'GUARDAR',class: "btn btn-success"%> 
   </div>
 <%end%>
+
+
+<% if  user_signed_in? && (getAdminPermission( current_user.email)) %>
+<br/>
+<div class="form-actions">
+   <%= f.button :submit ,'GUARDAR',class: "btn btn-success"%>
+  </div>
+<%end%>
+
   
 <%= link_to "VOLVER", :back, class: "btn btn-warning" %>
   <script type="text/javascript">

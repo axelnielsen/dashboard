@@ -2,6 +2,7 @@
 <%
 nAthlete=params[:NAthlete]
 competition_id=params[:competition_id]
+@competition=competition_id
 countAthlete=0;
 arrRail=params[:rail]
 nRail=arrRail.length
@@ -75,7 +76,6 @@ values('"+e.to_s+"'"+",
 
 %>
 
-<%end %>
 <%
 end
 
@@ -84,4 +84,5 @@ end
 
 %>
 
-<META http-equiv="refresh" content="0;URL=track_head2s/?competition_id="+competition_id+"&start=1"> 
+<META http-equiv="refresh" content="0;URL=/track_head2s?start=1&competition_id=<%=@competition%>"> 
+<%end%>

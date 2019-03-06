@@ -5,8 +5,9 @@
     <p id="notice"><%= notice %></p>
     <div class="callout callout-warning">
                 <h4><%= @championship.name %></h4>
-               <b><h5> <%=link_to "INSCRIPCIONES ABIERTAS", class: "alert alert-success", :controller => "registration_head2s", :action => "new",:id => @championship.id %></h5></b>
-
+   <% if  user_signed_in? && getAdminPermission( current_user.email)%>
+             <b><h5> <%=link_to "INSCRIPCIONES ABIERTAS", class: "alert alert-success", :controller => "registration_head2s", :action => "new",:id => @championship.id %></h5></b>
+<%end%>
     </div>
        <% if  user_signed_in? && getAdminPermission( current_user.email)%> 
 
@@ -122,7 +123,16 @@
             <% elsif competition.competition_type_id==4%>
             <%=link_to "RESULTADOS", jump_head2s_path(:competition_id=>competition.id, :start=>"0"), class: "btn btn-warning"%>
              <td><%= link_to "STARTLIST", jump_head2s_path(:competition_id=>competition.id, :start=>"1"), class: "btn btn-primary" %></td>
- <% elsif competition.competition_type_id==2 %>
+ 
+<td>
+  <%= link_to competition, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %>
+                 <% if  user_signed_in? && current_user.email=='admin@prossport.cl'%><button type="button" class="btn btn-danger" aria-label="Left Align">ELIMINAR</button>
+        <% end %>
+        <% end %>
+
+</td>
+
+<% elsif competition.competition_type_id==2 %>
             <%=link_to "RESULTADOS", hjump_head2s_path(:competition_id=>competition.id, :start=>"0"), class: "btn btn-warning"%> 
              <td><%= link_to "STARTLIST", hjump_head2s_path(:competition_id=>competition.id, :start=>"1"), class: "btn btn-primary" %></td>
 <td>

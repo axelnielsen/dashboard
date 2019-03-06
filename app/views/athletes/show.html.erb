@@ -230,4 +230,13 @@ select stages.fecha,  throw2s.achievement, sports.name from throw2s join athlete
 <br/>
 <%= link_to "EDITAR ATLETA", edit_athlete_path(@athlete), class: "btn btn-success" %> |
 <%end%>
+<% if  user_signed_in? && (getAdminPermission( current_user.email)) %>
+
+
+<br/>
+<%= link_to "EDITAR ATLETA", edit_athlete_path(@athlete), class: "btn btn-success" %> |
+<%end%>
+
+
 <%= link_to "VOLVER", :back, class: "btn btn-warning" %>
+
