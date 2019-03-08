@@ -5,6 +5,10 @@ class Jump2sController < ApplicationController
   # GET /jump2s.json
   def index
     @jump2s = Jump2.all
+     respond_to do |format|
+         format.html
+         format.xlsx
+  end
   end
 
   # GET /jump2s/1

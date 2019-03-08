@@ -5,6 +5,10 @@ class Throw2sController < ApplicationController
   # GET /throw2s.json
   def index
     @throw2s = Throw2.all
+    respond_to do |format|
+         format.html
+         format.xlsx
+  end
   end
 
   # GET /throw2s/1

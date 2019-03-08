@@ -6,7 +6,14 @@ helper_method :getAdminPermission, :getCamaraPermission, :getRegionNumber, :getR
 :getChampionshipFromTrack2s, :getChampionshipAddressFromTrack2s, 
 :getChampionshipInitDateFromTrack2s, :getChampionshipFinDateFromTrack2s, 
 :getCompetitionFromTrack2s, :getAthleteNamesFromId, :getAthleteSurnamesFromId, :getAthleteRutFromId,
-:getAthleteSexFromId, :getAthleteClubFromId, :getAthleteRegionFromId, :getAthleteBirthFromId
+:getAthleteSexFromId, :getAthleteClubFromId, :getAthleteRegionFromId, 
+:getAthleteBirthFromId, :getChampionshipFromThrow2s, :getChampionshipAddressFromThrow2s,
+:getChampionshipFinDateFromThrow2s, :getChampionshipInitDateFromThrow2s,
+:getCompetitionFromThrow2s, :getCompetitionFromHjump2s, :getChampionshipFromHjump2s,
+:getChampionshipFinDateFromHjump2s, :getChampionshipInitDateFromHjump2s, :getChampionshipAddressFromHjump2s,
+:getChampionshipAddressFromJump2s, :getCompetitionFromJump2s, :getChampionshipFinDateFromJump2s,
+:getChampionshipInitDateFromJump2s, :getChampionshipFromJump2s
+
 
 
 def getAthleteNamesFromId(id)
@@ -112,6 +119,55 @@ end
 return @name
 end
 
+
+def getCompetitionFromHjump2s(hjump_head2s_id)
+    @name=""
+    sqlName = "select sports.name 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join sports on competitions.sport_id=sports.id
+  join hjump_head2s on competitions.id=hjump_head2s.competition_id
+  where hjump_head2s.id='"+hjump_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
+def getCompetitionFromThrow2s(throw_head2s_id)
+    @name=""
+    sqlName = "select sports.name 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join sports on competitions.sport_id=sports.id
+  join throw_head2s on competitions.id=throw_head2s.competition_id
+  where throw_head2s.id='"+throw_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
+def getCompetitionFromJump2s(jump_head2s_id)
+    @name=""
+    sqlName = "select sports.name 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join sports on competitions.sport_id=sports.id
+  join jump_head2s on competitions.id=jump_head2s.competition_id
+  where jump_head2s.id='"+jump_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
 def getChampionshipFromTrack2s(track_head2s_id)
     @name=""
     sqlName = "select championships.name 
@@ -126,6 +182,51 @@ def getChampionshipFromTrack2s(track_head2s_id)
 end
 return @name
 end
+def getChampionshipFromThrow2s(throw_head2s_id)
+    @name=""
+    sqlName = "select championships.name 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join throw_head2s on competitions.id=throw_head2s.competition_id
+  where throw_head2s.id='"+throw_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
+def getChampionshipFromJump2s(jump_head2s_id)
+    @name=""
+    sqlName = "select championships.name 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join jump_head2s on competitions.id=jump_head2s.competition_id
+  where jump_head2s.id='"+jump_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
+def getChampionshipFromHjump2s(hjump_head2s_id)
+    @name=""
+    sqlName = "select championships.name 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join hjump_head2s on competitions.id=hjump_head2s.competition_id
+  where hjump_head2s.id='"+hjump_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
 def getChampionshipFinDateFromTrack2s(track_head2s_id)
     @name=""
     sqlName = "select finDate 
@@ -140,6 +241,52 @@ def getChampionshipFinDateFromTrack2s(track_head2s_id)
 end
 return @name
 end
+
+def getChampionshipFinDateFromHjump2s(hjump_head2s_id)
+    @name=""
+    sqlName = "select finDate 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join hjump_head2s on competitions.id=hjump_head2s.competition_id
+  where hjump_head2s.id='"+hjump_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
+def getChampionshipFinDateFromThrow2s(throw_head2s_id)
+    @name=""
+    sqlName = "select finDate 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join throw_head2s on competitions.id=throw_head2s.competition_id
+  where throw_head2s.id='"+throw_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
+def getChampionshipFinDateFromJump2s(jump_head2s_id)
+    @name=""
+    sqlName = "select finDate 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join jump_head2s on competitions.id=jump_head2s.competition_id
+  where jump_head2s.id='"+jump_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
 def getChampionshipDateFromTrack2s(track_head2s_id)
     @name=""
     sqlName = "select name 
@@ -168,6 +315,51 @@ def getChampionshipInitDateFromTrack2s(track_head2s_id)
 end
 return @name
 end
+
+def getChampionshipInitDateFromJump2s(jump_head2s_id)
+    @name=""
+    sqlName = "select initDate 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join jump_head2s on competitions.id=jump_head2s.competition_id
+  where jump_head2s.id='"+jump_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
+def getChampionshipInitDateFromHjump2s(hjump_head2s_id)
+    @name=""
+    sqlName = "select initDate 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join hjump_head2s on competitions.id=hjump_head2s.competition_id
+  where hjump_head2s.id='"+hjump_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
+def getChampionshipInitDateFromThrow2s(throw_head2s_id)
+    @name=""
+    sqlName = "select initDate 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join throw_head2s on competitions.id=throw_head2s.competition_id
+  where throw_head2s.id='"+throw_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
 def getChampionshipAddressFromTrack2s(track_head2s_id)
     @name=""
     sqlName = "select address 
@@ -175,6 +367,51 @@ def getChampionshipAddressFromTrack2s(track_head2s_id)
   join competitions on stages.id=competitions.stage_id
   join track_head2s on competitions.id=track_head2s.competition_id
   where track_head2s.id='"+track_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
+def getChampionshipAddressFromJump2s(jump_head2s_id)
+    @name=""
+    sqlName = "select address 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join jump_head2s on competitions.id=jump_head2s.competition_id
+  where jump_head2s.id='"+jump_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
+def getChampionshipAddressFromHjump2s(hjump_head2s_id)
+    @name=""
+    sqlName = "select address 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join hjump_head2s on competitions.id=hjump_head2s.competition_id
+  where hjump_head2s.id='"+hjump_head2s_id.to_s+"';" 
+  arrName = ActiveRecord::Base.connection.execute(sqlName)
+  arrName.each do |p|
+  @name=p[0]
+  
+end
+return @name
+end
+
+def getChampionshipAddressFromThrow2s(throw_head2s_id)
+    @name=""
+    sqlName = "select address 
+  from championships  join stages on championships.id=stages.championship_id
+  join competitions on stages.id=competitions.stage_id
+  join throw_head2s on competitions.id=throw_head2s.competition_id
+  where throw_head2s.id='"+throw_head2s_id.to_s+"';" 
   arrName = ActiveRecord::Base.connection.execute(sqlName)
   arrName.each do |p|
   @name=p[0]

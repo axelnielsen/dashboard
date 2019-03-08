@@ -1,0 +1,57 @@
+wb = xlsx_package.workbook
+
+if !params[:type].present?
+img = File.expand_path("logo.png", __dir__)
+wb.add_worksheet(name: "RESULTADOS") do |sheet|
+
+sheet.add_row 
+sheet.add_image(:image_src => img, :noSelect => true, :noMove => true, ) do |image|
+    image.width = 170
+    image.height = 70
+    image.start_at 0, 0
+  end
+  sheet.add_row 
+  sheet.add_row 
+  sheet.add_row 
+
+
+
+sheet.add_row ["EVENTO",getChampionshipFromHjump2s(@hjump2s.first.hjump_head2_id) ]
+sheet.add_row  ["DIRECCIÓN",getChampionshipAddressFromHjump2s(@hjump2s.first.hjump_head2_id) ]
+sheet.add_row  ["FECHA",getChampionshipInitDateFromHjump2s(@hjump2s.first.hjump_head2_id) ]
+sheet.add_row  ["INICIO",getChampionshipInitDateFromHjump2s(@hjump2s.first.hjump_head2_id).to_time ]
+sheet.add_row  ["TÉRMINO",getChampionshipFinDateFromHjump2s(@hjump2s.first.hjump_head2_id).to_time]
+sheet.add_row 
+sheet.add_row %w(N° NOMBRE RUT A.N. CLUB REGIÓN 1° 2° 3° OP 4° 5° OP 6° MARCA LUGAR )
+  @hjump2s.each do |t|
+  @hjumphead2s=HjumpHead2.where(:id=>t.hjump_head2_id).first
+    sheet.add_row ['',  t.athlete, t.rut,  t.an, t.club, t.region, t.first, t.second, t.third, t.op, t.fourth, t.fifth, t.sixth,'', t.achievement, t.place]
+  end
+end
+
+else
+
+@sex=Competition.where(id: HjumpHead2.where(:id=>@hjump2s.first.hjump_head2_id).first.competition_id).first.sex.name
+
+if @sex=="DAMAS"
+@color="FF6699"
+else
+@color="0000FF"
+end
+
+wb.add_worksheet(name: "PLANILLA JUECES") do |sheet|
+style1 = sheet.styles.add_style(:bg_color => @color, :fg_color => "000000", b:true)
+style2 = sheet.styles.add_style( b:true, :border => { :style => :thin, :color => "000000", :edges => [:top, :bottom, :left , :right] })
+style3 = sheet.styles.add_style( :border => { :style => :thin, :color => "000000", :edges => [:top, :bottom, :left , :right] })
+sheet.add_row [@sex], :style => style1
+sheet.merge_cells "A1:H1" 
+sheet.add_row  
+sheet.add_row %w( N° NOMBRE RUT A.N. CLUB REGIÓN 1° 2° 3° OP 4° 5° OP 6° MARCA LUGAR), :style => style2
+@hjump2s=@hjump2s.where(:hjump_head2_id=>params[:h]);
+  @hjump2s.each do |t|
+  @hjumphead2s=HjumpHead2.where(:id=>t.hjump_head2_id).first
+    sheet.add_row [ '',  t.athlete, t.rut,  t.an, t.club, t.region,'','','','','','','','','',''], :style => style3
+  end
+end
+
+end

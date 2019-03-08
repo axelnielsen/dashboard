@@ -5,6 +5,10 @@ class Hjump2sController < ApplicationController
   # GET /hjump2s.json
   def index
     @hjump2s = Hjump2.all
+    respond_to do |format|
+         format.html
+         format.xlsx
+  end
   end
 
   # GET /hjump2s/1
