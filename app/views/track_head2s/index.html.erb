@@ -6,7 +6,7 @@
                 <%=Competition.where(id: params[:competition_id]).first.sex.name%>
                  <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) )%>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <%= link_to image_tag("trophy.png" ,style: 'height:3%;width:3%;', border: 0, title: 'RESULTADOS'), track2s_path(format: "xlsx", :competition_id => params[:competition_id]) %>
+                <%= link_to image_tag("trophy.png" ,style: 'height:3%;width:3%;', border: 0, title: 'RESULTADOS'), track2s_path(format: "xlsx", :j => params[:competition_id]) %>
 <%end%>
                 </h4>
 
@@ -89,7 +89,7 @@ category_id=track_head2.category_id
                    
                     <th><%= f.input :club , placeholder: "Club",label: false%></th>
                     <th><%= f.input :region , placeholder: "Región",label: false%></th>
-                    
+                    <th><%= f.input :bestAchievement , placeholder: "Mejor Marca",label: false%></th>
                     <th> <%= f.button :submit ,'Guardar',class: "btn btn-success"%></th>
                   </tr>                 
                          </table>
@@ -155,6 +155,7 @@ category_id=track_head2.category_id
                   <th>ATLETA</th>
                   <th>CLUB</th>
                   <th>REGIÓN</th>
+                   <th>MEJOR MARCA</th>
                    <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) )%>
                    <th>ELIMINAR</th>
                    <%end%>
@@ -184,6 +185,7 @@ category_id=track_head2.category_id
         <td><b><%=track2.athlete %></b></td>
         <td><%=track2.club %></td>
         <td><%=track2.region %></td>
+        <td><b><%= best_in_place(track2, :bestAchievement) %></b></td>
          <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) )%>
         <td><%= link_to track2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
         <% end %> 
@@ -220,6 +222,7 @@ category_id=track_head2.category_id
         <td><b><%=track2.athlete %></b></td>
         <td><%= track2.club%></td>
         <td><%= track2.region %></td>
+        <td><%= track2.bestAchievement %></td>
       </tr>
 
   <% end %> 

@@ -12,6 +12,7 @@ class Track2sDatatable < ApplicationDatatable
         column << track2.athlete 
         column << track2.club 
         column << track2.region 
+        column << track2.bestAchievement 
         links = []
         links << link_to('Show', track2)
         links << link_to('Edit', edit_track2_path(track2))

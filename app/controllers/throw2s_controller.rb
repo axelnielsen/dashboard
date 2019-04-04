@@ -4,7 +4,12 @@ class Throw2sController < ApplicationController
   # GET /throw2s
   # GET /throw2s.json
   def index
-    @throw2s = Throw2.all
+  if params[:j].present?
+       @throw2s = Throw2.joins(:throw_head2).where("throw_head2s.competition_id ="+params[:j])
+
+    else
+       @throw2s = Throw2.all
+    end
     respond_to do |format|
          format.html
          format.xlsx
@@ -78,6 +83,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def throw2_params
-      params.require(:throw2).permit(:throw_head2_id, :athlete, :an, :club, :region, :first, :second, :third, :op, :fourth, :fifth, :sixth, :achievement, :place)
+      params.require(:throw2).permit(:throw_head2_id, :athlete, :an, :club, :region, :first, :second, :third, :op, :fourth, :fifth, :sixth, :achievement, :place, :bestAchievement)
     end
 end

@@ -1,13 +1,14 @@
 <div class="col-xs-12">
 <p id="notice"><%= notice %></p>
 
+
  <div class="callout callout-warning">
                 <h4><%= Competition.where(id: params[:competition_id]).first.sport.name %>
                 <%=Competition.where(id: params[:competition_id]).first.category.name %>
                 <%=Competition.where(id: params[:competition_id]).first.sex.name%>
                           <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) )%>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <%= link_to image_tag("trophy.png" ,style: 'height:3%;width:3%;', border: 0, title: 'RESULTADOS'), jump2s_path(format: "xlsx", :competition_id => params[:competition_id]) %>
+                <%= link_to image_tag("trophy.png" ,style: 'height:3%;width:3%;', border: 0, title: 'RESULTADOS'), jump2s_path(format: "xlsx", :j => @jump_head2s.where(:competition_id =>params[:competition_id]).first.id)%>
 <%end%>
 
                 </h4>
@@ -75,6 +76,7 @@ category_id=jump_head2.category_id
                     <th><%= f.input :club,  placeholder: "Club",label: false%></th>
                      <th><%= f.input :an,  placeholder: "A.N.",label: false%></th>
                       <th><%= f.input :region,  placeholder: "Región",label: false%></th>
+                      <th> <%= f.input :bestAchievement, placeholder: "Mejor Marca",label: false%></th>
                     <th><%= f.input :first,  placeholder: "primero",label: false%></th>
                     <th> <%= f.input :vvfirst , placeholder: "vv",label: false%></th>
                     <th><%= f.input :second , placeholder: "segundo",label: false%></th>
@@ -141,6 +143,7 @@ category_id=jump_head2.category_id
                   <th>A.N.</th>
                   <th>Club</th>
                   <th>Región</th>
+                   <th>Mejor Marca</th>
                   <th>Primero</th>
                   <th>V.V</th>
                   <th>Segundo</th>
@@ -160,7 +163,7 @@ category_id=jump_head2.category_id
                   <th>A.N.</th>
                   <th>Club</th>
                   <th>Región</th>
-                  
+                  <th>Mejor Marca</th>
                   <%end%>
                   
                    <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) )%>
@@ -178,6 +181,7 @@ category_id=jump_head2.category_id
         <td><%=jump2.an %></td>
         <td><%=jump2.club %></td>
          <td><%=jump2.region %></td>
+         <td><b><%= best_in_place(jump2, :bestAchievement,  :html_attrs => { :size => '3' }) %></b></td>
         <td><%= best_in_place(jump2, :first,  :html_attrs => { :size => '3' }) %></td>
         <td><%= best_in_place(jump2, :vvfirst,  :html_attrs => { :size => '2' }) %></td>
         <td><%= best_in_place(jump2, :second,  :html_attrs => { :size => '3' }) %></td>
@@ -206,7 +210,7 @@ category_id=jump_head2.category_id
         <td><b><%= best_in_place(jump2, :an) %></b></td>
         <td><%= best_in_place(jump2, :club) %></td>
          <td><%= best_in_place(jump2, :region) %></td>
-    
+    <td><b><%= best_in_place(jump2, :bestAchievement,  :html_attrs => { :size => '3' }) %></b></td>
         
          <% if  user_signed_in? && (getAdminPermission( current_user.email) || getCamaraPermission( current_user.email) )%>
         <td><%= link_to jump2, method: :delete, data: { confirm: 'Está seguro?' }, class: "" do %><button type="button" class="btn btn-danger" aria-label="Left Align">X</button></td>
@@ -220,6 +224,7 @@ category_id=jump_head2.category_id
         <td><%= jump2.an%></td>
         <td><%= jump2.club%></td>
          <td><%= jump2.region%></td>
+          <td><%= jump2.bestAchievement%></td>
     <% elsif start=="0"%>
    <tr>
         <td><b><%= jump2.place %></b></td>
@@ -228,6 +233,7 @@ category_id=jump_head2.category_id
         <td><%= jump2.an %></td>
         <td><%= jump2.club %></td>
          <td><%= jump2.region %></td>
+          <td><%= jump2.bestAchievement%></td>
         <td><%= jump2.first %></td>
         <td><%= jump2.vvfirst %></td>
         <td><%= jump2.second %></td>

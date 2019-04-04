@@ -4,7 +4,13 @@ class Hjump2sController < ApplicationController
   # GET /hjump2s
   # GET /hjump2s.json
   def index
+     if params[:j].present?
+       @hjump2s = Hjump2.joins(:hjump_head2).where("hjump_head2s.competition_id ="+params[:j])
+
+    else
+  
     @hjump2s = Hjump2.all
+    end
     respond_to do |format|
          format.html
          format.xlsx

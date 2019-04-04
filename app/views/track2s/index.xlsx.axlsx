@@ -13,7 +13,9 @@ sheet.add_image(:image_src => img, :noSelect => true, :noMove => true, ) do |ima
   sheet.add_row 
   sheet.add_row 
   sheet.add_row 
-
+style1 = sheet.styles.add_style(:bg_color => @color, :fg_color => "000000", b:true)
+style2 = sheet.styles.add_style( b:true, :border => { :style => :thin, :color => "000000", :edges => [:top, :bottom, :left , :right] })
+style3 = sheet.styles.add_style( :border => { :style => :thin, :color => "000000", :edges => [:top, :bottom, :left , :right] })
 
 
 sheet.add_row ["EVENTO",getChampionshipFromTrack2s(@track2s.first.track_head2_id) ]
@@ -22,15 +24,17 @@ sheet.add_row  ["FECHA",getChampionshipInitDateFromTrack2s(@track2s.first.track_
 sheet.add_row  ["INICIO",getChampionshipInitDateFromTrack2s(@track2s.first.track_head2_id).to_time ]
 sheet.add_row  ["TÉRMINO",getChampionshipFinDateFromTrack2s(@track2s.first.track_head2_id).to_time]
 sheet.add_row 
-sheet.add_row %w(PRUEBA LUGAR MARCA V.V ATLETA RUT NACIMIENTO  CLUB REGIÓN )
+sheet.add_row %w(PRUEBA LUGAR MARCA V.V ATLETA RUT NACIMIENTO  CLUB REGIÓN ), :style => style2
+ @track2s = Track2.joins(:track_head2).where("track_head2s.competition_id ="+params[:j]).order(:achievement)
+
   @track2s.each do |t|
   @trackhead2s=TrackHead2.where(:id=>t.track_head2_id).first
-    sheet.add_row [getCompetitionFromTrack2s(t.track_head2_id), t.place, t.achievement, @trackhead2s.wind,  t.athlete, t.rut, t.an, t.club, t.region]
+    sheet.add_row [getCompetitionFromTrack2s(t.track_head2_id), t.place, t.achievement, @trackhead2s.wind,  t.athlete, t.rut, t.an, t.club, t.region], :style => style3
   end
 end
 
 else
-
+@track2s=@track2s.where(:track_head2_id=>params[:h]);
 @sex=Competition.where(id: TrackHead2.where(:id=>@track2s.first.track_head2_id).first.competition_id).first.sex.name
 
 if @sex=="DAMAS"
@@ -44,7 +48,7 @@ style1 = sheet.styles.add_style(:bg_color => @color, :fg_color => "000000", b:tr
 style2 = sheet.styles.add_style( b:true, :border => { :style => :thin, :color => "000000", :edges => [:top, :bottom, :left , :right] })
 style3 = sheet.styles.add_style( :border => { :style => :thin, :color => "000000", :edges => [:top, :bottom, :left , :right] })
 sheet.add_row [@sex], :style => style1
-sheet.merge_cells "A1:H1" 
+sheet.merge_cells "A1:I1" 
 sheet.add_row  
 sheet.add_row %w( LUGAR MARCA PISTA N° ATLETA RUT A.N. CLUB REGIÓN ), :style => style2
 @track2s=@track2s.where(:track_head2_id=>params[:h]);

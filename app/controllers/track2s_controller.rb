@@ -8,8 +8,8 @@ class Track2sController < ApplicationController
 
 
     def index 
-    if params[:competition_id].present?
-       @track2s = Track2.joins(:track_head2).where("track_head2s.competition_id ="+params[:competition_id]).order(:achievement)
+    if params[:j].present?
+       @track2s = Track2.joins(:track_head2).where("track_head2s.competition_id ="+params[:j])
 
     else
        @track2s = Track2.all

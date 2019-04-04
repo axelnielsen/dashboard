@@ -4,7 +4,11 @@ class Jump2sController < ApplicationController
   # GET /jump2s
   # GET /jump2s.json
   def index
+    if params[:j].present?
+          @jump2s = Jump2.joins(:jump_head2).where("jump_head2s.competition_id ="+params[:j])
+    else
     @jump2s = Jump2.all
+  end
      respond_to do |format|
          format.html
          format.xlsx

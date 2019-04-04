@@ -15,6 +15,9 @@ sheet.add_image(:image_src => img, :noSelect => true, :noMove => true, ) do |ima
   sheet.add_row 
 
 
+style1 = sheet.styles.add_style(:bg_color => @color, :fg_color => "000000", b:true)
+style2 = sheet.styles.add_style( b:true, :border => { :style => :thin, :color => "000000", :edges => [:top, :bottom, :left , :right] })
+style3 = sheet.styles.add_style( :border => { :style => :thin, :color => "000000", :edges => [:top, :bottom, :left , :right] })
 
 sheet.add_row ["EVENTO",getChampionshipFromJump2s(@jump2s.first.jump_head2_id) ]
 sheet.add_row  ["DIRECCIÓN",getChampionshipAddressFromJump2s(@jump2s.first.jump_head2_id) ]
@@ -22,17 +25,24 @@ sheet.add_row  ["FECHA",getChampionshipInitDateFromJump2s(@jump2s.first.jump_hea
 sheet.add_row  ["INICIO",getChampionshipInitDateFromJump2s(@jump2s.first.jump_head2_id).to_time ]
 sheet.add_row  ["TÉRMINO",getChampionshipFinDateFromJump2s(@jump2s.first.jump_head2_id).to_time]
 sheet.add_row 
-sheet.add_row %w(N° NOMBRE RUT A.N. CLUB REGIÓN 1° 2° 3° OP 4° 5° OP 6° MARCA LUGAR )
+sheet.add_row %w(N° NOMBRE RUT A.N. CLUB REGIÓN 1° 2° 3° OP 4° 5° OP 6° MARCA LUGAR ), :style => style2
+@jump2s=@jump2s.where(:jump_head2_id=>params[:j]);
   @jump2s.each do |t|
   @jumphead2s=JumpHead2.where(:id=>t.jump_head2_id).first
-    sheet.add_row ['',  t.athlete, t.rut,  t.an, t.club, t.region, t.first, t.second, t.third, t.op, t.fourth, t.fifth, t.sixth,'', t.achievement, t.place]
+    sheet.add_row ['',  t.athlete, t.rut,  t.an, t.club, t.region, t.first, t.second, t.third, t.op, t.fourth, t.fifth, t.sixth,'', t.achievement, t.place], :style => style3
   end
 end
 
 else
-
-@sex=Competition.where(id: JumpHead2.where(:id=>@jump2s.first.jump_head2_id).first.competition_id).first.sex.name
-
+@jump2s=@jump2s.where(:jump_head2_id=>params[:h]);
+ @jump2s.each do |t|
+@sex=""
+  sql="SELECT * FROM sexes s join competitions c on s.id=c.sex_id join jump_head2s j on c.id=j.competition_id join jump2s j2 on j.id=j2.jump_head2_id WHERE j2.id='"+t.id.to_s+"'"
+  arr=ActiveRecord::Base.connection.execute(sql)
+  arr.each do |a|
+@sex=a[1]
+end
+end
 if @sex=="DAMAS"
 @color="FF6699"
 else
@@ -43,8 +53,13 @@ wb.add_worksheet(name: "PLANILLA JUECES") do |sheet|
 style1 = sheet.styles.add_style(:bg_color => @color, :fg_color => "000000", b:true)
 style2 = sheet.styles.add_style( b:true, :border => { :style => :thin, :color => "000000", :edges => [:top, :bottom, :left , :right] })
 style3 = sheet.styles.add_style( :border => { :style => :thin, :color => "000000", :edges => [:top, :bottom, :left , :right] })
-sheet.add_row [@sex], :style => style1
+
+sheet.add_row [getCompetitionFromJump2s(params[:h])+' '+ @sex], :style => style1
 sheet.merge_cells "A1:H1" 
+sheet.add_row 
+sheet.add_row  ["FECHA",' ' ], :style => style3, :style => style2
+sheet.add_row  ["INICIO",' '], :style => style3, :style => style2
+sheet.add_row  ["TÉRMINO",' '], :style => style3, :style => style2
 sheet.add_row  
 sheet.add_row %w( N° NOMBRE RUT A.N. CLUB REGIÓN 1° V.V 2° V.V 3° V.V OP 4° V.V 5° V.V OF 6° V.V MARCA LUGAR), :style => style2
 @jump2s=@jump2s.where(:jump_head2_id=>params[:h]);
@@ -52,6 +67,8 @@ sheet.add_row %w( N° NOMBRE RUT A.N. CLUB REGIÓN 1° V.V 2° V.V 3° V.V OP 4�
   @jumphead2s=JumpHead2.where(:id=>t.jump_head2_id).first
     sheet.add_row [ '',  t.athlete, t.rut,  t.an, t.club, t.region,'','','','','','','','','','', '', '', '', '', '', ''], :style => style3
   end
+  sheet.add_row 
+sheet.add_row  ["Observaciones:"], :style => style2
 end
 
 end
