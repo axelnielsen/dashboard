@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190121114430) do
+ActiveRecord::Schema.define(version: 20190404001928) do
 
   create_table "athletes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "names"
@@ -596,6 +596,7 @@ ActiveRecord::Schema.define(version: 20190121114430) do
     t.string "region"
     t.string "points"
     t.string "rut"
+    t.string "bestAchievement"
     t.index ["jump_head2_id"], name: "index_jump2s_on_jump_head2_id"
   end
 
@@ -1197,6 +1198,16 @@ ActiveRecord::Schema.define(version: 20190121114430) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "number"
+  end
+
+  create_table "registration_detail2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "registration_head2_id"
+    t.bigint "competition_id"
+    t.string "bestAchievement"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competition_id"], name: "index_registration_detail2s_on_competition_id"
+    t.index ["registration_head2_id"], name: "index_registration_detail2s_on_registration_head2_id"
   end
 
   create_table "registration_head2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -2262,6 +2273,8 @@ ActiveRecord::Schema.define(version: 20190121114430) do
   add_foreign_key "jump_head2s", "competitions"
   add_foreign_key "jump_head2s", "sexes"
   add_foreign_key "jump_head2s", "sports"
+  add_foreign_key "registration_detail2s", "competitions"
+  add_foreign_key "registration_detail2s", "registration_head2s"
   add_foreign_key "registration_head2s", "championships"
   add_foreign_key "registration_head2s", "sexes"
   add_foreign_key "stages", "championships"

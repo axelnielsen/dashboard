@@ -80,6 +80,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def jump2_params
-      params.require(:jump2).permit(:jump_head2_id, :athlete, :club, :first, :vvfirst, :second, :vvsecond, :third, :vvthird, :op, :fourth, :vvfourth, :fifth, :vvfifth, :sixth, :vvsixth, :achievement, :place , :an, :points , :region)
+      params.require(:jump2).permit(:jump_head2_id, :athlete, :club, :first, :vvfirst, :second, :vvsecond, :third, :vvthird, :op, :fourth, :vvfourth, :fifth, :vvfifth, :sixth, :vvsixth, :achievement, :place , :an, :points , :region, :bestAchievement)
     end
 end
