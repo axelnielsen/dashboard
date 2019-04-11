@@ -1200,16 +1200,6 @@ ActiveRecord::Schema.define(version: 20190404001928) do
     t.string "number"
   end
 
-  create_table "registration_detail2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.bigint "registration_head2_id"
-    t.bigint "competition_id"
-    t.string "bestAchievement"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["competition_id"], name: "index_registration_detail2s_on_competition_id"
-    t.index ["registration_head2_id"], name: "index_registration_detail2s_on_registration_head2_id"
-  end
-
   create_table "registration_head2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "championship_id"
     t.bigint "sex_id"
@@ -2273,8 +2263,6 @@ ActiveRecord::Schema.define(version: 20190404001928) do
   add_foreign_key "jump_head2s", "competitions"
   add_foreign_key "jump_head2s", "sexes"
   add_foreign_key "jump_head2s", "sports"
-  add_foreign_key "registration_detail2s", "competitions"
-  add_foreign_key "registration_detail2s", "registration_head2s"
   add_foreign_key "registration_head2s", "championships"
   add_foreign_key "registration_head2s", "sexes"
   add_foreign_key "stages", "championships"

@@ -23,6 +23,19 @@ end
   def show
   end
 
+
+def athletesByRegion(region)
+@total=0
+sqlCount="select count(distinct(athletes.id)) as total from athletes where region_id="+region+""
+ arrCount = ActiveRecord::Base.connection.execute(sqlCount)
+  arrCount.each do |count|
+  @total=@total+count[0]
+  end
+return @total
+end
+
+
+
 def competitionsNumber(number)
   @total=0
 
@@ -252,5 +265,5 @@ end
     def region_params
       params.require(:region).permit(:name, :number, :id)
     end
-         helper_method :competitionsNumber, :championshipsNumber, :athletesNumber
+         helper_method :competitionsNumber, :championshipsNumber, :athletesNumber, :athletesByRegion
 end
