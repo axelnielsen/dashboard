@@ -1200,6 +1200,16 @@ ActiveRecord::Schema.define(version: 20190404001928) do
     t.string "number"
   end
 
+  create_table "registration_detail2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "registration_head2_id"
+    t.bigint "competition_id"
+    t.string "bestAchievement"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competition_id"], name: "index_registration_detail2s_on_competition_id"
+    t.index ["registration_head2_id"], name: "index_registration_detail2s_on_registration_head2_id"
+  end
+
   create_table "registration_head2s", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "championship_id"
     t.bigint "sex_id"
@@ -2223,27 +2233,6 @@ ActiveRecord::Schema.define(version: 20190404001928) do
     t.time "bestAchievement"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "profile_id"
-    t.integer "region"
-    t.integer "club"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["profile_id"], name: "index_users_on_profile_id"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
   add_foreign_key "athletes", "clubs"
   add_foreign_key "athletes", "regions"
   add_foreign_key "athletes", "sexes"
@@ -2263,6 +2252,8 @@ ActiveRecord::Schema.define(version: 20190404001928) do
   add_foreign_key "jump_head2s", "competitions"
   add_foreign_key "jump_head2s", "sexes"
   add_foreign_key "jump_head2s", "sports"
+  add_foreign_key "registration_detail2s", "competitions"
+  add_foreign_key "registration_detail2s", "registration_head2s"
   add_foreign_key "registration_head2s", "championships"
   add_foreign_key "registration_head2s", "sexes"
   add_foreign_key "stages", "championships"
@@ -2285,5 +2276,4 @@ ActiveRecord::Schema.define(version: 20190404001928) do
   add_foreign_key "track_head2s", "competitions"
   add_foreign_key "track_head2s", "sexes"
   add_foreign_key "track_head2s", "sports"
-  add_foreign_key "users", "profiles"
 end
