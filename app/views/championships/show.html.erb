@@ -5,7 +5,7 @@
     <p id="notice"><%= notice %></p>
     <div class="callout callout-warning">
                 <h4><%= @championship.name %></h4>
-   <% if  user_signed_in? && @championship.id==27 && (getAdminPermission(current_user.email) ) %>
+   <% if  user_signed_in? && @championship.id==14 && (getAdminPermission(current_user.email) || getRegionPermission(current_user.email) ) %>
              <b><h5> <%=link_to "INSCRIPCIONES ABIERTAS", class: "alert alert-success", :controller => "registration_head2s", :action => "new",:id => @championship.id %></h5></b>
 <%end%>
     </div>
