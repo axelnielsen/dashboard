@@ -8,8 +8,27 @@ txtName=session[:txtName]
 txtRegion=session[:txtRegion]
 txtChampionship=params[:txtChampionship]
 arr=params[:competitions]
+bestAchievement=params[:bestAchievement]
+h=-1
+i=0
+marca=[]
+ bestAchievement.each do |b|
+  if b!=""
+marca[i]=b
+i=i+1
+ end
+end
+
+%>
+
+<%marca.each do |m|%>
+<%=m%>
+<%end%>
+<%
+
 @lastTrackHead=0
  arr.each do |e|
+
 arrCount=nil
 %>
 <%=txtName%>
@@ -17,11 +36,13 @@ arrCount=nil
 <%
 sqlCompType = "select competition_type_id from competitions where competitions.id="+e+";"   
     arrCompType = ActiveRecord::Base.connection.execute(sqlCompType)
+
 arrCompType.each do |t|
 	@CompType=t[0]
 	%>
 
 	<%
+   i=i+1
 	if @CompType==1
 	@whereHead="track_head2s"
 	@whereDetail="track2s"
@@ -67,13 +88,16 @@ else
 
 end
 
-sqlTrack2s = "insert into "+@whereDetail+" (athlete, "+@whereHead.slice(0 .. -2) +"_id, club, region, created_at, updated_at, an) values('"+txtName+" "+txtLastName+"', "+@lastTrackHead+",'"+txtClub+"', '"+txtRegion+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+txtAn+"');"   
-    arrCount = ActiveRecord::Base.connection.execute(sqlTrack2s)
-%>
+h=h+1
 
-<%end%>
-<%
- end
+sqlTrack2s = "insert into "+@whereDetail+" (athlete, "+@whereHead.slice(0 .. -2) +"_id, club, region, created_at, updated_at, an, bestAchievement) values('"+txtName+" "+txtLastName+"', "+@lastTrackHead+",'"+txtClub+"', '"+txtRegion+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+Time.now.strftime('%Y/%m/%d')+"', '"+txtAn+"', '"+marca[h].to_s+"');"   
+    arrCount = ActiveRecord::Base.connection.execute(sqlTrack2s)
+
+
+
+end
+
+end
 
 %>
 

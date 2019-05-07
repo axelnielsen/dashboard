@@ -105,6 +105,7 @@ end
 
     NOMBRES<%= f.input :name ,label: false, required:  true ,  :input_html => { :onblur => "upperName()", :value => getAthleteNamesFromId(params[:a])}%>
     APELLIDOS<%= f.input :lastname, label: false, required:  true,   :input_html => { :onblur => "upperLastName()", :value => getAthleteSurnamesFromId(params[:a])} %>
+    RUT<%= f.input :dni , required:  true ,label: false, :input_html => { :value => getAthleteRutFromId(params[:a])}%>
     <%@sex=getAthleteSexFromId(params[:a])%>
     SEXO<%= f.association :sex, label: false, :selected => @sex%>
     <%begin%>
@@ -116,7 +117,7 @@ end
     <%end%>
     CLUB<%= f.input :club ,  label: false, required:  true  ,:input_html => { :onblur => "upperClub()", :value => getAthleteClubFromId(params[:a])}%>
     REGIÓN<%=f.input :region, label: false,:input_html => { :value => getAthleteRegionFromId(params[:a])}%>
-    RUT<%= f.input :dni , required:  true ,label: false, :input_html => { :value => getAthleteRutFromId(params[:a])}%>
+    
   </div>
 
 

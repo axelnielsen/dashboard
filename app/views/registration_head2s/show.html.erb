@@ -106,6 +106,7 @@ SELECCIONAR COMPETICIONES:</h4>
         <thead>
           <tr class="table-info">
           <th>SELECCIONAR</th>
+           <th>MEJOR MARCA</th>
             <th>COMPETICIÓN</th>
             <th>CATEGORÍA</th>
             <th>SEXO</th>
@@ -135,7 +136,7 @@ arrCount.each do |count|
 if count[0]==1 %>
 <tr>
         <td data-label="HORA"><input  class="chk" type="checkbox" name="competitions[]" value=<%=elemento[0]%> /></td>
-      
+      <td data-label="FINAL"><input type="text" name="bestAchievement[]" id="bestAchievement" placeholder="X"></td>
         <td data-label="FINAL"><%=elemento[1]%></td>
         <td data-label="RESULTADOS"><%=elemento[3]%> </td>
         <td data-label="RESULTADOS"><%=elemento[2]%> </td>
@@ -147,7 +148,7 @@ if count[0]>1 and elemento[3]!="FINAL"
   %>
      <tr>
         <td data-label="HORA"><input  class="chk" type="checkbox" name="competitions[]" value=<%=elemento[0]%> /></td>
-      
+      <td data-label="FINAL"><input type="text" name="bestAchievement[]" id="bestAchievement" placeholder="X"></td>
         <td data-label="FINAL"><%=elemento[1]%></td>
         <td data-label="RESULTADOS"><%=elemento[3]%> </td>
 
