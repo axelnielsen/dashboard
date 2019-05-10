@@ -85,6 +85,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hjump2_params
-      params.require(:hjump2).permit(:hjump_head2_id, :athlete, :an, :region, :club, :achievement, :place)
+      params.require(:hjump2).permit(:hjump_head2_id, :athlete, :an, :region, :club, :achievement, :place, :bestAchievement)
     end
 end

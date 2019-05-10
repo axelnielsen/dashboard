@@ -59,11 +59,11 @@ sheet.add_row  ["FECHA",' ' ], :style => style3, :style => style2
 sheet.add_row  ["INICIO",' '], :style => style3, :style => style2
 sheet.add_row  ["TÉRMINO",' '], :style => style3, :style => style2
 sheet.add_row  
-sheet.add_row %w( N° NOMBRE RUT A.N. CLUB REGIÓN 1° 2° 3° OP 4° 5° OP 6° MARCA LUGAR), :style => style2
+sheet.add_row %w( N° NOMBRE RUT A.N. MEJOR.MARCA CLUB REGIÓN 1° 2° 3° OP 4° 5° OP 6° MARCA LUGAR), :style => style2
 @throw2s=@throw2s.where(:throw_head2_id=>params[:h]);
   @throw2s.each do |t|
   @throwhead2s=ThrowHead2.where(:id=>t.throw_head2_id).first
-    sheet.add_row [ '',  t.athlete, t.rut,  t.an, t.club, t.region,'','','','','','','','','',''], :style => style3
+    sheet.add_row [ '',  t.athlete, t.rut,  t.an, t.bestAchievement, t.club, t.region,'','','','','','','','','',''], :style => style3
   end
    sheet.add_row 
 sheet.add_row  ["Observaciones:"], :style => style2

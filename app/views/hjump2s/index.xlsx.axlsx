@@ -59,11 +59,11 @@ style3 = sheet.styles.add_style( :border => { :style => :thin, :color => "000000
 sheet.add_row [@sex], :style => style1
 sheet.merge_cells "A1:H1" 
 sheet.add_row  
-sheet.add_row %w( N° NOMBRE RUT A.N. CLUB REGIÓN 1° 2° 3° OP 4° 5° OP 6° MARCA LUGAR), :style => style2
+sheet.add_row %w( N° NOMBRE RUT A.N. MEJOR.MARCA CLUB REGIÓN 1° 2° 3° OP 4° 5° OP 6° MARCA LUGAR), :style => style2
 @hjump2s=@hjump2s.where(:hjump_head2_id=>params[:h]);
   @hjump2s.each do |t|
   @hjumphead2s=HjumpHead2.where(:id=>t.hjump_head2_id).first
-    sheet.add_row [ '',  t.athlete, t.rut,  t.an, t.club, t.region,'','','','','','','','','',''], :style => style3
+    sheet.add_row [ '',  t.athlete, t.rut,  t.an, t.bestAchievement, t.club, t.region,'','','','','','','','','',''], :style => style3
   end
 end
 

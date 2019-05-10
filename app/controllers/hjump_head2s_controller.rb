@@ -7,10 +7,10 @@ class HjumpHead2sController < ApplicationController
     @hjump_head2s = HjumpHead2.all
   end
 
-    def sexColorBoxHeader(sex)
+ def sexColorBoxHeader(sex)
   if sex=="DAMAS"
     return'="box-header table-danger">'.html_safe
-    else return '<%=sexColorBoxHeader(Competition.where(id: params[:competition_id]).first.sex.name)%>'.html_safe
+    else return '="box-header table-info">'.html_safe
     end
 end
 def sexColortr(sex)

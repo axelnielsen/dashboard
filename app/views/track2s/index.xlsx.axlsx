@@ -50,11 +50,11 @@ style3 = sheet.styles.add_style( :border => { :style => :thin, :color => "000000
 sheet.add_row [@sex], :style => style1
 sheet.merge_cells "A1:I1" 
 sheet.add_row  
-sheet.add_row %w( LUGAR MARCA PISTA N° ATLETA RUT A.N. CLUB REGIÓN ), :style => style2
+sheet.add_row %w( LUGAR MARCA PISTA N° ATLETA RUT A.N. MEJOR.MARCA CLUB REGIÓN ), :style => style2
 @track2s=@track2s.where(:track_head2_id=>params[:h]);
   @track2s.each do |t|
   @trackhead2s=TrackHead2.where(:id=>t.track_head2_id).first
-    sheet.add_row [ t.place, t.achievement, t.rail, '',  t.athlete,t.rut,  t.an, t.club, t.region], :style => style3
+    sheet.add_row [ t.place, t.achievement, t.rail, '',  t.athlete,t.rut,  t.an, t.bestAchievement, t.club, t.region], :style => style3
   end
 end
 

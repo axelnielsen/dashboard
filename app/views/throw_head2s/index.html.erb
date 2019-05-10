@@ -147,7 +147,6 @@ category_id=throw_head2.category_id
                   <th>A.N.</th>
                   <th>Club</th>
                   <th>Región</th>
-                  <th>Mejor Marca</th>
                   <th>Primero</th>
                 
                   <th>Segundo</th>
@@ -187,7 +186,7 @@ category_id=throw_head2.category_id
         <td><%=throw2.an %></td>
         <td><%=throw2.club %></td>
          <td><%=throw2.region %></td>
-         <td><%= best_in_place(throw2, :bestAchievement,  :html_attrs => { :size => '4' }) %></td>
+        
         <td><%= best_in_place(throw2, :first,  :html_attrs => { :size => '4' }) %></td>
 
         <td><%= best_in_place(throw2, :second,  :html_attrs => { :size => '4' }) %></td>
@@ -240,7 +239,6 @@ category_id=throw_head2.category_id
         <td><%= throw2.an %></td>
          <td><%= throw2.club %></td>
           <td><%=throw2.region %></td>
-            <td><%=throw2.bestAchievement %></td>
         <td><%= throw2.first%></td>
         <td><%= throw2.second %></td>
          <td><%= throw2.third %></td>

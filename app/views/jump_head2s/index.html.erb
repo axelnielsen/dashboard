@@ -76,7 +76,6 @@ category_id=jump_head2.category_id
                     <th><%= f.input :club,  placeholder: "Club",label: false%></th>
                      <th><%= f.input :an,  placeholder: "A.N.",label: false%></th>
                       <th><%= f.input :region,  placeholder: "Región",label: false%></th>
-                      <th> <%= f.input :bestAchievement, placeholder: "Mejor Marca",label: false%></th>
                     <th><%= f.input :first,  placeholder: "primero",label: false%></th>
                     <th> <%= f.input :vvfirst , placeholder: "vv",label: false%></th>
                     <th><%= f.input :second , placeholder: "segundo",label: false%></th>
@@ -113,6 +112,7 @@ category_id=jump_head2.category_id
 
                     <th><%= f.input :athlete,  placeholder: "Atleta",label: false%></th>
                     <th><%= f.input :club,  placeholder: "Club",label: false%></th>
+                    <th><%= f.input :bestAchievement,  placeholder: "Mejor Marca",label: false%></th>
                      <th><%= f.input :an,  placeholder: "A.N.",label: false%></th>
                       <th><%= f.input :region,  placeholder: "Región",label: false%></th>
                    
@@ -143,7 +143,6 @@ category_id=jump_head2.category_id
                   <th>A.N.</th>
                   <th>Club</th>
                   <th>Región</th>
-                   <th>Mejor Marca</th>
                   <th>Primero</th>
                   <th>V.V</th>
                   <th>Segundo</th>
@@ -181,8 +180,7 @@ category_id=jump_head2.category_id
         <td><%=jump2.an %></td>
         <td><%=jump2.club %></td>
          <td><%=jump2.region %></td>
-         <td><b><%= best_in_place(jump2, :bestAchievement,  :html_attrs => { :size => '3' }) %></b></td>
-        <td><%= best_in_place(jump2, :first,  :html_attrs => { :size => '3' }) %></td>
+           <td><%= best_in_place(jump2, :first,  :html_attrs => { :size => '3' }) %></td>
         <td><%= best_in_place(jump2, :vvfirst,  :html_attrs => { :size => '2' }) %></td>
         <td><%= best_in_place(jump2, :second,  :html_attrs => { :size => '3' }) %></td>
         <td><%= best_in_place(jump2, :vvsecond,  :html_attrs => { :size => '2' }) %></td>
@@ -233,7 +231,6 @@ category_id=jump_head2.category_id
         <td><%= jump2.an %></td>
         <td><%= jump2.club %></td>
          <td><%= jump2.region %></td>
-          <td><%= jump2.bestAchievement %></td>
         <td><%= jump2.first %></td>
         <td><%= jump2.vvfirst %></td>
         <td><%= jump2.second %></td>
